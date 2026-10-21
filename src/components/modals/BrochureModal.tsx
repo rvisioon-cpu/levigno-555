@@ -1,6 +1,7 @@
 import { X, Download, FileText } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import { getAssetUrl } from '../../utils/assets';
+import config from '../../config/config';
 
 const BROCHURE_URL = getAssetUrl('brochure/brochure.pdf');
 
@@ -22,14 +23,14 @@ const BrochureModal = () => {
                         </div>
                         <div>
                             <h2 className="text-lg font-medium tracking-wide">Brochure Digital</h2>
-                            <p className="text-xs text-gray-400">Showroom Virtual Santa Fe</p>
+                            <p className="text-xs text-gray-400">Showroom Virtual {config.appName}</p>
                         </div>
                     </div>
                     
                     <div className="flex items-center gap-4">
                         <a 
                             href={BROCHURE_URL} 
-                            download="Showroom_SantaFe_Brochure.pdf"
+                            download={`Showroom_${config.appName}_Brochure.pdf`}
                             className="hidden sm:flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors"
                         >
                             <Download size={16} />

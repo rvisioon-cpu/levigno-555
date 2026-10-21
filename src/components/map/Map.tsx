@@ -5,6 +5,7 @@ import Map, { Marker, NavigationControl, FullscreenControl, ScaleControl, Source
 import { MapPin } from 'lucide-react';
 import { locationsData } from '@/data/locations'; 
 import { getAssetUrl } from '@/utils/assets'; 
+import config from '@/config/config'; 
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
 const MAPBOX_STYLE = 'mapbox://styles/mapbox/light-v11';
@@ -263,7 +264,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
 
         {markers}
 
-        {/* Santa Fe Marker (Main Project) */}
+        {/* Main Project Marker */}
         <Marker longitude={INITIAL_VIEW_STATE.longitude} latitude={INITIAL_VIEW_STATE.latitude} anchor="bottom" style={{ zIndex: 9999 }}>
             <div className="relative flex flex-col items-center group cursor-pointer" style={{ zIndex: 9999 }}>
                  {/* Popup Card - Hover Only */}
@@ -272,14 +273,14 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
                         <img 
                             src={getAssetUrl('building/photos/face_0_daylight.png')} 
                             className="w-full h-full object-cover"
-                            alt="Santa Fe"
+                            alt={config.appName}
                         />
                         <div className="absolute top-2 left-2 px-2 py-0.5 bg-gray-900/80 backdrop-blur-sm rounded text-[8px] font-bold text-white uppercase tracking-wider">
                             Edificio Boutique
                         </div>
                     </div>
                     <div className="p-2">
-                        <h3 className="text-xs font-bold text-gray-900 leading-tight mb-0.5">Santa Fe 190</h3>
+                        <h3 className="text-xs font-bold text-gray-900 leading-tight mb-0.5">{config.appName}</h3>
                     </div>
                  </div>
 
@@ -289,7 +290,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
                         <img 
                             src={getAssetUrl('identity/logo_full_black.png')} 
                             className="w-full h-full object-contain" // Use contain to fit logo
-                            alt="Santa Fe Logo"
+                            alt={`${config.appName} Logo`}
                         />
                      </div>
                      {/* Triangle pointer */}

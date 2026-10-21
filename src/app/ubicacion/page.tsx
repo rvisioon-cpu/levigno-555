@@ -4,6 +4,7 @@ import MapComponent from '@/components/map/Map';
 import Sidebar from '@/components/layout/Sidebar';
 import { Search, MapPin, Menu, ChevronDown, ChevronUp, Car, Footprints, Bike, Navigation, X } from 'lucide-react';
 import { locationsData, type LocationFeature } from '@/data/locations'; 
+import config from '@/config/config'; 
 
 const DirectionsPage = () => {
   const [filter, setFilter] = useState('');
@@ -30,7 +31,7 @@ const DirectionsPage = () => {
   const categories = Array.from(new Set(locationsData.features.map((f: LocationFeature) => f.properties.categoria))).filter(Boolean) as string[];
 
   const filteredLocations = locationsData.features.filter((feature: LocationFeature) => {
-    if (feature.properties.nombre === 'Santa Fe') return false;
+    if (feature.properties.nombre === 'Santa Fe' || feature.properties.nombre === config.appName || feature.properties.nombre === config.company.buildingName) return false;
 
     const matchesSearch = feature.properties.nombre.toLowerCase().includes(filter.toLowerCase());
     const matchesCategory = selectedCategory ? feature.properties.categoria === selectedCategory : true;

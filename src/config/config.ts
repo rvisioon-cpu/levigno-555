@@ -54,13 +54,13 @@ export interface ConfigProps {
 }
 
 const config: ConfigProps = {
-  appName: "Project Name",
-  appDescription: "Short project description goes here.",
-  domainName: "project-domain.com",
+  appName: "Levigno",
+  appDescription: "Experiencia virtual de Levigno.",
+  domainName: "levigno.pe",
   resend: {
-    fromNoReply: `Project Name <noreply@project-domain.com>`,
-    fromAdmin: `Admin at Project Name <admin@project-domain.com>`,
-    supportEmail: "support@project-domain.com",
+    fromNoReply: `Levigno <noreply@levigno.pe>`,
+    fromAdmin: `Admin at Levigno <admin@levigno.pe>`,
+    supportEmail: "ventas@levigno.pe",
   },
   colors: {
     theme: "light",
@@ -71,34 +71,34 @@ const config: ConfigProps = {
     callbackUrl: "/dashboard",
   },
   company: {
-    name: "Company Name",
-    address: "Company Address",
-    buildingName: "Building Name",
-    buildingAddress: "Building Address",
-    email: "sales@project-domain.com",
-    website: "https://project-domain.com/",
+    name: "Levigno",
+    address: "",
+    buildingName: "Levigno",
+    buildingAddress: "",
+    email: "ventas@levigno.pe",
+    website: "https://levigno.pe/",
     city: "Lima",
     country: "Perú",
     phone: "",
-    maquetaUrl: "https://rvisioon.shapespark.com/edificio_santa_fe/",
+    maquetaUrl: "",
     buildingSocials: {
-      facebook: "https://facebook.com/project",
-      instagram: "https://instagram.com/project",
-      tiktok: "https://tiktok.com/@project"
+      facebook: "",
+      instagram: "",
+      tiktok: ""
     },
-    realStateName: "Real Estate Group",
-    realStateSlogan: "Slogan of the real estate company",
+    realStateName: "Levigno",
+    realStateSlogan: "",
     realStateSocials: {
-      facebook: "https://facebook.com/realestate",
-      instagram: "https://instagram.com/realestate",
-      tiktok: "https://tiktok.com/@realestate"
+      facebook: "",
+      instagram: "",
+      tiktok: ""
     },
-    developer: "Developer Name",
-    developerSlogan: "Slogan of the developer",
+    developer: "Rvisioon",
+    developerSlogan: "Creamos experiencias visuales que conectan, inspiran y venden.",
     developerSocials: {
-      facebook: "https://facebook.com/developer",
-      instagram: "https://instagram.com/developer",
-      tiktok: "https://tiktok.com/@developer"
+      facebook: "https://www.facebook.com/rvisioon",
+      instagram: "https://www.instagram.com/rvisioon",
+      tiktok: "https://www.tiktok.com/@rvisioon"
     }
   }
 };

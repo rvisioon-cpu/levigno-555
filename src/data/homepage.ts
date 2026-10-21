@@ -25,7 +25,7 @@ export const homepageData: HomepageData = {
   slides: [
     {
       text: "{{highlight}} es un edificio boutique ubicado estratégicamente en el corazón de Pueblo Libre.",
-      highlight: "Santa Fe 190"
+      highlight: "Levigno"
     },
     {
       text: "Exclusividad de solo 15 departamentos, con áreas desde 52.90 m² hasta 134.50 m²."

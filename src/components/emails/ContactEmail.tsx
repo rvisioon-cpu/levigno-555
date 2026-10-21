@@ -45,7 +45,7 @@ export const ContactEmail = ({
     <Body style={main}>
       <Container style={container}>
         <Section style={header}>
-            <Text style={logo}>SANTA FE 190</Text>
+            <Text style={logo}>{project.toUpperCase()}</Text>
         </Section>
         
         <Section style={content}>
@@ -106,7 +106,7 @@ export const ContactEmail = ({
         
         <Section style={footer}>
           <Text style={footerText}>
-            Este es un mensaje automático enviado desde el sitio web de Santa Fe 190.
+            Este es un mensaje automático enviado desde el sitio web de {project}.
           </Text>
         </Section>
       </Container>

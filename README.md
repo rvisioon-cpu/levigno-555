@@ -1,6 +1,6 @@
-# Showroom Virtual Template
+# Showroom Virtual - Levigno
 
-A high-performance, data-driven Next.js template for creating virtual real estate showrooms. Designed for a "clone-and-fill" workflow, this template allows you to deploy a new project in minutes by simply updating data files and assets.
+Showroom virtual interactivo para Levigno. Diseñado para ofrecer una experiencia inmersiva del proyecto inmobiliario.
 
 ## 🚀 Quick Start
 
