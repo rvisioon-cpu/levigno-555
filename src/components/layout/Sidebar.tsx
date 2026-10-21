@@ -228,14 +228,22 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                             })}
                         </nav>
 
-                        <footer className="livigno-menu-footer mx-4 flex items-center justify-between border-t border-white/15 px-0 py-2.5 sm:mx-8 sm:px-1">
-                            <div className="flex items-center gap-2">
-                                {config.company?.buildingSocials?.facebook && <a aria-label="Facebook" href={config.company.buildingSocials.facebook} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><Facebook size={16} /></a>}
-                                {config.company?.buildingSocials?.instagram && <a aria-label="Instagram" href={config.company.buildingSocials.instagram} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><Instagram size={16} /></a>}
-                                {config.company?.buildingSocials?.tiktok && <a aria-label="TikTok" href={config.company.buildingSocials.tiktok} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><TikTokIcon size={16} /></a>}
+                        <footer className="livigno-menu-footer mx-4 border-t border-white/15 px-0 py-2.5 sm:mx-8 sm:px-1">
+                            <div className="flex items-center justify-between gap-4">
+                                <div className="flex items-center gap-2">
+                                    {config.company?.realStateSocials?.facebook && <a aria-label="Facebook de Santa Cruz" href={config.company.realStateSocials.facebook} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><Facebook size={16} /></a>}
+                                    {config.company?.realStateSocials?.instagram && <a aria-label="Instagram de Santa Cruz" href={config.company.realStateSocials.instagram} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><Instagram size={16} /></a>}
+                                    {config.company?.realStateSocials?.tiktok && <a aria-label="TikTok de Santa Cruz" href={config.company.realStateSocials.tiktok} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><TikTokIcon size={16} /></a>}
+                                </div>
+                                <div className="flex shrink-0 items-center gap-3">
+                                    <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Santa Cruz Grupo Inmobiliario'} className="h-6 w-auto max-w-28 object-contain mix-blend-lighten" />
+                                    <span className="h-5 w-px bg-white/20" aria-hidden="true" />
+                                    <span className="text-[10px] tracking-wide text-white/60">{new Date().getFullYear()} © {config.company?.developer || 'Rvisioon'}</span>
+                                </div>
                             </div>
-                            <span className="hidden text-[10px] tracking-wide text-white/50 sm:block">{new Date().getFullYear()} © {config.company?.developer || 'RIVISION.pe'}</span>
-                            <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Santa Cruz Grupo Inmobiliario'} className="h-6 w-auto max-w-28 object-contain brightness-0 invert opacity-75" />
+                            <p className="mt-2 text-left text-[9px] leading-relaxed text-white/55">
+                                Las imágenes están sujetas a <a href="/terminos-y-condiciones" className="underline underline-offset-2 hover:text-white">términos y condiciones de la inmobiliaria</a>.
+                            </p>
                         </footer>
                     </section>
                 </div>

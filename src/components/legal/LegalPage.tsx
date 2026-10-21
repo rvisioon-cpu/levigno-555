@@ -70,8 +70,17 @@ const LegalPage = ({ title, sections }: LegalPageProps) => {
                 {section.bullets && (
                   <ul className="list-disc pl-5 space-y-1.5 mt-2">
                     {section.bullets.map((bullet) => (
-                      <li key={bullet} className="text-gray-600 text-sm leading-relaxed">
-                        {bullet}
+                      <li key={typeof bullet === 'string' ? bullet : bullet.href} className="text-gray-600 text-sm leading-relaxed">
+                        {typeof bullet === 'string' ? bullet : (
+                          <a
+                            href={bullet.href}
+                            target={bullet.href.startsWith('http') ? '_blank' : undefined}
+                            rel={bullet.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className="text-brand-primary underline underline-offset-2 hover:text-brand-orange"
+                          >
+                            {bullet.label}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

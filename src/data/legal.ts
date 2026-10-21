@@ -15,7 +15,7 @@ export interface LegalSection {
   /** Párrafos de la sección. */
   body?: string[];
   /** Lista de viñetas que sigue a los párrafos. */
-  bullets?: string[];
+  bullets?: Array<string | { label: string; href: string }>;
   /** Párrafos de cierre, después de las viñetas. */
   footer?: string[];
 }
@@ -59,43 +59,53 @@ const fullAddress = (() => {
   return parts.filter(Boolean).join(', ');
 })();
 
+const contactDetails: Array<{ label: string; href: string }> = [
+  ...(contactEmail
+    ? [{ label: `Correo electrónico: ${contactEmail}`, href: `mailto:${contactEmail}` }]
+    : [{ label: 'Sitio web oficial de Livigno 555', href: config.company.website }]),
+  ...(companyPhone
+    ? [{ label: `Teléfono: ${companyPhone}`, href: `tel:${companyPhone.replace(/[^+\d]/g, '')}` }]
+    : []),
+];
+
 export const privacyPolicySections: LegalSection[] = [
   {
     title: '1. Introducción',
     body: [
-      `${companyName}, ubicada en ${fullAddress}, es responsable de la protección de los datos personales que recopilamos de nuestros usuarios, clientes y visitantes. Esta Política de Privacidad tiene como objetivo informarle sobre cómo recopilamos, utilizamos y protegemos su información personal de acuerdo con la legislación vigente en ${config.company.country}.`,
+      `${companyName} administra el sitio informativo del proyecto ${config.company.buildingName}, ubicado en ${fullAddress}. Esta Política de Privacidad explica cómo se tratan los datos personales que se recopilan mediante este sitio y sus formularios, de acuerdo con la normativa aplicable en ${config.company.country}.`,
     ],
   },
   {
     title: '2. Información que Recopilamos',
     body: [
-      'Recopilamos información personal de nuestros usuarios y clientes a través de diversos canales, tales como nuestro sitio web, correos electrónicos, formularios de contacto y comunicaciones telefónicas. La información que recopilamos puede incluir:',
+      'Cuando usted completa un formulario del sitio, recopilamos los datos que este solicita. Los campos obligatorios se identifican en el formulario; el teléfono sólo es obligatorio si se elige llamada o WhatsApp. La autorización para recibir comunicaciones comerciales es opcional. Los datos pueden incluir:',
     ],
     bullets: [
       'Nombre completo',
+      'Tipo y número de documento de identidad',
       'Número de teléfono',
       'Dirección de correo electrónico',
-      'Dirección de residencia',
-      'Información relacionada con transacciones y servicios solicitados',
-      'Datos de navegación en nuestro sitio web',
+      'Medio y horario preferidos para que nos comuniquemos',
+      'Proyecto o unidad de interés y el contenido de la consulta',
+      'Autorización opcional para comunicaciones comerciales',
+      'Datos técnicos de navegación necesarios para el funcionamiento del sitio y del mapa interactivo',
     ],
   },
   {
     title: '3. Finalidad del Tratamiento de los Datos Personales',
-    body: ['Los datos personales que recopilamos son utilizados para los siguientes fines:'],
+    body: ['Tratamos los datos que usted proporciona para atender la solicitud enviada y operar las funciones que elija en el sitio. En particular:'],
     bullets: [
-      'Brindar información sobre nuestros servicios inmobiliarios.',
-      'Procesar consultas, solicitudes y contratos.',
-      'Enviar notificaciones relacionadas con nuestros productos y servicios.',
-      'Realizar gestiones administrativas y operativas para el cumplimiento de los servicios contratados.',
-      'Mejorar la experiencia de usuario en nuestro sitio web y servicios de atención al cliente.',
-      'Cumplir con obligaciones legales y reglamentarias.',
+      'Responder consultas sobre Livigno 555 y la unidad o servicio indicado.',
+      'Coordinar el medio y horario de contacto solicitado.',
+      'Enviar información comercial únicamente si usted marca la autorización opcional correspondiente.',
+      'Mantener la seguridad y el funcionamiento del sitio y sus herramientas de ubicación.',
+      'Atender obligaciones legales aplicables.',
     ],
   },
   {
     title: '4. Consentimiento',
     body: [
-      'Al proporcionarnos sus datos personales, usted nos otorga su consentimiento expreso para el tratamiento de los mismos con los fines mencionados anteriormente. Puede revocar su consentimiento en cualquier momento, siguiendo los procedimientos establecidos en la sección de «Derechos de los Usuarios».',
+      'El formulario presenta por separado la aceptación de esta Política de Privacidad y la autorización opcional para recibir comunicaciones comerciales. Esta autorización comercial puede dejarse sin marcar sin impedir el envío de una consulta. Usted puede solicitar que cesen esas comunicaciones mediante los canales indicados en la sección «Contacto».',
     ],
   },
   {
@@ -107,13 +117,17 @@ export const privacyPolicySections: LegalSection[] = [
   {
     title: '6. Transferencia de Datos Personales',
     body: [
-      `${companyName} no venderá, alquilará ni cederá sus datos personales a terceros sin su consentimiento, salvo cuando sea necesario para la prestación de los servicios solicitados o cuando lo exija la ley. En caso de que se transfiera información a terceros, nos aseguraremos de que dichos terceros implementen medidas de seguridad apropiadas.`,
+      'No vendemos sus datos personales. El sitio utiliza servicios de infraestructura de Cloudflare para su alojamiento. Si usted usa el mapa, la búsqueda de lugares o las rutas, el navegador se conecta con Mapbox para prestar esas funciones y puede transmitir datos técnicos de conexión y las ubicaciones o consultas que usted ingrese. Puede consultar las políticas de privacidad de estos proveedores:',
+    ],
+    bullets: [
+      { label: 'Política de privacidad de Cloudflare', href: 'https://www.cloudflare.com/policies/privacy/' },
+      { label: 'Política de privacidad de Mapbox', href: 'https://www.mapbox.com/legal/privacy' },
     ],
   },
   {
     title: '7. Derechos de los Usuarios',
     body: [
-      `Usted tiene el derecho de acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales en cualquier momento. Estos derechos pueden ser ejercidos enviando una solicitud a la siguiente dirección de correo electrónico: ${contactEmail}`,
+      `Usted puede solicitar el acceso, la rectificación, la cancelación u oponerse al tratamiento de sus datos personales mediante los canales de contacto indicados en la sección «Contacto».`,
     ],
   },
   {
@@ -125,7 +139,7 @@ export const privacyPolicySections: LegalSection[] = [
   {
     title: '9. Uso de Cookies',
     body: [
-      'Nuestro sitio web utiliza cookies para mejorar su experiencia de navegación, analizar el tráfico y personalizar el contenido. Las cookies son pequeños archivos que se almacenan en su dispositivo. Puede configurar su navegador para rechazar las cookies, aunque esto podría afectar la funcionalidad de nuestro sitio web.',
+      'El sitio no incorpora actualmente herramientas propias de publicidad o analítica. El mapa y otros servicios externos pueden utilizar tecnologías técnicas necesarias para funcionar y procesar datos de conexión conforme a sus propias políticas. Puede revisar la configuración de privacidad de su navegador y la política de Mapbox antes de utilizar las funciones de mapa.',
     ],
   },
   {
@@ -145,16 +159,12 @@ export const privacyPolicySections: LegalSection[] = [
     body: [
       'Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad, no dude en contactarnos a través de los siguientes medios:',
     ],
-    // El teléfono sólo aparece si el proyecto tiene uno configurado.
-    bullets: [
-      `Correo electrónico: ${contactEmail}`,
-      ...(companyPhone ? [`Teléfono: ${companyPhone}`] : []),
-    ],
+    bullets: contactDetails,
   },
   {
     title: '13. Aceptación de la Política de Privacidad',
     body: [
-      'Al utilizar nuestros servicios o acceder a nuestro sitio web, usted acepta los términos y condiciones de esta Política de Privacidad.',
+      'Antes de enviar sus datos mediante un formulario, revise esta Política y la información que aparece junto al formulario. La navegación por el sitio, por sí sola, no sustituye las autorizaciones que correspondan para finalidades opcionales.',
     ],
   },
 ];
@@ -168,7 +178,7 @@ export const termsAndConditionsSections: LegalSection[] = [
   {
     title: '1. Aceptación de los Términos',
     body: [
-      `El presente documento regula el acceso y uso del sitio web de ${config.company.buildingName}, operado por ${companyName}, con domicilio en ${fullAddress}. Al navegar por este sitio, usar el showroom virtual o enviarnos sus datos a través de cualquiera de nuestros formularios, usted declara haber leído y aceptado estos Términos y Condiciones. Si no está de acuerdo con ellos, le pedimos abstenerse de utilizar el sitio.`,
+      `El presente documento regula el acceso y uso del sitio web informativo del proyecto ${config.company.buildingName}, administrado por ${companyName}. El proyecto está ubicado en ${fullAddress}. Al navegar por el sitio o utilizar sus funciones, usted acepta estos Términos y Condiciones. Si no está de acuerdo con ellos, le pedimos abstenerse de utilizar el sitio.`,
     ],
   },
   {
@@ -254,11 +264,8 @@ export const termsAndConditionsSections: LegalSection[] = [
   {
     title: '13. Contacto',
     body: [
-      'Para cualquier consulta relacionada con estos Términos y Condiciones puede escribirnos a:',
+      'Para consultas relacionadas con estos Términos y Condiciones, utilice uno de los siguientes canales:',
     ],
-    bullets: [
-      `Correo electrónico: ${contactEmail}`,
-      ...(companyPhone ? [`Teléfono: ${companyPhone}`] : []),
-    ],
+    bullets: contactDetails,
   },
 ];
