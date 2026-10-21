@@ -366,7 +366,7 @@ const DirectionsPage = () => {
                                 <div 
                                     key={feature.id || feature.properties.nombre} 
                                     onClick={() => handleLocationSelect(feature.geometry.coordinates, feature.properties.nombre)}
-                                    className="p-3 rounded-lg border border-gray-100 hover:border-brand-orange/30 hover:bg-orange-50/30 transition-all cursor-pointer group flex items-start gap-3"
+                                    className="p-3 rounded-lg border border-gray-100 hover:border-brand-orange/30 hover:bg-[#efdec6]/30 transition-all cursor-pointer group flex items-start gap-3"
                                 >
                                     <div className="w-10 h-10 rounded-full bg-white p-1.5 shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                                         {feature.properties.imagen ? (
@@ -398,9 +398,9 @@ const DirectionsPage = () => {
                                 <div 
                                     key={feature.id} 
                                     onClick={() => handleLocationSelect(feature.center, feature.text)}
-                                    className="p-3 rounded-lg border border-gray-100 hover:border-brand-orange/30 hover:bg-orange-50/30 transition-all cursor-pointer group flex items-start gap-3"
+                                    className="p-3 rounded-lg border border-gray-100 hover:border-brand-orange/30 hover:bg-[#efdec6]/30 transition-all cursor-pointer group flex items-start gap-3"
                                 >
-                                    <div className="p-2 rounded bg-orange-50 text-brand-orange transition-colors">
+                                    <div className="p-2 rounded bg-[#efdec6] text-brand-orange transition-colors">
                                         <Navigation size={18} />
                                     </div>
                                     <div>

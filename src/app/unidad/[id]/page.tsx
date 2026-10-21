@@ -360,7 +360,7 @@ const UnitPage = () => {
             <div className="flex flex-col items-start gap-4 mb-2">
                  <button 
                     onClick={() => setIsSidebarOpen(true)}
-                    className="p-3 rounded-full bg-[#fbb03b] hover:bg-[#e09e35] text-white shadow-lg transition-all hover:scale-105"
+                    className="p-3 rounded-full bg-[#ce994d] hover:bg-[#a87931] text-white shadow-lg transition-all hover:scale-105"
                     title="Menu"
                  >
                     <Menu size={26} />

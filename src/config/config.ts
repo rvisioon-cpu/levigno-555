@@ -64,7 +64,7 @@ const config: ConfigProps = {
   },
   colors: {
     theme: "light",
-    main: "#F59C1D", // Brand main color
+    main: "#31535b", // Brand main color
   },
   auth: {
     loginUrl: "/api/auth/signin",

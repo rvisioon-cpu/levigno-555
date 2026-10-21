@@ -1,7 +1,7 @@
 "use client";
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect } from 'react';
-import { X, Home, Building2, Layers,  Image, Rotate3D, Video, Download, MapPin, Phone, Facebook, Instagram, Mountain, Box, Construction } from 'lucide-react';
+import { X, Home, Building2, Layers, Image, Rotate3D, Video, MapPin, Phone, Facebook, Instagram, Mountain, Construction } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import { useStore } from '@/store/useStore';
 import { preloadImages, preloadVideo } from '@/utils/preload';
@@ -59,13 +59,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const allMenuItems = [
     { id: 'intro', icon: Home, label: 'Intro', path: '/' },
     { id: 'showroom', icon: Building2, label: 'El edificio', path: '/showroom', preloadKey: 'showroom' },
-    { id: 'maqueta', icon: Box, label: 'Maqueta 3D', path: '/maqueta' },
     { id: 'floors', icon: Layers, label: 'Plantas', path: '/plantas', preloadKey: 'floors' }, 
     { id: 'amenities', icon: Image, label: 'Amenidades', path: '/galeria', preloadKey: 'amenities' },
     { id: 'tours', icon: Rotate3D, label: 'Recorridos', path: '/recorridos' },
     { id: 'topographic', icon: Mountain, label: 'Topografía', path: '/topography' },
     { id: 'video', icon: Video, label: 'Video', path: '/video' },
-    { id: 'brochure', icon: Download, label: 'Brochure', action: 'brochure' },
     { id: 'location', icon: MapPin, label: 'Ubicación', path: '/ubicacion' },
     { id: 'avance', icon: Construction, label: 'Avance de obra', path: '/avance-de-obra' },
     { id: 'contact', icon: Phone, label: 'Contacto', path: '/contact' },
@@ -74,15 +72,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   // Filter menu items based on features.json
   const menuItems = allMenuItems.filter(item => (features.sidebar as any)[item.id] !== false);
 
-  const toggleBrochure = useStore(state => state.toggleBrochure);
-
   const handleNavigation = (path?: string, action?: string) => {
-    if (action === 'brochure') {
-        toggleBrochure(true);
-        onClose();
-        return;
-    }
-
     if (path) {
       if (path.startsWith('/')) {
         // Pass transition state for Showroom via Query Params for Next.js
@@ -144,32 +134,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
   return (
     <>
-      {/* Backdrop (Only for normal sidebar) */}
-      {!isForcedLandscape && (
-        <div 
-            className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-            onClick={onClose}
-        />
-      )}
-
       {/* Sidebar Panel */}
-      <div className={`fixed top-0 left-0 bg-white z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col 
-        ${isForcedLandscape ? 'w-full h-full' : 'h-full w-[300px]'}
-        ${isOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-full pointer-events-none'}
-      `}>
+      <div className={isForcedLandscape ? `fixed inset-0 z-[70] flex flex-col bg-white shadow-2xl transition-transform duration-300 ${isOpen ? 'translate-x-0 pointer-events-auto' : '-translate-x-full pointer-events-none'}` : 'contents'}>
         
-        {/* Header (Common) */}
-        {!isForcedLandscape && (
-            <div className="pt-8 pb-4 px-6 flex justify-between items-start relative bg-white shrink-0">
-            <div className="w-full flex justify-center">
-                <img src={getAssetUrl('identity/livigno-logo.png')} alt="Livigno 555" className="h-24 object-contain" />
-            </div>
-            <button onClick={onClose} className="absolute top-6 right-6 text-gray-400 hover:text-black transition-colors cursor-pointer">
-                <X size={20} />
-            </button>
-            </div>
-        )}
-
         {/* FORCED LANDSCAPE LAYOUT (Grid) */}
         {isForcedLandscape ? (
             <div className="flex-1 flex flex-col p-6 relative">
@@ -193,7 +160,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                     key={item.label}
                                     onClick={() => handleNavigation(item.path, (item as any).action)}
                                     className={`flex flex-col items-center justify-center gap-3 p-4 rounded-xl transition-all hover:bg-gray-50 group
-                                        ${active ? 'bg-orange-50/50' : ''}
+                                        ${active ? 'bg-[#efdec6]/50' : ''}
                                     `}
                                 >
                                     <div className={`p-4 rounded-full transition-all group-hover:scale-110 shadow-sm border border-gray-100
@@ -230,60 +197,47 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                  </div>
             </div>
         ) : (
-            /* STANDARD PORTRAIT / DESKTOP LAYOUT (List) */
+            /* Brand navigation panel */
             <>
-                {/* Menu Items */}
-                <div className="flex-1 overflow-y-auto py-4">
-                <ul className="flex flex-col">
-                    {menuItems.map((item) => {
-                    const active = isItemActive(item.path);
-                    return (
-                        <li key={item.label}>
-                        <button 
-                            onClick={() => handleNavigation(item.path, (item as any).action)}
-                            onMouseEnter={() => handleMouseEnter((item as any).preloadKey)}
-                            className={`w-full flex items-center gap-4 px-8 py-3.5 landscape:py-1.5 text-sm font-medium transition-all cursor-pointer hover:bg-gray-50 group border-b border-transparent ${active ? 'text-brand-orange bg-orange-50/50' : 'text-gray-600 hover:text-black'}`}
-                        >
-                            <item.icon 
-                            size={18} 
-                            strokeWidth={1.5} 
-                            className={`transition-colors group-hover:scale-110 transition-transform ${active ? 'text-brand-orange' : 'text-gray-400 group-hover:text-black'}`} 
-                            />
-                            <span className={`font-secondary transition-colors tracking-wide ${active ? 'text-brand-orange' : 'text-gray-600 group-hover:text-black'}`}>
-                            {item.label}
-                            </span>
-                        </button>
-                        <div className="mx-8 border-b border-gray-100" />
-                        </li>
-                    );
-                    })}
-                </ul>
-                </div>
+                <div className={`livigno-menu-backdrop fixed inset-0 z-[70] flex flex-col justify-end transition-all duration-500 ${isOpen ? 'is-open' : 'is-closed'}`} onClick={onClose} aria-hidden={!isOpen}>
+                    <div className="livigno-menu-scene absolute inset-0" />
+                    <img src={getAssetUrl('identity/livigno-logo-negative.png')} alt="Livigno 555" className="livigno-menu-logo absolute left-1/2 top-[43%] w-[min(46vw,390px)] -translate-x-1/2 -translate-y-1/2 object-contain" />
 
-                {/* Footer */}
-                <div className="p-8 pb-10 landscape:p-4 landscape:pb-4 mt-auto text-center bg-white shrink-0">
-                <div className="flex justify-center gap-4 mb-6 landscape:mb-2">
-                    {config.company?.buildingSocials?.facebook && (
-                        <a href={config.company.buildingSocials.facebook} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-50 rounded-full hover:bg-gray-100 text-gray-500 hover:text-black transition-all cursor-pointer hover:text-brand-orange">
-                        <Facebook size={16} />
-                        </a>
-                    )}
-                    {config.company?.buildingSocials?.instagram && (
-                        <a href={config.company.buildingSocials.instagram} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-50 rounded-full hover:bg-gray-100 text-gray-500 hover:text-black transition-all cursor-pointer hover:text-brand-orange">
-                        <Instagram size={16} />
-                        </a>
-                    )}
-                    {config.company?.buildingSocials?.tiktok && (
-                        <a href={config.company.buildingSocials.tiktok} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-gray-50 rounded-full hover:bg-gray-100 text-gray-500 hover:text-black transition-all cursor-pointer hover:text-brand-orange">
-                        <TikTokIcon size={16} />
-                        </a>
-                    )}
-                </div>
-                
-                <div className="space-y-1">
-                    <p className="text-xs text-brand-orange font-bold uppercase tracking-widest">{config.company?.realStateName || 'KAYEN'}</p>
-                    <p className="text-[10px] text-gray-400 font-secondary">{new Date().getFullYear()}© {config.company?.developer || 'RIVISION.pe'}</p>
-                </div>
+                    <section className="livigno-menu-panel relative z-10 w-full text-white" role="dialog" aria-modal="true" aria-label="Navegación principal" onClick={event => event.stopPropagation()}>
+                        <svg className="livigno-menu-mountains" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+                            <path className="mountain-back" d="M0 80 95 65 160 72 250 28 325 66 410 53 485 75 570 43 645 71 735 30 810 72 900 48 970 68 1055 25 1140 70 1220 45 1310 70 1375 50 1440 67V100H0Z" />
+                            <path className="mountain-front" d="M0 71 100 82 205 58 285 75 375 48 460 81 550 63 640 76 730 47 820 80 920 57 1005 76 1095 50 1180 79 1270 58 1360 76 1440 62V100H0Z" />
+                        </svg>
+                        <button onClick={onClose} aria-label="Cerrar menú" className="livigno-menu-close absolute right-5 top-4 z-20 rounded-full p-2 text-white/75 transition hover:bg-white/10 hover:text-white">
+                            <X size={20} />
+                        </button>
+
+                        <nav className="livigno-menu-nav mx-auto flex w-full max-w-5xl items-center justify-center gap-1 overflow-x-auto px-4 pb-4 pt-10 sm:gap-2 sm:px-8" aria-label="Secciones">
+                            {menuItems.map(item => {
+                                const active = isItemActive(item.path);
+                                return <button
+                                    key={item.id}
+                                    onClick={() => handleNavigation(item.path, (item as any).action)}
+                                    onMouseEnter={() => handleMouseEnter((item as any).preloadKey)}
+                                    aria-current={active ? 'page' : undefined}
+                                    className={`livigno-menu-item group flex min-w-[66px] shrink-0 flex-col items-center justify-center gap-1.5 rounded-2xl px-2.5 py-2.5 text-center transition-all sm:min-w-[76px] sm:px-3 ${active ? 'is-active' : ''}`}
+                                >
+                                    <item.icon size={19} strokeWidth={1.65} />
+                                    <span>{item.label}</span>
+                                </button>;
+                            })}
+                        </nav>
+
+                        <footer className="livigno-menu-footer mx-4 flex items-center justify-between border-t border-white/15 px-0 py-2.5 sm:mx-8 sm:px-1">
+                            <div className="flex items-center gap-2">
+                                {config.company?.buildingSocials?.facebook && <a aria-label="Facebook" href={config.company.buildingSocials.facebook} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><Facebook size={16} /></a>}
+                                {config.company?.buildingSocials?.instagram && <a aria-label="Instagram" href={config.company.buildingSocials.instagram} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><Instagram size={16} /></a>}
+                                {config.company?.buildingSocials?.tiktok && <a aria-label="TikTok" href={config.company.buildingSocials.tiktok} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><TikTokIcon size={16} /></a>}
+                            </div>
+                            <span className="hidden text-[10px] tracking-wide text-white/50 sm:block">{new Date().getFullYear()} © {config.company?.developer || 'RIVISION.pe'}</span>
+                            <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Santa Cruz Grupo Inmobiliario'} className="h-6 w-auto max-w-28 object-contain brightness-0 invert opacity-75" />
+                        </footer>
+                    </section>
                 </div>
             </>
         )}
