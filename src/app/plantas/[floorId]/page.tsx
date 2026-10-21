@@ -305,7 +305,8 @@ const FloorPage = () => {
             // Status Colors (Dot)
             const statusColor = 
               unit.status === 'available' ? 'bg-green-500' :
-              unit.status === 'reserved' ? 'bg-amber-400' : 'bg-red-400';
+              unit.status === 'reserved' ? 'bg-amber-400' :
+              unit.status === 'sold' ? 'bg-red-400' : 'bg-gray-400';
 
             return (
               <div

@@ -1,60 +1,70 @@
-export type UnitStatus = 'available' | 'reserved' | 'sold';
+export type UnitStatus = 'available' | 'reserved' | 'sold' | 'unknown';
 
 export const UnitStatusString: Record<UnitStatus, string> = {
-    available: 'Disponible',
-    reserved: 'Separado',
-    sold: 'Vendido'
-}
+  available: 'Disponible',
+  reserved: 'Separado',
+  sold: 'Vendido',
+  unknown: 'Consultar disponibilidad',
+};
 
 export interface Unit {
-  id: string;        // e.g. "410"
-  floorId: string;   // e.g. "4"
-  price: number;     // e.g. 1000
-  dimensions: number; // m2, e.g. 90
-  bedrooms?: number;  // Optional for storage units
-  bathrooms?: number; // Optional for storage units
+  id: string;
+  floorId: string;
+  price?: number;
+  dimensions: number;
+  bedrooms?: number;
+  bathrooms?: number;
   status: UnitStatus;
-  type?: 'apartment' | 'storage'; // To distinguish unit types
-  subtitle?: string; // e.g. "Flat", "Duplex", "Bodega"
+  type?: 'apartment' | 'storage';
+  subtitle?: string;
   description?: string;
   images?: string[];
-  tourUrl?: string; // Kuula or other 360 tour URL
-  assetId?: string; // Folder name for assets if different from ID (e.g. 'x01')
-  x?: number; // Percentage 0-100
-  y?: number; // Percentage 0-100
-  path?: string; // SVG Path 'd' attribute for irregular shapes (0-100 coordinate space)
+  tourUrl?: string;
+  assetId?: string;
+  x?: number;
+  y?: number;
+  path?: string;
 }
 
 export interface Floor {
-  id: string; 
-  name: string; 
+  id: string;
+  name: string;
   floorPlanImage: string;
   units: Unit[];
 }
 
-// NOTE: In the template, we export empty or sample data.
-// In a real implementation, you might import specific asset helpers or just use string paths.
-
-export const floorsData: Floor[] = [
-  {
-    id: "1",
-    name: "1",
-    floorPlanImage: "/plants/floor_1.png",
-    units: [
-      { 
-        id: "101", 
-        floorId: "1", 
-        price: 1000, 
-        dimensions: 52.9, 
-        bedrooms: 2, 
-        bathrooms: 2, 
-        status: 'sold', 
-        subtitle: 'Flat', 
-        x: 30, 
-        y: 40, 
-        path: "M 62,39.5 L 30.6,39.1 L 31,61 L 62.4,61.2 Z",
-        tourUrl: "https://kuula.co/share/collection/7HQ9d?logo=1&card=1&info=0&logosize=175&fs=1&vr=1&zoom=1&initload=0&thumbs=3&alpha=0.91&inst=es"
-      }
-    ]
-  }
+// Commercial unit schedule supplied for Levigno. All units are marked available as a temporary initial sales status.
+const unitTypes = [
+  { ids: ['201'], dimensions: 71.23, bedrooms: 3, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['202', '302', '402', '502', '602', '702', '802', '902', '1002'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['203'], dimensions: 40.52, bedrooms: 1, bathrooms: 1, subtitle: 'Flat' },
+  { ids: ['301', '401', '501', '601', '701', '801', '901', '1001', '1101', '1201', '1301', '1401', '1501'], dimensions: 72.22, bedrooms: 3, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['303', '403', '503', '603', '703', '803', '903', '1003', '1103'], dimensions: 40.52, bedrooms: 1, bathrooms: 1, subtitle: 'Flat' },
+  { ids: ['1102'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['1202'], dimensions: 56.69, bedrooms: 2, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['1203', '1303'], dimensions: 40, bedrooms: 1, bathrooms: 1, subtitle: 'Flat' },
+  { ids: ['1302'], dimensions: 53.34, bedrooms: 2, bathrooms: 1, subtitle: 'Flat' },
+  { ids: ['1402'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['1502', '1602'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat' },
+  { ids: ['1601'], dimensions: 105.31, bedrooms: 4, bathrooms: 2.5, subtitle: 'Dúplex' },
 ];
+
+const units: Unit[] = unitTypes.flatMap((type) => type.ids.map((id) => ({
+  id,
+  floorId: String(Number(id.slice(0, -2))),
+  dimensions: type.dimensions,
+  bedrooms: type.bedrooms,
+  bathrooms: type.bathrooms,
+  status: 'available' as const,
+  type: 'apartment' as const,
+  subtitle: type.subtitle,
+})));
+
+export const floorsData: Floor[] = Array.from(new Set(units.map((unit) => unit.floorId)))
+  .sort((a, b) => Number(a) - Number(b))
+  .map((id) => ({
+    id,
+    name: id,
+    floorPlanImage: `/plants/floor_${id}.png`,
+    units: units.filter((unit) => unit.floorId === id),
+  }));

@@ -6,15 +6,16 @@ import { MapPin } from 'lucide-react';
 import { locationsData } from '@/data/locations'; 
 import { getAssetUrl } from '@/utils/assets'; 
 import config from '@/config/config'; 
+import LandmarkMarker from './LandmarkMarker';
+import { type Landmark, landmarks as defaultLandmarks } from '@/data/landmarks';
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
-const MAPBOX_STYLE = 'mapbox://styles/mapbox/light-v11';
+const MAPBOX_STYLE = process.env.NEXT_PUBLIC_MAPBOX_STYLE_URL || 'mapbox://styles/rvisioon/cmvfhc7q200j201s8d2xjf03v';
 
-// Initial view state centering on Santa Fe 190, Pueblo Libre, Lima
 const INITIAL_VIEW_STATE = {
-  latitude: -12.07592,
-  longitude: -77.067632,
-  zoom: 16, 
+  latitude: -12.075601,
+  longitude: -77.10136,
+  zoom: 13.5,
   bearing: 0,
   pitch: 0
 };
@@ -32,9 +33,14 @@ interface MapProps {
     transportMode?: 'driving' | 'walking' | 'cycling';
     onRouteCalculated?: (stats: { driving: RouteStats; walking: RouteStats; cycling: RouteStats } | null) => void;
     locations?: any[]; // Feature[]
+    landmarks?: Landmark[];
+    activeLandmarkSlug?: string | null;
+    onLandmarkActiveChange?: (slug: string, active: boolean) => void;
+    onLandmarkSelect?: (landmark: Landmark) => void;
+    onLandmarkOpen?: (slug: string) => void;
 }
 
-export default function MapComponent({ destination, origin, padding, onMarkerClick, transportMode = 'driving', onRouteCalculated, locations }: MapProps) {
+export default function MapComponent({ destination, origin, padding, onMarkerClick, transportMode = 'driving', onRouteCalculated, locations, landmarks = defaultLandmarks, activeLandmarkSlug, onLandmarkActiveChange, onLandmarkSelect, onLandmarkOpen }: MapProps) {
   const mapRef = useRef<any>(null);
   const [routeGeoJSON, setRouteGeoJSON] = useState<any>(null);
   const [routeStats, setRouteStats] = useState<RouteStats | null>(null);
@@ -147,15 +153,18 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
   }, [destination, origin, padding, transportMode]);
 
   const markers = useMemo(() => {
-    const list = displayLocations.map((feature: any) => (
+    const landmarkNames = new Set(landmarks.map((landmark) => landmark.poiName.toLowerCase().trim()));
+    const list = displayLocations
+      .filter((feature: any) => !landmarkNames.has(String(feature.properties?.name || feature.properties?.nombre || '').toLowerCase().trim()))
+      .map((feature: any) => (
       <Marker
-        key={feature.id || feature.properties.nombre}
+        key={feature.id || feature.properties.name || feature.properties.nombre}
         longitude={feature.geometry.coordinates[0]}
         latitude={feature.geometry.coordinates[1]}
         anchor="bottom"
         onClick={(e: any) => {
             e.originalEvent.stopPropagation();
-            if (onMarkerClick) onMarkerClick(feature.geometry.coordinates, feature.properties.nombre);
+            if (onMarkerClick) onMarkerClick(feature.geometry.coordinates, feature.properties.name || feature.properties.nombre);
         }}
       >
         <div className="relative group cursor-pointer hover:z-50">
@@ -163,7 +172,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
                 <div className="w-12 h-12 bg-white rounded-full p-2 shadow-md flex items-center justify-center hover:scale-125 transition-transform border border-brand-orange/20">
                     <img 
                         src={`/${feature.properties.imagen}`}
-                        alt={feature.properties.nombre}
+                        alt={feature.properties.name || feature.properties.nombre}
                         className="w-full h-full object-contain"
                         onError={(e) => {
                             e.currentTarget.style.display = 'none';
@@ -178,6 +187,20 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
         </div>
       </Marker>
     ));
+
+      landmarks.forEach((landmark) => {
+          list.push(
+              <Marker key={`landmark-${landmark.slug}`} longitude={landmark.coordinates[0]} latitude={landmark.coordinates[1]} anchor="bottom">
+                  <LandmarkMarker
+                      landmark={landmark}
+                      active={activeLandmarkSlug === landmark.slug}
+                      onActiveChange={onLandmarkActiveChange || (() => {})}
+                      onSelect={onLandmarkSelect || (() => {})}
+                      onOpen={onLandmarkOpen || (() => {})}
+                  />
+              </Marker>
+          );
+      });
 
       // Add Origin Marker if exists
       if (origin) {
@@ -199,7 +222,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
       }
 
       return list;
-  }, [onMarkerClick, origin, displayLocations]);
+  }, [activeLandmarkSlug, displayLocations, landmarks, onLandmarkActiveChange, onLandmarkOpen, onLandmarkSelect, onMarkerClick, origin]);
 
   // Force Resize on Mount and Window Resize (Fix for gray areas)
   useEffect(() => {
@@ -288,7 +311,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
                  <div className="relative z-50 group-hover:scale-110 transition-transform duration-300">
                      <div className="w-20 h-20 bg-white rounded-full p-2 shadow-xl border-2 border-brand-orange relative z-10 flex items-center justify-center">
                         <img 
-                            src={getAssetUrl('identity/logo_full_black.png')} 
+                            src={getAssetUrl('icons/PROYECTO/logo_proyecto.png')}
                             className="w-full h-full object-contain" // Use contain to fit logo
                             alt={`${config.appName} Logo`}
                         />

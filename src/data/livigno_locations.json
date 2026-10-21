@@ -1,0 +1,85 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arena 1",
+        "icon": "logo_arena1",
+        "type": "lifestyle"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.089501,
+          -12.090826
+        ],
+        "type": "Point"
+      },
+      "id": "03e6e83098a05a0986b7d7cc298919de"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plaza San Miguel",
+        "icon": "logo_plazasm",
+        "type": "comercio"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.082718,
+          -12.077654
+        ],
+        "type": "Point"
+      },
+      "id": "7bdc36cd8fb81df618a8f04434438d6f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CC Open Plaza",
+        "icon": "logo_openplaza",
+        "type": "comercio"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.088707,
+          -12.07962
+        ],
+        "type": "Point"
+      },
+      "id": "7e81f9539b7b0f56f88357d001410948"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pontificia Universidad Católica del Perú",
+        "icon": "logo_pucp",
+        "type": "educación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.080142,
+          -12.069353
+        ],
+        "type": "Point"
+      },
+      "id": "a0a6377f701b128eef0ee40841817b0b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque de las Leyendas",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.087057,
+          -12.071448
+        ],
+        "type": "Point"
+      },
+      "id": "ab35869b570c8ec603c72579eb5b9989"
+    }
+  ],
+  "type": "FeatureCollection"
+}

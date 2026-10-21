@@ -162,7 +162,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {!isForcedLandscape && (
             <div className="pt-8 pb-4 px-6 flex justify-between items-start relative bg-white shrink-0">
             <div className="w-full flex justify-center">
-                <img src={getAssetUrl('identity/logo_full_black.png')} alt="Thompson Logo" className="h-24 object-contain" />
+                <img src={getAssetUrl('identity/livigno-logo.png')} alt="Livigno 555" className="h-24 object-contain" />
             </div>
             <button onClick={onClose} className="absolute top-6 right-6 text-gray-400 hover:text-black transition-colors cursor-pointer">
                 <X size={20} />
@@ -180,7 +180,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
                 {/* Logo - Smaller, Top Left or Center */}
                 <div className="absolute top-6 left-6 z-20">
-                     <img src={getAssetUrl('identity/logo_full_black.png')} alt="Logo" className="h-10 object-contain" />
+                     <img src={getAssetUrl('identity/livigno-logo.png')} alt="Livigno 555" className="h-10 object-contain" />
                 </div>
 
                 {/* Grid Content */}
@@ -224,9 +224,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                         )}
                      </div>
                      <div className="h-4 w-px bg-gray-200" />
-                     <p className="text-[10px] font-secondary uppercase tracking-widest text-brand-orange font-bold">
-                         {config.company?.realStateName || 'KAYEN'}
-                     </p>
+                     <div className="flex items-center">
+                         <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Inmobiliaria Santa Cruz'} className="h-8 max-w-32 object-contain" />
+                     </div>
                  </div>
             </div>
         ) : (

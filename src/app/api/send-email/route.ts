@@ -5,6 +5,10 @@ import config from '@/config/config';
 
 export async function POST(request: Request) {
   try {
+    if (!config.company.email) {
+      return NextResponse.json({ error: 'El correo de ventas del proyecto todavía no está configurado.' }, { status: 503 });
+    }
+
     // Initialize Resend inside the handler to avoid build-time errors
     const resend = new Resend(process.env.RESEND_API_KEY);
     

@@ -54,13 +54,13 @@ export interface ConfigProps {
 }
 
 const config: ConfigProps = {
-  appName: "Levigno",
-  appDescription: "Experiencia virtual de Levigno.",
-  domainName: "levigno.pe",
+  appName: "Livigno 555",
+  appDescription: "Showroom virtual de Livigno 555, desarrollado por Inmobiliaria Santa Cruz y ubicado en San Miguel, Lima.",
+  domainName: "inmobiliariasantacruz.pe",
   resend: {
     fromNoReply: `Levigno <noreply@levigno.pe>`,
     fromAdmin: `Admin at Levigno <admin@levigno.pe>`,
-    supportEmail: "ventas@levigno.pe",
+    supportEmail: "",
   },
   colors: {
     theme: "light",
@@ -71,12 +71,12 @@ const config: ConfigProps = {
     callbackUrl: "/dashboard",
   },
   company: {
-    name: "Levigno",
-    address: "",
-    buildingName: "Levigno",
-    buildingAddress: "",
-    email: "ventas@levigno.pe",
-    website: "https://levigno.pe/",
+    name: "Inmobiliaria Santa Cruz",
+    address: "Av. de los Patriotas 555, San Miguel, Lima, Perú",
+    buildingName: "Livigno 555",
+    buildingAddress: "Av. de los Patriotas 555, San Miguel, Lima, Perú",
+    email: "",
+    website: "https://inmobiliariasantacruz.pe/livigno/",
     city: "Lima",
     country: "Perú",
     phone: "",
@@ -86,11 +86,11 @@ const config: ConfigProps = {
       instagram: "",
       tiktok: ""
     },
-    realStateName: "Levigno",
+    realStateName: "Inmobiliaria Santa Cruz",
     realStateSlogan: "",
     realStateSocials: {
-      facebook: "",
-      instagram: "",
+      facebook: "https://www.facebook.com/p/Santa-Cruz-Grupo-Inmobiliario-61591952656013/",
+      instagram: "https://www.instagram.com/santa_cruz_inmobiliaria/",
       tiktok: ""
     },
     developer: "Rvisioon",

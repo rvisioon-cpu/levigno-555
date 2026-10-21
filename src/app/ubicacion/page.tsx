@@ -4,9 +4,13 @@ import MapComponent from '@/components/map/Map';
 import Sidebar from '@/components/layout/Sidebar';
 import { Search, MapPin, Menu, ChevronDown, ChevronUp, Car, Footprints, Bike, Navigation, X } from 'lucide-react';
 import { locationsData, type LocationFeature } from '@/data/locations'; 
-import config from '@/config/config'; 
+import { getAssetUrl } from '@/utils/assets';
+import { landmarks, type Landmark } from '@/data/landmarks';
 
 const DirectionsPage = () => {
+  const [showPremap, setShowPremap] = useState(true);
+  const [activeLandmarkSlug, setActiveLandmarkSlug] = useState<string | null>(null);
+  const [openLandmark, setOpenLandmark] = useState<Landmark | null>(null);
   const [filter, setFilter] = useState('');
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -31,8 +35,6 @@ const DirectionsPage = () => {
   const categories = Array.from(new Set(locationsData.features.map((f: LocationFeature) => f.properties.categoria))).filter(Boolean) as string[];
 
   const filteredLocations = locationsData.features.filter((feature: LocationFeature) => {
-    if (feature.properties.nombre === 'Santa Fe' || feature.properties.nombre === config.appName || feature.properties.nombre === config.company.buildingName) return false;
-
     const matchesSearch = feature.properties.nombre.toLowerCase().includes(filter.toLowerCase());
     const matchesCategory = selectedCategory ? feature.properties.categoria === selectedCategory : true;
     return matchesSearch && matchesCategory;
@@ -45,7 +47,7 @@ const DirectionsPage = () => {
             try {
                 if (!MAPBOX_TOKEN) return;
                 const response = await fetch(
-                    `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(filter)}.json?access_token=${MAPBOX_TOKEN}&country=pe&limit=5&proximity=-77.067632,-12.07592`
+                    `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(filter)}.json?access_token=${MAPBOX_TOKEN}&country=pe&limit=5&proximity=-77.10136,-12.075601`
                 );
                 const data = await response.json();
                 setSearchResults(data.features || []);
@@ -98,6 +100,11 @@ const DirectionsPage = () => {
                 }}
                 transportMode={transportMode}
                 onRouteCalculated={handleRouteCalculated}
+                landmarks={landmarks}
+                activeLandmarkSlug={activeLandmarkSlug}
+                onLandmarkActiveChange={(slug, active) => setActiveLandmarkSlug(active ? slug : null)}
+                onLandmarkSelect={(landmark) => handleLocationSelect(landmark.coordinates, landmark.name)}
+                onLandmarkOpen={(slug) => setOpenLandmark(landmarks.find((landmark) => landmark.slug === slug) || null)}
                 locations={filteredLocations}
                 padding={useMemo(() => {
                     // Only push map on desktop where panel is sidebar
@@ -164,6 +171,47 @@ const DirectionsPage = () => {
         </div>
         
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
+        {showPremap && (
+          <div className="fixed inset-0 z-[100] bg-black" role="dialog" aria-label="Introducción al mapa">
+            <video
+              className="h-full w-full object-cover"
+              src={getAssetUrl('videos/premapa.mp4')}
+              autoPlay
+              muted
+              playsInline
+              onEnded={() => setShowPremap(false)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPremap(false)}
+              className="absolute bottom-8 right-8 rounded-full bg-white/90 px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg"
+            >
+              Ingresar al mapa
+            </button>
+          </div>
+        )}
+
+        {openLandmark && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true" aria-label={`Video: ${openLandmark.name}`}>
+            <button
+              type="button"
+              onClick={() => setOpenLandmark(null)}
+              className="absolute right-5 top-5 rounded-full bg-white/90 p-3 text-gray-900 shadow-lg"
+              aria-label="Cerrar video"
+            >
+              <X size={22} />
+            </button>
+            <video
+              className="max-h-[88vh] max-w-full rounded-xl bg-black"
+              src={getAssetUrl(openLandmark.video)}
+              poster={getAssetUrl(openLandmark.poster)}
+              controls
+              autoPlay
+              playsInline
+            />
+          </div>
+        )}
 
         {/* Floating Toggle Button - Mobile Only (Visible when panel closed) */}
         {!isPanelOpen && (

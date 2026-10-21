@@ -1,15 +1,14 @@
+import livignoLocations from './livigno_locations.json';
+
 export interface LocationFeature {
-  type: "Feature";
+  type: 'Feature';
   properties: {
     nombre: string;
     categoria?: string;
     imagen?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
-  geometry: {
-    coordinates: [number, number];
-    type: "Point";
-  };
+  geometry: { coordinates: [number, number]; type: 'Point' };
   id: string;
 }
 
@@ -17,24 +16,15 @@ export interface LocationCollection {
   features: LocationFeature[];
 }
 
+// Only the five verified landmarks are listed here; nearby businesses and
+// transit stops from the full source GeoJSON are deliberately omitted.
 export const locationsData: LocationCollection = {
-  features: [
-    {
-      type: "Feature",
-      properties: {
-        nombre: "Interbank",
-        categoria: "Finanzas",
-        imagen: "icons/FINANZAS/interbank.png"
-      },
-      geometry: {
-        coordinates: [
-          -77.064667,
-          -12.077828
-        ],
-        type: "Point"
-      },
-      id: "0d6dd416b022ec425411c6e6440e3dfd"
+  features: livignoLocations.features.map((feature) => ({
+    ...feature,
+    properties: {
+      nombre: feature.properties.name,
+      categoria: feature.properties.type,
+      imagen: `${feature.properties.type === 'educación' ? 'icons/EDUCACION' : feature.properties.type === 'comercio' ? 'icons/COMERCIO' : feature.properties.type === 'lifestyle' ? 'icons/LIFESTYLE' : 'icons/AREAS_VERDES_Y_RECREACION'}/${feature.properties.icon}.png`,
     },
-    // Add more features as needed or load from external JSON in real app
-  ]
+  })) as LocationFeature[],
 };

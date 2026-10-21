@@ -16,7 +16,8 @@ const UnitCard = ({
 }: UnitCardProps) => {
   const statusColor = 
     unit.status === 'available' ? 'bg-green-500' : 
-    unit.status === 'reserved' ? 'bg-amber-500' : 'bg-red-500';
+    unit.status === 'reserved' ? 'bg-amber-500' :
+    unit.status === 'sold' ? 'bg-red-500' : 'bg-gray-400';
 
   const isStorage = unit.type === 'storage' || (!unit.bedrooms && !unit.bathrooms);
 

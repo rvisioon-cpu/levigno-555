@@ -640,7 +640,7 @@ const Contact = () => {
         {/* Footer info */}
         <div className="px-8 pb-4 mt-auto space-y-4 bg-gray-50/50">
              <div>
-                <h3 className="text-gray-800 text-xs font-bold uppercase mb-2">{config.company?.realStateName}</h3>
+                <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Inmobiliaria Santa Cruz'} className="h-8 max-w-40 object-contain object-left mb-2" />
                 <p className="text-gray-500 text-[10px] leading-relaxed mb-2">
                     {config.company?.realStateSlogan}
                 </p>
