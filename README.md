@@ -55,3 +55,16 @@ npm run dev
 - **State Management**: Zustand
 - **Maps**: React Map GL (Mapbox)
 - **Icons**: Lucide React
+
+## Cloudflare Pages
+
+The project is deployed to Cloudflare Pages with the OpenNext adapter. Pages is configured with the existing `levigno-db` D1 database and `levigno-assets` R2 bucket. Public project media uses the R2 binding, with Pages static assets as a fallback.
+
+```bash
+npm install
+npm run dev          # Next.js development server
+npm run pages:build  # Build the Pages worker and assets
+npm run deploy       # Build and deploy the Pages project
+```
+
+`NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` and `NEXT_PUBLIC_MAPBOX_STYLE_URL` must be available during the build. The contact form returns a temporary configuration message until the sales email and Resend are configured.

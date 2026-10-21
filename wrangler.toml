@@ -1,0 +1,13 @@
+name = "levigno"
+compatibility_date = "2026-10-21"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".open-next/assets"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "levigno-db"
+database_id = "4dd0a7e4-6751-428b-ac05-9fefacca6f4e"
+
+[[r2_buckets]]
+binding = "ASSETS_BUCKET"
+bucket_name = "levigno-assets"

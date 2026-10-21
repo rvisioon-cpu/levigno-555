@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:worker": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/assets/_worker.js && cp -r .open-next/cloudflare .open-next/assets/cloudflare && cp -r .open-next/middleware .open-next/assets/middleware && cp -r .open-next/server-functions .open-next/assets/server-functions && cp -r .open-next/.build .open-next/assets/.build && node scripts/prepare-pages-assets.mjs && node patch-worker.mjs",
+    "pages:build": "npm run build:worker",
+    "deploy": "npm run pages:build && wrangler pages deploy .open-next/assets --project-name levigno"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",
@@ -15,13 +18,14 @@
     "lucide-react": "^0.563.0",
     "mapbox-gl": "^3.18.1",
     "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-map-gl": "^8.1.0",
     "resend": "^6.12.3",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "1.18.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -29,6 +33,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "typescript": "^5",
+    "wrangler": "^4.151.3"
+  },
+  "type": "module"
 }

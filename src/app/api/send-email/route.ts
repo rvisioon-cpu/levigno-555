@@ -3,6 +3,19 @@ import ContactEmail from '@/components/emails/ContactEmail';
 import { NextResponse } from 'next/server';
 import config from '@/config/config';
 
+type ContactRequest = {
+  nombres: string;
+  apellido: string;
+  email: string;
+  celular: string;
+  documentType: string;
+  documentNumber: string;
+  contactPreference: string;
+  horario: string;
+  project?: string;
+  mensaje?: string;
+};
+
 export async function POST(request: Request) {
   try {
     if (!config.company.email) {
@@ -12,7 +25,7 @@ export async function POST(request: Request) {
     // Initialize Resend inside the handler to avoid build-time errors
     const resend = new Resend(process.env.RESEND_API_KEY);
     
-    const body = await request.json();
+    const body = await request.json() as ContactRequest;
     const { 
         nombres, 
         apellido, 
