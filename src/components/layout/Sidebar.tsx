@@ -199,15 +199,15 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         ) : (
             /* Brand navigation panel */
             <>
-                <div className={`livigno-menu-backdrop fixed inset-0 z-[70] flex flex-col ${isOpen ? 'is-open' : 'is-closed'}`} onClick={onClose} aria-hidden={!isOpen}>
+                <div className={`livigno-menu-backdrop fixed inset-0 z-[70] flex flex-col justify-end ${isOpen ? 'is-open' : 'is-closed'}`} onClick={onClose} aria-hidden={!isOpen}>
                     <div className="livigno-menu-scene absolute inset-0" />
 
-                    <section className="livigno-menu-panel relative z-10 flex h-full w-full flex-col text-white" role="dialog" aria-modal="true" aria-label="Navegación principal" onClick={event => event.stopPropagation()}>
+                    <section className="livigno-menu-panel relative z-10 w-full text-white" role="dialog" aria-modal="true" aria-label="Navegación principal" onClick={event => event.stopPropagation()}>
                         <button onClick={onClose} aria-label="Cerrar menú" className="livigno-menu-close absolute right-5 top-4 z-20 rounded-full border border-white/25 p-2 text-white/75 transition-colors hover:text-brand-orange">
                             <X size={20} />
                         </button>
 
-                        <nav className="livigno-menu-nav mx-auto flex w-full max-w-[1500px] flex-1 items-center justify-center gap-1 overflow-x-auto px-4 pb-4 pt-10 sm:gap-3 sm:px-8" aria-label="Secciones">
+                        <nav className="livigno-menu-nav mx-auto w-full" aria-label="Secciones">
                             {menuItems.map(item => {
                                 const active = isItemActive(item.path);
                                 return <button
@@ -215,10 +215,10 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                     onClick={() => handleNavigation(item.path, (item as any).action)}
                                     onMouseEnter={() => handleMouseEnter((item as any).preloadKey)}
                                     aria-current={active ? 'page' : undefined}
-                                    className={`livigno-menu-item group flex min-w-[66px] shrink-0 flex-col items-center justify-center gap-1.5 px-2.5 py-2.5 text-center sm:min-w-[76px] sm:px-3 ${active ? 'is-active' : ''}`}
+                                    className={`livigno-menu-item group ${active ? 'is-active' : ''}`}
                                 >
-                                    <span className="livigno-menu-icon"><item.icon size={19} strokeWidth={1.65} /></span>
-                                    <span className="livigno-menu-label">{item.label}</span>
+                                    <item.icon size={19} strokeWidth={1.65} />
+                                    <span>{item.label}</span>
                                 </button>;
                             })}
                         </nav>
