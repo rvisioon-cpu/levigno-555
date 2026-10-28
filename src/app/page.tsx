@@ -179,38 +179,37 @@ const Homepage = () => {
         <div className="flex-1 flex flex-col items-center justify-center relative w-full max-w-6xl mx-auto h-full">
              
              {/* Logo & Button Container */}
-             <div className="relative z-20 flex flex-col items-center gap-8 landscape:gap-3 lg:gap-12 transition-transform will-change-transform">
+             <div className="pointer-events-none relative z-20 flex flex-col items-center transition-transform will-change-transform">
                  <img 
                    ref={logoRef} // Ref moved to image for independent animation
                    src={homepageData.hero.logo} 
                    alt="Logo" 
                    className="w-[180px] lg:w-full max-w-xl object-contain drop-shadow-2xl opacity-90"
                  />
-
-                 {/* Entrar Button - Now inside the container to move with logo */}
-                 <button 
-                    ref={buttonRef}
-                    onClick={handleStartIntro}
-                    disabled={isPlayingIntro || isLoadingAssets}
-                    className={`group relative px-8 lg:px-12 py-3 lg:py-4 bg-brand-primary/80 hover:bg-brand-primary backdrop-blur-xl border border-white/20 text-white text-xs lg:text-sm font-medium tracking-widest uppercase rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg hover:shadow-xl font-secondary shrink-0 
-                        ${(isPlayingIntro) ? 'opacity-0 pointer-events-none' : 'opacity-100'}
-                        ${isLoadingAssets ? 'cursor-wait opacity-80' : ''}
-                    `}
-                  >
-                    <span className="relative z-10 font-bold tracking-[0.2em] flex items-center gap-2">
-                        {isLoadingAssets ? <Loader /> : homepageData.hero.button}
-                    </span>
-                  </button>
              </div>
 
+             <button 
+                ref={buttonRef}
+                onClick={handleStartIntro}
+                disabled={isPlayingIntro || isLoadingAssets}
+                className={`absolute bottom-[7%] z-30 group relative px-8 lg:px-12 py-3 lg:py-4 bg-brand-primary/90 hover:bg-brand-primary backdrop-blur-xl border border-white/20 text-white text-xs lg:text-sm font-medium tracking-widest uppercase rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg hover:shadow-xl font-secondary shrink-0 
+                    ${(isPlayingIntro) ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+                    ${isLoadingAssets ? 'cursor-wait opacity-80' : ''}
+                `}
+              >
+                <span className="relative z-10 font-bold tracking-[0.2em] flex items-center gap-2">
+                    {isLoadingAssets ? <Loader /> : homepageData.hero.button}
+                </span>
+              </button>
+
              {/* Presentation Text Container */}
-             <div className="absolute top-[38%] lg:top-[65%] left-0 right-0 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none z-10 h-[160px] lg:h-[200px] px-4">
+             <div className="absolute top-[55%] left-0 right-0 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none z-10 min-h-[160px] px-4">
                  
                  {homepageData.slides.map((slide, index) => (
                     <p 
                         key={index}
                         ref={el => { textRefs.current[index] = el }} 
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-fit bg-black/40 backdrop-blur-md rounded-2xl p-6 lg:p-10 text-center text-lg lg:text-3xl font-light tracking-wide opacity-0 text-white drop-shadow-lg max-w-4xl mx-auto"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-fit max-w-3xl bg-black/45 backdrop-blur-md rounded-2xl p-5 lg:p-7 text-center text-base sm:text-lg lg:text-2xl font-light tracking-wide opacity-0 text-white drop-shadow-lg mx-auto"
                     >
                         {slide.highlight ? (
                             <><span className="font-bold">{slide.highlight}</span> {slide.text.replace('{{highlight}}', '').trim()}</>
