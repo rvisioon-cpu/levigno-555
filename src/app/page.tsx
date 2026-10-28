@@ -192,7 +192,7 @@ const Homepage = () => {
                 ref={buttonRef}
                 onClick={handleStartIntro}
                 disabled={isPlayingIntro || isLoadingAssets}
-                className={`absolute bottom-[7%] z-30 group relative px-8 lg:px-12 py-3 lg:py-4 bg-brand-primary/90 hover:bg-brand-primary backdrop-blur-xl border border-white/20 text-white text-xs lg:text-sm font-medium tracking-widest uppercase rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg hover:shadow-xl font-secondary shrink-0 
+                className={`fixed bottom-[9vh] left-1/2 z-30 group -translate-x-1/2 px-8 lg:px-12 py-3 lg:py-4 bg-brand-primary/90 hover:bg-brand-primary backdrop-blur-xl border border-white/20 text-white text-xs lg:text-sm font-medium tracking-widest uppercase rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg hover:shadow-xl font-secondary shrink-0 
                     ${(isPlayingIntro) ? 'opacity-0 pointer-events-none' : 'opacity-100'}
                     ${isLoadingAssets ? 'cursor-wait opacity-80' : ''}
                 `}
