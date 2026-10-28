@@ -9,9 +9,9 @@ const FloorSelector = () => {
     const params = useParams();
     const floorId = params.floorId as string;
 
-    // Sort floors descending (e.g. 9 down to 1, then PB)
+    // Show upper levels first, followed by the basements.
     const sortedFloors = [...floorsData].sort((a, b) => {
-        const getVal = (id: string) => id.toLowerCase() === 'pb' ? 0 : Number(id);
+        const getVal = (id: string) => id.startsWith('s') ? -Number(id.slice(1)) : Number(id);
         return getVal(b.id) - getVal(a.id);
     });
     
@@ -29,8 +29,8 @@ const FloorSelector = () => {
                 <Maximize2 size={28} strokeWidth={1.5} />
             </button>
 
-            {/* Scrollable List - Scrollbar hidden */}
-            <div className="flex-1 w-full overflow-x-auto md:overflow-y-auto flex flex-row md:flex-col items-center gap-4 md:gap-2 px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+            {/* Keep the full list compact, with scrolling available on shorter screens. */}
+            <div className="flex-1 w-full overflow-x-auto md:overflow-y-auto flex flex-row md:flex-col items-center gap-4 md:gap-1 px-2">
                 {sortedFloors.map(floor => {
                     const isActive = floorId === floor.id;
                     return (
@@ -43,15 +43,15 @@ const FloorSelector = () => {
                                 }
                             }}
                             className={`
-                                px-4 py-2 md:w-full md:py-2 flex items-center justify-center text-sm transition-all shrink-0 whitespace-nowrap
+                                px-4 py-2 md:w-full md:py-1 flex items-center justify-center text-sm transition-all shrink-0 whitespace-nowrap
                                 ${isActive 
                                     ? 'bg-gray-100 text-slate-900 font-bold rounded-full shadow-md scale-100 mx-1' 
                                     : 'text-gray-300 hover:text-white font-medium hover:bg-white/5 rounded-full'
                                 }
                             `}
                         >
-                            <span className="md:hidden">Piso {floor.name}</span>
-                            <span className="hidden md:inline">{floor.name}</span>
+                            <span className="md:hidden">{floor.id.startsWith('s') ? floor.id.toUpperCase() : `Piso ${floor.name}`}</span>
+                            <span className="hidden md:inline">{floor.id.startsWith('s') ? floor.id.toUpperCase() : floor.name}</span>
                         </button>
                     );
                 })}

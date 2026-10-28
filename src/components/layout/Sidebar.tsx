@@ -159,16 +159,16 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                 <button
                                     key={item.label}
                                     onClick={() => handleNavigation(item.path, (item as any).action)}
-                                    className={`flex flex-col items-center justify-center gap-3 p-4 rounded-xl transition-all hover:bg-gray-50 group
+                                    className={`flex flex-col items-center justify-center gap-3 p-4 rounded-xl transition-colors hover:bg-gray-50 group
                                         ${active ? 'bg-[#efdec6]/50' : ''}
                                     `}
                                 >
-                                    <div className={`p-4 rounded-full transition-all group-hover:scale-110 shadow-sm border border-gray-100
-                                         ${active ? 'bg-brand-orange text-white' : 'bg-white text-gray-500 group-hover:text-black'}
+                                    <div className={`p-4 rounded-full transition-colors shadow-sm border border-gray-100
+                                         ${active ? 'bg-brand-orange text-white' : 'bg-white text-gray-500 group-hover:text-brand-orange'}
                                     `}>
                                         <item.icon size={28} strokeWidth={1.5} />
                                     </div>
-                                    <span className={`text-xs font-bold uppercase tracking-wider ${active ? 'text-brand-orange' : 'text-gray-500 group-hover:text-black'}`}>
+                                    <span className={`text-xs font-bold uppercase tracking-wider ${active ? 'text-brand-orange' : 'text-gray-500 group-hover:text-brand-orange transition-colors'}`}>
                                         {item.label}
                                     </span>
                                 </button>
@@ -192,27 +192,22 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                      </div>
                      <div className="h-4 w-px bg-gray-200" />
                      <div className="flex items-center">
-                         <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Inmobiliaria Santa Cruz'} className="h-8 max-w-32 object-contain" />
+                         <img src={getAssetUrl('identity/santa-cruz-kayen-color.png')} alt={config.company?.realStateName || 'Inmobiliaria Santa Cruz'} className="h-8 max-w-32 object-contain" />
                      </div>
                  </div>
             </div>
         ) : (
             /* Brand navigation panel */
             <>
-                <div className={`livigno-menu-backdrop fixed inset-0 z-[70] flex flex-col justify-end transition-all duration-500 ${isOpen ? 'is-open' : 'is-closed'}`} onClick={onClose} aria-hidden={!isOpen}>
+                <div className={`livigno-menu-backdrop fixed inset-0 z-[70] flex flex-col ${isOpen ? 'is-open' : 'is-closed'}`} onClick={onClose} aria-hidden={!isOpen}>
                     <div className="livigno-menu-scene absolute inset-0" />
-                    <img src={getAssetUrl('identity/livigno-logo-negative.png')} alt="Livigno 555" className="livigno-menu-logo absolute left-1/2 top-[43%] w-[min(46vw,390px)] -translate-x-1/2 -translate-y-1/2 object-contain" />
 
-                    <section className="livigno-menu-panel relative z-10 w-full text-white" role="dialog" aria-modal="true" aria-label="Navegación principal" onClick={event => event.stopPropagation()}>
-                        <svg className="livigno-menu-mountains" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
-                            <path className="mountain-back" d="M0 80 95 65 160 72 250 28 325 66 410 53 485 75 570 43 645 71 735 30 810 72 900 48 970 68 1055 25 1140 70 1220 45 1310 70 1375 50 1440 67V100H0Z" />
-                            <path className="mountain-front" d="M0 71 100 82 205 58 285 75 375 48 460 81 550 63 640 76 730 47 820 80 920 57 1005 76 1095 50 1180 79 1270 58 1360 76 1440 62V100H0Z" />
-                        </svg>
-                        <button onClick={onClose} aria-label="Cerrar menú" className="livigno-menu-close absolute right-5 top-4 z-20 rounded-full p-2 text-white/75 transition hover:bg-white/10 hover:text-white">
+                    <section className="livigno-menu-panel relative z-10 flex h-full w-full flex-col text-white" role="dialog" aria-modal="true" aria-label="Navegación principal" onClick={event => event.stopPropagation()}>
+                        <button onClick={onClose} aria-label="Cerrar menú" className="livigno-menu-close absolute right-5 top-4 z-20 rounded-full border border-white/25 p-2 text-white/75 transition-colors hover:text-brand-orange">
                             <X size={20} />
                         </button>
 
-                        <nav className="livigno-menu-nav mx-auto flex w-full max-w-5xl items-center justify-center gap-1 overflow-x-auto px-4 pb-4 pt-10 sm:gap-2 sm:px-8" aria-label="Secciones">
+                        <nav className="livigno-menu-nav mx-auto flex w-full max-w-[1500px] flex-1 items-center justify-center gap-1 overflow-x-auto px-4 pb-4 pt-10 sm:gap-3 sm:px-8" aria-label="Secciones">
                             {menuItems.map(item => {
                                 const active = isItemActive(item.path);
                                 return <button
@@ -220,10 +215,10 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                     onClick={() => handleNavigation(item.path, (item as any).action)}
                                     onMouseEnter={() => handleMouseEnter((item as any).preloadKey)}
                                     aria-current={active ? 'page' : undefined}
-                                    className={`livigno-menu-item group flex min-w-[66px] shrink-0 flex-col items-center justify-center gap-1.5 rounded-2xl px-2.5 py-2.5 text-center transition-all sm:min-w-[76px] sm:px-3 ${active ? 'is-active' : ''}`}
+                                    className={`livigno-menu-item group flex min-w-[66px] shrink-0 flex-col items-center justify-center gap-1.5 px-2.5 py-2.5 text-center sm:min-w-[76px] sm:px-3 ${active ? 'is-active' : ''}`}
                                 >
-                                    <item.icon size={19} strokeWidth={1.65} />
-                                    <span>{item.label}</span>
+                                    <span className="livigno-menu-icon"><item.icon size={19} strokeWidth={1.65} /></span>
+                                    <span className="livigno-menu-label">{item.label}</span>
                                 </button>;
                             })}
                         </nav>
@@ -236,13 +231,13 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                     {config.company?.realStateSocials?.tiktok && <a aria-label="TikTok de Santa Cruz" href={config.company.realStateSocials.tiktok} target="_blank" rel="noopener noreferrer" className="livigno-social-link"><TikTokIcon size={16} /></a>}
                                 </div>
                                 <div className="flex shrink-0 items-center gap-3">
-                                    <img src={getAssetUrl('identity/santa-cruz-logo.png')} alt={config.company?.realStateName || 'Santa Cruz Grupo Inmobiliario'} className="h-6 w-auto max-w-28 object-contain mix-blend-lighten" />
+                                    <img src={getAssetUrl('identity/santa-cruz-kayen-white.png')} alt={config.company?.realStateName || 'Santa Cruz Grupo Inmobiliario'} className="h-6 w-auto max-w-28 object-contain" />
                                     <span className="h-5 w-px bg-white/20" aria-hidden="true" />
                                     <span className="text-[10px] tracking-wide text-white/60">{new Date().getFullYear()} © {config.company?.developer || 'Rvisioon'}</span>
                                 </div>
                             </div>
                             <p className="mt-2 text-left text-[9px] leading-relaxed text-white/55">
-                                Las imágenes están sujetas a <a href="/terminos-y-condiciones" className="underline underline-offset-2 hover:text-white">términos y condiciones de la inmobiliaria</a>.
+                                Las imágenes están sujetas a <a href="/terminos-y-condiciones" className="underline underline-offset-2 hover:text-brand-orange">términos y condiciones de la inmobiliaria</a>.
                             </p>
                         </footer>
                     </section>

@@ -226,7 +226,7 @@ const FloorPage = () => {
       </div>
 
       <div className="fixed top-20 left-1/2 -translate-x-1/2 md:translate-x-0 md:top-6 md:left-20 z-40 bg-gray-800 text-white px-4 py-2 rounded-md shadow-md text-sm font-medium uppercase tracking-wider whitespace-nowrap">
-        Planta {floor.name}
+        {floor.id.startsWith('s') ? floor.name : `Planta ${floor.name}`}
       </div>
       
       <div className="fixed top-6 right-6 z-50">

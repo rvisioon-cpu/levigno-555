@@ -11,7 +11,7 @@ const MobileFloorNav = ({ currentFloorId }: MobileFloorNavProps) => {
     const router = useRouter();
     const setFloor = useStore(state => state.setFloor);
 
-    // Sort floors: 9, 8, ... 1, PB (Top to Bottom visually)
+    // Sort floors from the lowest basement to the highest level.
     // We want "Up" to go to a higher index in this sorted array? 
     // Wait. "Up" arrow means "Go to Next Floor UP". 
     // If we have [9, 8, ... 1, PB], and we are at 8. 
@@ -19,9 +19,9 @@ const MobileFloorNav = ({ currentFloorId }: MobileFloorNavProps) => {
     // "Down" should go to 7.
 
     // Let's sort simply by numerical value to find neighbors easily
-    // Standard sort: PB (0), 1, 2, ... 9.
+    // Standard sort: Sótano 3, Sótano 2, Sótano 1, 1, 2, ... 17.
     const sortedFloorsAsc = [...floorsData].sort((a, b) => {
-        const getVal = (id: string) => id.toLowerCase() === 'pb' ? 0 : Number(id);
+        const getVal = (id: string) => id.startsWith('s') ? -Number(id.slice(1)) : Number(id);
         return getVal(a.id) - getVal(b.id);
     });
 
@@ -58,7 +58,7 @@ const MobileFloorNav = ({ currentFloorId }: MobileFloorNavProps) => {
 
             {/* Current Floor Label */}
             <div className="bg-gray-800/90 text-white font-bold text-lg rounded-xl h-12 w-12 flex items-center justify-center shadow-xl border border-white/10 pointer-events-auto">
-                {currentFloor.name}
+                {currentFloor.id.startsWith('s') ? currentFloor.id.toUpperCase() : currentFloor.name}
             </div>
 
             {/* Down Arrow */}

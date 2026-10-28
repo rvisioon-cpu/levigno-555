@@ -78,7 +78,8 @@ export const useStore = create<ShowroomState>((set, get) => ({
         set({ isLoadingAssets: false });
     }
 
-    set({ currentFloor: Number(floorId) });
+    const numericFloor = Number(floorId);
+    set({ currentFloor: Number.isFinite(numericFloor) ? numericFloor : null });
   },
 
   preloadAllFloors: async () => {

@@ -7,7 +7,9 @@ export const assetManifest: string[] = [
     // Identity
     'identity/livigno-logo.png',
     'identity/livigno-logo-negative.png',
-    'identity/santa-cruz-logo.png',
+    'identity/santa-cruz-kayen-white.png',
+    'identity/santa-cruz-kayen-color.png',
+    'identity/santa-cruz-kayen-black.png',
     
     // Building Exterior
     'building/photos/face_0_daylight.png',
@@ -18,10 +20,19 @@ export const assetManifest: string[] = [
     'videos/walks/trans_intro_to_0.mp4',
     
     // Floors & Units
-    'plants/floor_1.png',
-    'plants/details/101/furnished.jpg',
-    'plants/details/101/unfurnished.jpg',
-    'plants/details/101/plans.jpg',
+    ...Array.from({ length: 17 }, (_, index) => `plants/floor_${index + 1}.png`),
+    ...[1, 2, 3].map((level) => `plants/floor_s${level}.png`),
+    ...Array.from({ length: 12 }, (_, index) => {
+        const type = `T${index + 1}`;
+        return [
+            `plants/details/${type}/plans.jpg`,
+            ...(index < 3 ? [
+                `plants/details/${type}/furnished.jpg`,
+                `plants/details/${type}/gallery/0.jpg`,
+                ...Array.from({ length: [10, 7, 7][index] }, (_, imageIndex) => `plants/details/${type}/gallery/${imageIndex + 1}.jpg`),
+            ] : []),
+        ];
+    }).flat(),
     
     // Gallery
     'gallery/exterior_1.jpg',

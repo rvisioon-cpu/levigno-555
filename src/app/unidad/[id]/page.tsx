@@ -27,7 +27,7 @@ const UnitPage = () => {
   // Default to hidden on mobile/tablet (LG/XL breakpoint)
   const [showDetails, setShowDetails] = useState(() => (typeof window !== 'undefined' ? window.innerWidth >= 1280 : true));
   
-  const [viewMode, setViewMode] = useState<'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour'>('furnished');
+  const [viewMode, setViewMode] = useState<'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour'>(() => unit?.hasFurnishedView ? 'furnished' : 'plans');
   
   // Transitions
   const [transitionVideo, setTransitionVideo] = useState<string | null>(null);
@@ -96,7 +96,8 @@ const UnitPage = () => {
 
   // --- TRANSITION HANDLERS ---
   const handleViewChange = (newMode: 'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour') => {
-      if (!unitId || newMode === viewMode) return;
+      if (!unitId || !unit || newMode === viewMode) return;
+      if (newMode === 'furnished' && !unit.hasFurnishedView) newMode = 'plans';
 
       // Overlay toggling (Gallery / Tour)
       if (['gallery', 'tour'].includes(newMode)) {
@@ -274,16 +275,9 @@ const UnitPage = () => {
   
   // Navigation State Logic
   const getNavState = () => {
-      // Special case for 'Terraza' unit - No 'unfurnished' view
-      if (unit.subtitle === 'Terraza') {
-          if (viewMode === 'plans') return { showLeft: true, showRight: false, leftTarget: 'furnished' as const };
-          if (viewMode === 'furnished') return { showLeft: false, showRight: true, rightTarget: 'plans' as const }; // showLeft false to hide Unfurnished
-          return { showLeft: false, showRight: false };
-      }
-
-      if (viewMode === 'unfurnished') return { showLeft: false, showRight: true, rightTarget: 'furnished' as const };
+      if (!unit.hasFurnishedView) return { showLeft: false, showRight: false };
       if (viewMode === 'plans') return { showLeft: true, showRight: false, leftTarget: 'furnished' as const };
-      if (viewMode === 'furnished') return { showLeft: true, showRight: true, leftTarget: 'unfurnished' as const, rightTarget: 'plans' as const };
+      if (viewMode === 'furnished') return { showLeft: false, showRight: true, rightTarget: 'plans' as const };
       return { showLeft: false, showRight: false }; // Gallery or other
   };
 
@@ -539,7 +533,7 @@ const UnitPage = () => {
                  <div className="hidden lg:flex flex-row items-center gap-3">
                      
                      {/* Gallery */}
-                     <button 
+                     {unit.hasGallery && <button 
                         onClick={() => handleViewChange(viewMode === 'gallery' ? 'furnished' : 'gallery')}
                         className={`px-5 py-3 rounded-full transition-all shadow-lg backdrop-blur-md border border-white/20 flex items-center gap-2
                             ${viewMode === 'gallery' ? 'bg-brand-primary text-white' : 'bg-brand-primary/80 text-white hover:bg-brand-primary'}`}
@@ -547,7 +541,7 @@ const UnitPage = () => {
                      >
                          <ImageIcon size={20} />
                          <span className="hidden xl:inline font-medium text-sm tracking-wide">Galería</span>
-                     </button>
+                     </button>}
 
                      {/* Recorrido */}
                       {unit.tourUrl && (
@@ -617,7 +611,7 @@ const UnitPage = () => {
                       )}
                  
                      {/* Gallery Button */}
-                     <button 
+                     {unit.hasGallery && <button 
                         onClick={() => {
                             setIsMobileMenuOpen(false);
                             handleViewChange(viewMode === 'gallery' ? 'furnished' : 'gallery');
@@ -630,7 +624,7 @@ const UnitPage = () => {
                             `}>
                              <ImageIcon size={24} />
                          </div>
-                     </button>
+                     </button>}
                     
                      {/* Close Menu Button (Optional, clicking bg works too) */}
                      <div className="absolute top-6 right-6">
@@ -685,7 +679,6 @@ const UnitPage = () => {
                                <ChevronLeft size={28} className="group-hover:-translate-x-1 transition-transform" />
                                 <span className="text-sm font-medium tracking-wide uppercase hidden sm:block">
                                    {navState.leftTarget === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amueblado')}
-                                   {navState.leftTarget === 'unfurnished' && 'Sin Amueblar'}
                                </span>
                            </button>
                         )}
@@ -696,8 +689,7 @@ const UnitPage = () => {
                                 className="absolute right-6 top-1/2 -translate-y-1/2 z-30 flex items-center gap-3 p-3 bg-black/40 hover:bg-black/60 backdrop-blur text-white rounded-full transition-all group pl-5"
                            >
                                <span className="text-sm font-medium tracking-wide uppercase hidden sm:block">
-                                   {navState.rightTarget === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amueblado')}
-                                   {navState.rightTarget === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : 'Medidas')}
+                                    {navState.rightTarget === 'plans' && 'Medidas'}
                                </span>
                                <ChevronRight size={28} className="group-hover:translate-x-1 transition-transform" />
                            </button>
