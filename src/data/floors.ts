@@ -1,4 +1,5 @@
 import { getAssetUrl } from '@/utils/assets';
+import { floorUnitGeometry } from './floor-unit-geometry';
 
 export type UnitStatus = 'available' | 'reserved' | 'sold' | 'unknown';
 
@@ -83,9 +84,13 @@ const floorDefinitions = [
   })),
 ];
 
-export const floorsData: Floor[] = floorDefinitions.map(({ id, name, asset }) => ({
-  id,
-  name,
-  floorPlanImage: getAssetUrl(`plants/${asset}`),
-  units: units.filter((unit) => unit.floorId === id),
-}));
+export const floorsData: Floor[] = floorDefinitions.map(({ id, name, asset }) => {
+  // The duplex is one apartment with selectable areas on both of its floors.
+  const floorUnits = units.filter((unit) => unit.floorId === id || (id === '17' && unit.id === '1601'));
+  return {
+    id,
+    name,
+    floorPlanImage: getAssetUrl(`plants/${asset}`),
+    units: floorUnits.map((unit) => ({ ...unit, ...floorUnitGeometry(id, unit.id) })),
+  };
+});

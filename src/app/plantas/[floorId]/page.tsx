@@ -205,6 +205,7 @@ const FloorPage = () => {
   };
 
   const getUnitCenter = (unit: Unit) => {
+      if (unit.x !== undefined && unit.y !== undefined) return { x: unit.x, y: unit.y };
       return getPolyCenter(unit.path, unit.x, unit.y);
   };
 
