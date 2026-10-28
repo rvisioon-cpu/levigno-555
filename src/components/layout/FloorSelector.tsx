@@ -29,8 +29,8 @@ const FloorSelector = () => {
                 <Maximize2 size={28} strokeWidth={1.5} />
             </button>
 
-            {/* Keep the full list compact, with scrolling available on shorter screens. */}
-            <div className="flex-1 w-full overflow-x-auto md:overflow-y-auto flex flex-row md:flex-col items-center gap-4 md:gap-1 px-2">
+            {/* Spread levels over the available height; scroll vertically on short screens. */}
+            <div className="flex-1 min-h-0 w-full overflow-x-hidden overflow-y-auto flex flex-row md:flex-col items-center gap-4 md:gap-0 md:justify-evenly px-2">
                 {sortedFloors.map(floor => {
                     const isActive = floorId === floor.id;
                     return (
@@ -45,7 +45,7 @@ const FloorSelector = () => {
                             className={`
                                 px-4 py-2 md:w-full md:py-1 flex items-center justify-center text-sm transition-all shrink-0 whitespace-nowrap
                                 ${isActive 
-                                    ? 'bg-gray-100 text-slate-900 font-bold rounded-full shadow-md scale-100 mx-1' 
+                                    ? 'bg-gray-100 text-slate-900 font-bold rounded-full shadow-md scale-100' 
                                     : 'text-gray-300 hover:text-white font-medium hover:bg-white/5 rounded-full'
                                 }
                             `}
