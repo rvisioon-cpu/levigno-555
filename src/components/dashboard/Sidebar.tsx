@@ -56,22 +56,22 @@ export default function Sidebar({ role }: SidebarProps) {
   ];
 
   return (
-    <div className={`${isCollapsed ? "w-[72px]" : "w-64"} bg-base-100 shadow-md flex flex-col h-full transition-[width] duration-200`}>
-      <div className={`${isCollapsed ? "justify-center px-2" : "px-6"} h-[72px] border-b flex items-center gap-3`}>
+    <div className={`${isCollapsed ? "w-[72px]" : "w-64"} bg-livigno-teal text-livigno-sand shadow-md flex flex-col h-full transition-[width] duration-200`}>
+      <div className={`${isCollapsed ? "justify-center px-2" : "px-6"} h-[72px] border-b border-white/15 flex items-center gap-3`}>
         {!isCollapsed && <>
           <img
             src="/identity/livigno-logo.png"
             alt="Livigno Logo"
             className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(245,156,29,0.25)]"
           />
-          <h2 className="text-lg font-bold font-primary tracking-wide text-base-content flex items-center">
-            <span className="font-extrabold text-brand-orange">Livigno</span>
+          <h2 className="text-lg font-bold font-primary tracking-wide flex items-center">
+            <span className="font-extrabold text-livigno-gold">Livigno</span>
           </h2>
         </>}
         <button
           type="button"
           onClick={() => setIsCollapsed((previous) => !previous)}
-          className={`${isCollapsed ? "" : "ml-auto"} btn btn-ghost btn-sm btn-square text-gray-500 hover:text-brand-orange`}
+          className={`${isCollapsed ? "" : "ml-auto"} btn btn-ghost btn-sm btn-square text-livigno-sand hover:bg-white/10 hover:text-livigno-gold`}
           title={isCollapsed ? "Expandir menú" : "Colapsar menú"}
           aria-label={isCollapsed ? "Expandir menú" : "Colapsar menú"}
         >
@@ -79,15 +79,15 @@ export default function Sidebar({ role }: SidebarProps) {
         </button>
       </div>
       <div className="flex-1 overflow-y-auto py-4">
-        <ul className="menu bg-base-100 w-full">
+        <ul className="menu w-full bg-transparent text-livigno-sand">
           {navigation.map(
             (item) =>
               item.visible && (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className={`flex items-center ${isCollapsed ? "justify-center px-2" : "gap-3 px-4"} py-2 hover:bg-base-200 ${
-                      pathname === item.href ? "active font-bold text-primary bg-primary/10" : ""
+                    className={`flex items-center ${isCollapsed ? "justify-center px-2" : "gap-3 px-4"} py-2 text-livigno-sand hover:bg-white/10 hover:text-white ${
+                      pathname === item.href ? "active font-bold !text-livigno-teal !bg-livigno-gold hover:!bg-livigno-gold" : ""
                     }`}
                     title={isCollapsed ? item.name : undefined}
                   >
