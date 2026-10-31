@@ -1,4 +1,4 @@
-const ASSET_BASE_URL = process.env.NEXT_PUBLIC_ASSET_BASE_URL || '';
+export const ASSET_BASE_URL = process.env.NEXT_PUBLIC_ASSET_BASE_URL || '';
 
 export const getAssetUrl = (path: string): string => {
   if (path.startsWith('http')) return path;

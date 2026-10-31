@@ -242,8 +242,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                     <span className="text-[10px] tracking-wide text-white/60">{new Date().getFullYear()} © {config.company?.developer || 'Rvisioon'}</span>
                                 </div>
                             </div>
-                            <p className="mt-2 text-left text-[9px] leading-relaxed text-white/55">
-                                Las imágenes están sujetas a <a href="/terminos-y-condiciones" className="underline underline-offset-2 hover:text-brand-orange">términos y condiciones de la inmobiliaria</a>.
+                            <p className="mt-2 flex items-center justify-between text-[9px] leading-relaxed text-white/55">
+                                <span>Las imágenes están sujetas a <a href="/terminos-y-condiciones" className="underline underline-offset-2 hover:text-brand-orange">términos y condiciones</a>.</span>
+                                <a href="/preparar" className="text-white/40 hover:text-brand-orange transition-colors">Modo offline</a>
                             </p>
                         </footer>
                     </section>

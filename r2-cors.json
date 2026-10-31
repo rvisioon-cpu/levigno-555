@@ -1,0 +1,29 @@
+{
+  "rules": [
+    {
+      "id": "levigno-showroom-offline",
+      "allowed": {
+        "origins": [
+          "https://levigno.pages.dev",
+          "https://livigno555.pe",
+          "https://www.livigno555.pe",
+          "http://localhost:3000",
+          "http://localhost:3200",
+          "http://localhost:3300",
+          "http://localhost:8788",
+          "*"
+        ],
+        "methods": ["GET", "HEAD"],
+        "headers": ["*"]
+      },
+      "exposeHeaders": [
+        "content-length",
+        "content-range",
+        "content-type",
+        "accept-ranges",
+        "etag"
+      ],
+      "maxAgeSeconds": 86400
+    }
+  ]
+}

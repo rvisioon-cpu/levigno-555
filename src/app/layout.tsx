@@ -4,6 +4,7 @@ import "./globals.css";
 import config from "@/config/config";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import IdentityTheme from "@/components/IdentityTheme";
+import ServiceWorkerRegistrar from "@/components/layout/ServiceWorkerRegistrar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -27,12 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
-      </head>
       <body
         className={`${montserrat.variable} ${inter.variable} antialiased h-screen w-screen overflow-hidden bg-black text-white`}
       >
+        <ServiceWorkerRegistrar />
         <IdentityTheme />
         <AnalyticsTracker />
         {children}

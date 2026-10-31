@@ -36,6 +36,8 @@ const isStaticFile =
   __cfPathname === '/favicon.png' ||
   __cfPathname === '/intro.jpg' ||
   __cfPathname === '/portada_venecia.png' ||
+  __cfPathname === '/sw.js' ||
+  __cfPathname === '/precache-manifest.json' ||
   __cfPathname === '/BUILD_ID';
 
 const isStaticAsset = !__cfPathname.startsWith('/api/') && !__cfPathname.toLowerCase().startsWith('/media/social_reference/') && !__cfPathname.toLowerCase().startsWith('/media/social_content/') && (hasExtension || isStaticPrefix || isStaticFile);

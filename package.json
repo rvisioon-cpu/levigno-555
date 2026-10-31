@@ -14,6 +14,8 @@
     "pages:build": "npm run build:worker",
     "assets:upload-floor-plans": "node scripts/upload-floor-plans.mjs",
     "assets:upload-typologies": "node scripts/upload-typologies.mjs",
+    "offline:manifest": "tsx scripts/build-precache-manifest.ts",
+    "offline:manifest:measure": "tsx scripts/build-precache-manifest.ts --measure",
     "deploy": "npm run pages:build && wrangler pages deploy .open-next/assets --project-name levigno"
   },
   "dependencies": {
