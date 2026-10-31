@@ -40,7 +40,7 @@ export async function getToursAdmin() {
 export async function getToursPublic() {
   const db = await getDb();
 
-  return await db
+  const rows = await db
     .select({
       id: tours.id,
       title: tours.title,
@@ -53,6 +53,7 @@ export async function getToursPublic() {
       order: tours.order,
       createdAt: tours.createdAt,
       unitIdentifier: units.identifier,
+      unitGallery: units.gallery,
       floorName: floors.name,
     })
     .from(tours)
@@ -65,6 +66,16 @@ export async function getToursPublic() {
       asc(sql`CAST(${units.identifier} AS INTEGER)`),
       desc(tours.createdAt)
     );
+
+  const { getTours } = await import("@/data/tours");
+  const defaultThumbnails = new Map(getTours().filter(tour => tour.type === "unit").map(tour => [tour.id, tour.thumbnail]));
+
+  return rows.map(({ unitGallery, ...tour }) => ({
+    ...tour,
+    thumbnailUrl: tour.type === "unit"
+      ? (Array.isArray(unitGallery) && typeof unitGallery[0] === "string" && unitGallery[0]) || defaultThumbnails.get(`unit-${tour.unitIdentifier}`) || ""
+      : tour.thumbnailUrl,
+  }));
 }
 
 export async function uploadTour(formData: FormData) {

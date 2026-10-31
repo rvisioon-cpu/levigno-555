@@ -35,7 +35,7 @@ const RecorridosContent = () => {
         id: row.id,
         title: row.title,
         subtitle: row.subtitle || '',
-        thumbnail: getAssetUrl(row.thumbnailUrl),
+        thumbnail: row.thumbnailUrl ? getAssetUrl(row.thumbnailUrl) : '',
         type: row.type === 'unit' ? 'unit' : 'building',
         target: row.targetUrl,
         floorName: row.floorName || undefined
@@ -133,14 +133,15 @@ const RecorridosContent = () => {
                     className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
                 >
                     {/* Image Container */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                        <img 
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-300">
+                        {tour.thumbnail && <img
+                            key={tour.thumbnail}
                             src={tour.thumbnail} 
                             alt={tour.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             // Simple placeholder if empty
-                            onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement!.style.backgroundColor = '#ccc'; }}
-                        />
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                        />}
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                             <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
                                 <Play className="text-white ml-1" fill="white" size={24} />

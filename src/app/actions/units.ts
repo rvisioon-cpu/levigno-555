@@ -355,7 +355,9 @@ export async function updateUnit(
       if (existingTour.length > 0) {
         await db.update(tours).set({ targetUrl: data.tourUrl, isActive: true, updatedAt: new Date() }).where(eq(tours.unitId, id));
       } else {
-        const thumb = (Array.isArray(data.photosFurnished) && data.photosFurnished[0]) || `/plants/details/face_0_daylight.png`;
+        const gallery = original.gallery as string[] | null;
+        const { getTours } = await import("@/data/tours");
+        const thumb = gallery?.[0] || getTours().find(tour => tour.id === `unit-${data.identifier || original.identifier}`)?.thumbnail || "";
         await db.insert(tours).values({
           id: `unit-${id}`,
           title: `Unidad ${data.identifier}`,
