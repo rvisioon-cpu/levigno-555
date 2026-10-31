@@ -10,7 +10,7 @@ export default function VideoPage() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <main className="relative flex h-full min-h-screen flex-col overflow-y-auto bg-[#171717] text-white">
+    <main className="relative flex h-screen min-h-0 flex-col overflow-hidden bg-[#171717] text-white">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
       <header className="absolute inset-x-0 top-0 z-40 flex items-center justify-between p-6 lg:p-12">
         <button
@@ -23,10 +23,9 @@ export default function VideoPage() {
         </button>
         <FullScreenToggle />
       </header>
-      <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-6 pb-12 pt-28 lg:px-12 lg:pt-32">
-        <h1 className="mb-6 text-center font-serif text-3xl sm:text-4xl">{projectVideo.title}</h1>
+      <section className="flex min-h-0 w-full flex-1">
         <video
-          className="aspect-video w-full rounded-xl bg-black shadow-2xl"
+          className="h-full min-h-0 w-full bg-black object-contain"
           controls
           playsInline
           preload="metadata"
