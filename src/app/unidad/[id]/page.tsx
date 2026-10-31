@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { ArrowLeft, Share2, X, MoreVertical, Menu, Ruler, Bed, Bath, PanelRightOpen, Rotate3d, ImageIcon, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { floorsData, UnitStatusString } from '@/data/floors';
 import Sidebar from '@/components/layout/Sidebar';
@@ -17,6 +17,8 @@ const UnitPage = () => {
   const params = useParams();
   const unitId = (params?.id as string) || '';
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const requestedDuplexFloor = searchParams.get('nivel');
   const [brochure, setBrochure] = useState<{ unitId: string; url: string } | null>(null);
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
   useEffect(() => {
@@ -46,13 +48,13 @@ const UnitPage = () => {
   
   // Duplex floor level support (Piso 1 / Piso 2)
   const isDuplex = unit?.assetId === 'T12' || unit?.subtitle === 'Dúplex' || unitId === '1601';
-  const [duplexFloor, setDuplexFloor] = useState<1 | 2>(() => {
-    if (typeof window !== 'undefined') {
-      const requestedFloor = new URLSearchParams(window.location.search).get('nivel');
-      if (requestedFloor === '1' || requestedFloor === '2') return Number(requestedFloor) as 1 | 2;
+  const [duplexFloor, setDuplexFloor] = useState<1 | 2>(() => floor?.id === '17' ? 2 : 1);
+
+  useEffect(() => {
+    if (requestedDuplexFloor === '1' || requestedDuplexFloor === '2') {
+      setDuplexFloor(Number(requestedDuplexFloor) as 1 | 2);
     }
-    return floor?.id === '17' ? 2 : 1;
-  });
+  }, [requestedDuplexFloor]);
 
   // Transitions
   const [transitionVideo, setTransitionVideo] = useState<string | null>(null);
