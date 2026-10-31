@@ -7,6 +7,7 @@ export const assetManifest: string[] = [
     // Homepage
     'homepage/portada.webp',
     'videos/portada.mp4',
+    'videos/livigno-general.mp4',
     // Identity
     'identity/livigno-logo.png',
     'identity/livigno-logo-negative.png',
