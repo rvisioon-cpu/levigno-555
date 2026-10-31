@@ -71,8 +71,8 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   ];
 
   // Filter menu items based on features.json
-  const { features: managedFeatures, featureOrder } = usePublicSettings();
-  const menuItems = allMenuItems.filter(item => (managedFeatures[item.id] ?? (features.sidebar as Record<string, boolean>)[item.id]) !== false).sort((a, b) => {
+  const { features: managedFeatures, featureOrder, hasProgress } = usePublicSettings();
+  const menuItems = allMenuItems.filter(item => (item.id !== 'avance' || hasProgress === true) && (managedFeatures[item.id] ?? (features.sidebar as Record<string, boolean>)[item.id]) !== false).sort((a, b) => {
     if (!featureOrder?.length) return 0;
     const left = featureOrder.indexOf(a.id), right = featureOrder.indexOf(b.id);
     return (left < 0 ? Infinity : left) - (right < 0 ? Infinity : right);

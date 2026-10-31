@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-type PublicSettings = { theme?: { primaryColor?: string; secondaryColor?: string; typography?: string } | null; featureOrder?: string[]; states: Record<string, string>; features: Record<string, boolean>; units: Record<string, { tourUrl: string | null; bedrooms: number | null; bathrooms: number | null; dimensions: number | null }> };
+type PublicSettings = { hasProgress?: boolean; theme?: { primaryColor?: string; secondaryColor?: string; typography?: string } | null; featureOrder?: string[]; states: Record<string, string>; features: Record<string, boolean>; units: Record<string, { tourUrl: string | null; bedrooms: number | null; bathrooms: number | null; dimensions: number | null }> };
 export function usePublicSettings() {
   const [settings, setSettings] = useState<PublicSettings>({ states: {}, features: {}, units: {} });
   useEffect(() => {
