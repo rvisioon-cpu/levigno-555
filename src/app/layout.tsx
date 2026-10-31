@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google"; // Using fonts closer to original (Montserrat/Inter)
 import "./globals.css";
 import config from "@/config/config";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
+import IdentityTheme from "@/components/IdentityTheme";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -31,6 +33,8 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} antialiased h-screen w-screen overflow-hidden bg-black text-white`}
       >
+        <IdentityTheme />
+        <AnalyticsTracker />
         {children}
       </body>
     </html>

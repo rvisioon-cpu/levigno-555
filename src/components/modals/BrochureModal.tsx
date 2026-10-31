@@ -1,16 +1,7 @@
 import { X, Download, FileText } from 'lucide-react';
-import { useStore } from '../../store/useStore';
-import { getAssetUrl } from '../../utils/assets';
 import config from '../../config/config';
 
-const BROCHURE_URL = getAssetUrl('brochure/brochure.pdf');
-
-const BrochureModal = () => {
-    const isOpen = useStore(state => state.isBrochureOpen);
-    const close = useStore(state => state.toggleBrochure);
-
-    if (!isOpen) return null;
-
+const BrochureModal = ({ url, onClose }: { url: string; onClose: () => void }) => {
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-md animate-fade-in">
             <div className="bg-white w-full h-full max-w-6xl rounded-2xl shadow-2xl flex flex-col overflow-hidden relative">
@@ -29,15 +20,15 @@ const BrochureModal = () => {
                     
                     <div className="flex items-center gap-4">
                         <a 
-                            href={BROCHURE_URL} 
+                            href={url} 
                             download={`Showroom_${config.appName}_Brochure.pdf`}
                             className="hidden sm:flex items-center gap-2 px-4 py-2 bg-white text-neutral-900 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors"
                         >
                             <Download size={16} />
-                            Download PDF
+                            Descargar PDF
                         </a>
                         <button 
-                            onClick={() => close(false)}
+                            onClick={onClose}
                             className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 transition-colors text-white"
                         >
                             <X size={20} />
@@ -48,14 +39,14 @@ const BrochureModal = () => {
                 {/* Content */}
                 <div className="flex-1 bg-neutral-200 relative">
                     <iframe 
-                        src={BROCHURE_URL} 
+                        src={url} 
                         className="w-full h-full border-0"
                         title="Brochure PDF Preview"
                     />
                     
                     {/* Mobile Download FAB (Floating Action Button) if header button hidden */}
                     <a 
-                        href={BROCHURE_URL} 
+                        href={url} 
                         download
                         className="sm:hidden absolute bottom-6 right-6 w-14 h-14 bg-brand-primary text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-dark-orange transition-colors z-10"
                     >

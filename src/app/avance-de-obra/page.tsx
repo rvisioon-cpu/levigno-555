@@ -1,7 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
 import Sidebar from '@/components/layout/Sidebar';
-import { constructionProgress } from '@/data/constructionProgress';
+import { type ProgressUpdate } from '@/data/constructionProgress';
+import { getProgressUpdates } from '@/app/actions/progress';
 import { Calendar, ChevronLeft, ChevronRight, Menu } from 'lucide-react';
 import gsap from 'gsap';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
@@ -10,6 +11,16 @@ import config from '@/config/config';
 
 const ConstructionProgressPage = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [constructionProgress, setConstructionProgress] = useState<ProgressUpdate[]>([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        let active = true;
+        getProgressUpdates().then(rows => {
+            if (!active) return;
+            setConstructionProgress(rows.map(row => ({ id: row.id, title: row.title, description: row.description || '', date: new Date(row.date).toLocaleDateString('es-PE', { month: 'long', year: 'numeric', timeZone: 'UTC' }), mediaUrl: row.mediaUrl, mediaType: /\.(mp4|webm|mov)(?:\?|$)/i.test(row.mediaUrl) ? 'video' : 'image' })));
+        }).catch(() => {}).finally(() => { if (active) setLoading(false); });
+        return () => { active = false; };
+    }, []);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
     const mediaRef = useRef<HTMLDivElement>(null);
@@ -43,6 +54,14 @@ const ConstructionProgressPage = () => {
             setCurrentIndex(currentIndex - 1);
         }
     };
+
+    if (!currentUpdate) return (
+        <div className="h-full w-full bg-black text-white flex items-center justify-center">
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            <button onClick={() => setIsSidebarOpen(true)} className="absolute top-6 left-6 p-3 rounded-full bg-white/10" aria-label="Abrir menú"><Menu size={24} /></button>
+            <p>{loading ? 'Cargando avances…' : 'Aún no hay avances de obra publicados.'}</p>
+        </div>
+    );
 
     return (
         <div className="h-full w-full bg-black text-white relative overflow-hidden font-sans">

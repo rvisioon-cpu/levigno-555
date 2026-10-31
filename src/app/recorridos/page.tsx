@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Play } from 'lucide-react';
 import { getTours, type Tour } from '@/data/tours';
+import { getManagedPublicTours } from '@/app/actions/tours';
+import { usePublicSettings } from '@/hooks/usePublicSettings';
 import Sidebar from '@/components/layout/Sidebar';
 import TourHeader from '@/components/UI/TourHeader';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
@@ -13,7 +15,21 @@ const RecorridosContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
-  const tours = getTours();
+  const [managedTours, setManagedTours] = useState<Tour[] | null>(null);
+  const { units } = usePublicSettings();
+  const tours = useMemo(() => managedTours ?? getTours().flatMap(tour => {
+    if (tour.type !== 'unit') return [tour];
+    const detail = units[tour.id.replace(/^unit-/, '')];
+    return detail ? (detail.tourUrl ? [{ ...tour, target: detail.tourUrl }] : []) : [tour];
+  }), [managedTours, units]);
+  useEffect(() => {
+    let active = true;
+    getManagedPublicTours().then(rows => {
+      if (!active || rows === null) return;
+      setManagedTours(rows.map(row => ({ id: row.id, title: row.title, subtitle: row.subtitle || '', thumbnail: row.thumbnailUrl, type: row.type === 'unit' ? 'unit' : 'building', target: row.targetUrl, floorName: row.floorName || undefined })));
+    }).catch(() => {});
+    return () => { active = false; };
+  }, []);
 
   useEffect(() => {
     const tourId = searchParams.get('tourId');

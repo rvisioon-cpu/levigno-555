@@ -5,6 +5,7 @@ pages_build_output_dir = ".open-next/assets"
 
 [[d1_databases]]
 binding = "DB"
+migrations_dir = "drizzle"
 database_name = "levigno-db"
 database_id = "4dd0a7e4-6751-428b-ac05-9fefacca6f4e"
 

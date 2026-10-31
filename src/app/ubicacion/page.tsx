@@ -3,7 +3,8 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import MapComponent from '@/components/map/Map';
 import Sidebar from '@/components/layout/Sidebar';
 import { Search, MapPin, Menu, ChevronDown, ChevronUp, Car, Footprints, Bike, Navigation, X } from 'lucide-react';
-import { locationsData, type LocationFeature } from '@/data/locations'; 
+import { locationsData, type LocationFeature } from '@/data/locations';
+import { getLocations } from '@/app/actions/locations'; 
 import { getAssetUrl } from '@/utils/assets';
 import { landmarks, type Landmark } from '@/data/landmarks';
 
@@ -12,6 +13,9 @@ const DirectionsPage = () => {
   const [activeLandmarkSlug, setActiveLandmarkSlug] = useState<string | null>(null);
   const [openLandmark, setOpenLandmark] = useState<Landmark | null>(null);
   const [filter, setFilter] = useState('');
+  const [managedLocations, setManagedLocations] = useState<LocationFeature[] | null>(null);
+  useEffect(() => { let active = true; getLocations().then(rows => { if (active) setManagedLocations(rows.map(row => ({ id: row.id, type: 'Feature', properties: { nombre: row.name, categoria: row.category, imagen: row.imagePath || undefined }, geometry: { type: 'Point', coordinates: [row.longitude, row.latitude] } }))); }).catch(() => {}); return () => { active = false; }; }, []);
+  const publicLocations = managedLocations ?? locationsData.features;
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -32,9 +36,9 @@ const DirectionsPage = () => {
   const [transportMode, setTransportMode] = useState<'driving' | 'walking' | 'cycling'>('driving');
   const [routeStats, setRouteStats] = useState<{ driving: {duration:number}; walking: {duration:number}; cycling: {duration:number} } | null>(null);
 
-  const categories = Array.from(new Set(locationsData.features.map((f: LocationFeature) => f.properties.categoria))).filter(Boolean) as string[];
+  const categories = Array.from(new Set(publicLocations.map((f: LocationFeature) => f.properties.categoria))).filter(Boolean) as string[];
 
-  const filteredLocations = locationsData.features.filter((feature: LocationFeature) => {
+  const filteredLocations = publicLocations.filter((feature: LocationFeature) => {
     const matchesSearch = feature.properties.nombre.toLowerCase().includes(filter.toLowerCase());
     const matchesCategory = selectedCategory ? feature.properties.categoria === selectedCategory : true;
     return matchesSearch && matchesCategory;

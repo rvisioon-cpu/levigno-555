@@ -1,6 +1,6 @@
 // Public showroom media only. Personal uploads and application responses never
 // enter this cache. Partial bodies use a separate key and are stored as 200.
-const PUBLIC_MEDIA = /^(building|homepage|videos|amenities|location|plants\/details|gallery)\/.+\.(mp4|webm|mov|ogg|avi|webp|png|jpe?g|gif|svg|avif)$/i;
+const PUBLIC_MEDIA = /^(building|homepage|videos|amenities|location|plants\/details|gallery)\/.+\.(mp4|webm|mov|ogg|avi|webp|png|jpe?g|gif|svg|avif)$|^plants\/floor_(\d+|s\d+)\.jpg$/i;
 const MAX_BODY = 8 * 1024 * 1024;
 const MIME = {mp4:'video/mp4',webm:'video/webm',mov:'video/quicktime',webp:'image/webp',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',svg:'image/svg+xml',gif:'image/gif',avif:'image/avif',ogg:'video/ogg',avi:'video/x-msvideo'};
 

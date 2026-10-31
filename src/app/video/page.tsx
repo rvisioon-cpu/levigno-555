@@ -1,13 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import Sidebar from '@/components/layout/Sidebar';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import { projectVideo } from '@/data/video';
+import { getActiveMedia } from '@/app/actions/media';
 
 export default function VideoPage() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [video, setVideo] = useState(projectVideo);
+  useEffect(() => { let active = true; getActiveMedia('VIDEO_SIDEBAR').then(rows => { if (active && rows[0]) setVideo({ ...projectVideo, src: rows[0].url, title: rows[0].title }); }).catch(() => {}); return () => { active = false; }; }, []);
 
   return (
     <main className="relative flex h-screen min-h-0 flex-col overflow-hidden bg-[#171717] text-white">
@@ -25,14 +28,15 @@ export default function VideoPage() {
       </header>
       <section className="flex min-h-0 w-full flex-1">
         <video
+          key={video.src}
           className="h-full min-h-0 w-full bg-black object-contain"
           controls
           playsInline
           preload="metadata"
-          poster={projectVideo.poster}
-          aria-label={projectVideo.title}
+          poster={video.poster}
+          aria-label={video.title}
         >
-          <source src={projectVideo.src} type="video/mp4" />
+          <source src={video.src} type="video/mp4" />
           Tu navegador no permite reproducir este video.
         </video>
       </section>

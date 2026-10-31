@@ -5,10 +5,11 @@ import { X, Home, Building2, Layers, Image, Rotate3D, Video, MapPin, Phone, Face
 import { getAssetUrl } from '@/utils/assets';
 import { useStore } from '@/store/useStore';
 import { preloadImages, preloadVideo } from '@/utils/preload';
-import { buildingFaces } from '@/data/buildingData';
+import { buildingFaces, buildingOpening } from '@/data/buildingData';
 import { floorsData } from '@/data/floors';
 import config from '@/config/config';
 import features from '@/data/features.json';
+import { usePublicSettings } from '@/hooks/usePublicSettings';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -41,15 +42,15 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         // "El edificio" (Showroom) Critical Path
         const face0 = buildingFaces[0];
         // 1. Intro Video (Transition from Homepage)
-        preloadVideo(getAssetUrl('videos/walks/trans_intro_to_0.mp4')).catch(() => {});
+        preloadVideo(buildingOpening[0]).catch(() => {});
         // 2. Face 0 Day Background
         preloadImages([face0.day.background]).catch(() => {});
 
         // "Plantas" (Floors) Critical Path
         // 1. Central Walk Video (used as transition to floors)
         if (face0.day.introVideo) preloadVideo(face0.day.introVideo).catch(() => {});
-        // 2. Default Floor 9 Image
-        const defaultFloor = floorsData.find(f => f.id === '9');
+        // 2. Default Floor 17 Image
+        const defaultFloor = floorsData.find(f => f.id === '17');
         if (defaultFloor) {
             preloadImages([defaultFloor.floorPlanImage]).catch(() => {});
         }
@@ -70,7 +71,12 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   ];
 
   // Filter menu items based on features.json
-  const menuItems = allMenuItems.filter(item => (features.sidebar as any)[item.id] !== false);
+  const { features: managedFeatures, featureOrder } = usePublicSettings();
+  const menuItems = allMenuItems.filter(item => (managedFeatures[item.id] ?? (features.sidebar as Record<string, boolean>)[item.id]) !== false).sort((a, b) => {
+    if (!featureOrder?.length) return 0;
+    const left = featureOrder.indexOf(a.id), right = featureOrder.indexOf(b.id);
+    return (left < 0 ? Infinity : left) - (right < 0 ? Infinity : right);
+  });
 
   const handleNavigation = (path?: string, action?: string) => {
     if (path) {
@@ -102,15 +108,15 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     if (key === 'showroom') {
         const face0 = buildingFaces[0];
         // Preload Intro Video (Explicit path to match Homepage)
-        preloadVideo(getAssetUrl('videos/walks/trans_intro_to_0.mp4')).catch(() => {});
+        preloadVideo(buildingOpening[0]).catch(() => {});
         preloadImages([face0.day.background]).catch(() => {});
     } 
     else if (key === 'floors') {
-        // Preload default floor (Floor 9) AND the Central Walk video
+        // Preload default floor (Floor 17) AND the Central Walk video
         const face0 = buildingFaces[0];
         if (face0.day.introVideo) preloadVideo(face0.day.introVideo).catch(() => {});
         
-        const defaultFloor = floorsData.find(f => f.id === '9');
+        const defaultFloor = floorsData.find(f => f.id === '17');
         if (defaultFloor) {
             preloadImages([defaultFloor.floorPlanImage]).catch(() => {});
         }

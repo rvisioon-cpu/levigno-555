@@ -10,16 +10,31 @@ import TourHeader from '@/components/UI/TourHeader';
 import { preloadImages, preloadVideo } from '@/utils/preload';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import { getAssetUrl, assetManifest } from '@/utils/assets';
-import { useStore } from '@/store/useStore';
+import BrochureModal from '@/components/modals/BrochureModal';
+import { usePublicSettings, mergePublicUnit } from '@/hooks/usePublicSettings';
 
 const UnitPage = () => {
   const params = useParams();
   const unitId = params.id as string;
   const router = useRouter();
+  const [brochure, setBrochure] = useState<{ unitId: string; url: string } | null>(null);
+  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    setIsBrochureOpen(false);
+    fetch(`/api/brochure/active?unitId=${encodeURIComponent(unitId)}`, { signal: controller.signal, cache: 'no-store' })
+      .then(response => response.ok ? response.json() : null)
+      .then(data => setBrochure(typeof data?.url === 'string' && data.url ? { unitId, url: data.url } : null))
+      .catch(() => { if (!controller.signal.aborted) setBrochure(null); });
+    return () => controller.abort();
+  }, [unitId]);
+  const brochureUrl = brochure?.unitId === unitId ? brochure.url : null;
   
   // Resolve Unit & Floor
   const floor = floorsData.find(f => f.units.some(u => u.id === unitId));
-  const unit = floor?.units.find(u => u.id === unitId);
+  const publicSettings = usePublicSettings();
+  const originalUnit = floor?.units.find(u => u.id === unitId);
+  const unit = originalUnit && mergePublicUnit(originalUnit, publicSettings);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -289,6 +304,8 @@ const UnitPage = () => {
       {/* GLOBAL SIDEBAR */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
+      {isBrochureOpen && brochureUrl && <BrochureModal url={brochureUrl} onClose={() => setIsBrochureOpen(false)} />}
+
       {/* MODAL */}
       <RequestInfoModal 
         isOpen={isRequestModalOpen} 
@@ -488,14 +505,12 @@ const UnitPage = () => {
              {/* Brochure & Disclaimer Group (Row on Mobile/Landscape, Stacked on Desktop) */}
              <div className="flex flex-row items-center gap-4 lg:flex-col lg:gap-6">
                  {/* Brochure Button */}
-                 <button 
-                    onClick={() => {
-                        useStore.getState().toggleBrochure(true);
-                    }}
+                 {brochureUrl && <button
+                    onClick={() => setIsBrochureOpen(true)}
                     className="flex-1 lg:w-full py-4 bg-brand-primary text-white rounded-xl font-bold text-sm transition-colors shadow-sm border border-gray-100"
                  >
                      Ver Brochure
-                 </button>
+                 </button>}
 
                  {/* Disclaimer */}
                  <p className="flex-1 text-center text-xs text-gray-400 font-medium whitespace-nowrap lg:whitespace-normal">Disclaimer</p>

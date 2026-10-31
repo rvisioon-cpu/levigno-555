@@ -38,7 +38,7 @@ const isStaticFile =
   __cfPathname === '/portada_venecia.png' ||
   __cfPathname === '/BUILD_ID';
 
-const isStaticAsset = hasExtension || isStaticPrefix || isStaticFile;
+const isStaticAsset = !__cfPathname.startsWith('/api/') && !__cfPathname.toLowerCase().startsWith('/media/social_reference/') && !__cfPathname.toLowerCase().startsWith('/media/social_content/') && (hasExtension || isStaticPrefix || isStaticFile);
 
 if (isStaticAsset) {
   // 1. Try to serve from Pages assets (public folder / next static assets)

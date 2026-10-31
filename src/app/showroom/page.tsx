@@ -6,14 +6,29 @@ import SceneController from '@/components/360/SceneController';
 import Sidebar from '@/components/layout/Sidebar';
 import { Sun, Moon, Rotate3d } from 'lucide-react';
 import { preloadImages, preloadVideo } from '@/utils/preload';
-import { getAssetUrl } from '@/utils/assets';
 import Loader from '@/components/UI/Loader';
-import { buildingFaces } from '@/data/buildingData';
+import { buildingOpening, buildingFaces as defaultFaces } from '@/data/buildingData';
+import { getBuildingFacesData } from '@/app/actions/building';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import { showroomConfig } from '@/data/showroom';
 
 const ShowroomContent = () => {
   const router = useRouter();
+  const buildingFaces = useStore(state => state.buildingFaces);
+  useEffect(() => {
+    let active = true;
+    getBuildingFacesData().then(rows => {
+      if (!active || !rows.length) return;
+      const faces = defaultFaces.map(base => {
+        const row = rows.find(item => item.id === base.id);
+        if (!row) return base;
+        const merge = (original: typeof base.day, next: typeof row.day) => ({ ...original, ...next, background: next.background || original.background, backgroundVideo: next.backgroundVideo || original.backgroundVideo, introVideo: next.introVideo || original.introVideo, transitions: { toLeft: next.transitions.toLeft || original.transitions.toLeft, toRight: next.transitions.toRight || original.transitions.toRight } });
+        return { ...base, name: row.name, dayToNightTransition: row.dayToNightTransition || base.dayToNightTransition, nightToDayTransition: row.nightToDayTransition || base.nightToDayTransition, day: merge(base.day, row.day), night: merge(base.night, row.night) };
+      });
+      useStore.setState({ buildingFaces: faces });
+    }).catch(() => {});
+    return () => { active = false; };
+  }, []);
   const searchParams = useSearchParams();
   
   const startTransition = useStore(state => state.startTransition);
@@ -49,12 +64,16 @@ const ShowroomContent = () => {
           ...(shouldResetToDay ? { timeOfDay: 'day' } : {})
         });
         
+        if (transition !== 'floors') {
+             useStore.setState({ viewState: 'TRANSITION_VIDEO', transitionUrl: buildingOpening[0], targetDestination: 'Lobby' });
+        }
+
         if (transition) {
              const face0 = buildingFaces[0];
              
              if (transition === 'intro') {
                  // Showroom: Matches Homepage "Entrar" video
-                 const introVideoUrl = getAssetUrl('videos/walks/trans_intro_to_0.mp4');
+                 const introVideoUrl = buildingOpening[0];
                  
                  useStore.setState({ 
                      viewState: 'TRANSITION_VIDEO',
@@ -123,8 +142,8 @@ const ShowroomContent = () => {
           
           fastImagesToLoad.push(assetSet.background);
           
-          if (id === 1 && currentFace === 0) videosToLoad.push(currentFaceData[timeOfDay].transitions.toRight); 
-          if (id === 2 && currentFace === 0) videosToLoad.push(currentFaceData[timeOfDay].transitions.toLeft);
+          if (id === 1 && currentFace === 0) videosToLoad.push(currentFaceData[timeOfDay].transitions.toLeft); 
+          if (id === 2 && currentFace === 0) videosToLoad.push(currentFaceData[timeOfDay].transitions.toRight);
           if (currentFace !== 0) videosToLoad.push(currentFaceData[timeOfDay].transitions.toLeft);
       });
 
@@ -165,8 +184,8 @@ const ShowroomContent = () => {
 
   }, [currentFace, timeOfDay, currentRoom]); 
 
-  const showLeftButton = currentRoom === 'Lobby' && viewState === 'IDLE' && (currentFace === 0 || currentFace === 1);
-  const showRightButton = currentRoom === 'Lobby' && viewState === 'IDLE' && (currentFace === 0 || currentFace === 2);
+  const showLeftButton = currentRoom === 'Lobby' && viewState === 'IDLE' && (currentFace === 0 || currentFace === 2);
+  const showRightButton = currentRoom === 'Lobby' && viewState === 'IDLE' && (currentFace === 0 || currentFace === 1);
 
   return (
     <div className="font-sans relative h-full w-full overflow-hidden">
@@ -249,17 +268,6 @@ const ShowroomContent = () => {
             </svg>
             )}
           </button>
-      )}
-
-      {/* Structure Reference Image */}
-      {viewState === 'IDLE' && (
-        <div className="fixed bottom-6 md:bottom-10 sm:bottom-3 left-6 md:left-10 sm:left-3 z-20 pointer-events-none select-none">
-          <img 
-            src={showroomConfig.structureImage}
-            alt="Structure Reference" 
-            className="w-auto h-48 sm:h-32 opacity-90 drop-shadow-lg"
-          />
-        </div>
       )}
 
       {/* Floating UI */}

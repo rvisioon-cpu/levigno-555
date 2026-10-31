@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import Sidebar from '@/components/layout/Sidebar';
-import { galleries, type GalleryImage } from '@/data/galleries';
+import { galleries, type GalleryImage, type GalleryCollection } from '@/data/galleries';
+import { getPublishedGalleries } from '@/app/actions/galleries';
 import { assetManifest, getAssetUrl } from '@/utils/assets';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import { Menu, ChevronLeft, ChevronRight } from 'lucide-react'; 
@@ -9,15 +10,20 @@ import { preloadImages } from '@/utils/preload';
 import { useStore } from '@/store/useStore';
 
 const GalleryPage = () => {
-  const [activeTabId, setActiveTabId] = useState(galleries[0]?.id || 'general');
+  const [activeTabId, setActiveTabId] = useState(
+    galleries.find((gallery) => gallery.id === 'amenities')?.id || galleries[0]?.id || 'general'
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [dynamicImages, setDynamicImages] = useState<GalleryImage[]>([]);
+  const [published, setPublished] = useState<GalleryCollection[] | null>(null);
+  useEffect(() => { let active = true; getPublishedGalleries().then(rows => { if (active) { setPublished(rows); setActiveTabId(previous => rows.some(row => row.id === previous) ? previous : rows[0]?.id || ''); } }).catch(() => {}); return () => { active = false; }; }, []);
+  const visibleGalleries = published ?? galleries;
   const setGlobalLoading = useStore((state) => state.setGlobalLoading);
 
   const activeGalleryBase = useMemo(() => {
-     return galleries.find(g => g.id === activeTabId) || galleries[0];
-  }, [activeTabId]);
+     return visibleGalleries.find(g => g.id === activeTabId) || visibleGalleries[0];
+  }, [activeTabId, visibleGalleries]);
 
   // 2. Load Images from Manifest
   useEffect(() => {
@@ -125,6 +131,7 @@ const GalleryPage = () => {
       </div>
 
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      {visibleGalleries.length > 1 && <nav aria-label="Galerías" className="absolute z-20 bottom-6 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[80vw]">{visibleGalleries.map(g => <button key={g.id} onClick={() => setActiveTabId(g.id)} className={`px-3 py-2 rounded-full text-xs ${g.id === activeTabId ? 'bg-white text-black' : 'bg-black/70 text-white'}`}>{g.title}</button>)}</nav>}
       
       {/* Main Image Area */}
       <div className="flex-1 relative flex items-center justify-center bg-black w-full h-full">
@@ -165,7 +172,7 @@ const GalleryPage = () => {
            </>
          ) : (
             <div className="text-gray-500">
-                {galleries.length === 0 ? 'No galleries configured.' : 'Loading images...'}
+                {visibleGalleries.length === 0 ? 'No hay galerías publicadas.' : 'No hay imágenes publicadas.'}
             </div>
          )}
       </div>

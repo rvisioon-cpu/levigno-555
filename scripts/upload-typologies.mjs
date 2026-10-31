@@ -1,6 +1,6 @@
 import { readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { spawn } from 'node:child_process';
 
 const root = 'public/plants/details';
 const files = [];
@@ -16,19 +16,38 @@ function collect(directory) {
 collect(root);
 if (files.length === 0) throw new Error(`No typology assets found in ${root}`);
 
-for (const path of files) {
-  if (statSync(path).size > 25 * 1024 * 1024) {
-    throw new Error(`Typology asset exceeds the supported size limit: ${path}`);
-  }
-  const key = relative('public', path).split(sep).join('/');
-  const result = spawnSync('npx', [
-    'wrangler', 'r2', 'object', 'put', `levigno-assets/${key}`,
-    '--remote', '--file', path, '--content-type', 'image/jpeg',
-    '--cache-control', 'public, max-age=31536000, immutable',
-  ], { stdio: 'inherit' });
+const concurrency = 4;
+let nextFile = 0;
+let uploaded = 0;
 
-  if (result.error) throw result.error;
-  if (result.status !== 0) process.exit(result.status ?? 1);
+async function upload(path) {
+  const key = relative('public', path).split(sep).join('/');
+  const extension = path.split('.').pop()?.toLowerCase();
+  const contentType = extension === 'mp4' ? 'video/mp4' : 'image/jpeg';
+  await new Promise((resolve, reject) => {
+    const child = spawn('npx', [
+      'wrangler', 'r2', 'object', 'put', `levigno-assets/${key}`,
+      '--remote', '--file', path, '--content-type', contentType,
+      '--cache-control', 'public, max-age=31536000, immutable',
+    ]);
+    let output = '';
+    child.stdout.on('data', (chunk) => { output += chunk; });
+    child.stderr.on('data', (chunk) => { output += chunk; });
+    child.on('error', reject);
+    child.on('close', (code) => code === 0
+      ? resolve()
+      : reject(new Error(`Failed to upload ${key} (exit ${code}):\n${output}`)));
+  });
+  uploaded++;
+  console.log(`[${uploaded}/${files.length}] ${key}`);
 }
 
-console.log(`Uploaded ${files.length} typology images to the levigno-assets R2 bucket.`);
+async function worker() {
+  while (nextFile < files.length) {
+    const path = files[nextFile++];
+    await upload(path);
+  }
+}
+
+await Promise.all(Array.from({ length: Math.min(concurrency, files.length) }, worker));
+console.log(`Uploaded ${files.length} typology assets to the levigno-assets R2 bucket.`);

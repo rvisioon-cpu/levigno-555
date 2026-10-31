@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { floorsData, type Unit } from '@/data/floors';
 import FloorSelector from '@/components/layout/FloorSelector';
@@ -12,6 +12,7 @@ import MobileFloorNav from '@/components/floor/MobileFloorNav';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import { preloadImages } from '@/utils/preload';
 import { useStore } from '@/store/useStore';
+import { usePublicSettings, mergePublicUnit } from '@/hooks/usePublicSettings';
 
 const FloorPage = () => {
   const params = useParams();
@@ -33,7 +34,11 @@ const FloorPage = () => {
   const [lastTouchDistance, setLastTouchDistance] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const floor = floorsData.find(f => f.id === floorId);
+  const publicSettings = usePublicSettings();
+  const floor = useMemo(() => {
+    const original = floorsData.find(f => f.id === floorId);
+    return original && { ...original, units: original.units.map(u => mergePublicUnit(u, publicSettings)) };
+  }, [floorId, publicSettings]);
 
   useEffect(() => {
     setScale(MIN_SCALE);

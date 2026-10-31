@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/store/useStore';
 import gsap from 'gsap';
-import { buildingFaces } from '@/data/buildingData';
+import { buildingOpening } from '@/data/buildingData';
 import { floorsData } from '@/data/floors';
 import { preloadImages } from '@/utils/preload';
 
@@ -12,7 +12,7 @@ interface SceneControllerProps {
 }
 
 export default function SceneController({ isHighlighted }: SceneControllerProps) {
-  const { viewState, endTransition, currentRoom, currentFace, confirmRotation, finishRotation, transitionUrl, timeOfDay, finishTimeLapse, targetDestination } = useStore();
+  const { buildingFaces, viewState, endTransition, currentRoom, currentFace, confirmRotation, finishRotation, transitionUrl, timeOfDay, finishTimeLapse, targetDestination } = useStore();
   const videoRef = useRef<HTMLVideoElement>(null);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
   const panoRef = useRef<HTMLDivElement>(null);
@@ -39,7 +39,7 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
       // Preload destination assets while video plays
       if (targetDestination === 'Floors') {
           // Find the initial floor we navigate to
-          const targetFloor = floorsData.find(f => f.id === '9');
+          const targetFloor = floorsData.find(f => f.id === '17');
           if (targetFloor) {
               preloadImages([targetFloor.floorPlanImage]).catch(e => console.warn("Background preload failed", e));
           }
@@ -67,6 +67,10 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
         console.log('[Scene] handleVideoEnd: TRANSITION_VIDEO');
         // Navigate immediately without fading out to avoid revealing the background
         
+        if (targetDestination === 'Lobby' && transitionUrl === buildingOpening[0]) {
+            useStore.setState({ transitionUrl: buildingOpening[1] });
+            return;
+        }
         if (targetDestination === 'Floors') {
             // Keep video visible (zIndex 10) to mask the page unload/load
             endTransition('Sala Principal');
