@@ -32,6 +32,26 @@
   }
 }
 
+/* Keep dashboard controls on the Livigno palette instead of DaisyUI's default purple. */
+.btn-primary {
+  border-color: var(--color-livigno-teal);
+  background-color: var(--color-livigno-teal);
+  color: var(--color-livigno-sand);
+}
+
+.btn-primary:hover {
+  border-color: #263f45;
+  background-color: #263f45;
+}
+
+.bg-primary {
+  background-color: var(--color-livigno-teal);
+}
+
+.text-primary-content {
+  color: var(--color-livigno-sand);
+}
+
 html, body {
   margin: 0;
   padding: 0;

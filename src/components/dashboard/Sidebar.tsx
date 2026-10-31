@@ -58,16 +58,13 @@ export default function Sidebar({ role }: SidebarProps) {
   return (
     <div className={`${isCollapsed ? "w-[72px]" : "w-64"} bg-livigno-teal text-livigno-sand shadow-md flex flex-col h-full transition-[width] duration-200`}>
       <div className={`${isCollapsed ? "justify-center px-2" : "px-6"} h-[72px] border-b border-white/15 flex items-center gap-3`}>
-        {!isCollapsed && <>
+        {!isCollapsed && (
           <img
-            src="/identity/livigno-logo.png"
-            alt="Livigno Logo"
-            className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(245,156,29,0.25)]"
+            src="/identity/livigno-logo-tight.png"
+            alt="Livigno 555"
+            className="h-8 w-[142px] object-contain object-left"
           />
-          <h2 className="text-lg font-bold font-primary tracking-wide flex items-center">
-            <span className="font-extrabold text-livigno-gold">Livigno</span>
-          </h2>
-        </>}
+        )}
         <button
           type="button"
           onClick={() => setIsCollapsed((previous) => !previous)}
