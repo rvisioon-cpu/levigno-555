@@ -5,6 +5,8 @@ import config from "@/config/config";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import IdentityTheme from "@/components/IdentityTheme";
 import ServiceWorkerRegistrar from "@/components/layout/ServiceWorkerRegistrar";
+import UseLandscape from "@/components/layout/UseLandscape";
+import ForcedLandscapeWrapper from "@/components/layout/ForcedLandscapeWrapper";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,8 +35,11 @@ export default function RootLayout({
       >
         <ServiceWorkerRegistrar />
         <IdentityTheme />
-        <AnalyticsTracker />
-        {children}
+        <UseLandscape />
+        <ForcedLandscapeWrapper>
+          <AnalyticsTracker />
+          {children}
+        </ForcedLandscapeWrapper>
       </body>
     </html>
   );

@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 
 import {
+  ASSET_BASE_URL,
   CorsNotConfiguredError,
   clearOfflineCaches,
   downloadAssets,
@@ -81,6 +82,12 @@ export default function PrepararPage() {
     setError(null);
 
     try {
+      // Registrar el Service Worker explícitamente para este dispositivo
+      if ('serviceWorker' in navigator) {
+        const url = `/sw.js?enabled=true&media=${encodeURIComponent(ASSET_BASE_URL)}`;
+        await navigator.serviceWorker.register(url).catch(() => {});
+      }
+
       // 1. Solicitar cuota persistente para evitar desalojo accidental
       await requestPersistentStorage();
 
@@ -125,6 +132,10 @@ export default function PrepararPage() {
   const reset = async () => {
     if (confirm('¿Deseas eliminar todos los archivos descargados del showroom?')) {
       await clearOfflineCaches();
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        for (const r of regs) await r.unregister();
+      }
       await refresh();
     }
   };

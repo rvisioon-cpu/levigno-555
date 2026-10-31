@@ -1,11 +1,12 @@
 "use client";
 
 // ============================================================================
-// Registra el service worker que sirve la demo sin internet en Livigno.
+// ServiceWorkerRegistrar — LIVIGNO 555
 //
-// El origen del bucket viaja en la QUERY de la URL de registro, no en un
-// mensaje posterior: el worker lo necesita de forma síncrona en cada arranque
-// y `/sw.js` explica por qué con detalle.
+// MODO OFFLINE: DESACTIVADO POR DEFECTO ("OFF").
+// Para no interferir con usuarios normales ni solicitar descargas,
+// solo se activa si NEXT_PUBLIC_ENABLE_OFFLINE === 'true' o si se
+// accede explícitamente con ?offline=1 en la URL.
 // ============================================================================
 
 import { useEffect } from 'react';
@@ -15,20 +16,40 @@ const ServiceWorkerRegistrar = () => {
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return;
 
-    // En desarrollo el worker estorba con Fast Refresh y HMR.
-    // Solo permitimos registrar en dev si explícitamente se incluye ?offline=1 en la URL.
     const searchParams = new URLSearchParams(window.location.search);
-    const allowInDev = searchParams.get('offline') === '1';
+    const isExplicitOffline = searchParams.get('offline') === '1';
+    const isEnvEnabled = process.env.NEXT_PUBLIC_ENABLE_OFFLINE === 'true';
+    const shouldEnableOffline = isEnvEnabled || isExplicitOffline;
 
-    if (process.env.NODE_ENV !== 'production' && !allowInDev) {
+    // Si el modo offline está OFF:
+    // Asegurar que cualquier service worker previo se desregistre y limpie cachés
+    if (!shouldEnableOffline) {
       navigator.serviceWorker
         .getRegistrations()
-        .then((registrations) => registrations.forEach((r) => r.unregister()))
+        .then((registrations) => {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        })
         .catch(() => {});
+
+      if ('caches' in window) {
+        caches
+          .keys()
+          .then((names) => {
+            for (const name of names) {
+              if (name.startsWith('livigno-')) {
+                caches.delete(name);
+              }
+            }
+          })
+          .catch(() => {});
+      }
       return;
     }
 
-    const url = `/sw.js?media=${encodeURIComponent(ASSET_BASE_URL)}`;
+    // Si el modo offline está ON: registrar con el flag enabled=true
+    const url = `/sw.js?enabled=true&media=${encodeURIComponent(ASSET_BASE_URL)}`;
     navigator.serviceWorker.register(url).catch((error) => {
       console.warn('No se pudo registrar el service worker de modo offline:', error);
     });

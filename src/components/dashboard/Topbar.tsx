@@ -51,8 +51,8 @@ export default function Topbar({ user }: TopbarProps) {
             </div>
           </div>
           <div className="flex flex-col text-left">
-            <span className="font-semibold text-sm leading-none">{user.name}</span>
-            <span className="text-[10px] opacity-65 mt-0.5 leading-none font-medium capitalize">
+            <span className="font-semibold text-sm leading-none text-livigno-gold">{user.name}</span>
+            <span className="text-[10px] text-brand-dark-orange mt-0.5 leading-none font-medium capitalize">
               {user.role === "SUPER_ADMIN" ? "Super Admin" : user.role === "ADMIN" ? "Administrador" : "Vendedor"}
             </span>
           </div>

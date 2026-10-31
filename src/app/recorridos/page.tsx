@@ -69,7 +69,7 @@ const RecorridosContent = () => {
     return (
       <div className="fixed inset-0 z-50 bg-black flex flex-col">
         {/* Viewer Header */}
-        <div className="absolute top-0 left-0 w-full z-50">
+        <div className="pointer-events-none absolute top-3 left-3 z-50 sm:top-4 sm:left-4">
            <TourHeader 
                 title={selectedTour.title}
                 subtitle={`${selectedTour.subtitle || ''}${selectedTour.floorName ? ` · Piso ${selectedTour.floorName}` : ''}`}
@@ -79,8 +79,8 @@ const RecorridosContent = () => {
 
         {/* Iframe Content */}
         <div className="flex-1 w-full h-full pt-0">
-            <iframe 
-                src={selectedTour.target} 
+            <iframe
+                src={normalizeTourUrl(selectedTour.target)}
                 className="w-full h-full border-0"
                 allowFullScreen
                 allow="xr-spatial-tracking; gyroscope; accelerometer"
@@ -170,6 +170,12 @@ const RecorridosContent = () => {
     </div>
   );
 };
+
+function normalizeTourUrl(url: string) {
+  // A trailing encoded quote can be introduced when a Kuula link is copied
+  // from Markdown; it is not part of the URL and can prevent the tour loading.
+  return url.replace(/%22$/i, '').replace(/"$/, '');
+}
 
 export default function RecorridosPage() {
     return (
