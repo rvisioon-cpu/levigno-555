@@ -280,8 +280,8 @@ const UnitPage = () => {
              
              {/* State Label */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop-blur px-6 py-3 rounded-xl text-white font-light uppercase tracking-widest pointer-events-none opacity-0 hover:opacity-100 transition-opacity">
-                  {viewMode === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amueblado')}
-                  {viewMode === 'unfurnished' && 'Sin Amueblar'}
+                  {viewMode === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado')}
+                  {viewMode === 'unfurnished' && 'Sin Amoblar'}
                   {viewMode === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano Arquitectónico')}
               </div>
           </div>
@@ -693,7 +693,7 @@ const UnitPage = () => {
                            >
                                <ChevronLeft size={28} className="group-hover:-translate-x-1 transition-transform" />
                                 <span className="text-sm font-medium tracking-wide uppercase hidden sm:block">
-                                   {navState.leftTarget === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amueblado')}
+                                   {navState.leftTarget === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado')}
                                </span>
                            </button>
                         )}
