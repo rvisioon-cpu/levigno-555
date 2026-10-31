@@ -11,8 +11,20 @@ export interface Landmark {
 
 const asset = (slug: string, filename: string) => `location/videos/hitos/${slug}/${filename}`;
 
-// Livigno's hito list and GeoJSON points match the set used for Saint Elliot.
-export const landmarks: Landmark[] = [
+/**
+ * DEFINICIÓN ORIGINAL DE HITOS:
+ * -------------------------------------------------------------
+ * NOTA TEMPORAL:
+ * Los 5 puntos correspondientes a hitos (PUCP, Plaza San Miguel, Parque de las Leyendas,
+ * Open Plaza La Marina y Arena 1) han sido deshabilitados temporalmente como hitos para que
+ * se muestren en el mapa como puntos normales utilizando los iconos disponibles en el proyecto.
+ *
+ * Se conserva esta lista intacta ya que RETORNARÁN A SER HITOS POSTERIORMENTE.
+ * Para reactivarlos como hitos, simplemente asignar:
+ * export const landmarks: Landmark[] = originalLandmarks;
+ * -------------------------------------------------------------
+ */
+export const originalLandmarks: Landmark[] = [
   {
     slug: 'pucp', name: 'Pontificia Universidad Católica del Perú', category: 'Educación',
     coordinates: [-77.080142, -12.069353], poiName: 'Pontificia Universidad Católica del Perú',
@@ -39,5 +51,9 @@ export const landmarks: Landmark[] = [
     poster: asset('arena-1', 'poster.jpg'), preview: asset('arena-1', 'preview.mp4'), video: asset('arena-1', 'full.mp4'),
   },
 ];
+
+// Temporalmente deshabilitado: lista vacía para que el mapa muestre los 5 puntos como puntos normales con sus iconos.
+// Retornarán a ser hitos posteriormente.
+export const landmarks: Landmark[] = [];
 
 export const landmarkPoiNames = new Set(landmarks.map((landmark) => landmark.poiName.toLowerCase().trim()));
