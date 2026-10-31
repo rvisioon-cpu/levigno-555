@@ -1,3 +1,5 @@
+import { getAssetUrl } from '@/utils/assets';
+
 export interface HomepageData {
   hero: {
     logo: string;
@@ -19,8 +21,8 @@ export const homepageData: HomepageData = {
     button: "Entrar"
   },
   intro: {
-    poster: "/intro.jpg",
-    video: "/videos/walk.mp4"
+    poster: getAssetUrl('homepage/portada.webp'),
+    video: getAssetUrl('videos/portada.mp4')
   },
   slides: [
     {
@@ -41,3 +43,4 @@ export const homepageData: HomepageData = {
     }
   ]
 };
+

@@ -44,3 +44,5 @@ next-env.d.ts
 .wrangler/
 .dev.vars*
 .open-next/
+/public/portada.png
+/public/videos/portada.mp4

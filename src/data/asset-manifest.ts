@@ -4,6 +4,9 @@
  * This file should be updated whenever new assets are added to the project.
  */
 export const assetManifest: string[] = [
+    // Homepage
+    'homepage/portada.webp',
+    'videos/portada.mp4',
     // Identity
     'identity/livigno-logo.png',
     'identity/livigno-logo-negative.png',
