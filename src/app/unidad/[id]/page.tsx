@@ -478,12 +478,8 @@ const UnitPage = () => {
                  <div 
                     className="text-center py-12 rounded-xl relative overflow-hidden group shadow-inner"
                     style={{
-                        backgroundImage: (() => {
-                            const posterPath = `plants/details/${assetId}/poster.png`;
-                            if (assetManifest.includes(posterPath)) return `url(${getAssetUrl(posterPath)})`;
-                            const fallbackUrl = getStaticViewUrl(assetId, 'furnished');
-                            return fallbackUrl ? `url(${fallbackUrl})` : 'none';
-                        })(),
+                        backgroundImage: unitGalleryImages[0] ? `url("${unitGalleryImages[0].src}")` : 'none',
+                        backgroundColor: '#a3a3a3',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                     }}
