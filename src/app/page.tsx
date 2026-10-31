@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Sidebar from '@/components/layout/Sidebar';
-import { buildingFaces, buildingOpening } from '@/data/buildingData';
+import { buildingFaces, buildingOpening, buildingAerialLoop } from '@/data/buildingData';
 import { useStore } from '@/store/useStore';
 import { preloadVideo, preloadImages } from '@/utils/preload';
 import Loader from '@/components/UI/Loader';
@@ -123,6 +123,7 @@ const Homepage = () => {
           onCanPlay={() => {
               // 1. Silent preload of the "Enter" transition video
               preloadVideo(buildingOpening[0]).catch(() => {});
+              preloadVideo(buildingAerialLoop).catch(() => {});
               // 2. Silent preload of the first building face (Daylight)
               preloadImages([buildingFaces[0].day.background]).catch(() => {});
           }}

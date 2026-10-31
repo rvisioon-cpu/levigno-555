@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/store/useStore';
 import gsap from 'gsap';
-import { buildingOpening } from '@/data/buildingData';
+import { buildingOpening, buildingAerialLoop } from '@/data/buildingData';
 import { floorsData } from '@/data/floors';
 import { preloadImages } from '@/utils/preload';
 
@@ -149,15 +149,16 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
       <div ref={panoRef} className="absolute inset-0 bg-gray-800 flex items-center justify-center">
         {/* If we are in Aerial loop mode, play the 0.2 aerial loop video */}
         {viewState === 'AERIAL_LOOP' || currentRoom === 'Aerial' ? (
-           <div className="relative w-full h-full">
+           <div className="relative w-full h-full bg-black">
               <img 
                 src="/building/exterior/0.2.jpg" 
-                alt="Vista aérea del edificio" 
+                alt="" 
                 className="w-full h-full object-cover"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <video
                 key="aerial-loop-video"
-                src="/building/exterior/0.2.loop.mp4"
+                src={buildingAerialLoop}
                 autoPlay
                 muted
                 loop

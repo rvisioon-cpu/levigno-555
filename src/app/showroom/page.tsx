@@ -7,7 +7,7 @@ import Sidebar from '@/components/layout/Sidebar';
 import { Sun, Moon, Rotate3d, ArrowRight } from 'lucide-react';
 import { preloadImages, preloadVideo } from '@/utils/preload';
 import Loader from '@/components/UI/Loader';
-import { buildingOpening, buildingFaces as defaultFaces } from '@/data/buildingData';
+import { buildingOpening, buildingAerialLoop, buildingFaces as defaultFaces } from '@/data/buildingData';
 import { getBuildingFacesData } from '@/app/actions/building';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import { showroomConfig } from '@/data/showroom';
@@ -83,6 +83,7 @@ const ShowroomContent = () => {
              }
         } else {
              // Default & 'intro' flow: plays 0.1-0.mp4 from sky to aerial, then lands on AERIAL_LOOP
+             preloadVideo(buildingAerialLoop).catch(() => {});
              useStore.setState({ 
                  viewState: 'TRANSITION_VIDEO', 
                  transitionUrl: buildingOpening[0], 
