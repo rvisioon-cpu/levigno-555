@@ -25,12 +25,10 @@ const FloorPage = () => {
   const [consultationUnitId, setConsultationUnitId] = useState<string>('');
   
   // Map State
-  const MIN_SCALE = 1.1;
-  const [scale, setScale] = useState(MIN_SCALE);
+  const scale = 1;
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [lastTouchDistance, setLastTouchDistance] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const publicSettings = usePublicSettings();
@@ -40,7 +38,29 @@ const FloorPage = () => {
   }, [floorId, publicSettings]);
 
   useEffect(() => {
-    setScale(MIN_SCALE);
+    const preventZoomWheel = (e: WheelEvent) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    };
+    const preventGesture = (e: Event) => {
+      e.preventDefault();
+    };
+
+    window.addEventListener('wheel', preventZoomWheel, { passive: false });
+    window.addEventListener('gesturestart', preventGesture);
+    window.addEventListener('gesturechange', preventGesture);
+    window.addEventListener('gestureend', preventGesture);
+
+    return () => {
+      window.removeEventListener('wheel', preventZoomWheel);
+      window.removeEventListener('gesturestart', preventGesture);
+      window.removeEventListener('gesturechange', preventGesture);
+      window.removeEventListener('gestureend', preventGesture);
+    };
+  }, []);
+
+  useEffect(() => {
     setPosition({ x: 0, y: 0 });
     setSelectedUnit(null);
 
@@ -75,9 +95,6 @@ const FloorPage = () => {
 
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
-    const scaleSensitivity = 0.001;
-    const newScale = Math.min(Math.max(MIN_SCALE, scale - e.deltaY * scaleSensitivity), 4);
-    setScale(newScale);
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -102,44 +119,21 @@ const FloorPage = () => {
     if (e.touches.length === 1) {
         setIsDragging(true);
         setDragStart({ x: e.touches[0].clientX - position.x, y: e.touches[0].clientY - position.y });
-    } else if (e.touches.length === 2) {
-        // Prepare for pinch
-        const dist = Math.hypot(
-            e.touches[0].clientX - e.touches[1].clientX,
-            e.touches[0].clientY - e.touches[1].clientY
-        );
-        setLastTouchDistance(dist);
     }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    // 1. Panning
+    // 1. Panning only (No zoom)
     if (e.touches.length === 1 && isDragging) {
         setPosition({
             x: e.touches[0].clientX - dragStart.x,
             y: e.touches[0].clientY - dragStart.y
         });
     }
-    // 2. Pinch Zoom
-    else if (e.touches.length === 2 && lastTouchDistance) {
-        const dist = Math.hypot(
-            e.touches[0].clientX - e.touches[1].clientX,
-            e.touches[0].clientY - e.touches[1].clientY
-        );
-        
-        const delta = dist - lastTouchDistance;
-        // Sensitivity factor
-        const zoomSpeed = 0.005;
-        const newScale = Math.min(Math.max(MIN_SCALE, scale + delta * zoomSpeed), 4);
-        
-        setScale(newScale);
-        setLastTouchDistance(dist);
-    }
   };
 
   const handleTouchEnd = () => {
     setIsDragging(false);
-    setLastTouchDistance(null);
   };
 
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -217,7 +211,7 @@ const FloorPage = () => {
 
       <div 
         ref={containerRef}
-        className="absolute inset-0 flex items-center justify-center cursor-default"
+        className="absolute inset-0 flex items-center justify-center cursor-default touch-none"
         onWheel={handleWheel}
         onMouseDown={(e) => {
             handleMouseDown(e); 
