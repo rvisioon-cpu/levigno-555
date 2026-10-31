@@ -97,7 +97,7 @@ export default async function MediaPage() {
       if (url) {
         unitMedia.push({
           id: `unit-${unit.id}-unfurnished-${idx}`,
-          title: `Departamento ${unit.identifier} - Sin Amoblar`,
+          title: `Departamento ${unit.identifier} - Entregable`,
           url: getAssetUrl(url),
           type: "image",
           category: "EL_EDIFICIO",

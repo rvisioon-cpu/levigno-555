@@ -290,7 +290,7 @@ export default function MediaDashboard({ initialMedia, currentUserRole = "SELLER
                       >
                         <option value="TODOS">Todas las Subtipologías</option>
                         <option value="furnished">Amoblado</option>
-                        <option value="unfurnished">Sin Amoblar</option>
+                        <option value="unfurnished">Entregable</option>
                         <option value="plans">Medidas</option>
                       </select>
                     </div>
@@ -327,7 +327,7 @@ export default function MediaDashboard({ initialMedia, currentUserRole = "SELLER
                     <span>{catLabel.toUpperCase()}</span>
                     {catKey === "EL_EDIFICIO" && (
                       <span className="text-xs font-normal text-gray-400 font-secondary lowercase first-letter:uppercase">
-                        Corresponde a las imágenes de los pisos y departamentos (amoblados, sin amoblar, medidas, galería, balcón).
+                        Corresponde a las imágenes de los pisos y departamentos (amoblados, Entregable, medidas, galería, balcón).
                       </span>
                     )}
                   </h2>
@@ -396,7 +396,7 @@ export default function MediaDashboard({ initialMedia, currentUserRole = "SELLER
                                 <p className="text-xs text-gray-400 font-secondary mt-1">
                                   Tipología: {mediaItem.typology} | {
                                     mediaItem.subTypology === "furnished" ? "Amoblado" : 
-                                    mediaItem.subTypology === "unfurnished" ? "Sin Amoblar" : "Medidas"
+                                    mediaItem.subTypology === "unfurnished" ? "Entregable" : "Medidas"
                                   }
                                 </p>
                               )}
@@ -482,7 +482,7 @@ export default function MediaDashboard({ initialMedia, currentUserRole = "SELLER
               </select>
               {uploadCategory === "EL_EDIFICIO" && (
                 <p className="text-xs text-gray-500 mt-1.5 font-medium leading-relaxed">
-                  Las imágenes de esta categoría corresponden a los pisos y departamentos (vistas amoblada, sin amoblar, medidas, galería, balcón).
+                  Las imágenes de esta categoría corresponden a los pisos y departamentos (vistas amobladas, Entregable, medidas, galería, balcón).
                 </p>
               )}
             </div>

@@ -1210,7 +1210,7 @@ export default function UnitsDashboard({
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-semibold text-[11px] text-gray-500">
-                      Fotos de Unidad Sin Amoblar
+                      Fotos de Unidad Entregable
                     </span>
                   </label>
                   <textarea
@@ -1403,7 +1403,7 @@ export default function UnitsDashboard({
                   }}
                   className={`tab ${activeDetailTab === "unfurnished" ? "tab-active border-brand-orange text-brand-orange font-bold" : "text-gray-500"}`}
                 >
-                  Sin Amoblar
+                  Entregable
                 </button>
               )}
               {(isSuperAdmin || selectedUnit.photosPlans.length > 0) && (
@@ -1496,7 +1496,7 @@ export default function UnitsDashboard({
                {activeDetailTab === "unfurnished" && (
                  <div className="w-full">
                    {selectedUnit.photosUnfurnished.length === 0 ? (
-                     <div className="text-gray-400 text-center py-12">No hay fotos sin amoblar disponibles.</div>
+                     <div className="text-gray-400 text-center py-12">No hay fotos de Entregable disponibles.</div>
                    ) : (
                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                        {selectedUnit.photosUnfurnished.map((url, idx) => {
@@ -1519,7 +1519,7 @@ export default function UnitsDashboard({
                                  : "border-base-300 shadow-sm hover:border-brand-orange/40"
                              }`}
                            >
-                             <img src={getAssetUrl(url)} alt={`Sin Amoblar ${idx + 1}`} className="w-full h-full object-cover" />
+                             <img src={getAssetUrl(url)} alt={`Entregable ${idx + 1}`} className="w-full h-full object-cover" />
                            </div>
                          );
                        })}

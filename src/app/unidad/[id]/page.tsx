@@ -283,7 +283,7 @@ const UnitPage = () => {
              {/* State Label */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop-blur px-6 py-3 rounded-xl text-white font-light uppercase tracking-widest pointer-events-none opacity-0 hover:opacity-100 transition-opacity">
                   {viewMode === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : `Amoblado${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
-                  {viewMode === 'unfurnished' && `Sin Amoblar${isDuplex ? ` - Piso ${duplexFloor}` : ''}`}
+                  {viewMode === 'unfurnished' && `Entregable${isDuplex ? ` - Piso ${duplexFloor}` : ''}`}
                   {viewMode === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : `Medidas${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
               </div>
           </div>
@@ -322,7 +322,7 @@ const UnitPage = () => {
 
   const getNavLabel = (target?: 'furnished' | 'unfurnished' | 'plans') => {
       if (!target) return '';
-      if (target === 'unfurnished') return 'Sin Amoblar';
+      if (target === 'unfurnished') return 'Entregable';
       if (target === 'furnished') return unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado';
       if (target === 'plans') return 'Medidas';
       return '';
@@ -779,7 +779,7 @@ const UnitPage = () => {
                                                 : 'text-neutral-300 hover:text-white'
                                         }`}
                                     >
-                                        Sin Amoblar
+                                        Entregable
                                     </button>
                                     <button
                                         onClick={() => handleViewChange('furnished')}

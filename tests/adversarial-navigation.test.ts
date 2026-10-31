@@ -123,7 +123,7 @@ function getNavStateSim(unit: { hasFurnishedView?: boolean }, viewMode: string) 
 
 function getNavLabelSim(unit: { subtitle?: string }, target?: 'furnished' | 'unfurnished' | 'plans') {
   if (!target) return '';
-  if (target === 'unfurnished') return 'Sin Amoblar';
+  if (target === 'unfurnished') return 'Entregable';
   if (target === 'furnished') return unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado';
   if (target === 'plans') return 'Medidas';
   return '';
@@ -482,12 +482,12 @@ describe('Adversarial Test Suite: Unit Navigation & Stress Challenger', () => {
 
       assert.equal(getNavLabelSim(mockTerrazaUnit, 'furnished'), 'Terraza');
       assert.equal(getNavLabelSim(mockTerrazaUnit, 'plans'), 'Medidas');
-      assert.equal(getNavLabelSim(mockTerrazaUnit, 'unfurnished'), 'Sin Amoblar');
+      assert.equal(getNavLabelSim(mockTerrazaUnit, 'unfurnished'), 'Entregable');
 
       const mockStandardUnit = { subtitle: 'Flat', hasFurnishedView: true };
       assert.equal(getNavLabelSim(mockStandardUnit, 'furnished'), 'Amoblado');
       assert.equal(getNavLabelSim(mockStandardUnit, 'plans'), 'Plano');
-      assert.equal(getNavLabelSim(mockStandardUnit, 'unfurnished'), 'Sin Amoblar');
+      assert.equal(getNavLabelSim(mockStandardUnit, 'unfurnished'), 'Entregable');
     });
 
     it('4.5: Non-Furnished Units Boundary: Units with hasFurnishedView: false disable arrow navigation', () => {
@@ -631,7 +631,7 @@ describe('Adversarial Test Suite: Unit Navigation & Stress Challenger', () => {
 
       assert.ok(html.includes('Piso 16 (Nivel 1)'), 'Missing Piso 16 (Nivel 1) pill button');
       assert.ok(html.includes('Piso 17 (Nivel 2)'), 'Missing Piso 17 (Nivel 2) pill button');
-      assert.ok(html.includes('Sin Amoblar'), 'Missing Sin Amoblar pill button');
+      assert.ok(html.includes('Entregable'), 'Missing Entregable pill button');
       assert.ok(html.includes('Amoblado'), 'Missing Amoblado pill button');
       assert.ok(html.includes('Plano'), 'Missing Plano pill button');
       assert.ok(html.includes('Dúplex'), 'Missing Dúplex subtitle in header');
