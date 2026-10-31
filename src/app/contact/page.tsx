@@ -7,6 +7,7 @@ import FullScreenToggle from '@/components/UI/FullScreenToggle';
 import config from '@/config/config';
 import Adviser from '@/components/Adviser';
 import { advisersData } from '@/data/advisers';
+import { homepageData } from '@/data/homepage';
 
 const TikTokIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
     <svg 
@@ -211,9 +212,10 @@ const Contact = () => {
           loop 
           muted 
           playsInline
+          poster={homepageData.intro.poster}
           className="w-full h-full object-cover"
         >
-          <source src={getAssetUrl('videos/walk.mp4')} type="video/mp4" />
+          <source src={homepageData.intro.video} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/20" />
       </div>
