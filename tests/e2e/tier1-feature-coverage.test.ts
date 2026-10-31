@@ -31,7 +31,7 @@ describe('Tier 1: Feature Coverage', () => {
     
     it('1.1.1: All 42 units in floors.ts map to a valid typology T1..T12', async () => {
       const floorsModule = await import('../../src/data/floors.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const allUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
       
       // Filter out duplicate floor 17 entry for duplex 1601 to get unique units
       const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
@@ -54,7 +54,7 @@ describe('Tier 1: Feature Coverage', () => {
 
     it('1.1.2: All 42 units have accessible plans.webp asset on disk', async () => {
       const floorsModule = await import('../../src/data/floors.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const allUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
       const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
 
       for (const unitId of uniqueUnitIds) {
@@ -71,7 +71,7 @@ describe('Tier 1: Feature Coverage', () => {
 
     it('1.1.3: All 42 units have accessible furnished.webp asset on disk', async () => {
       const floorsModule = await import('../../src/data/floors.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const allUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
       const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
 
       for (const unitId of uniqueUnitIds) {
@@ -88,7 +88,7 @@ describe('Tier 1: Feature Coverage', () => {
 
     it('1.1.4: All 42 units have accessible unfurnished.webp asset on disk', async () => {
       const floorsModule = await import('../../src/data/floors.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const allUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
       const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
 
       for (const unitId of uniqueUnitIds) {
@@ -105,7 +105,7 @@ describe('Tier 1: Feature Coverage', () => {
 
     it('1.1.5: All 42 units have accessible gallery WebP assets matching their typology count', async () => {
       const floorsModule = await import('../../src/data/floors.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const allUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
       const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
 
       for (const unitId of uniqueUnitIds) {

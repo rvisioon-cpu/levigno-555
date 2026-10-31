@@ -207,7 +207,7 @@ describe('Tier 3: Cross-Feature Combinations', () => {
   // =========================================================================
   describe('Group 3.3: Cross-Module Unit Metadata Alignment', () => {
 
-    it('3.3.1: All 42 units in floors.ts have corresponding SVG geometry in floor-unit-geometry.ts', async () => {
+    it('3.3.1: All units and parkings in floors.ts have corresponding SVG geometry in floor-unit-geometry.ts', async () => {
       const floorsModule = await import('../../src/data/floors.js');
       const geometryModule = await import('../../src/data/floor-unit-geometry.js');
       const allUnits = floorsModule.floorsData.flatMap(f => f.units);
@@ -226,11 +226,11 @@ describe('Tier 3: Cross-Feature Combinations', () => {
       }
     });
 
-    it('3.3.2: All 42 units in floors.ts have a valid Kuula 360 tour URL in unit-tours.ts', async () => {
+    it('3.3.2: All 42 apartment units in floors.ts have a valid Kuula 360 tour URL in unit-tours.ts', async () => {
       const floorsModule = await import('../../src/data/floors.js');
       const toursModule = await import('../../src/data/unit-tours.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
-      const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
+      const apartmentUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
+      const uniqueUnitIds = Array.from(new Set(apartmentUnits.map(u => u.id)));
 
       for (const unitId of uniqueUnitIds) {
         const tour = toursModule.unitTourUrls[unitId];
@@ -242,16 +242,27 @@ describe('Tier 3: Cross-Feature Combinations', () => {
       }
     });
 
-    it('3.3.3: Commercial parameters (dimensions, bedrooms, bathrooms) are strictly valid across all 42 units', async () => {
+    it('3.3.3: Commercial parameters (dimensions, bedrooms, bathrooms) are strictly valid across all 42 apartment units', async () => {
       const floorsModule = await import('../../src/data/floors.js');
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const apartmentUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
 
-      for (const unit of allUnits) {
+      for (const unit of apartmentUnits) {
         assert.ok(unit.dimensions > 0, `Unit ${unit.id} dimensions must be > 0`);
         assert.ok(unit.bedrooms && unit.bedrooms >= 1, `Unit ${unit.id} bedrooms must be >= 1`);
         assert.ok(unit.bathrooms && unit.bathrooms >= 1, `Unit ${unit.id} bathrooms must be >= 1`);
         assert.ok(['available', 'reserved', 'sold'].includes(unit.status), `Unit ${unit.id} status is invalid`);
       }
+    });
+
+    it('3.3.4: All 21 parking units (E1..E14, M1..M7) are properly distributed across Floor 1 and basements', async () => {
+      const floorsModule = await import('../../src/data/floors.js');
+      const parkingUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'parking');
+      assert.strictEqual(parkingUnits.length, 21, 'Must have exactly 21 parking spaces');
+
+      const carParkings = parkingUnits.filter(u => u.id.startsWith('E'));
+      const motoParkings = parkingUnits.filter(u => u.id.startsWith('M'));
+      assert.strictEqual(carParkings.length, 14, 'Must have 14 car parking spaces (E1..E14)');
+      assert.strictEqual(motoParkings.length, 7, 'Must have 7 quad bike spaces (M1..M7)');
     });
 
   });

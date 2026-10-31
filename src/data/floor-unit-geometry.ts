@@ -1,5 +1,5 @@
 /**
- * Authoritative SVG floor plan polygon coordinates for Livigno units.
+ * Authoritative SVG floor plan polygon coordinates for Livigno units and parkings.
  * All coordinates are normalized percentage-based values (viewBox 0 0 100 100)
  * aligned with the visual layout of each level.
  */
@@ -43,6 +43,40 @@ export const UNIT_COORDINATES = {
 } as const;
 
 /**
+ * Estacionamientos de carros (E1..E14) y cuatrimotos (M1..M7).
+ */
+export const PARKING_COORDINATES: Record<string, string> = {
+  // Piso 1
+  E1: 'M 13.3,41.4 L 13.9,29.5 L 0.4,29.7 L 0.2,41.1 Z',
+  E2: 'M 13.5,53.3 L 13.2,40.9 L 0.3,41.1 L 0.1,53.5 Z',
+
+  // Sótano 1
+  E3: 'M 75.4,62.9 L 89.3,62.8 L 89.9,72.4 L 75.8,72.3 Z',
+  E4: 'M 74.9,51.7 L 88.6,51.2 L 89.3,62.7 L 75.4,62.8 Z',
+  E5: 'M 21.6,45.8 L 21.8,34.7 L 8.7,34.1 L 8.9,45.8 Z',
+  E6: 'M 21.3,51.9 L 20.1,51.9 L 20.1,51.2 L 7.9,51 L 7.6,63.3 L 19.3,63.4 L 19.6,56.4 L 21.1,56.5 Z',
+  E7: 'M 19.2,64 L 7.6,64.3 L 7.1,71.9 L 19,71.8 Z',
+  M1: 'M 88.6,50.6 L 88,41.8 L 74.8,42.4 L 75,50.2 Z',
+  M2: 'M 86.1,40.8 L 85.8,31.9 L 74.4,32.5 L 74.7,41.1 Z',
+
+  // Sótano 2
+  E8: 'M 90.4,72.3 L 89.8,61.4 L 75.9,61.8 L 76.5,71.9 Z',
+  E9: 'M 89.6,60.1 L 89.2,49.9 L 75.7,50.3 L 76,60.9 Z',
+  E10: 'M 20.9,43.4 L 21.4,33.4 L 20.4,33.2 L 20.5,32.5 L 8.2,32.2 L 7.6,40.3 L 9,42.8 L 9.5,44.1 Z',
+  E11: 'M 20.4,61.4 L 20.7,50.3 L 19.6,50.1 L 19.5,49.3 L 7.3,49.4 L 6.9,61.7 Z',
+  E12: 'M 20.3,62.7 L 6.9,62.7 L 6.3,71.8 L 20,71.9 Z',
+  M3: 'M 89,49 L 88.4,40.2 L 75.3,40.7 L 75.3,47.7 L 78.8,47.3 L 78.8,49.2 Z',
+  M4: 'M 75,39.1 L 86.7,39.2 L 86.4,30.1 L 74.8,30.2 Z',
+
+  // Sótano 3
+  E13: 'M 89.7,61.5 L 75.9,61.7 L 76.3,71.8 L 90.3,72.1 Z',
+  E14: 'M 89.6,60.8 L 89.2,49.9 L 75.8,50.3 L 76,60.7 Z',
+  M5: 'M 89,49 L 78.8,49.2 L 78.7,46.7 L 75.3,47 L 75.1,40 L 88.5,40 Z',
+  M6: 'M 88.5,39.1 L 88.3,34.6 L 88.1,30.2 L 74.9,30.1 L 75.1,39.1 Z',
+  M7: 'M 21,43.4 L 21.4,33.2 L 20.4,33.1 L 20.4,32.3 L 8.2,32.1 L 7.8,40.3 L 20.5,40.9 Z',
+};
+
+/**
  * Calculates the exact geometric centroid of an SVG polygon path.
  * Guarantees stable pin placement inside the visible boundaries.
  */
@@ -81,9 +115,14 @@ export function calculatePolygonCenter(path: string): { x: number; y: number } {
 }
 
 /**
- * Resolves the polygon path for a given unit on a specific floor.
+ * Resolves the polygon path for a given unit or parking on a specific floor.
  */
 export function getUnitPath(floorId: string, unitId: string): string | undefined {
+  // Estacionamientos de carros y cuatrimotos
+  if (PARKING_COORDINATES[unitId]) {
+    return PARKING_COORDINATES[unitId];
+  }
+
   const level = Number(floorId);
 
   // Duplex 1601: Level 16 (piso 1) vs Level 17 (piso 2)

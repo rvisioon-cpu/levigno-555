@@ -19,7 +19,7 @@ const UnitCard = ({
     unit.status === 'reserved' ? 'bg-amber-500' :
     unit.status === 'sold' ? 'bg-red-500' : 'bg-gray-400';
 
-  const isStorage = unit.type === 'storage' || (!unit.bedrooms && !unit.bathrooms);
+  const isStorage = unit.type === 'storage' || unit.type === 'parking' || (!unit.bedrooms && !unit.bathrooms);
 
   return (
     <div className="bg-white overflow-hidden w-full">
@@ -33,13 +33,20 @@ const UnitCard = ({
                   </span>
               </div>
               )}
-              <h2 className="text-lg font-light text-gray-900 leading-tight">{unit.id}</h2>
+              <div className="flex items-baseline gap-2">
+                <h2 className="text-lg font-light text-gray-900 leading-tight">{unit.id}</h2>
+                {unit.subtitle && (
+                  <span className="text-[10px] font-medium tracking-wide uppercase text-gray-400">
+                    {unit.subtitle}
+                  </span>
+                )}
+              </div>
            </div>
         </div>
         
         <div className="p-4 space-y-4">
             <div className="flex justify-between items-center text-gray-600">
-                {unit.subtitle !== 'Terraza' && (
+                {unit.subtitle !== 'Terraza' && typeof unit.dimensions === 'number' && unit.dimensions > 0 && (
                 <div className="flex items-center gap-1.5">
                     <Ruler size={14} strokeWidth={1.5} />
                     <span className="text-xs font-medium">{unit.dimensions} m²</span>

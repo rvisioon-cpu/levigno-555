@@ -124,12 +124,14 @@ function md5File(filePath: string): string {
   return createHash('md5').update(buf).digest('hex');
 }
 
-// Extract unique units across all floors (42 total)
+// Extract unique apartment units across all floors (42 total)
 const allUnitsMap = new Map<string, Unit>();
 for (const floor of floorsData) {
   for (const unit of floor.units) {
-    if (!allUnitsMap.has(unit.id)) {
-      allUnitsMap.set(unit.id, unit);
+    if (unit.type === 'apartment' || unit.assetId) {
+      if (!allUnitsMap.has(unit.id)) {
+        allUnitsMap.set(unit.id, unit);
+      }
     }
   }
 }

@@ -20,7 +20,7 @@ export interface Unit {
   bedrooms?: number;
   bathrooms?: number;
   status: UnitStatus;
-  type?: 'apartment' | 'storage';
+  type?: 'apartment' | 'storage' | 'parking';
   subtitle?: string;
   description?: string;
   images?: string[];
@@ -58,7 +58,7 @@ const unitTypes = [
 
 const soldUnitIds = new Set(['1501', '1202', '1002', '801', '703', '401']);
 
-const units: Unit[] = unitTypes.flatMap((type) => type.ids.map((id) => ({
+export const apartmentUnits: Unit[] = unitTypes.flatMap((type) => type.ids.map((id) => ({
   id,
   floorId: String(Number(id.slice(0, -2))),
   dimensions: type.dimensions,
@@ -72,6 +72,39 @@ const units: Unit[] = unitTypes.flatMap((type) => type.ids.map((id) => ({
   hasFurnishedView: type.hasFurnishedView,
   hasGallery: type.hasGallery,
 })));
+
+export const parkingUnits: Unit[] = [
+  // Piso 1
+  { id: 'E1', floorId: '1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E2', floorId: '1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+
+  // Sótano 1
+  { id: 'E3', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E4', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E5', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E6', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E7', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'M1', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+  { id: 'M2', floorId: 's1', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+
+  // Sótano 2
+  { id: 'E8', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E9', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E10', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E11', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E12', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'M3', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+  { id: 'M4', floorId: 's2', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+
+  // Sótano 3
+  { id: 'E13', floorId: 's3', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'E14', floorId: 's3', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento' },
+  { id: 'M5', floorId: 's3', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+  { id: 'M6', floorId: 's3', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+  { id: 'M7', floorId: 's3', dimensions: 0, status: 'available', type: 'parking', subtitle: 'Estacionamiento Cuatrimoto' },
+];
+
+const allBuildingUnits: Unit[] = [...apartmentUnits, ...parkingUnits];
 
 // Floor plans supplied for this project include all 17 levels and 3 basements.
 // Keep empty floors in the list so every plan is reachable even when no unit
@@ -91,7 +124,7 @@ const floorDefinitions = [
 
 export const floorsData: Floor[] = floorDefinitions.map(({ id, name, asset }) => {
   // The duplex is one apartment with selectable areas on both of its floors.
-  const floorUnits = units.filter((unit) => unit.floorId === id || (id === '17' && unit.id === '1601'));
+  const floorUnits = allBuildingUnits.filter((unit) => unit.floorId === id || (id === '17' && unit.id === '1601'));
   return {
     id,
     name,

@@ -15,7 +15,7 @@ import { usePublicSettings, mergePublicUnit } from '@/hooks/usePublicSettings';
 
 const UnitPage = () => {
   const params = useParams();
-  const unitId = params.id as string;
+  const unitId = (params?.id as string) || '';
   const router = useRouter();
   const [brochure, setBrochure] = useState<{ unitId: string; url: string } | null>(null);
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);

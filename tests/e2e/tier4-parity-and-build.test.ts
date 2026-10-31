@@ -206,7 +206,7 @@ describe('Tier 4: Real-World Verification & Build Health', () => {
       const floorsModule = await import('../../src/data/floors.js');
       assert.ok(floorsModule.floorsData.length >= 20, 'At least 20 floor definitions required (17 + 3 basements)');
       
-      const allUnits = floorsModule.floorsData.flatMap(f => f.units);
+      const allUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'apartment' || u.assetId);
       const uniqueUnitIds = Array.from(new Set(allUnits.map(u => u.id)));
       assert.strictEqual(uniqueUnitIds.length, 42, '42 unique units must be configured for route generation');
     });
