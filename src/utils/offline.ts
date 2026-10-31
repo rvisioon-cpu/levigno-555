@@ -9,7 +9,7 @@
 import { ASSET_BASE_URL, getAssetUrl } from '@/utils/assets';
 import { floorsData } from '@/data/floors';
 
-export const SHELL_CACHE = 'livigno-shell-v1';
+export const SHELL_CACHE = 'livigno-shell-v2';
 export const MEDIA_CACHE = 'livigno-media-v1';
 
 export type ManifestAsset = readonly [string, number];

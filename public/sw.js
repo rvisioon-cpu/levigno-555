@@ -13,15 +13,16 @@
 // pestaña vive mientras el presentador la mantenga abierta.
 //
 // Las dos cachés y por qué están separadas:
-//   livigno-shell-v1   HTML de las rutas, chunks de Next, fuentes, iconos
+//   livigno-shell-v2   HTML de las rutas, chunks de Next, fuentes, iconos
 //   livigno-media-v1   los assets y videos de R2 y del edificio
 // Separadas porque se invalidan por motivos distintos: el shell caduca con
 // cada despliegue de código y el media solo cuando se resube material.
 // ============================================================================
 
-const VERSION = 'v1';
-const SHELL_CACHE = `livigno-shell-${VERSION}`;
-const MEDIA_CACHE = `livigno-media-${VERSION}`;
+const SHELL_VERSION = 'v2';
+const MEDIA_VERSION = 'v1';
+const SHELL_CACHE = `livigno-shell-${SHELL_VERSION}`;
+const MEDIA_CACHE = `livigno-media-${MEDIA_VERSION}`;
 const KNOWN_CACHES = [SHELL_CACHE, MEDIA_CACHE];
 
 // Origen del bucket, leído de la query con la que se registró este worker
