@@ -3,7 +3,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/lib/db";
 import { tours, units, floors } from "@/lib/db/schema";
-import { eq, and, isNull, desc, ne, asc } from "drizzle-orm";
+import { eq, and, isNull, desc, ne, asc, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 
@@ -29,7 +29,12 @@ export async function getToursAdmin() {
     .leftJoin(units, eq(tours.unitId, units.id))
     .leftJoin(floors, eq(units.floorId, floors.id))
     .where(isNull(tours.deletedAt))
-    .orderBy(asc(tours.order), desc(tours.createdAt));
+    .orderBy(
+      asc(tours.order),
+      asc(sql`CASE WHEN ${tours.type} = 'building' THEN 0 ELSE 1 END`),
+      asc(sql`CAST(${units.identifier} AS INTEGER)`),
+      desc(tours.createdAt)
+    );
 }
 
 export async function getToursPublic() {
@@ -53,8 +58,13 @@ export async function getToursPublic() {
     .from(tours)
     .leftJoin(units, eq(tours.unitId, units.id))
     .leftJoin(floors, eq(units.floorId, floors.id))
-    .where(and(eq(tours.isActive, true), isNull(tours.deletedAt)))
-    .orderBy(asc(tours.order), desc(tours.createdAt));
+    .where(and(eq(tours.isActive, true), isNull(tours.deletedAt), ne(tours.targetUrl, "")))
+    .orderBy(
+      asc(tours.order),
+      asc(sql`CASE WHEN ${tours.type} = 'building' THEN 0 ELSE 1 END`),
+      asc(sql`CAST(${units.identifier} AS INTEGER)`),
+      desc(tours.createdAt)
+    );
 }
 
 export async function uploadTour(formData: FormData) {
@@ -322,10 +332,59 @@ export async function deleteTour(id: string) {
   return { success: true };
 }
 
-// Null indica que el proyecto aún usa el catálogo inicial del showroom.
+export async function seedTours() {
+  const db = await getDb();
+  const existing = await db
+    .select({ id: tours.id })
+    .from(tours)
+    .where(isNull(tours.deletedAt))
+    .limit(1);
+
+  if (existing.length > 0) {
+    return await getToursAdmin();
+  }
+
+  const { getTours } = await import("@/data/tours");
+  const defaultTours = getTours();
+
+  for (let i = 0; i < defaultTours.length; i++) {
+    const t = defaultTours[i];
+    const unitId = t.type === "unit" ? t.id.replace(/^unit-/, "") : null;
+    const thumbnail = t.id === "building-main" ? "/amenities/2.webp" : t.thumbnail;
+
+    await db
+      .insert(tours)
+      .values({
+        id: t.id,
+        title: t.title,
+        subtitle: t.subtitle || null,
+        thumbnailUrl: thumbnail,
+        type: t.type,
+        targetUrl: t.target,
+        unitId,
+        order: i,
+        isActive: true,
+        createdAt: new Date(),
+      })
+      .onConflictDoNothing();
+  }
+
+  revalidatePath("/dashboard/tours");
+  revalidatePath("/recorridos");
+  return await getToursAdmin();
+}
+
+// Retorna los recorridos públicos gestionados desde la BD o asegura el seed inicial
 export async function getManagedPublicTours() {
   const db = await getDb();
-  const any = await db.select({ id: tours.id }).from(tours).limit(1);
-  if (!any.length) return null;
+  const any = await db
+    .select({ id: tours.id })
+    .from(tours)
+    .where(and(eq(tours.isActive, true), isNull(tours.deletedAt)))
+    .limit(1);
+
+  if (!any.length) {
+    await seedTours();
+  }
   return getToursPublic();
 }

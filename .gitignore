@@ -48,3 +48,4 @@ next-env.d.ts
 /public/videos/portada.mp4
 /public/plants/
 /public/building/
+.agents/

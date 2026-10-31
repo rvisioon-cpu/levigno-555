@@ -19,21 +19,23 @@ const buildingTours: Tour[] = [
     id: 'building-main',
     title: 'Edificio Principal',
     subtitle: 'Showroom Virtual',
-    thumbnail: getAssetUrl('building/photos/face_0_daylight.png'),
+    thumbnail: getAssetUrl('amenities/2.webp'),
     type: 'building',
     target: buildingTarget
   }
 ];
 
+const seenUnits = new Set<string>();
 const unitTours: Tour[] = floorsData.flatMap((floor) =>
   floor.units.flatMap((unit) => {
-    if (!unit.tourUrl) return [];
+    if (!unit.tourUrl || seenUnits.has(unit.id)) return [];
+    seenUnits.add(unit.id);
 
     return [{
       id: `unit-${unit.id}`,
       title: `Unidad ${unit.id}`,
       subtitle: `${unit.subtitle || 'Departamento'} · Recorrido 360°`,
-      thumbnail: getAssetUrl(`plants/details/${unit.assetId}/furnished.jpg`),
+      thumbnail: getAssetUrl(`plants/details/${unit.assetId}/gallery/1.jpg`),
       type: 'unit' as const,
       target: unit.tourUrl,
       floorName: floor.name,

@@ -5,6 +5,7 @@ import { Play } from 'lucide-react';
 import { getTours, type Tour } from '@/data/tours';
 import { getManagedPublicTours } from '@/app/actions/tours';
 import { usePublicSettings } from '@/hooks/usePublicSettings';
+import { getAssetUrl } from '@/utils/assets';
 import Sidebar from '@/components/layout/Sidebar';
 import TourHeader from '@/components/UI/TourHeader';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
@@ -17,16 +18,28 @@ const RecorridosContent = () => {
   const router = useRouter();
   const [managedTours, setManagedTours] = useState<Tour[] | null>(null);
   const { units } = usePublicSettings();
-  const tours = useMemo(() => managedTours ?? getTours().flatMap(tour => {
-    if (tour.type !== 'unit') return [tour];
-    const detail = units[tour.id.replace(/^unit-/, '')];
-    return detail ? (detail.tourUrl ? [{ ...tour, target: detail.tourUrl }] : []) : [tour];
-  }), [managedTours, units]);
+  const tours = useMemo(() => {
+    if (managedTours && managedTours.length > 0) return managedTours;
+    return getTours().flatMap(tour => {
+      if (tour.type !== 'unit') return [tour];
+      const detail = units[tour.id.replace(/^unit-/, '')];
+      return detail ? (detail.tourUrl ? [{ ...tour, target: detail.tourUrl }] : []) : [tour];
+    });
+  }, [managedTours, units]);
+
   useEffect(() => {
     let active = true;
     getManagedPublicTours().then(rows => {
-      if (!active || rows === null) return;
-      setManagedTours(rows.map(row => ({ id: row.id, title: row.title, subtitle: row.subtitle || '', thumbnail: row.thumbnailUrl, type: row.type === 'unit' ? 'unit' : 'building', target: row.targetUrl, floorName: row.floorName || undefined })));
+      if (!active || rows === null || rows.length === 0) return;
+      setManagedTours(rows.map(row => ({
+        id: row.id,
+        title: row.title,
+        subtitle: row.subtitle || '',
+        thumbnail: getAssetUrl(row.thumbnailUrl),
+        type: row.type === 'unit' ? 'unit' : 'building',
+        target: row.targetUrl,
+        floorName: row.floorName || undefined
+      })));
     }).catch(() => {});
     return () => { active = false; };
   }, []);
@@ -34,7 +47,7 @@ const RecorridosContent = () => {
   useEffect(() => {
     const tourId = searchParams.get('tourId');
     if (tourId) {
-        const found = tours.find(t => t.id === tourId);
+        const found = tours.find(t => t.id === tourId) || (tourId === 'building-main' ? tours.find(t => t.type === 'building') : undefined);
         if (found) setSelectedTour(found);
     }
   }, [searchParams, tours]);
@@ -59,7 +72,7 @@ const RecorridosContent = () => {
         <div className="absolute top-0 left-0 w-full z-50">
            <TourHeader 
                 title={selectedTour.title}
-                subtitle={`${selectedTour.subtitle} ${selectedTour.floorName ? `- Piso ${selectedTour.floorName}` : ''}`}
+                subtitle={`${selectedTour.subtitle || ''}${selectedTour.floorName ? ` · Piso ${selectedTour.floorName}` : ''}`}
                 onBack={closeViewer}
             />
         </div>
@@ -136,7 +149,7 @@ const RecorridosContent = () => {
                         
                         {/* Type Badge */}
                         <div className="absolute top-4 left-4 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-white text-xs uppercase tracking-wider font-medium">
-                            {tour.type === 'building' ? 'Edificio' : `Unidad · Piso ${tour.floorName}`}
+                            {tour.type === 'building' ? 'Edificio' : `Unidad${tour.floorName ? ` · Piso ${tour.floorName}` : ''}`}
                         </div>
                     </div>
 

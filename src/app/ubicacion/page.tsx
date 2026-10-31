@@ -14,8 +14,28 @@ const DirectionsPage = () => {
   const [openLandmark, setOpenLandmark] = useState<Landmark | null>(null);
   const [filter, setFilter] = useState('');
   const [managedLocations, setManagedLocations] = useState<LocationFeature[] | null>(null);
-  useEffect(() => { let active = true; getLocations().then(rows => { if (active) setManagedLocations(rows.map(row => ({ id: row.id, type: 'Feature', properties: { nombre: row.name, categoria: row.category, imagen: row.imagePath || undefined }, geometry: { type: 'Point', coordinates: [row.longitude, row.latitude] } }))); }).catch(() => {}); return () => { active = false; }; }, []);
-  const publicLocations = managedLocations ?? locationsData.features;
+  useEffect(() => { 
+    let active = true; 
+    getLocations().then(rows => { 
+      if (active && rows && rows.length > 0) {
+        setManagedLocations(rows.map(row => ({ 
+          id: row.id, 
+          type: 'Feature', 
+          properties: { 
+            nombre: row.name, 
+            categoria: row.category, 
+            imagen: row.imagePath || undefined 
+          }, 
+          geometry: { 
+            type: 'Point', 
+            coordinates: [row.longitude, row.latitude] 
+          } 
+        }))); 
+      }
+    }).catch(() => {}); 
+    return () => { active = false; }; 
+  }, []);
+  const publicLocations = (managedLocations && managedLocations.length > 0) ? managedLocations : locationsData.features;
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -40,7 +60,9 @@ const DirectionsPage = () => {
 
   const filteredLocations = publicLocations.filter((feature: LocationFeature) => {
     const matchesSearch = feature.properties.nombre.toLowerCase().includes(filter.toLowerCase());
-    const matchesCategory = selectedCategory ? feature.properties.categoria === selectedCategory : true;
+    const matchesCategory = selectedCategory 
+      ? feature.properties.categoria?.toLowerCase().trim() === selectedCategory.toLowerCase().trim() 
+      : true;
     return matchesSearch && matchesCategory;
   });
 
@@ -375,7 +397,7 @@ const DirectionsPage = () => {
                                     <div className="w-10 h-10 rounded-full bg-white p-1.5 shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                                         {feature.properties.imagen ? (
                                             <img 
-                                                src={`/${feature.properties.imagen}`} 
+                                                src={getAssetUrl(feature.properties.imagen)} 
                                                 alt={feature.properties.nombre}
                                                 className="w-full h-full object-contain"
                                                 onError={(e) => e.currentTarget.style.display = 'none'}

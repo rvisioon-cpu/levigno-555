@@ -1,7 +1,7 @@
 "use server";
 
 import { getDb } from "@/lib/db";
-import { floors, units, logs } from "@/lib/db/schema";
+import { floors, units, logs, tours } from "@/lib/db/schema";
 import { eq, and, isNull, inArray } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
@@ -347,6 +347,33 @@ export async function updateUnit(
     before: { identifier: original.identifier, state: original.state },
     after: { identifier: updatedUnit.identifier, state: updatedUnit.state },
   });
+
+  // Sync with tours table if tourUrl changed
+  if (data.tourUrl !== undefined && data.tourUrl !== original.tourUrl) {
+    if (data.tourUrl) {
+      const existingTour = await db.select({ id: tours.id }).from(tours).where(eq(tours.unitId, id)).limit(1);
+      if (existingTour.length > 0) {
+        await db.update(tours).set({ targetUrl: data.tourUrl, isActive: true, updatedAt: new Date() }).where(eq(tours.unitId, id));
+      } else {
+        const thumb = (Array.isArray(data.photosFurnished) && data.photosFurnished[0]) || `/plants/details/face_0_daylight.png`;
+        await db.insert(tours).values({
+          id: `unit-${id}`,
+          title: `Unidad ${data.identifier}`,
+          subtitle: `${data.type === 'storage' ? 'Depósito' : 'Flat'} · Recorrido 360°`,
+          thumbnailUrl: thumb,
+          type: "unit",
+          targetUrl: data.tourUrl,
+          unitId: id,
+          isActive: true,
+          createdAt: new Date(),
+        }).onConflictDoNothing();
+      }
+    } else {
+      await db.update(tours).set({ isActive: false, targetUrl: "", updatedAt: new Date() }).where(eq(tours.unitId, id));
+    }
+    revalidatePath("/recorridos");
+    revalidatePath("/dashboard/tours");
+  }
 
   revalidatePath("/dashboard/units");
   return updatedUnit;

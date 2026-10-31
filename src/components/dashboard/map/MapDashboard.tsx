@@ -52,12 +52,15 @@ const ICON_PRESETS: Record<string, string[]> = {
     "icons/SALUD_Y_BIENESTAR/huron_azul.png"
   ],
   "Comercio": [
+    "icons/COMERCIO/logo_plazasm.png",
+    "icons/COMERCIO/logo_openplaza.png",
+    "icons/COMERCIO/plaza_san_miguel.png",
+    "icons/COMERCIO/plaza_vea.png",
+    "icons/COMERCIO/tottus.png",
     "icons/COMERCIO/tambo.png",
     "icons/COMERCIO/oxxo.png",
     "icons/COMERCIO/tailoy.png",
     "icons/COMERCIO/mercado.png",
-    "icons/COMERCIO/plaza_san_miguel.png",
-    "icons/COMERCIO/tottus.png",
     "icons/COMERCIO/organa.png"
   ],
   "Restaurantes": [
@@ -68,18 +71,31 @@ const ICON_PRESETS: Record<string, string[]> = {
     "icons/RESTAURANTES/master_kong.png"
   ],
   "Áreas verdes y Recreación": [
+    "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png",
     "icons/AREAS_VERDES_Y_RECREACION/parque_1.png",
     "icons/AREAS_VERDES_Y_RECREACION/parque_2.png",
     "icons/AREAS_VERDES_Y_RECREACION/parque_3.png",
+    "icons/AREAS_VERDES_Y_RECREACION/parque_4.png",
+    "icons/AREAS_VERDES_Y_RECREACION/parque_5.png",
     "icons/AREAS_VERDES_Y_RECREACION/parque_6.png",
-    "icons/AREAS_VERDES_Y_RECREACION/parque_7.png"
+    "icons/AREAS_VERDES_Y_RECREACION/parque_7.png",
+    "icons/AREAS_VERDES_Y_RECREACION/parque_8.png",
+    "icons/AREAS_VERDES_Y_RECREACION/parque_9.png"
   ],
   "Lifestyle": [
+    "icons/LIFESTYLE/logo_arena1.png",
     "icons/LIFESTYLE/smartfit.png",
-    "icons/LIFESTYLE/estadio.png"
+    "icons/LIFESTYLE/cineplanet.png",
+    "icons/LIFESTYLE/estadio.png",
+    "icons/LIFESTYLE/municipalidad.png",
+    "icons/LIFESTYLE/shalom.png"
   ],
   "Educación": [
+    "icons/EDUCACION/logo_pucp.png",
+    "icons/EDUCACION/pucp.png",
+    "icons/EDUCACION/upc.png",
     "icons/EDUCACION/colegio_1.png",
+    "icons/EDUCACION/colegio_2.png",
     "icons/EDUCACION/preescolar_2.png",
     "icons/EDUCACION/preescolar_4.png",
     "icons/EDUCACION/san_martin.png",
@@ -122,7 +138,9 @@ export default function MapDashboard({ initialLocations }: MapDashboardProps) {
   const filteredLocations = useMemo(() => {
     return locations.filter((loc) => {
       const matchesSearch = loc.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategoryFilter ? loc.category === selectedCategoryFilter : true;
+      const matchesCategory = selectedCategoryFilter 
+        ? loc.category.toLowerCase().trim() === selectedCategoryFilter.toLowerCase().trim() 
+        : true;
       return matchesSearch && matchesCategory;
     });
   }, [locations, searchTerm, selectedCategoryFilter]);
@@ -133,8 +151,8 @@ export default function MapDashboard({ initialLocations }: MapDashboardProps) {
     setName("");
     setCategory("Finanzas");
     setImagePath("icons/FINANZAS/interbank.png");
-    setLat("-12.075");
-    setLng("-77.067");
+    setLat("-12.0756");
+    setLng("-77.1013");
     setIsActive(true);
     setIconMode("preset");
     setIconFile(null);
@@ -146,7 +164,8 @@ export default function MapDashboard({ initialLocations }: MapDashboardProps) {
     setModalMode("edit");
     setEditingId(loc.id);
     setName(loc.name);
-    setCategory(loc.category);
+    const normalizedCategory = CATEGORIES.find(c => c.toLowerCase().trim() === loc.category.toLowerCase().trim()) || loc.category;
+    setCategory(normalizedCategory);
     setImagePath(loc.imagePath);
     setLat(loc.latitude.toString());
     setLng(loc.longitude.toString());

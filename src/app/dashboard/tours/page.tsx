@@ -1,4 +1,4 @@
-import { getToursAdmin } from "@/app/actions/tours";
+import { getToursAdmin, seedTours } from "@/app/actions/tours";
 import { getUnits } from "@/app/actions/units";
 import { getMedia } from "@/app/actions/media";
 import { auth } from "@/auth";
@@ -13,11 +13,15 @@ export default async function ToursPage() {
   }
   const role = session.user.role as string;
 
-  const [toursList, unitsList, mediaList] = await Promise.all([
+  let [toursList, unitsList, mediaList] = await Promise.all([
     getToursAdmin(),
     getUnits(),
     getMedia()
   ]);
+
+  if (toursList.length === 0) {
+    toursList = await seedTours();
+  }
 
   // Serialize models for client consumption (Date objects stringified/handled by Next.js if needed)
   const serializedTours = toursList.map((t) => ({

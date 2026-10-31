@@ -17,7 +17,7 @@ for (const floor of floorsData) for (const unit of floor.units) {
 }
 for (const tour of getTours()) {
   const unitId = tour.type === 'unit' ? tour.id.replace(/^unit-/, '') : undefined;
-  const thumbnail = tour.id === 'building-main' ? '/building/exterior/1.1.jpg' : tour.thumbnail;
+  const thumbnail = tour.id === 'building-main' ? '/amenities/2.webp' : tour.thumbnail;
   console.log(`INSERT OR IGNORE INTO tours (id,title,subtitle,thumbnail_url,type,target_url,unit_id,is_active,"order") SELECT ${q(tour.id)},${q(tour.title)},${q(tour.subtitle)},${q(thumbnail)},${q(tour.type)},${q(tour.target)},${q(unitId)},1,0 WHERE ${unitId ? `EXISTS (SELECT 1 FROM units WHERE id = ${q(unitId)} AND deleted_at IS NULL)` : '1'};`);
 }
 for (const [id,title,url,category] of [

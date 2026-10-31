@@ -5,18 +5,27 @@ import { locationsPoi } from "@/lib/db/schema";
 import { eq, isNull, and } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
-import initialLocations from "@/data/livigno_locations.json";
+import { locationsData } from "@/data/locations";
+import { normalizeCategory } from "@/utils/categories";
 
 export async function getLocations(includeInactive = false) {
   const db = await getDb();
   
-  const query = db.select().from(locationsPoi).where(
+  let results = await db.select().from(locationsPoi).where(
     includeInactive
       ? isNull(locationsPoi.deletedAt)
       : and(isNull(locationsPoi.deletedAt), eq(locationsPoi.isActive, true))
   );
   
-  const results = await query;
+  if (results.length === 0) {
+    await seedLocations();
+    results = await db.select().from(locationsPoi).where(
+      includeInactive
+        ? isNull(locationsPoi.deletedAt)
+        : and(isNull(locationsPoi.deletedAt), eq(locationsPoi.isActive, true))
+    );
+  }
+
   return results;
 }
 
@@ -119,14 +128,10 @@ export async function seedLocations() {
   
   const seeded: any[] = [];
   
-  const features = (initialLocations.features || []).filter(
-    (f: any) => f.properties.name !== "Livigno"
-  );
-  
-  for (const feature of features) {
-    const name = feature.properties.name;
-    const category = feature.properties.type || "Otros";
-    const imagePath = feature.properties.icon || null;
+  for (const feature of locationsData.features) {
+    const name = feature.properties.nombre;
+    const category = normalizeCategory(feature.properties.categoria || "Otros");
+    const imagePath = feature.properties.imagen || null;
     const longitude = feature.geometry.coordinates[0];
     const latitude = feature.geometry.coordinates[1];
     
