@@ -69,7 +69,7 @@ const RecorridosContent = () => {
     return (
       <div className="fixed inset-0 z-50 bg-black flex flex-col">
         {/* Viewer Header */}
-        <div className="absolute top-0 left-0 w-full z-50">
+        <div className="pointer-events-none absolute top-3 left-3 z-50 sm:top-4 sm:left-4">
            <TourHeader 
                 title={selectedTour.title}
                 subtitle={`${selectedTour.subtitle || ''}${selectedTour.floorName ? ` · Piso ${selectedTour.floorName}` : ''}`}
