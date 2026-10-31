@@ -11,11 +11,14 @@ export const assetManifest: string[] = [
     // Identity
     'identity/livigno-logo.png',
     'identity/livigno-logo-negative.png',
+    'identity/livigno-logo-tight.png',
     'identity/santa-cruz-kayen-white.png',
     'identity/santa-cruz-kayen-color.png',
     'identity/santa-cruz-kayen-black.png',
     
     // Building Exterior
+    'building/exterior/0.2.loop.mp4',
+    'building/exterior/0.2.jpg',
     'building/photos/face_0_daylight.png',
     'building/photos/face_0_night.png',
     'building/videos/face_0_daylight.mp4',

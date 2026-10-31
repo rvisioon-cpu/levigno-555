@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useStore } from '@/store/useStore';
 import SceneController from '@/components/360/SceneController';
 import Sidebar from '@/components/layout/Sidebar';
-import { Sun, Moon, Rotate3d } from 'lucide-react';
+import { Sun, Moon, Rotate3d, ArrowRight } from 'lucide-react';
 import { preloadImages, preloadVideo } from '@/utils/preload';
 import Loader from '@/components/UI/Loader';
 import { buildingOpening, buildingFaces as defaultFaces } from '@/data/buildingData';
@@ -64,40 +64,30 @@ const ShowroomContent = () => {
           ...(shouldResetToDay ? { timeOfDay: 'day' } : {})
         });
         
-        if (transition !== 'floors') {
-             useStore.setState({ viewState: 'TRANSITION_VIDEO', transitionUrl: buildingOpening[0], targetDestination: 'Lobby' });
-        }
-
-        if (transition) {
+        if (transition === 'aerial') {
+             useStore.setState({ 
+                 viewState: 'AERIAL_LOOP', 
+                 currentRoom: 'Aerial', 
+                 transitionUrl: null 
+             });
+        } else if (transition === 'floors') {
              const face0 = buildingFaces[0];
+             const floorsVideoUrl = timeOfDay === 'day' ? face0.day.introVideo : face0.night.introVideo;
              
-             if (transition === 'intro') {
-                 // Showroom: Matches Homepage "Entrar" video
-                 const introVideoUrl = buildingOpening[0];
-                 
+             if (floorsVideoUrl) {
                  useStore.setState({ 
                      viewState: 'TRANSITION_VIDEO',
-                     transitionUrl: introVideoUrl,
-                     targetDestination: 'Lobby' 
+                     transitionUrl: floorsVideoUrl,
+                     targetDestination: 'Floors'
                  });
-             } else if (transition === 'floors') {
-                 // Plantas: Uses the generic "Central View" walk (Day/Night sensitive)
-                 // NOTE: Since we are in the showroom page, 'floors' transition essentially means 
-                 // we are PREPARING to go to floors, or we came FROM floors?
-                 // Original logic implies we are playing a video related to floors? 
-                 // Actually original sidebar logic: navigate('/showroom', { state: { transition: 'floors', targetPath: path } });
-                 // This plays the video THEN navigates to the targetPath.
-                 
-                 const floorsVideoUrl = timeOfDay === 'day' ? face0.day.introVideo : face0.night.introVideo;
-                 
-                 if (floorsVideoUrl) {
-                     useStore.setState({ 
-                         viewState: 'TRANSITION_VIDEO',
-                         transitionUrl: floorsVideoUrl,
-                         targetDestination: 'Floors'
-                     });
-                 }
              }
+        } else {
+             // Default & 'intro' flow: plays 0.1-0.mp4 from sky to aerial, then lands on AERIAL_LOOP
+             useStore.setState({ 
+                 viewState: 'TRANSITION_VIDEO', 
+                 transitionUrl: buildingOpening[0], 
+                 targetDestination: 'Lobby' 
+             });
         }
 
         try {
@@ -184,12 +174,61 @@ const ShowroomContent = () => {
 
   }, [currentFace, timeOfDay, currentRoom]); 
 
+  // Preload building entrance transition when in AERIAL_LOOP
+  useEffect(() => {
+    if (viewState === 'AERIAL_LOOP') {
+      preloadVideo(buildingOpening[1]).catch(() => {});
+    }
+  }, [viewState]);
+
+  const handleEnterFromAerial = () => {
+    useStore.setState({ 
+      viewState: 'TRANSITION_VIDEO', 
+      transitionUrl: buildingOpening[1], 
+      targetDestination: 'Lobby' 
+    });
+  };
+
   const showLeftButton = currentRoom === 'Lobby' && viewState === 'IDLE' && (currentFace === 0 || currentFace === 2);
   const showRightButton = currentRoom === 'Lobby' && viewState === 'IDLE' && (currentFace === 0 || currentFace === 1);
 
   return (
     <div className="font-sans relative h-full w-full overflow-hidden">
       <SceneController isHighlighted={isHoveringIngresar} />
+
+      {/* Aerial Loop Overlay (Logo + Ingresar Button) */}
+      {viewState === 'AERIAL_LOOP' && (
+        <div className="fixed inset-0 pointer-events-none z-30 flex items-center justify-center lg:justify-start px-6 sm:px-12 lg:px-20 xl:px-28">
+          <div className="pointer-events-auto flex flex-col items-center text-center w-full max-w-[340px] sm:max-w-[400px] transition-all duration-700">
+            {/* Logo */}
+            <div className="flex flex-col items-center w-full">
+              <img 
+                src="/identity/livigno-logo-tight.png" 
+                alt="Livigno 555" 
+                className="w-64 sm:w-80 lg:w-[340px] object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)] select-none"
+              />
+              
+              {/* Boutique subtitle divider */}
+              <div className="flex items-center gap-3 w-full my-4 px-1">
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-white/40 to-white/70" />
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.35em] font-light text-white font-secondary drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap select-none">
+                  Edificio Boutique
+                </span>
+                <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-white/40 to-white/70" />
+              </div>
+            </div>
+
+            {/* Ingresar Button */}
+            <button
+              onClick={handleEnterFromAerial}
+              className="w-full max-w-[280px] mt-2 py-3.5 px-8 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/70 hover:border-white text-white font-secondary text-xs sm:text-sm uppercase tracking-[0.25em] font-medium transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.8)] flex items-center justify-center gap-3 cursor-pointer group hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="relative top-[0.5px]">INGRESAR</span>
+              <ArrowRight className="w-4 h-4 text-white/90 group-hover:text-white group-hover:translate-x-1.5 transition-transform duration-300" strokeWidth={1.5} />
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="fixed top-6 left-6 z-30 group">
         <button 

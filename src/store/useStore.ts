@@ -7,7 +7,7 @@ interface ShowroomState {
   buildingFaces: BuildingFace[];
   currentFloor: number | null;
   currentRoom: string;
-  viewState: string; // 'IDLE' | 'TRANSITION_VIDEO' | 'TRANSITION_ROTATION' | 'TRANSITION_TIMELAPSE'
+  viewState: string; // 'IDLE' | 'TRANSITION_VIDEO' | 'TRANSITION_ROTATION' | 'TRANSITION_TIMELAPSE' | 'AERIAL_LOOP'
   isLoading: boolean;
   currentFace: number;
   nextFace: number | null;

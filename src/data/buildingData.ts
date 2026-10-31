@@ -18,6 +18,7 @@ export interface BuildingFace {
 }
 
 export const buildingOpening = [exterior('0.1-0'), exterior('0.2-1.1')];
+export const buildingAerialLoop = exterior('0.2.loop');
 
 function face(id: 1 | 2 | 3, name: string): BuildingFace {
   const assets = (time: 1 | 2): AssetSet => ({

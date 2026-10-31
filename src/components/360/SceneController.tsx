@@ -68,7 +68,15 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
         // Navigate immediately without fading out to avoid revealing the background
         
         if (targetDestination === 'Lobby' && transitionUrl === buildingOpening[0]) {
-            useStore.setState({ transitionUrl: buildingOpening[1] });
+            if (videoRef.current) {
+                videoRef.current.style.zIndex = "-1";
+                videoRef.current.style.opacity = "0";
+            }
+            useStore.setState({ 
+                viewState: 'AERIAL_LOOP', 
+                currentRoom: 'Aerial', 
+                transitionUrl: null 
+            });
             return;
         }
         if (targetDestination === 'Floors') {
@@ -76,11 +84,8 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
             endTransition('Sala Principal');
             router.push('/plantas');
         } else {
-            if (videoRef.current) videoRef.current.style.zIndex = "-1"; 
-            
-            // Assume Intro (Lobby)
-            // Just transition to IDLE in the Lobby
-             // Fade out video to reveal Lobby
+            // Ensure background underneath is Lobby (Face 1.1) so fading out reveals the building
+            useStore.setState({ currentRoom: 'Lobby' });
             if (videoRef.current) {
                  gsap.to(videoRef.current, {
                     opacity: 0,
@@ -142,8 +147,26 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
       {/* LAYER 1: 360 Panorama (Static background for now) */}
       {/* LAYER 1: 360 Panorama (Static background for now) */}
       <div ref={panoRef} className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-        {/* If we are in the Exterior/Masterplan view, show faces. Otherwise show room name */}
-        {currentRoom === 'Lobby' ? ( // Assuming Lobby/Exterior is the default starting point where rotation happens
+        {/* If we are in Aerial loop mode, play the 0.2 aerial loop video */}
+        {viewState === 'AERIAL_LOOP' || currentRoom === 'Aerial' ? (
+           <div className="relative w-full h-full">
+              <img 
+                src="/building/exterior/0.2.jpg" 
+                alt="Vista aérea del edificio" 
+                className="w-full h-full object-cover"
+              />
+              <video
+                key="aerial-loop-video"
+                src="/building/exterior/0.2.loop.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+           </div>
+        ) : currentRoom === 'Lobby' ? ( // Assuming Lobby/Exterior is the default starting point where rotation happens
            <div className="relative w-full h-full">
               <img 
                 src={buildingFaces[currentFace][timeOfDay].background} 
