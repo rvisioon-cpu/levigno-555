@@ -188,6 +188,8 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
       </Marker>
     ));
 
+      // NOTA: Los hitos están deshabilitados temporalmente y se muestran como puntos normales
+      // con sus respectivos iconos. Retornarán a ser hitos posteriormente activando landmarks en @/data/landmarks.
       landmarks.forEach((landmark) => {
           list.push(
               <Marker key={`landmark-${landmark.slug}`} longitude={landmark.coordinates[0]} latitude={landmark.coordinates[1]} anchor="bottom">
