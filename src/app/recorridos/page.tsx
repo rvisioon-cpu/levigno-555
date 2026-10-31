@@ -120,7 +120,7 @@ const RecorridosContent = () => {
                         
                         {/* Type Badge */}
                         <div className="absolute top-4 left-4 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-white text-xs uppercase tracking-wider font-medium">
-                            {tour.type === 'building' ? 'Edificio' : `Piso ${tour.floorName}`}
+                            {tour.type === 'building' ? 'Edificio' : `Unidad · Piso ${tour.floorName}`}
                         </div>
                     </div>
 

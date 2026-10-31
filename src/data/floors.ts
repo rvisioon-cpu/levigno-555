@@ -1,5 +1,6 @@
 import { getAssetUrl } from '@/utils/assets';
 import { floorUnitGeometry } from './floor-unit-geometry';
+import { unitTourUrls } from './unit-tours';
 
 export type UnitStatus = 'available' | 'reserved' | 'sold' | 'unknown';
 
@@ -64,6 +65,7 @@ const units: Unit[] = unitTypes.flatMap((type) => type.ids.map((id) => ({
   type: 'apartment' as const,
   subtitle: type.subtitle,
   assetId: type.assetId,
+  tourUrl: unitTourUrls[id],
   hasFurnishedView: type.hasFurnishedView,
   hasGallery: type.hasGallery,
 })));
