@@ -87,7 +87,7 @@ const DirectionsPage = () => {
     }
   }, [filter, searchMode]);
 
-  const handleLocationSelect = (coords: [number, number], name?: string) => {
+  const handleLocationSelect = (coords: [number, number], name?: string, fromList = false) => {
     if (name) setSelectedName(name);
     
     if (searchMode === 'explore') {
@@ -98,7 +98,11 @@ const DirectionsPage = () => {
         setDestination(null); 
     }
     
-    if (window.innerWidth < 768) setIsPanelOpen(false);
+    if (fromList && window.innerWidth < 768) {
+        setIsPanelOpen(false);
+    } else {
+        setIsPanelOpen(true);
+    }
   };
 
   const handleRouteCalculated = useCallback((stats: any | null) => {
@@ -121,8 +125,8 @@ const DirectionsPage = () => {
                 destination={destination}
                 origin={originLocation}
                 onMarkerClick={(coords, name) => {
-                    // Only handle marker clicks in explore mode primarily, or to set destination
-                    if (searchMode === 'explore') handleLocationSelect(coords, name);
+                    handleLocationSelect(coords, name);
+                    setIsPanelOpen(true);
                 }}
                 transportMode={transportMode}
                 onRouteCalculated={handleRouteCalculated}
@@ -254,12 +258,12 @@ const DirectionsPage = () => {
 
         {/* Floating Bottom Panel (Console) */}
         <div 
-            className={`fixed bottom-0 md:bottom-6 left-0 md:left-6 w-full md:w-[450px] bg-white md:rounded-2xl shadow-2xl z-20 flex flex-col transition-all duration-500 ease-in-out h-full md:h-auto md:max-h-[70%] ${isPanelOpen ? 'translate-y-0 pointer-events-auto' : 'translate-y-full md:translate-y-[calc(100%-180px)] opacity-100 pointer-events-none'}`}
+            className={`fixed bottom-0 md:bottom-6 left-0 md:left-6 w-full md:w-[450px] bg-white md:rounded-2xl shadow-2xl z-20 flex flex-col transition-all duration-500 ease-in-out h-full md:h-auto md:max-h-[70%] ${isPanelOpen ? 'translate-y-0 pointer-events-auto' : 'translate-y-full md:translate-y-[calc(100%-180px)] opacity-100 pointer-events-none md:pointer-events-auto'}`}
         >
              
              {/* Handler / Header Area */}
              <div 
-                className="p-4 border-b border-gray-100 flex flex-col gap-4 cursor-pointer bg-white md:rounded-t-2xl"
+                className="p-4 border-b border-gray-100 flex flex-col gap-4 cursor-pointer bg-white md:rounded-t-2xl pointer-events-auto select-none"
                 onClick={(e) => {
                     // Prevent toggling when clicking inputs or buttons
                     if ((e.target as HTMLElement).tagName === 'INPUT' || (e.target as HTMLElement).closest('button')) return;
@@ -272,11 +276,13 @@ const DirectionsPage = () => {
                     {/* Close Handle / Arrow - Top Center (User Request) */}
                     <div className="w-full flex justify-center pb-1">
                         <button 
-                            className="text-gray-400 hover:text-brand-orange p-1"
+                            type="button"
+                            className="text-gray-400 hover:text-brand-orange p-1 transition-colors cursor-pointer pointer-events-auto"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setIsPanelOpen(!isPanelOpen);
                             }}
+                            aria-label={isPanelOpen ? "Cerrar panel" : "Abrir panel"}
                         >
                             {isPanelOpen ? <ChevronDown size={24} /> : <ChevronUp size={24} />}
                         </button>
@@ -330,13 +336,13 @@ const DirectionsPage = () => {
                         {/* Mode Tabs */}
                         <div className="flex bg-gray-100 rounded-lg p-1 shrink-0 self-start md:self-center">
                             <button
-                                onClick={() => { setSearchMode('explore'); setFilter(''); }}
+                                onClick={() => { setSearchMode('explore'); setFilter(''); setIsPanelOpen(true); }}
                                 className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${searchMode === 'explore' ? 'bg-white text-brand-orange shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                             >
                                 Explorar
                             </button>
                             <button
-                                onClick={() => { setSearchMode('directions'); setFilter(''); }}
+                                onClick={() => { setSearchMode('directions'); setFilter(''); setIsPanelOpen(true); }}
                                 className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${searchMode === 'directions' ? 'bg-white text-brand-orange shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                             >
                                 Cómo llegar
@@ -351,7 +357,11 @@ const DirectionsPage = () => {
                                 type="text" 
                                 placeholder={searchMode === 'explore' ? "Buscar lugares cercanos..." : "Ingresa tu ubicación..."}
                                 value={filter}
-                                onChange={(e) => setFilter(e.target.value)}
+                                onFocus={() => setIsPanelOpen(true)}
+                                onChange={(e) => {
+                                    setFilter(e.target.value);
+                                    if (!isPanelOpen) setIsPanelOpen(true);
+                                }}
                                 className="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-brand-orange transition-colors"
                             />
                         </div>
@@ -366,7 +376,7 @@ const DirectionsPage = () => {
                         {/* Categories - Horizontal Scroll */}
                         <div className="flex gap-2 pb-2 overflow-x-auto scrollbar-thin">
                             <button 
-                                onClick={() => setSelectedCategory(null)}
+                                onClick={() => { setSelectedCategory(null); setIsPanelOpen(true); }}
                                 className={`px-4 py-1.5 rounded-full text-xs font-medium text-center transition-colors whitespace-nowrap shrink-0 ${!selectedCategory ? 'bg-brand-orange text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                             >
                                 Todos
@@ -374,7 +384,7 @@ const DirectionsPage = () => {
                             {categories.map((cat) => (
                                 <button 
                                     key={cat}
-                                    onClick={() => setSelectedCategory(cat)}
+                                    onClick={() => { setSelectedCategory(cat); setIsPanelOpen(true); }}
                                     className={`px-4 py-1.5 rounded-full text-xs font-medium text-center transition-colors whitespace-nowrap shrink-0 ${selectedCategory === cat ? 'bg-brand-orange text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                                     title={cat}
                                 >
@@ -391,8 +401,12 @@ const DirectionsPage = () => {
                             filteredLocations.map((feature: any) => (
                                 <div 
                                     key={feature.id || feature.properties.nombre} 
-                                    onClick={() => handleLocationSelect(feature.geometry.coordinates, feature.properties.nombre)}
-                                    className="p-3 rounded-lg border border-gray-100 hover:border-brand-orange/30 hover:bg-[#efdec6]/30 transition-all cursor-pointer group flex items-start gap-3"
+                                    onClick={() => handleLocationSelect(feature.geometry.coordinates, feature.properties.nombre, true)}
+                                    className={`p-3 rounded-lg border transition-all cursor-pointer group flex items-start gap-3 ${
+                                        selectedName === feature.properties.nombre 
+                                            ? 'border-brand-orange bg-[#efdec6]/40 shadow-sm ring-1 ring-brand-orange/30' 
+                                            : 'border-gray-100 hover:border-brand-orange/30 hover:bg-[#efdec6]/30'
+                                    }`}
                                 >
                                     <div className="w-10 h-10 rounded-full bg-white p-1.5 shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                                         {feature.properties.imagen ? (
@@ -423,7 +437,7 @@ const DirectionsPage = () => {
                             searchResults.map((feature: any) => (
                                 <div 
                                     key={feature.id} 
-                                    onClick={() => handleLocationSelect(feature.center, feature.text)}
+                                    onClick={() => handleLocationSelect(feature.center, feature.text, true)}
                                     className="p-3 rounded-lg border border-gray-100 hover:border-brand-orange/30 hover:bg-[#efdec6]/30 transition-all cursor-pointer group flex items-start gap-3"
                                 >
                                     <div className="p-2 rounded bg-[#efdec6] text-brand-orange transition-colors">
