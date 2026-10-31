@@ -14,6 +14,7 @@ const UnitCard = ({
   onOpenConsultation,
   onNavigate
 }: UnitCardProps) => {
+  const unitPath = `/unidad/${unit.id}${unit.id === '1601' && (floorId === '16' || floorId === '17') ? `?nivel=${floorId === '17' ? 2 : 1}` : ''}`;
   const statusColor = 
     unit.status === 'available' ? 'bg-green-500' : 
     unit.status === 'reserved' ? 'bg-amber-500' :
@@ -72,7 +73,7 @@ const UnitCard = ({
                     onClick={(e) => {
                         if (unit.subtitle === 'Terraza') {
                             e.stopPropagation();
-                            onNavigate(`/unidad/${unit.id}`);
+                            onNavigate(unitPath);
                         } else {
                             onOpenConsultation(e, unit.id);
                         }
@@ -86,7 +87,7 @@ const UnitCard = ({
                     <button 
                         onClick={(e) => {
                             e.stopPropagation();
-                            onNavigate(`/unidad/${unit.id}`);
+                            onNavigate(unitPath);
                         }}
                         className="flex-1 py-2 px-2 rounded bg-brand-primary hover:bg-brand-primary/90 text-white text-[10px] font-bold uppercase tracking-wider transition-colors shadow-sm"
                     >

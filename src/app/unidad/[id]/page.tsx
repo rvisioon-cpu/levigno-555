@@ -46,7 +46,13 @@ const UnitPage = () => {
   
   // Duplex floor level support (Piso 1 / Piso 2)
   const isDuplex = unit?.assetId === 'T12' || unit?.subtitle === 'Dúplex' || unitId === '1601';
-  const [duplexFloor, setDuplexFloor] = useState<1 | 2>(() => (floor?.id === '17' ? 2 : 1));
+  const [duplexFloor, setDuplexFloor] = useState<1 | 2>(() => {
+    if (typeof window !== 'undefined') {
+      const requestedFloor = new URLSearchParams(window.location.search).get('nivel');
+      if (requestedFloor === '1' || requestedFloor === '2') return Number(requestedFloor) as 1 | 2;
+    }
+    return floor?.id === '17' ? 2 : 1;
+  });
 
   // Transitions
   const [transitionVideo, setTransitionVideo] = useState<string | null>(null);
@@ -753,7 +759,7 @@ const UnitPage = () => {
                                                 : 'text-neutral-300 hover:text-white'
                                         }`}
                                     >
-                                        Piso 16 (Nivel 1)
+                                        Nivel 1
                                     </button>
                                     <button
                                         onClick={() => handleFloorChange(2)}
@@ -763,7 +769,7 @@ const UnitPage = () => {
                                                 : 'text-neutral-300 hover:text-white'
                                         }`}
                                     >
-                                        Piso 17 (Nivel 2)
+                                        Nivel 2
                                     </button>
                                 </div>
                             )}

@@ -223,7 +223,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                     aria-current={active ? 'page' : undefined}
                                     className={`livigno-menu-item group ${active ? 'is-active' : ''}`}
                                 >
-                                    <item.icon size={19} strokeWidth={1.65} />
+                                    <span className="livigno-menu-icon" aria-hidden="true"><item.icon size={19} strokeWidth={1.65} /></span>
                                     <span>{item.label}</span>
                                 </button>;
                             })}
