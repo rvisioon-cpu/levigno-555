@@ -56,13 +56,15 @@ const unitTypes = [
   { ids: ['1601'], dimensions: 105.31, bedrooms: 4, bathrooms: 2.5, subtitle: 'Dúplex', assetId: 'T12', hasFurnishedView: true, hasGallery: true },
 ];
 
+const soldUnitIds = new Set(['1501', '1202', '1002', '801', '703', '401']);
+
 const units: Unit[] = unitTypes.flatMap((type) => type.ids.map((id) => ({
   id,
   floorId: String(Number(id.slice(0, -2))),
   dimensions: type.dimensions,
   bedrooms: type.bedrooms,
   bathrooms: type.bathrooms,
-  status: 'available' as const,
+  status: soldUnitIds.has(id) ? ('sold' as const) : ('available' as const),
   type: 'apartment' as const,
   subtitle: type.subtitle,
   assetId: type.assetId,
