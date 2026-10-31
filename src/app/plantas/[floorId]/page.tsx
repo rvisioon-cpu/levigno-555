@@ -7,10 +7,8 @@ import Sidebar from '@/components/layout/Sidebar';
 import ConsultationModal from '@/components/UI/modals/ConsultationModal';
 import UnitPopover from '@/components/floor/UnitPopover';
 import UnitCard from '@/components/floor/UnitCard';
-import PathBuilder from '@/components/floor/PathBuilder';
 import MobileFloorNav from '@/components/floor/MobileFloorNav';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
-import { Crosshair } from 'lucide-react';
 import { preloadImages } from '@/utils/preload';
 import { useStore } from '@/store/useStore';
 import { usePublicSettings, mergePublicUnit } from '@/hooks/usePublicSettings';
@@ -82,12 +80,9 @@ const FloorPage = () => {
     setScale(newScale);
   };
 
-  const dragDistanceRef = useRef({ x: 0, y: 0 });
-
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
-    dragDistanceRef.current = { x: e.clientX, y: e.clientY };
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -147,9 +142,6 @@ const FloorPage = () => {
     setLastTouchDistance(null);
   };
 
-  const [devMode, setDevMode] = useState(true);
-  const [currentPathPoints, setCurrentPathPoints] = useState<{x: number, y: number}[]>([]);
-
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getPolyCenter = (path: string | undefined, defaultX: number = 50, defaultY: number = 50) => {
@@ -167,13 +159,11 @@ const FloorPage = () => {
   };
 
   const handleUnitEnter = (unit: Unit) => {
-    if (devMode) return;
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
     setSelectedUnit(unit);
   };
 
   const handleUnitLeave = () => {
-    if (devMode) return;
     // Prevent auto-close on mobile/tablet (XL breakpoint)
     if (typeof window !== 'undefined' && window.innerWidth < 1280) return;
 
@@ -188,33 +178,6 @@ const FloorPage = () => {
       e.stopPropagation();
       setConsultationUnitId(unitId);
       setIsConsultationOpen(true);
-  };
-
-  const generatePathString = () => {
-    if (currentPathPoints.length === 0) return '';
-    const d = currentPathPoints.map((p, i) => {
-      const x = Math.round(p.x * 10) / 10;
-      const y = Math.round(p.y * 10) / 10;
-      return `${i === 0 ? 'M' : 'L'} ${x},${y}`;
-    }).join(' ');
-    return `${d} Z`;
-  };
-
-  const handleMapClick = (e: React.MouseEvent) => {
-    if (!devMode) return;
-    
-    // Ignore clicks that were part of a pan/drag action
-    const dist = Math.hypot(e.clientX - dragDistanceRef.current.x, e.clientY - dragDistanceRef.current.y);
-    if (dist > 6) return;
-
-    if (containerRef.current) {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const xPixels = e.clientX - rect.left;
-        const yPixels = e.clientY - rect.top;
-        const xPercent = (xPixels / rect.width) * 100;
-        const yPercent = (yPixels / rect.height) * 100;
-        setCurrentPathPoints(prev => [...prev, { x: xPercent, y: yPercent }]);
-    }
   };
 
   const getUnitCenter = (unit: Unit) => {
@@ -243,19 +206,7 @@ const FloorPage = () => {
         {floor.id.startsWith('s') ? floor.name : `Planta ${floor.name}`}
       </div>
       
-      <div className="fixed top-6 right-6 md:right-24 z-50 flex items-center gap-2">
-        <button
-          onClick={() => setDevMode(!devMode)}
-          className={`flex items-center gap-1.5 px-3 py-2 rounded-full backdrop-blur-xl border transition-all hover:scale-105 cursor-pointer shadow-lg text-xs font-semibold ${
-            devMode
-              ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-400'
-              : 'bg-black/60 hover:bg-black/80 text-white border-white/20'
-          }`}
-          title={devMode ? "Desactivar herramienta de coordenadas" : "Activar herramienta de coordenadas"}
-        >
-          <Crosshair size={16} />
-          <span>{devMode ? 'Coordenadas: ACTIVO' : 'Coordenadas'}</span>
-        </button>
+      <div className="fixed top-6 right-6 z-50">
         <FullScreenToggle />
       </div>
 
@@ -284,7 +235,6 @@ const FloorPage = () => {
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
             width: '100%', 
           }}
-          onClick={handleMapClick}
         >
           <img 
             src={floor.floorPlanImage} 
@@ -296,7 +246,7 @@ const FloorPage = () => {
           <svg 
             viewBox="0 0 100 100" 
             preserveAspectRatio="none"
-            className={`absolute inset-0 w-full h-full ${devMode ? 'pointer-events-auto cursor-crosshair' : 'pointer-events-none'}`}
+            className="absolute inset-0 w-full h-full pointer-events-none"
             style={{ zIndex: 5 }}
           >
             {floor.units.map(unit => {
@@ -308,13 +258,12 @@ const FloorPage = () => {
                   key={`path-${unit.id}`}
                   d={unit.path}
                   className={`
-                    transition-all duration-300 ${!devMode && 'cursor-pointer pointer-events-auto'}
+                    transition-all duration-300 cursor-pointer pointer-events-auto
                     ${isSelected ? 'fill-black/40' : 'fill-transparent hover:fill-black/20'}
                   `}
                   onMouseEnter={() => handleUnitEnter(unit)}
                   onMouseLeave={handleUnitLeave}
                   onClick={(e) => {
-                      if (devMode) return;
                       e.stopPropagation();
                       // Also select on click for mobile
                       setSelectedUnit(unit);
@@ -322,33 +271,9 @@ const FloorPage = () => {
                 />
               );
             })}
-
-            {/* Vista previa en tiempo real de coordenadas seleccionadas */}
-            {devMode && currentPathPoints.length > 0 && (
-              <g className="pointer-events-none">
-                <path
-                  d={generatePathString()}
-                  fill="rgba(59, 130, 246, 0.35)"
-                  stroke="#2563eb"
-                  strokeWidth="0.4"
-                  strokeDasharray="1,1"
-                />
-                {currentPathPoints.map((pt, idx) => (
-                  <circle
-                    key={idx}
-                    cx={pt.x}
-                    cy={pt.y}
-                    r="0.6"
-                    fill="#ef4444"
-                    stroke="#ffffff"
-                    strokeWidth="0.2"
-                  />
-                ))}
-              </g>
-            )}
           </svg>
 
-          {!devMode && floor.units.map(unit => {
+          {floor.units.map(unit => {
             const center = getUnitCenter(unit);
             const isSelected = selectedUnit?.id === unit.id;
 
@@ -423,17 +348,6 @@ const FloorPage = () => {
         </div>
       )}
 
-      {/* Herramienta de selección de coordenadas */}
-      {devMode && (
-        <div className="fixed bottom-6 left-6 md:left-24 z-50 animate-fade-in">
-          <PathBuilder
-            generatedPath={generatePathString()}
-            points={currentPathPoints}
-            onUndo={() => setCurrentPathPoints((prev) => prev.slice(0, -1))}
-            onClear={() => setCurrentPathPoints([])}
-          />
-        </div>
-      )}
 
     </div>
   );
