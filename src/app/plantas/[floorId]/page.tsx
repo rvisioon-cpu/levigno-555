@@ -7,9 +7,10 @@ import Sidebar from '@/components/layout/Sidebar';
 import ConsultationModal from '@/components/UI/modals/ConsultationModal';
 import UnitPopover from '@/components/floor/UnitPopover';
 import UnitCard from '@/components/floor/UnitCard';
-// import PathBuilder from '@/components/floor/PathBuilder'; // Assuming dev tool not needed in prod template for now, or uncomment if needed
+import PathBuilder from '@/components/floor/PathBuilder';
 import MobileFloorNav from '@/components/floor/MobileFloorNav';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
+import { Crosshair } from 'lucide-react';
 import { preloadImages } from '@/utils/preload';
 import { useStore } from '@/store/useStore';
 import { usePublicSettings, mergePublicUnit } from '@/hooks/usePublicSettings';
@@ -81,9 +82,12 @@ const FloorPage = () => {
     setScale(newScale);
   };
 
+  const dragDistanceRef = useRef({ x: 0, y: 0 });
+
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    dragDistanceRef.current = { x: e.clientX, y: e.clientY };
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -143,7 +147,7 @@ const FloorPage = () => {
     setLastTouchDistance(null);
   };
 
-  const [devMode, setDevMode] = useState(false);
+  const [devMode, setDevMode] = useState(true);
   const [currentPathPoints, setCurrentPathPoints] = useState<{x: number, y: number}[]>([]);
 
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -199,6 +203,10 @@ const FloorPage = () => {
   const handleMapClick = (e: React.MouseEvent) => {
     if (!devMode) return;
     
+    // Ignore clicks that were part of a pan/drag action
+    const dist = Math.hypot(e.clientX - dragDistanceRef.current.x, e.clientY - dragDistanceRef.current.y);
+    if (dist > 6) return;
+
     if (containerRef.current) {
         const rect = e.currentTarget.getBoundingClientRect();
         const xPixels = e.clientX - rect.left;
@@ -235,7 +243,19 @@ const FloorPage = () => {
         {floor.id.startsWith('s') ? floor.name : `Planta ${floor.name}`}
       </div>
       
-      <div className="fixed top-6 right-6 z-50">
+      <div className="fixed top-6 right-6 md:right-24 z-50 flex items-center gap-2">
+        <button
+          onClick={() => setDevMode(!devMode)}
+          className={`flex items-center gap-1.5 px-3 py-2 rounded-full backdrop-blur-xl border transition-all hover:scale-105 cursor-pointer shadow-lg text-xs font-semibold ${
+            devMode
+              ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-400'
+              : 'bg-black/60 hover:bg-black/80 text-white border-white/20'
+          }`}
+          title={devMode ? "Desactivar herramienta de coordenadas" : "Activar herramienta de coordenadas"}
+        >
+          <Crosshair size={16} />
+          <span>{devMode ? 'Coordenadas: ACTIVO' : 'Coordenadas'}</span>
+        </button>
         <FullScreenToggle />
       </div>
 
@@ -302,6 +322,30 @@ const FloorPage = () => {
                 />
               );
             })}
+
+            {/* Vista previa en tiempo real de coordenadas seleccionadas */}
+            {devMode && currentPathPoints.length > 0 && (
+              <g className="pointer-events-none">
+                <path
+                  d={generatePathString()}
+                  fill="rgba(59, 130, 246, 0.35)"
+                  stroke="#2563eb"
+                  strokeWidth="0.4"
+                  strokeDasharray="1,1"
+                />
+                {currentPathPoints.map((pt, idx) => (
+                  <circle
+                    key={idx}
+                    cx={pt.x}
+                    cy={pt.y}
+                    r="0.6"
+                    fill="#ef4444"
+                    stroke="#ffffff"
+                    strokeWidth="0.2"
+                  />
+                ))}
+              </g>
+            )}
           </svg>
 
           {!devMode && floor.units.map(unit => {
@@ -376,6 +420,18 @@ const FloorPage = () => {
                     onNavigate={(path) => router.push(path)}
                 />
             </div>
+        </div>
+      )}
+
+      {/* Herramienta de selección de coordenadas */}
+      {devMode && (
+        <div className="fixed bottom-6 left-6 md:left-24 z-50 animate-fade-in">
+          <PathBuilder
+            generatedPath={generatePathString()}
+            points={currentPathPoints}
+            onUndo={() => setCurrentPathPoints((prev) => prev.slice(0, -1))}
+            onClear={() => setCurrentPathPoints([])}
+          />
         </div>
       )}
 
