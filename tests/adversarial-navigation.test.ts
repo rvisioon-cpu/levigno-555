@@ -95,7 +95,12 @@ function getTransitionNameSim(fromMode: string, toMode: string): string {
 function getNavStateSim(unit: { hasFurnishedView?: boolean }, viewMode: string) {
   if (!unit.hasFurnishedView) return { showLeft: false, showRight: false };
   if (viewMode === 'unfurnished') {
-    return { showLeft: false, showRight: true, rightTarget: 'furnished' as const };
+    return {
+      showLeft: true,
+      leftTarget: 'plans' as const,
+      showRight: true,
+      rightTarget: 'furnished' as const,
+    };
   }
   if (viewMode === 'furnished') {
     return {
@@ -106,7 +111,12 @@ function getNavStateSim(unit: { hasFurnishedView?: boolean }, viewMode: string) 
     };
   }
   if (viewMode === 'plans') {
-    return { showLeft: true, leftTarget: 'furnished' as const, showRight: false };
+    return {
+      showLeft: true,
+      leftTarget: 'furnished' as const,
+      showRight: true,
+      rightTarget: 'unfurnished' as const,
+    };
   }
   return { showLeft: false, showRight: false };
 }
@@ -115,7 +125,7 @@ function getNavLabelSim(unit: { subtitle?: string }, target?: 'furnished' | 'unf
   if (!target) return '';
   if (target === 'unfurnished') return 'Sin Amoblar';
   if (target === 'furnished') return unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado';
-  if (target === 'plans') return unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano';
+  if (target === 'plans') return 'Medidas';
   return '';
 }
 
@@ -537,37 +547,29 @@ describe('Adversarial Test Suite: Unit Navigation & Stress Challenger', () => {
       assert.equal(totalTransitionsChecked, 10000, 'Executed 10,000 random walk state switches without error');
     });
 
-    it('4.7: Linear Arrow Navigation Invariance: Unfurnished <-> Furnished <-> Plans bidirectional flow', () => {
+    it('4.7: Full Circular Arrow Navigation: Unfurnished <-> Furnished <-> Medidas transitions', () => {
       const unit = { hasFurnishedView: true };
 
-      // At unfurnished: can only go right to furnished
+      // At unfurnished: can go left to plans (Medidas) or right to furnished
       const state1 = getNavStateSim(unit, 'unfurnished');
-      assert.equal(state1.showLeft, false);
+      assert.equal(state1.showLeft, true);
+      assert.equal(state1.leftTarget, 'plans');
       assert.equal(state1.showRight, true);
       assert.equal(state1.rightTarget, 'furnished');
 
-      // At furnished: can go left to unfurnished or right to plans
+      // At furnished: can go left to unfurnished or right to plans (Medidas)
       const state2 = getNavStateSim(unit, 'furnished');
       assert.equal(state2.showLeft, true);
       assert.equal(state2.leftTarget, 'unfurnished');
       assert.equal(state2.showRight, true);
       assert.equal(state2.rightTarget, 'plans');
 
-      // At plans: can only go left to furnished
+      // At plans: can go left to furnished or right to unfurnished
       const state3 = getNavStateSim(unit, 'plans');
       assert.equal(state3.showLeft, true);
       assert.equal(state3.leftTarget, 'furnished');
-      assert.equal(state3.showRight, false);
-
-      // Verify that left of (right of unfurnished) is unfurnished
-      assert.equal(state1.rightTarget, 'furnished');
-      const fromRight = getNavStateSim(unit, state1.rightTarget!);
-      assert.equal(fromRight.leftTarget, 'unfurnished');
-
-      // Verify that right of (left of plans) is plans
-      assert.equal(state3.leftTarget, 'furnished');
-      const fromLeft = getNavStateSim(unit, state3.leftTarget!);
-      assert.equal(fromLeft.rightTarget, 'plans');
+      assert.equal(state3.showRight, true);
+      assert.equal(state3.rightTarget, 'unfurnished');
     });
   });
 

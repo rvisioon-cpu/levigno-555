@@ -284,17 +284,22 @@ const UnitPage = () => {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop-blur px-6 py-3 rounded-xl text-white font-light uppercase tracking-widest pointer-events-none opacity-0 hover:opacity-100 transition-opacity">
                   {viewMode === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : `Amoblado${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
                   {viewMode === 'unfurnished' && `Sin Amoblar${isDuplex ? ` - Piso ${duplexFloor}` : ''}`}
-                  {viewMode === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : `Plano Arquitectónico${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
+                  {viewMode === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : `Medidas${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
               </div>
           </div>
       );
   };
   
-  // Navigation State Logic (Linear Flow: Unfurnished <-> Furnished <-> Plans)
+  // Navigation State Logic (Full circular transition graph: Unfurnished <-> Furnished <-> Medidas)
   const getNavState = () => {
       if (!unit.hasFurnishedView) return { showLeft: false, showRight: false };
       if (viewMode === 'unfurnished') {
-          return { showLeft: false, showRight: true, rightTarget: 'furnished' as const };
+          return {
+              showLeft: true,
+              leftTarget: 'plans' as const,
+              showRight: true,
+              rightTarget: 'furnished' as const,
+          };
       }
       if (viewMode === 'furnished') {
           return {
@@ -305,7 +310,12 @@ const UnitPage = () => {
           };
       }
       if (viewMode === 'plans') {
-          return { showLeft: true, leftTarget: 'furnished' as const, showRight: false };
+          return {
+              showLeft: true,
+              leftTarget: 'furnished' as const,
+              showRight: true,
+              rightTarget: 'unfurnished' as const,
+          };
       }
       return { showLeft: false, showRight: false }; // Gallery or other
   };
@@ -314,7 +324,7 @@ const UnitPage = () => {
       if (!target) return '';
       if (target === 'unfurnished') return 'Sin Amoblar';
       if (target === 'furnished') return unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado';
-      if (target === 'plans') return unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano';
+      if (target === 'plans') return 'Medidas';
       return '';
   };
 
@@ -572,10 +582,10 @@ const UnitPage = () => {
                         onClick={() => handleViewChange(viewMode === 'gallery' ? 'furnished' : 'gallery')}
                         className={`px-5 py-3 rounded-full transition-all shadow-lg backdrop-blur-md border border-white/20 flex items-center gap-2
                             ${viewMode === 'gallery' ? 'bg-brand-primary text-white' : 'bg-brand-primary/80 text-white hover:bg-brand-primary'}`}
-                        title="Galería"
+                        title={viewMode === 'gallery' ? 'Cerrar' : 'Galería'}
                      >
                          <ImageIcon size={20} />
-                         <span className="hidden xl:inline font-medium text-sm tracking-wide">Galería</span>
+                         <span className="hidden xl:inline font-medium text-sm tracking-wide">{viewMode === 'gallery' ? 'Cerrar' : 'Galería'}</span>
                      </button>}
 
                      {/* Recorrido */}
@@ -789,7 +799,7 @@ const UnitPage = () => {
                                                 : 'text-neutral-300 hover:text-white'
                                         }`}
                                     >
-                                        {unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano'}
+                                        Medidas
                                     </button>
                                 </div>
                             )}
