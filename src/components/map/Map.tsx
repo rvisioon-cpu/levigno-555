@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useMemo, useState, useEffect } from 'react';
 import Map, { Marker, NavigationControl, FullscreenControl, ScaleControl, Source, Layer, Popup } from 'react-map-gl/mapbox';
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPin } from 'lucide-react';
 import { locationsData } from '@/data/locations'; 
 import { getAssetUrl } from '@/utils/assets'; 
