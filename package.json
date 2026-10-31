@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --import tsx --test tests/e2e/*.test.ts",
+    "test:e2e": "npx tsx tests/e2e/run-all.ts",
     "assets:upload-amenities": "node scripts/upload-amenities.mjs",
     "build:worker": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/assets/_worker.js && cp -r .open-next/cloudflare .open-next/assets/cloudflare && cp -r .open-next/middleware .open-next/assets/middleware && cp -r .open-next/server-functions .open-next/assets/server-functions && cp -r .open-next/.build .open-next/assets/.build && node scripts/prepare-pages-assets.mjs && node patch-worker.mjs",
     "pages:build": "npm run build:worker",

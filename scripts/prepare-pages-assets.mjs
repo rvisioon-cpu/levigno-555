@@ -19,7 +19,7 @@ function prepare(directory) {
 
     const key = relative(root, path).split(sep).join('/');
     if (statSync(path).size > maxAssetSize) {
-      if (!r2BackedLargeAssets.has(key) && !/^plants\/(floor_(\d+|s\d+)\.jpg|details\/.*\.(mp4|jpe?g|png))$/i.test(key)) {
+      if (!r2BackedLargeAssets.has(key) && !/^plants\/(floor_(\d+|s\d+)\.jpg|details\/.*\.(mp4|jpe?g|png|webp))$/i.test(key)) {
         throw new Error(`Pages asset exceeds 25 MiB and has no R2 route: ${key}`);
       }
       rmSync(path);

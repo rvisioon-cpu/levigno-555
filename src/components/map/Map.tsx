@@ -294,7 +294,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
                  <div className="absolute bottom-full mb-4 w-48 bg-white rounded-lg shadow-2xl overflow-hidden transition-all duration-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
                     <div className="h-24 w-full relative">
                         <img 
-                            src={getAssetUrl('building/photos/face_0_daylight.png')} 
+                            src={getAssetUrl('amenities/2.webp')} 
                             className="w-full h-full object-cover"
                             alt={config.appName}
                         />

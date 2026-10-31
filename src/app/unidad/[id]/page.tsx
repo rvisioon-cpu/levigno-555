@@ -44,6 +44,10 @@ const UnitPage = () => {
   
   const [viewMode, setViewMode] = useState<'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour'>(() => unit?.hasFurnishedView ? 'furnished' : 'plans');
   
+  // Duplex floor level support (Piso 1 / Piso 2)
+  const isDuplex = unit?.assetId === 'T12' || unit?.subtitle === 'Dúplex' || unitId === '1601';
+  const [duplexFloor, setDuplexFloor] = useState<1 | 2>(() => (floor?.id === '17' ? 2 : 1));
+
   // Transitions
   const [transitionVideo, setTransitionVideo] = useState<string | null>(null);
   const [isPlayingTransition, setIsPlayingTransition] = useState(false);
@@ -53,9 +57,19 @@ const UnitPage = () => {
   const [isLoadingNav, setIsLoadingNav] = useState(false);
   
   // --- ASSET RESOLUTION HELPERS ---
-  const getTransitionUrl = (assetId: string, type: string) => {
+  const getTransitionUrl = (assetId: string, type: string, floorNum?: 1 | 2) => {
+    const activeFloor = floorNum ?? duplexFloor;
+    if (isDuplex && activeFloor === 2) {
+        const floor2Path = `plants/details/${assetId}/transitions/${type}_2floor.mp4`;
+        if (assetManifest.includes(floor2Path)) {
+            return getAssetUrl(floor2Path);
+        }
+    }
+    const floor1Path = `plants/details/${assetId}/transitions/${type}_1floor.mp4`;
+    if (isDuplex && activeFloor === 1 && assetManifest.includes(floor1Path)) {
+        return getAssetUrl(floor1Path);
+    }
     const relativePath = `plants/details/${assetId}/transitions/${type}.mp4`;
-    // Check manifest
     if (assetManifest.includes(relativePath)) {
         return getAssetUrl(relativePath);
     }
@@ -67,25 +81,28 @@ const UnitPage = () => {
     const specificImages = assetManifest
         .filter(path => path.includes(`plants/details/${assetId}/gallery/`));
     
+    // Prioritize .webp images from manifest to avoid duplicate slides
+    const webpImages = specificImages.filter(path => path.endsWith('.webp'));
+    const finalImages = webpImages.length > 0 ? webpImages : specificImages;
+
     // 2. Dynamic Fallback (if manifest empty)
-    // Used for Terraza (902) where images are on Cloudflare but not in manifest
-    if (specificImages.length === 0) {
+    if (finalImages.length === 0) {
         const dynamicImages = [];
-        // Probe 1..10
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= 14; i++) {
+             dynamicImages.push(`plants/details/${assetId}/gallery/${i}.webp`);
              dynamicImages.push(`plants/details/${assetId}/gallery/${i}.jpg`);
-             dynamicImages.push(`plants/details/${assetId}/gallery/${i}.png`); // Fallback extension
+             dynamicImages.push(`plants/details/${assetId}/gallery/${i}.png`);
         }
         
         return dynamicImages.map(path => ({
             id: path,
             src: getAssetUrl(path),
-            alt: `Gallery Image`, // Generic alt since no manifest title
+            alt: `Gallery Image`,
             title: `Gallery Image`
         }));
     }
 
-    return specificImages.map(path => ({
+    return finalImages.map(path => ({
             id: path,
             src: getAssetUrl(path),
             alt: `Unit ${title || assetId} Gallery`, 
@@ -93,12 +110,20 @@ const UnitPage = () => {
     }));
   };
 
-  const getStaticViewUrl = (assetId: string, type: 'furnished' | 'unfurnished' | 'plans') => {
-      const extensions = ['jpg', 'jpeg', 'png'];
-      for (const ext of extensions) {
-          const relativePath = `plants/details/${assetId}/${type}.${ext}`;
-          if (assetManifest.includes(relativePath)) {
-              return getAssetUrl(relativePath);
+  const getStaticViewUrl = (assetId: string, type: 'furnished' | 'unfurnished' | 'plans', floorNum?: 1 | 2) => {
+      const activeFloor = floorNum ?? duplexFloor;
+      const typeKey = isDuplex && activeFloor === 2 ? `${type}_2floor` : type;
+      const extensions = ['webp', 'jpg', 'jpeg', 'png'];
+      const candidateKeys = [typeKey];
+      if (typeKey === 'unfurnished') candidateKeys.push('deliverable');
+      if (typeKey === 'unfurnished_2floor') candidateKeys.push('deliverable_2floor');
+
+      for (const key of candidateKeys) {
+          for (const ext of extensions) {
+              const relativePath = `plants/details/${assetId}/${key}.${ext}`;
+              if (assetManifest.includes(relativePath)) {
+                  return getAssetUrl(relativePath);
+              }
           }
       }
       return undefined;
@@ -108,6 +133,16 @@ const UnitPage = () => {
   const assetId = unit?.assetId || unitId || '';
   const unitGalleryImages = getUnitGalleryImages(assetId, unitId);
 
+  // Transition mapping helper for all 6 bidirectional transition combinations
+  const getTransitionName = (fromMode: string, toMode: string): string => {
+      if (fromMode === 'furnished' && toMode === 'unfurnished') return 'furnished_to_unfurnished';
+      if (fromMode === 'unfurnished' && toMode === 'furnished') return 'unfurnished_to_furnished';
+      if (fromMode === 'furnished' && toMode === 'plans') return 'furnished_to_plans';
+      if (fromMode === 'plans' && toMode === 'furnished') return 'plans_to_furnished';
+      if (fromMode === 'plans' && toMode === 'unfurnished') return 'plans_to_unfurnished';
+      if (fromMode === 'unfurnished' && toMode === 'plans') return 'unfurnished_to_plans';
+      return '';
+  };
 
   // --- TRANSITION HANDLERS ---
   const handleViewChange = (newMode: 'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour') => {
@@ -126,14 +161,9 @@ const UnitPage = () => {
           return;
       }
 
-      // Determine transition
-      let transitionName = '';
-      if (viewMode === 'furnished' && newMode === 'unfurnished') transitionName = 'furnished_to_unfurnished';
-      else if (viewMode === 'unfurnished' && newMode === 'furnished') transitionName = 'unfurnished_to_furnished';
-      else if (viewMode === 'furnished' && newMode === 'plans') transitionName = 'furnished_to_plans';
-      else if (viewMode === 'plans' && newMode === 'furnished') transitionName = 'plans_to_furnished';
-      
-      const videoUrl = getTransitionUrl(assetId, transitionName);
+      // Determine transition name from 6 possible combinations
+      const transitionName = getTransitionName(viewMode, newMode);
+      const videoUrl = transitionName ? getTransitionUrl(assetId, transitionName) : undefined;
       let targetStaticImage: string | undefined;
       
       // Determine target static image based on newMode
@@ -152,10 +182,9 @@ const UnitPage = () => {
              } catch(e) { console.warn("Transition preload failed", e); }
              setIsLoadingNav(false);
              
-             // 2. Start
-            setViewMode(newMode);
-            setTransitionVideo(videoUrl);
-            setIsPlayingTransition(true);
+             setViewMode(newMode);
+             setTransitionVideo(videoUrl);
+             setIsPlayingTransition(true);
           };
           playSequence();
 
@@ -172,43 +201,16 @@ const UnitPage = () => {
   };
   
   const startTransition = (targetMode: 'furnished' | 'unfurnished' | 'plans') => {
-      if (!unitId) return;
-      
-      let transitionName = '';
-      // Linear Flow: Unfurnished <-> Furnished <-> Plans
-      
-      if (viewMode === 'furnished' && targetMode === 'unfurnished') transitionName = 'furnished_to_unfurnished';
-      else if (viewMode === 'unfurnished' && targetMode === 'furnished') transitionName = 'unfurnished_to_furnished';
-      else if (viewMode === 'furnished' && targetMode === 'plans') transitionName = 'furnished_to_plans';
-      else if (viewMode === 'plans' && targetMode === 'furnished') transitionName = 'plans_to_furnished';
-      
-      const videoUrl = transitionName ? getTransitionUrl(assetId, transitionName) : null;
-      const targetStaticImage = getStaticViewUrl(assetId, targetMode);
+      handleViewChange(targetMode);
+  };
 
-      if (videoUrl) {
-          // Preload video and target image
-          const playSequence = async () => {
-             setIsLoadingNav(true);
-             try {
-                const promises: Promise<void | HTMLImageElement>[] = [preloadVideo(videoUrl)];
-                if (targetStaticImage) promises.push(preloadImages([targetStaticImage]));
-                await Promise.all(promises);
-             } catch(e) { console.warn("Nav preload failed", e); }
-             setIsLoadingNav(false);
-             
-             setViewMode(targetMode);
-             setTransitionVideo(videoUrl);
-             setIsPlayingTransition(true);
-          };
-          playSequence();
-      } else {
-           if (targetStaticImage) {
-              setIsLoadingNav(true);
-              preloadImages([targetStaticImage])
-                .then(() => setViewMode(targetMode))
-                .finally(() => setIsLoadingNav(false));
-          } else {
-              setViewMode(targetMode);
+  const handleFloorChange = (newFloor: 1 | 2) => {
+      if (newFloor === duplexFloor) return;
+      setDuplexFloor(newFloor);
+      if (viewMode === 'furnished' || viewMode === 'unfurnished' || viewMode === 'plans') {
+          const nextStaticImage = getStaticViewUrl(assetId, viewMode, newFloor);
+          if (nextStaticImage) {
+              preloadImages([nextStaticImage]).catch(() => {});
           }
       }
   };
@@ -280,20 +282,40 @@ const UnitPage = () => {
              
              {/* State Label */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop-blur px-6 py-3 rounded-xl text-white font-light uppercase tracking-widest pointer-events-none opacity-0 hover:opacity-100 transition-opacity">
-                  {viewMode === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado')}
-                  {viewMode === 'unfurnished' && 'Sin Amoblar'}
-                  {viewMode === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano Arquitectónico')}
+                  {viewMode === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : `Amoblado${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
+                  {viewMode === 'unfurnished' && `Sin Amoblar${isDuplex ? ` - Piso ${duplexFloor}` : ''}`}
+                  {viewMode === 'plans' && (unit.subtitle === 'Terraza' ? 'Medidas' : `Plano Arquitectónico${isDuplex ? ` - Piso ${duplexFloor}` : ''}`)}
               </div>
           </div>
       );
   };
   
-  // Navigation State Logic
+  // Navigation State Logic (Linear Flow: Unfurnished <-> Furnished <-> Plans)
   const getNavState = () => {
       if (!unit.hasFurnishedView) return { showLeft: false, showRight: false };
-      if (viewMode === 'plans') return { showLeft: true, showRight: false, leftTarget: 'furnished' as const };
-      if (viewMode === 'furnished') return { showLeft: false, showRight: true, rightTarget: 'plans' as const };
+      if (viewMode === 'unfurnished') {
+          return { showLeft: false, showRight: true, rightTarget: 'furnished' as const };
+      }
+      if (viewMode === 'furnished') {
+          return {
+              showLeft: true,
+              leftTarget: 'unfurnished' as const,
+              showRight: true,
+              rightTarget: 'plans' as const,
+          };
+      }
+      if (viewMode === 'plans') {
+          return { showLeft: true, leftTarget: 'furnished' as const, showRight: false };
+      }
       return { showLeft: false, showRight: false }; // Gallery or other
+  };
+
+  const getNavLabel = (target?: 'furnished' | 'unfurnished' | 'plans') => {
+      if (!target) return '';
+      if (target === 'unfurnished') return 'Sin Amoblar';
+      if (target === 'furnished') return unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado';
+      if (target === 'plans') return unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano';
+      return '';
   };
 
   const navState = getNavState();
@@ -458,7 +480,9 @@ const UnitPage = () => {
                     style={{
                         backgroundImage: (() => {
                             const posterPath = `plants/details/${assetId}/poster.png`;
-                            return assetManifest.includes(posterPath) ? `url(${getAssetUrl(posterPath)})` : 'none';
+                            if (assetManifest.includes(posterPath)) return `url(${getAssetUrl(posterPath)})`;
+                            const fallbackUrl = getStaticViewUrl(assetId, 'furnished');
+                            return fallbackUrl ? `url(${fallbackUrl})` : 'none';
                         })(),
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
@@ -689,11 +713,11 @@ const UnitPage = () => {
                         {navState.showLeft && navState.leftTarget && (
                            <button 
                                 onClick={() => startTransition(navState.leftTarget!)}
-                                className="absolute left-6 top-1/2 -translate-y-1/2 z-30 flex items-center gap-3 p-3 bg-black/40 hover:bg-black/60 backdrop-blur text-white rounded-full transition-all group pr-5"
+                                className="absolute left-6 top-1/2 -translate-y-1/2 z-30 flex items-center gap-3 p-3 bg-black/40 hover:bg-black/60 backdrop-blur text-white rounded-full transition-all group pr-5 cursor-pointer"
                            >
                                <ChevronLeft size={28} className="group-hover:-translate-x-1 transition-transform" />
                                 <span className="text-sm font-medium tracking-wide uppercase hidden sm:block">
-                                   {navState.leftTarget === 'furnished' && (unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado')}
+                                   {getNavLabel(navState.leftTarget)}
                                </span>
                            </button>
                         )}
@@ -701,14 +725,79 @@ const UnitPage = () => {
                         {navState.showRight && navState.rightTarget && (
                            <button 
                                 onClick={() => startTransition(navState.rightTarget!)}
-                                className="absolute right-6 top-1/2 -translate-y-1/2 z-30 flex items-center gap-3 p-3 bg-black/40 hover:bg-black/60 backdrop-blur text-white rounded-full transition-all group pl-5"
+                                className="absolute right-6 top-1/2 -translate-y-1/2 z-30 flex items-center gap-3 p-3 bg-black/40 hover:bg-black/60 backdrop-blur text-white rounded-full transition-all group pl-5 cursor-pointer"
                            >
                                <span className="text-sm font-medium tracking-wide uppercase hidden sm:block">
-                                    {navState.rightTarget === 'plans' && 'Medidas'}
+                                    {getNavLabel(navState.rightTarget)}
                                </span>
                                <ChevronRight size={28} className="group-hover:translate-x-1 transition-transform" />
                            </button>
                         )}
+
+                        {/* Direct View Mode Switcher + Duplex Floor Selector (Bottom Floating Bar) */}
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-auto">
+                            {/* Duplex Floor Selector */}
+                            {isDuplex && (
+                                <div className="flex items-center gap-1 p-1 bg-black/70 backdrop-blur-md rounded-full border border-white/20 shadow-xl">
+                                    <button
+                                        onClick={() => handleFloorChange(1)}
+                                        className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all cursor-pointer ${
+                                            duplexFloor === 1
+                                                ? 'bg-brand-primary text-white shadow-md'
+                                                : 'text-neutral-300 hover:text-white'
+                                        }`}
+                                    >
+                                        Piso 16 (Nivel 1)
+                                    </button>
+                                    <button
+                                        onClick={() => handleFloorChange(2)}
+                                        className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all cursor-pointer ${
+                                            duplexFloor === 2
+                                                ? 'bg-brand-primary text-white shadow-md'
+                                                : 'text-neutral-300 hover:text-white'
+                                        }`}
+                                    >
+                                        Piso 17 (Nivel 2)
+                                    </button>
+                                </div>
+                            )}
+
+                            {/* View Mode Pills */}
+                            {unit.hasFurnishedView && (
+                                <div className="flex items-center gap-1 p-1 bg-black/70 backdrop-blur-md rounded-full border border-white/20 shadow-xl">
+                                    <button
+                                        onClick={() => handleViewChange('unfurnished')}
+                                        className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all cursor-pointer ${
+                                            viewMode === 'unfurnished'
+                                                ? 'bg-brand-primary text-white shadow-md'
+                                                : 'text-neutral-300 hover:text-white'
+                                        }`}
+                                    >
+                                        Sin Amoblar
+                                    </button>
+                                    <button
+                                        onClick={() => handleViewChange('furnished')}
+                                        className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all cursor-pointer ${
+                                            viewMode === 'furnished'
+                                                ? 'bg-brand-primary text-white shadow-md'
+                                                : 'text-neutral-300 hover:text-white'
+                                        }`}
+                                    >
+                                        {unit.subtitle === 'Terraza' ? 'Terraza' : 'Amoblado'}
+                                    </button>
+                                    <button
+                                        onClick={() => handleViewChange('plans')}
+                                        className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all cursor-pointer ${
+                                            viewMode === 'plans'
+                                                ? 'bg-brand-primary text-white shadow-md'
+                                                : 'text-neutral-300 hover:text-white'
+                                        }`}
+                                    >
+                                        {unit.subtitle === 'Terraza' ? 'Medidas' : 'Plano'}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     </>
                 )}
             </div>

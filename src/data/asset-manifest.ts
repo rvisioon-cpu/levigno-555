@@ -29,14 +29,43 @@ export const assetManifest: string[] = [
     ...Array.from({ length: 12 }, (_, index) => {
         const type = `T${index + 1}`;
         const galleryCounts = [10, 7, 7, 10, 6, 7, 7, 7, 7, 9, 7, 14];
-        return [
+        const transitions = [
+            'furnished_to_unfurnished',
+            'unfurnished_to_furnished',
+            'furnished_to_plans',
+            'plans_to_furnished',
+            'plans_to_unfurnished',
+            'unfurnished_to_plans',
+        ];
+        const assets = [
+            `plants/details/${type}/plans.webp`,
+            `plants/details/${type}/furnished.webp`,
+            `plants/details/${type}/unfurnished.webp`,
+            `plants/details/${type}/deliverable.webp`,
             `plants/details/${type}/plans.jpg`,
             `plants/details/${type}/furnished.jpg`,
             `plants/details/${type}/unfurnished.jpg`,
-            ...Array.from({ length: galleryCounts[index] }, (_, imageIndex) => `plants/details/${type}/gallery/${imageIndex + 1}.jpg`),
-            ...['furnished_to_unfurnished', 'unfurnished_to_furnished', 'furnished_to_plans', 'plans_to_furnished']
-                .map((transition) => `plants/details/${type}/transitions/${transition}.mp4`),
+            `plants/details/${type}/deliverable.jpg`,
+            ...Array.from({ length: galleryCounts[index] }, (_, imageIndex) => [
+                `plants/details/${type}/gallery/${imageIndex + 1}.webp`,
+                `plants/details/${type}/gallery/${imageIndex + 1}.jpg`,
+            ]).flat(),
+            ...transitions.map((transition) => `plants/details/${type}/transitions/${transition}.mp4`),
         ];
+        if (type === 'T12') {
+            assets.push(
+                'plants/details/T12/plans_2floor.webp',
+                'plants/details/T12/furnished_2floor.webp',
+                'plants/details/T12/unfurnished_2floor.webp',
+                'plants/details/T12/deliverable_2floor.webp',
+                'plants/details/T12/plans_2floor.jpg',
+                'plants/details/T12/furnished_2floor.jpg',
+                'plants/details/T12/deliverable_2floor.jpg',
+                ...transitions.map((transition) => `plants/details/T12/transitions/${transition}_2floor.mp4`),
+                ...transitions.map((transition) => `plants/details/T12/transitions/${transition}_1floor.mp4`),
+            );
+        }
+        return assets;
     }).flat(),
     
     // Gallery

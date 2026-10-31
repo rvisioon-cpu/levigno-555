@@ -3,9 +3,43 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Tambo",
+        "icon": "logo_tambo",
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/tambo.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.10013,
+          -12.074361
+        ],
+        "type": "Point"
+      },
+      "id": "01ef3beb30c5a8f700c009e5799888e8"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "IPCNA",
+        "icon": "logo_icpna",
+        "type": "educación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.088977,
+          -12.078453
+        ],
+        "type": "Point"
+      },
+      "id": "01fcd2fffc04966b9785d1c77bc0c94d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Arena 1",
         "icon": "logo_arena1",
-        "type": "lifestyle"
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/logo_arena1.png"
       },
       "geometry": {
         "coordinates": [
@@ -19,9 +53,355 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Rodizio",
+        "icon": "logo_rodizio",
+        "type": "restaurantes"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.098424,
+          -12.075287
+        ],
+        "type": "Point"
+      },
+      "id": "0d125344ba531a36fd2c65733d5d44fa"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MiFarma",
+        "icon": "logo_mifarma",
+        "type": "salud y bienestar",
+        "image_path": "icons/SALUD_Y_BIENESTAR/mifarma.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.099986,
+          -12.074472
+        ],
+        "type": "Point"
+      },
+      "id": "0d4824df79ca1774954cb3a72058d148"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chicharrones KIO",
+        "icon": "logo_kio",
+        "type": "restaurantes"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.09274,
+          -12.077786
+        ],
+        "type": "Point"
+      },
+      "id": "0e0ceff67bf92a02db1e36276c95f816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro",
+        "icon": "logo_metro",
+        "type": "comercio"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.089098,
+          -12.076071
+        ],
+        "type": "Point"
+      },
+      "id": "10c67f47d851ca032b4417e611eb63fa"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maria Almenara",
+        "icon": "logo_mariaalmenara",
+        "type": "restaurantes"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.090057,
+          -12.077405
+        ],
+        "type": "Point"
+      },
+      "id": "149d3aecd610aa8a02bb6964b9490802"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gimnasio b2 | San Miguel",
+        "icon": "logo_gym",
+        "type": "lifestyle"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.089126,
+          -12.076255
+        ],
+        "type": "Point"
+      },
+      "id": "1e767af4b215d6e9f9709c0edb4cf9ee"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque Ayacucho",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.099134,
+          -12.077403
+        ],
+        "type": "Point"
+      },
+      "id": "2f97c8f4f515a850251ef7387d427fde"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boticas Perú",
+        "type": "salud y bienestar",
+        "icon": "logo_boticasperu"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.096179,
+          -12.076232
+        ],
+        "type": "Point"
+      },
+      "id": "3255132af3fe541a6b502cd325e0287f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clínica San Gabriel",
+        "icon": "logo_sangabriel",
+        "type": "salud y bienestar"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.0957,
+          -12.076542
+        ],
+        "type": "Point"
+      },
+      "id": "39585dbcc61d94d1a76ec4c56009f693"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rústica",
+        "icon": "logo_rustica",
+        "type": "restaurantes"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.091724,
+          -12.078148
+        ],
+        "type": "Point"
+      },
+      "id": "42b11b14343baa6bdedfa00bb5115e01"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cinemark",
+        "icon": "logo_cinemark",
+        "type": "lifestyle"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.088562,
+          -12.076486
+        ],
+        "type": "Point"
+      },
+      "id": "44ed7d3db176915d36da0906f2bcb162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cajero Interbank",
+        "icon": "logo_interbank",
+        "type": "finanzas",
+        "image_path": "icons/FINANZAS/interbank.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.095495,
+          -12.076665
+        ],
+        "type": "Point"
+      },
+      "id": "468cec79f7f82a187dc01530ad8c6835"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "OXXO",
+        "icon": "logo_oxxo",
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/oxxo.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.104955,
+          -12.073788
+        ],
+        "type": "Point"
+      },
+      "id": "48b738ea59fcf98f380900420d115130"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MASS",
+        "type": "comercio",
+        "icon": "logo_mass"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.100256,
+          -12.076305
+        ],
+        "type": "Point"
+      },
+      "id": "4efc0b83e504c1c5764f29305312204d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque Chicama",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.103574,
+          -12.077006
+        ],
+        "type": "Point"
+      },
+      "id": "502b39923f41e8658920c36b37606b62"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plaza Vea",
+        "icon": "logo_plazavea",
+        "type": "comercio"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.106672,
+          -12.079694
+        ],
+        "type": "Point"
+      },
+      "id": "560a0e5bbd88889185d737482a69726f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UPC San Miguel",
+        "icon": "logo_upc",
+        "type": "educación",
+        "image_path": "icons/EDUCACION/upc.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.093526,
+          -12.076505
+        ],
+        "type": "Point"
+      },
+      "id": "5d589c1de17bcfac5341beb17873f913"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BCP",
+        "icon": "logo_bcp",
+        "type": "finanzas",
+        "image_path": "icons/FINANZAS/bcp.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.093688,
+          -12.077627
+        ],
+        "type": "Point"
+      },
+      "id": "616a0ea5ed903cf84a758f029cebadc7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Instituto CERTUS",
+        "icon": "logo_certus",
+        "type": "educación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.10056,
+          -12.074142
+        ],
+        "type": "Point"
+      },
+      "id": "635e50ce872973a4706ade31ecbade19"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque Virgen de Guadalupe",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.101477,
+          -12.076275
+        ],
+        "type": "Point"
+      },
+      "id": "6b8a531504ee97f80d1dc14ad1c4a8a7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cineplanet",
+        "icon": "logo_cineplanet",
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/cineplanet.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.083647,
+          -12.075797
+        ],
+        "type": "Point"
+      },
+      "id": "73eade4ecb3957392260ed54b1de65b2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Plaza San Miguel",
         "icon": "logo_plazasm",
-        "type": "comercio"
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/logo_plazasm.png"
       },
       "geometry": {
         "coordinates": [
@@ -35,9 +415,27 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Scotiabank",
+        "icon": "logo_scotiabank",
+        "type": "finanzas",
+        "image_path": "icons/FINANZAS/scotiabank.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.092821,
+          -12.077976
+        ],
+        "type": "Point"
+      },
+      "id": "7db4b694c42cd5e223a4eedbda444f90"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "CC Open Plaza",
         "icon": "logo_openplaza",
-        "type": "comercio"
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/logo_openplaza.png"
       },
       "geometry": {
         "coordinates": [
@@ -51,9 +449,108 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Marina City Center",
+        "icon": "logo_marinacitycenter",
+        "type": "comercio"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.092193,
+          -12.076314
+        ],
+        "type": "Point"
+      },
+      "id": "7f5c752c477830886a308b8b05d58c46"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ESSALUD",
+        "icon": "logo_essalud",
+        "type": "salud y bienestar"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.086899,
+          -12.078375
+        ],
+        "type": "Point"
+      },
+      "id": "8750d8a3dc608e5d1464434b46897e91"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Estadio Adolfo Magallanes",
+        "icon": "logo_complejo",
+        "type": "lifestyle"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.096041,
+          -12.085203
+        ],
+        "type": "Point"
+      },
+      "id": "87ca9a7d3ac493548fbdb013c6671cc0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hiraoka",
+        "icon": "logo_hiraoka",
+        "type": "comercio"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.092588,
+          -12.077151
+        ],
+        "type": "Point"
+      },
+      "id": "8bd66aa344299d96ae4f9868942bc165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gimnasio Smart Fit",
+        "icon": "logo_smartfit",
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/smartfit.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.099456,
+          -12.074806
+        ],
+        "type": "Point"
+      },
+      "id": "8e6e73990b84e96824c2c891f0280abf"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque Paititi",
+        "type": "áreas verdes y recreación",
+        "icon": "logo_parque",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.101897,
+          -12.077111
+        ],
+        "type": "Point"
+      },
+      "id": "9ce3fa55ff63012d0a93cbc2f43dd0cc"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Pontificia Universidad Católica del Perú",
         "icon": "logo_pucp",
-        "type": "educación"
+        "type": "educación",
+        "image_path": "icons/EDUCACION/logo_pucp.png"
       },
       "geometry": {
         "coordinates": [
@@ -67,9 +564,43 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Complejo Deportivo Municipal Arena San Miguel",
+        "icon": "logo_complejo",
+        "type": "lifestyle"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.091789,
+          -12.089846
+        ],
+        "type": "Point"
+      },
+      "id": "a23e3bd2e385f37e69a79dd93bce12f3"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boulevard de la cultura",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.086523,
+          -12.077878
+        ],
+        "type": "Point"
+      },
+      "id": "ab11383c0280eb7152ab075f27b5ce62"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Parque de las Leyendas",
         "icon": "logo_parque",
-        "type": "áreas verdes y recreación"
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
       },
       "geometry": {
         "coordinates": [
@@ -79,6 +610,218 @@
         "type": "Point"
       },
       "id": "ab35869b570c8ec603c72579eb5b9989"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Friday's",
+        "icon": "logo_fridays",
+        "type": "restaurantes"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.087563,
+          -12.078588
+        ],
+        "type": "Point"
+      },
+      "id": "af538b6ed151ccd5241900727e7e590c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coney Park",
+        "icon": "logo_coneypark",
+        "type": "lifestyle"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.081823,
+          -12.075915
+        ],
+        "type": "Point"
+      },
+      "id": "b2fb802144caee025daf208f209b63c8"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mirador Malecón Palmeras",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.094698,
+          -12.08661
+        ],
+        "type": "Point"
+      },
+      "id": "b8f6c97ad4b3e10685f11ea3006b2cca"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque Medalla Milagrosa",
+        "type": "áreas verdes y recreación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.104493,
+          -12.074769
+        ],
+        "type": "Point"
+      },
+      "id": "c4fcc1cebf9642ad1f00a87be95b18e1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norky's",
+        "type": "restaurantes",
+        "icon": "logo_norkys",
+        "image_path": "icons/RESTAURANTES/norkys.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.099953,
+          -12.074714
+        ],
+        "type": "Point"
+      },
+      "id": "c59102462239c3548c2ecf14b0fa8f26"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Colegio Pamer La Libertad",
+        "type": "educación",
+        "icon": "logo_pamer"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.101692,
+          -12.075076
+        ],
+        "type": "Point"
+      },
+      "id": "c74a20fedea327c86449c55735c074c1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Banco de la Nación",
+        "icon": "logo_bancodelanacion",
+        "type": "finanzas"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.099093,
+          -12.075046
+        ],
+        "type": "Point"
+      },
+      "id": "da366908ce6cd54d099dedbbf57f0a3e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Británico",
+        "icon": "logo_británico",
+        "type": "educación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.091012,
+          -12.077674
+        ],
+        "type": "Point"
+      },
+      "id": "e2e0f7f66f515f1dd2a563fb50cf9be4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pardos Chicken",
+        "icon": "logo_pardoschicken",
+        "type": "restaurantes"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.085698,
+          -12.077578
+        ],
+        "type": "Point"
+      },
+      "id": "ebadd10bdf68c50469281a3b976acf76"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Innova School",
+        "icon": "logo_innova",
+        "type": "educación"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.090479,
+          -12.08507
+        ],
+        "type": "Point"
+      },
+      "id": "f8b7bb796590f99eaa9833ce005c574f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parque de las Naciones",
+        "icon": "logo_parque",
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.099478,
+          -12.073898
+        ],
+        "type": "Point"
+      },
+      "id": "fae5b13d8ff398f89be3c129e198b09a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tottus",
+        "icon": "logo_tottus",
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/tottus.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.088415,
+          -12.079306
+        ],
+        "type": "Point"
+      },
+      "id": "fcb9d357b3a7a30c1c81b01869312244"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BBVA",
+        "icon": "logo_bbva",
+        "type": "finanzas",
+        "image_path": "icons/FINANZAS/bbva.png"
+      },
+      "geometry": {
+        "coordinates": [
+          -77.092251,
+          -12.078029
+        ],
+        "type": "Point"
+      },
+      "id": "fdd3a89917a17db5feb7fa410e4d7953"
     }
   ],
   "type": "FeatureCollection"

@@ -23,7 +23,13 @@ let uploaded = 0;
 async function upload(path) {
   const key = relative('public', path).split(sep).join('/');
   const extension = path.split('.').pop()?.toLowerCase();
-  const contentType = extension === 'mp4' ? 'video/mp4' : 'image/jpeg';
+  const contentType = extension === 'mp4'
+    ? 'video/mp4'
+    : extension === 'webp'
+    ? 'image/webp'
+    : extension === 'png'
+    ? 'image/png'
+    : 'image/jpeg';
   await new Promise((resolve, reject) => {
     const child = spawn('npx', [
       'wrangler', 'r2', 'object', 'put', `levigno-assets/${key}`,
