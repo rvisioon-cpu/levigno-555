@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useMemo, Suspense } from 'react';
+import { useState, useEffect, useMemo, Suspense, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Play } from 'lucide-react';
 import { getTours, type Tour } from '@/data/tours';
@@ -79,12 +79,16 @@ const RecorridosContent = () => {
 
         {/* Iframe Content */}
         <div className="flex-1 w-full h-full pt-0">
-            <iframe 
-                src={selectedTour.target} 
-                className="w-full h-full border-0"
-                allowFullScreen
-                allow="xr-spatial-tracking; gyroscope; accelerometer"
-            />
+            {selectedTour.type === 'building' ? (
+              <KuulaBuildingEmbed />
+            ) : (
+              <iframe
+                  src={selectedTour.target}
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                  allow="xr-spatial-tracking; gyroscope; accelerometer"
+              />
+            )}
         </div>
       </div>
     );
@@ -170,6 +174,29 @@ const RecorridosContent = () => {
     </div>
   );
 };
+
+function KuulaBuildingEmbed() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const script = document.createElement('script');
+    script.src = 'https://static.kuula.io/embed.js';
+    script.async = true;
+    script.dataset.kuula = 'https://kuula.co/share/collection/7dqJv?logo=-1&card=1&info=0&fs=1&vr=1&zoom=1&gyro=1&initload=0&thumbs=3&inst=es';
+    script.dataset.width = '100%';
+    script.dataset.height = '640px';
+    container.appendChild(script);
+
+    return () => {
+      container.replaceChildren();
+    };
+  }, []);
+
+  return <div ref={containerRef} className="h-full w-full" />;
+}
 
 export default function RecorridosPage() {
     return (

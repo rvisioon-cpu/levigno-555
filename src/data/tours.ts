@@ -12,7 +12,7 @@ export interface Tour {
 }
 
 // Example Building Tour Target
-const buildingTarget= 'https://kuula.co/share/collection/7dqJv?logo=-1&card=1&info=0&fs=1&vr=1&zoom=1&gyro=0&initload=0&thumbs=3&inst=es';
+const buildingTarget= 'https://kuula.co/share/collection/7dqJv?logo=-1&card=1&info=0&fs=1&vr=1&zoom=1&gyro=1&initload=0&thumbs=3&inst=es';
 
 const buildingTours: Tour[] = [
   {
