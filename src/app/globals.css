@@ -32,6 +32,16 @@
   }
 }
 
+@keyframes device-rotate {
+  0%, 15% { transform: rotate(0deg); }
+  55%, 75% { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-device-rotate {
+  animation: device-rotate 2.2s ease-in-out infinite;
+}
+
 /* Keep dashboard controls on the Livigno palette instead of DaisyUI's default purple. */
 .btn-primary {
   border-color: var(--color-livigno-teal);

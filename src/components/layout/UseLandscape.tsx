@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { RotateCcw } from 'lucide-react';
+import { Smartphone } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useStore } from '../../store/useStore';
 
@@ -75,18 +75,20 @@ const UseLandscape = () => {
     return (
       <div className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center p-8 text-center overscroll-none touch-none">
             
-            {/* Pulsating Logo */}
-            <div className="mb-12 relative">
+            {/* Project logo */}
+            <div className="mb-8 relative">
                 <div className="absolute inset-0 bg-brand-orange/20 blur-xl rounded-full animate-pulse" />
                 <img 
-                    src="/identity/identity_logo_ISOTIPO.png" 
-                    alt="Logo" 
-                    className="w-24 h-24 object-contain relative z-10 animate-pulse" // Simple pulse for now
+                    src="/identity/livigno-logo-negative.png" 
+                    alt="Livigno 555" 
+                    className="w-44 h-auto object-contain relative z-10"
                 />
             </div>
 
-            <div className="flex flex-col items-center gap-6 animate-bounce-slow">
-                <RotateCcw className="w-16 h-16 text-white/80 animate-spin-slow" />
+            <div className="flex flex-col items-center gap-6">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-white/70 text-white/90 shadow-[0_0_24px_rgba(206,153,77,0.35)]">
+                    <Smartphone className="h-12 w-12 animate-device-rotate" strokeWidth={1.5} />
+                </div>
                 <div className="space-y-2">
                     <h2 className="text-2xl font-light tracking-widest text-white uppercase">
                         Gira tu dispositivo
