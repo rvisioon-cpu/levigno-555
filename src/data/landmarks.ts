@@ -52,8 +52,7 @@ export const originalLandmarks: Landmark[] = [
   },
 ];
 
-// Temporalmente deshabilitado: lista vacía para que el mapa muestre los 5 puntos como puntos normales con sus iconos.
-// Retornarán a ser hitos posteriormente.
-export const landmarks: Landmark[] = [];
+// Hitos activos para Livigno
+export const landmarks: Landmark[] = originalLandmarks;
 
 export const landmarkPoiNames = new Set(landmarks.map((landmark) => landmark.poiName.toLowerCase().trim()));

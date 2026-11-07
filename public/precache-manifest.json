@@ -2,7 +2,7 @@
   "generatedAt": "2026-10-31T16:17:21.129Z",
   "r2Base": "",
   "totalAssets": 470,
-  "totalBytes": 1385435434,
+  "totalBytes": 1336260907,
   "tiers": [
     {
       "id": "critical",
@@ -585,7 +585,8 @@
           "videos/portada.mp4",
           18119027
         ]
-      ]
+      ],
+      "totalBytes": 224148802
     },
     {
       "id": "full",
@@ -710,63 +711,63 @@
         ],
         [
           "location/videos/hitos/arena-1/full.mp4",
-          13347636
+          11274624
         ],
         [
           "location/videos/hitos/arena-1/poster.jpg",
-          40584
+          45326
         ],
         [
           "location/videos/hitos/arena-1/preview.mp4",
-          4187336
+          1299773
         ],
         [
           "location/videos/hitos/open-plaza/full.mp4",
-          12694253
+          11720885
         ],
         [
           "location/videos/hitos/open-plaza/poster.jpg",
-          78729
+          41689
         ],
         [
           "location/videos/hitos/open-plaza/preview.mp4",
-          5388744
+          606823
         ],
         [
           "location/videos/hitos/parque-de-las-leyendas/full.mp4",
-          18163605
+          13240047
         ],
         [
           "location/videos/hitos/parque-de-las-leyendas/poster.jpg",
-          97849
+          104079
         ],
         [
           "location/videos/hitos/parque-de-las-leyendas/preview.mp4",
-          3223092
+          1117138
         ],
         [
           "location/videos/hitos/plaza-san-miguel/full.mp4",
-          34330086
+          13477895
         ],
         [
           "location/videos/hitos/plaza-san-miguel/poster.jpg",
-          180928
+          102714
         ],
         [
           "location/videos/hitos/plaza-san-miguel/preview.mp4",
-          4628442
+          1178490
         ],
         [
           "location/videos/hitos/pucp/full.mp4",
-          22822567
+          18981349
         ],
         [
           "location/videos/hitos/pucp/poster.jpg",
-          145584
+          119408
         ],
         [
           "location/videos/hitos/pucp/preview.mp4",
-          4594040
+          1438708
         ],
         [
           "plants/details/T1/gallery/1.jpg",
@@ -1896,7 +1897,8 @@
           "videos/premapa.mp4",
           37345650
         ]
-      ]
+      ],
+      "totalBytes": 1112112105
     }
   ],
   "missing": [

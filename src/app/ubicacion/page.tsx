@@ -97,6 +97,15 @@ const DirectionsPage = () => {
         setOriginLocation(coords);
         setDestination(null); 
     }
+
+    if (name) {
+      const match = landmarks.find(
+        (l) => l.name.toLowerCase() === name.toLowerCase() || l.poiName.toLowerCase() === name.toLowerCase()
+      );
+      if (match) {
+        setActiveLandmarkSlug(match.slug);
+      }
+    }
     
     if (fromList && window.innerWidth < 768) {
         setIsPanelOpen(false);
@@ -302,6 +311,7 @@ const DirectionsPage = () => {
                                         setSearchResults([]);
                                         setRouteStats(null);
                                         setSelectedName(null);
+                                        setActiveLandmarkSlug(null);
                                     }}
                                     className="flex items-center gap-2 text-xs font-semibold text-white bg-brand-orange hover:bg-brand-dark-orange transition-colors px-3 py-1.5 rounded-full shadow-md"
                                 >
@@ -322,6 +332,7 @@ const DirectionsPage = () => {
                                         setSearchResults([]);
                                         setRouteStats(null);
                                         setSelectedName(null);
+                                        setActiveLandmarkSlug(null);
                                     }}
                                     className="flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-brand-orange transition-colors px-2 py-1 rounded-full hover:bg-gray-100"
                                 >
