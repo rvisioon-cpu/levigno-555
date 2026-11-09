@@ -64,6 +64,11 @@ const DirectionsPage = () => {
       ? feature.properties.categoria?.toLowerCase().trim() === selectedCategory.toLowerCase().trim() 
       : true;
     return matchesSearch && matchesCategory;
+  }).sort((a: LocationFeature, b: LocationFeature) => {
+    const isLandmark = (feature: LocationFeature) => landmarks.some((landmark) =>
+      landmark.poiName.toLowerCase().trim() === feature.properties.nombre.toLowerCase().trim()
+    );
+    return Number(isLandmark(b)) - Number(isLandmark(a));
   });
 
   useEffect(() => {
@@ -160,7 +165,7 @@ const DirectionsPage = () => {
 
         {/* Top Left Controls Container */}
         <div 
-            className="fixed top-6 left-6 z-30 flex items-center gap-4 pointer-events-none"
+            className={`fixed top-6 left-6 z-30 items-center gap-4 pointer-events-none ${isPanelOpen ? 'hidden md:flex' : 'flex'}`}
             style={{ top: 'calc(1.5rem + env(safe-area-inset-top))', left: 'calc(1.5rem + env(safe-area-inset-left))' }}
         >
             <button 
@@ -178,7 +183,7 @@ const DirectionsPage = () => {
 
         {/* Top Right Controls - Travel Modes & Info */}
         <div 
-            className="fixed top-6 right-16 z-30 flex flex-col gap-4 items-end pointer-events-none"
+            className={`fixed top-6 right-16 z-30 flex-col gap-4 items-end pointer-events-none ${isPanelOpen ? 'hidden md:flex' : 'flex'}`}
             style={{ top: 'calc(1.5rem + env(safe-area-inset-top))', right: 'calc(4rem + env(safe-area-inset-right))' }}
         >
             <div className="flex flex-col gap-2">
@@ -283,7 +288,7 @@ const DirectionsPage = () => {
                 <div className="flex flex-col gap-2 w-full">
                     
                     {/* Close Handle / Arrow - Top Center (User Request) */}
-                    <div className="w-full flex justify-center pb-1">
+                    <div className="w-full flex justify-end md:justify-center pb-1">
                         <button 
                             type="button"
                             className="text-gray-400 hover:text-brand-orange p-1 transition-colors cursor-pointer pointer-events-auto"
@@ -293,7 +298,8 @@ const DirectionsPage = () => {
                             }}
                             aria-label={isPanelOpen ? "Cerrar panel" : "Abrir panel"}
                         >
-                            {isPanelOpen ? <ChevronDown size={24} /> : <ChevronUp size={24} />}
+                            <span className="md:hidden">{isPanelOpen ? <X size={24} /> : <ChevronUp size={24} />}</span>
+                            <span className="hidden md:block">{isPanelOpen ? <ChevronDown size={24} /> : <ChevronUp size={24} />}</span>
                         </button>
                     </div>
 
