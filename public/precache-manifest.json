@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-31T16:17:21.129Z",
+  "generatedAt": "2026-11-09T06:20:27.715Z",
   "r2Base": "",
   "totalAssets": 470,
-  "totalBytes": 1336260907,
+  "totalBytes": 1323606783,
   "tiers": [
     {
       "id": "critical",
@@ -591,7 +591,7 @@
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 1161286632,
+      "bytes": 1099457981,
       "assets": [
         [
           "building/exterior/1.1-1.mp4",
@@ -710,64 +710,64 @@
           1439307
         ],
         [
-          "location/videos/hitos/arena-1/full.mp4",
-          11274624
+          "location/videos/hitos/arena-1/full-livigno.mp4",
+          10320531
         ],
         [
-          "location/videos/hitos/arena-1/poster.jpg",
-          45326
+          "location/videos/hitos/arena-1/poster-livigno.jpg",
+          76241
         ],
         [
-          "location/videos/hitos/arena-1/preview.mp4",
-          1299773
+          "location/videos/hitos/arena-1/preview-livigno.mp4",
+          689716
         ],
         [
-          "location/videos/hitos/open-plaza/full.mp4",
-          11720885
+          "location/videos/hitos/open-plaza/full-livigno.mp4",
+          11449834
         ],
         [
-          "location/videos/hitos/open-plaza/poster.jpg",
-          41689
+          "location/videos/hitos/open-plaza/poster-livigno.jpg",
+          72385
         ],
         [
-          "location/videos/hitos/open-plaza/preview.mp4",
-          606823
+          "location/videos/hitos/open-plaza/preview-livigno.mp4",
+          698796
         ],
         [
-          "location/videos/hitos/parque-de-las-leyendas/full.mp4",
-          13240047
+          "location/videos/hitos/parque-de-las-leyendas/full-livigno.mp4",
+          11757048
         ],
         [
-          "location/videos/hitos/parque-de-las-leyendas/poster.jpg",
-          104079
+          "location/videos/hitos/parque-de-las-leyendas/poster-livigno.jpg",
+          175956
         ],
         [
-          "location/videos/hitos/parque-de-las-leyendas/preview.mp4",
-          1117138
+          "location/videos/hitos/parque-de-las-leyendas/preview-livigno.mp4",
+          714705
         ],
         [
-          "location/videos/hitos/plaza-san-miguel/full.mp4",
-          13477895
+          "location/videos/hitos/plaza-san-miguel/full-livigno.mp4",
+          11386016
         ],
         [
-          "location/videos/hitos/plaza-san-miguel/poster.jpg",
-          102714
+          "location/videos/hitos/plaza-san-miguel/poster-livigno.jpg",
+          171893
         ],
         [
-          "location/videos/hitos/plaza-san-miguel/preview.mp4",
-          1178490
+          "location/videos/hitos/plaza-san-miguel/preview-livigno.mp4",
+          694687
         ],
         [
-          "location/videos/hitos/pucp/full.mp4",
-          18981349
+          "location/videos/hitos/pucp/full-livigno.mp4",
+          12942609
         ],
         [
-          "location/videos/hitos/pucp/poster.jpg",
-          119408
+          "location/videos/hitos/pucp/poster-livigno.jpg",
+          232001
         ],
         [
-          "location/videos/hitos/pucp/preview.mp4",
-          1438708
+          "location/videos/hitos/pucp/preview-livigno.mp4",
+          712406
         ],
         [
           "plants/details/T1/gallery/1.jpg",
@@ -1982,11 +1982,11 @@
     "/identity/santa-cruz-kayen-white.png",
     "/identity/santa-cruz-logo.png",
     "/intro.jpg",
-    "/location/videos/hitos/arena-1/poster.jpg",
-    "/location/videos/hitos/open-plaza/poster.jpg",
-    "/location/videos/hitos/parque-de-las-leyendas/poster.jpg",
-    "/location/videos/hitos/plaza-san-miguel/poster.jpg",
-    "/location/videos/hitos/pucp/poster.jpg",
+    "/location/videos/hitos/arena-1/poster-livigno.jpg",
+    "/location/videos/hitos/open-plaza/poster-livigno.jpg",
+    "/location/videos/hitos/parque-de-las-leyendas/poster-livigno.jpg",
+    "/location/videos/hitos/plaza-san-miguel/poster-livigno.jpg",
+    "/location/videos/hitos/pucp/poster-livigno.jpg",
     "/plants/details/T1/deliverable.jpg",
     "/plants/details/T1/deliverable.webp",
     "/plants/details/T1/furnished.jpg",

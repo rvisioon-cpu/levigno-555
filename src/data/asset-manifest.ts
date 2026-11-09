@@ -86,8 +86,8 @@ export const assetManifest: string[] = [
     'icons/AREAS_VERDES_Y_RECREACION/logo_parque.png',
     'icons/LIFESTYLE/logo_arena1.png',
     ...['pucp', 'plaza-san-miguel', 'parque-de-las-leyendas', 'open-plaza', 'arena-1'].flatMap((slug) => [
-        `location/videos/hitos/${slug}/full.mp4`,
-        `location/videos/hitos/${slug}/preview.mp4`,
-        `location/videos/hitos/${slug}/poster.jpg`,
+        `location/videos/hitos/${slug}/full-livigno.mp4`,
+        `location/videos/hitos/${slug}/preview-livigno.mp4`,
+        `location/videos/hitos/${slug}/poster-livigno.jpg`,
     ]),
 ];
