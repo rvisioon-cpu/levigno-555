@@ -11,18 +11,7 @@ export default function ForcedLandscapeWrapper({ children }: { children: React.R
 
   return (
     <div
-      className={shouldForceLandscape ? "w-screen h-screen relative" : "w-full h-full relative"}
-      style={shouldForceLandscape ? {
-        width: '100vh',
-        height: '100vw',
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%) rotate(90deg)',
-        zIndex: 1,
-        overflow: 'hidden',
-        backgroundColor: 'black'
-      } : undefined}
+      className={shouldForceLandscape ? "livigno-landscape" : "relative h-full w-full"}
     >
       {children}
     </div>

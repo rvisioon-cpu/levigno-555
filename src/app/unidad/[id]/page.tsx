@@ -279,7 +279,7 @@ const UnitPage = () => {
              {staticImageUrl ? (
                  <img 
                     src={staticImageUrl} 
-                    className="w-full h-full object-contain p-4 md:p-8"
+                    className="w-full h-full object-contain p-2 md:p-8"
                     alt={`${viewMode} View`}
                  />
              ) : (
@@ -464,7 +464,7 @@ const UnitPage = () => {
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto w-full xl:min-w-[420px]">
+        <div className="min-h-0 flex-1 overflow-y-auto w-full xl:min-w-[420px]">
              
              {/* [MOBILE View (< XL)] - Compact Centered Icons */}
              {unit.subtitle !== 'Terraza' && (
@@ -628,7 +628,7 @@ const UnitPage = () => {
             {/* Mobile Action Menu Overlay */}
             {isMobileMenuOpen && (
                 <div 
-                    className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex flex-col items-end justify-center pr-8 md:pr-16 gap-6 animate-fade-in"
+                    className="fixed inset-0 z-[60] overflow-y-auto bg-black/90 backdrop-blur-sm flex flex-col items-end justify-center-safe px-8 py-20 md:pr-16 gap-4 animate-fade-in"
                     onClick={() => setIsMobileMenuOpen(false)}
                 >
                     {/* Ver Detalles Option */}

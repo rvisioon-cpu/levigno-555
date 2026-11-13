@@ -40,7 +40,7 @@ const UseLandscape = () => {
     }, []);
 
     useEffect(() => {
-        // The map has its own landscape-friendly responsive layout, as in Saint Elliot.
+        // The location intro handles its own rotation independently of the map.
         if (pathname?.startsWith('/dashboard') || pathname?.startsWith('/login') || pathname?.startsWith('/ubicacion')) {
             setShowOverlay(false);
             setForcedLandscape(false);

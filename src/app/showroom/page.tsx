@@ -206,7 +206,7 @@ const ShowroomContent = () => {
               <img 
                 src="/identity/livigno-logo-tight.png" 
                 alt="Livigno 555" 
-                className="w-64 sm:w-80 lg:w-[340px] object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)] select-none"
+                className="w-64 max-w-full sm:w-80 lg:w-[340px] object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)] select-none"
               />
               
               {/* Boutique subtitle divider */}
@@ -330,7 +330,7 @@ const ShowroomContent = () => {
 
 export default function ShowroomPage() {
     return (
-        <Suspense fallback={<div className="h-screen w-screen flex items-center justify-center bg-black text-white"><Loader /></div>}>
+        <Suspense fallback={<div className="h-full w-full flex items-center justify-center bg-black text-white"><Loader /></div>}>
             <ShowroomContent />
         </Suspense>
     )

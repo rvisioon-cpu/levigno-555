@@ -134,6 +134,28 @@ const DirectionsPage = () => {
 
   return (
     <div className="w-full h-full relative overflow-hidden bg-gray-200">
+        {showPremap && (
+          <div className="premap-intro z-[100] bg-black" role="dialog" aria-modal="true" aria-label="Introducción al mapa">
+            <video
+              className="absolute inset-0 h-full w-full object-contain"
+              src={getAssetUrl('videos/premapa.mp4')}
+              autoPlay
+              muted
+              playsInline
+              onEnded={() => setShowPremap(false)}
+              onError={() => setShowPremap(false)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPremap(false)}
+              className="absolute bottom-4 right-4 rounded-full bg-white/90 px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg"
+            >
+              Ingresar al mapa
+            </button>
+          </div>
+        )}
+
+        <div inert={showPremap} className="absolute inset-0">
         <div className="absolute inset-0 z-0">
              <MapComponent 
                 destination={destination}
@@ -216,26 +238,6 @@ const DirectionsPage = () => {
         
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-        {showPremap && (
-          <div className="fixed inset-0 z-[100] bg-black" role="dialog" aria-label="Introducción al mapa">
-            <video
-              className="h-full w-full object-cover"
-              src={getAssetUrl('videos/premapa.mp4')}
-              autoPlay
-              muted
-              playsInline
-              onEnded={() => setShowPremap(false)}
-            />
-            <button
-              type="button"
-              onClick={() => setShowPremap(false)}
-              className="absolute bottom-8 right-8 rounded-full bg-white/90 px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg"
-            >
-              Ingresar al mapa
-            </button>
-          </div>
-        )}
-
         {openLandmark && (
           <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true" aria-label={`Video: ${openLandmark.name}`}>
             <button
@@ -247,7 +249,7 @@ const DirectionsPage = () => {
               <X size={22} />
             </button>
             <video
-              className="max-h-[88vh] max-w-full rounded-xl bg-black"
+              className="max-h-full max-w-full rounded-xl bg-black"
               src={getAssetUrl(openLandmark.video)}
               poster={getAssetUrl(openLandmark.poster)}
               controls
@@ -480,6 +482,7 @@ const DirectionsPage = () => {
              </div>
         </div>
 
+        </div>
     </div>
   );
 };

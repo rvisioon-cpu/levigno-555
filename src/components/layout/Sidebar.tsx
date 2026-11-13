@@ -145,34 +145,34 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         
         {/* FORCED LANDSCAPE LAYOUT (Grid) */}
         {isForcedLandscape ? (
-            <div className="flex-1 flex flex-col p-6 relative">
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 relative">
                 {/* Close Button */}
-                <button onClick={onClose} className="absolute top-6 right-6 p-2 bg-gray-100 rounded-full text-gray-600 hover:text-black hover:bg-gray-200 transition-colors z-20">
+                <button onClick={onClose} className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full text-gray-600 hover:text-black hover:bg-gray-200 transition-colors z-20">
                     <X size={24} />
                 </button>
 
                 {/* Logo - Smaller, Top Left or Center */}
-                <div className="absolute top-6 left-6 z-20">
+                <div className="mb-3 pr-12">
                      <img src={getAssetUrl('identity/livigno-logo.png')} alt="Livigno 555" className="h-10 object-contain" />
                 </div>
 
                 {/* Grid Content */}
-                <div className="flex-1 flex items-center justify-center w-full h-full mt-4">
-                    <div className="grid grid-cols-5 gap-6 w-full max-w-4xl px-8">
+                <div className="flex items-center justify-center w-full">
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] gap-2 w-full max-w-4xl">
                         {menuItems.map((item) => {
                              const active = isItemActive(item.path);
                              return (
                                 <button
                                     key={item.label}
                                     onClick={() => handleNavigation(item.path, (item as any).action)}
-                                    className={`flex flex-col items-center justify-center gap-3 p-4 rounded-xl transition-colors hover:bg-gray-50 group
+                                    className={`flex flex-col items-center justify-center gap-1 px-1 py-2 rounded-xl transition-colors hover:bg-gray-50 group
                                         ${active ? 'bg-[#efdec6]/50' : ''}
                                     `}
                                 >
-                                    <div className={`p-4 rounded-full transition-colors shadow-sm border border-gray-100
+                                    <div className={`p-2 rounded-full transition-colors shadow-sm border border-gray-100
                                          ${active ? 'bg-brand-orange text-white' : 'bg-white text-gray-500 group-hover:text-brand-orange'}
                                     `}>
-                                        <item.icon size={28} strokeWidth={1.5} />
+                                        <item.icon size={22} strokeWidth={1.5} />
                                     </div>
                                     <span className={`text-xs font-bold uppercase tracking-wider ${active ? 'text-brand-orange' : 'text-gray-500 group-hover:text-brand-orange transition-colors'}`}>
                                         {item.label}
@@ -184,7 +184,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 </div>
 
                  {/* Footer - Bottom Row */}
-                 <div className="absolute bottom-6 left-0 w-full flex justify-center items-center gap-6 text-gray-400">
+                 <div className="mt-3 w-full flex justify-center items-center gap-6 text-gray-400">
                      <div className="flex gap-4">
                         {config.company?.buildingSocials?.facebook && (
                             <a href={config.company.buildingSocials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors"><Facebook size={18} /></a>

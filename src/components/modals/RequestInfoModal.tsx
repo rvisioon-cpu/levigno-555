@@ -95,7 +95,7 @@ export default function RequestInfoModal({ isOpen, onClose, unitId, floorId }: R
       />
 
       {/* Modal Container */}
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[600px] max-h-[90vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-[600px] max-h-full flex flex-col animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
         <div className="flex justify-between items-start p-6 pb-4 border-b border-gray-100 shrink-0">
@@ -114,7 +114,7 @@ export default function RequestInfoModal({ isOpen, onClose, unitId, floorId }: R
         </div>
 
         {/* Scrollable Form Content */}
-        <div className="p-6 overflow-y-auto custom-scrollbar">
+        <div className="min-h-0 overflow-y-auto overscroll-contain p-6 custom-scrollbar">
             <form onSubmit={handleSubmit} className="space-y-5">
               
               {/* Row 1: Names */}

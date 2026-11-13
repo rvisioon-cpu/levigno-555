@@ -15,8 +15,7 @@ const Homepage = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   // Animation Refs
-  const logoRef = useRef<HTMLImageElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLElement | null)[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
   
@@ -39,7 +38,7 @@ const Homepage = () => {
     tl.to({}, { duration: 3 })
     
       .to(logoRef.current, { 
-        y: '-25vh', 
+        top: '18%',
         duration: 2, 
         ease: "power3.inOut" 
       }, "moveUp")
@@ -47,8 +46,6 @@ const Homepage = () => {
     // 3. Text Cycle
     // Using data-driven slides
     homepageData.slides.forEach((slide, index) => {
-        const isLast = index === homepageData.slides.length - 1;
-        
         // Appear
         if (index === 0) {
             tl.to(textRefs.current[index], { y: 0, autoAlpha: 1, duration: 1 }, "-=0.5");
@@ -70,7 +67,7 @@ const Homepage = () => {
 
     // End: Logo returns to center
     tl.to(logoRef.current, { 
-        y: 0, 
+        top: '50%',
         duration: 1.5,
         ease: "power3.inOut" 
     }, "reset");
@@ -135,13 +132,13 @@ const Homepage = () => {
       </div>
 
       {/* UI Overlay */}
-      <div className="relative z-10 flex-1 flex flex-col justify-between p-6 lg:p-12 text-white">
+      <div className="relative z-10 h-full p-6 text-white">
         
         {/* Header */}
         <div className="flex justify-between items-start shrink-0">
           <div className="flex gap-4">
              {/* Menu Icon */}
-             <div className="group relative flex items-center">
+             <div className="group relative z-30 flex items-center">
                <button 
                  onClick={() => setSidebarOpen(true)}
                  className="p-2 bg-brand-primary/80 hover:bg-brand-primary backdrop-blur-xl border border-white/20 rounded-full transition-all cursor-pointer text-white relative z-10 shadow-lg"
@@ -158,23 +155,21 @@ const Homepage = () => {
         </div>
 
         {/* Central Hero Section */}
-        <div className="flex-1 flex flex-col items-center justify-center relative w-full max-w-6xl mx-auto h-full">
+        <div className="pointer-events-none absolute inset-0 mx-auto max-w-6xl [container-type:size]">
              
              {/* Logo & Button Container */}
-             <div className="pointer-events-none relative z-20 flex flex-col items-center transition-transform will-change-transform">
-                 <img 
-                   ref={logoRef} // Ref moved to image for independent animation
+             <div ref={logoRef} className="absolute left-1/2 top-1/2 z-20 w-full -translate-x-1/2 -translate-y-1/2">
+                 <img
                    src={homepageData.hero.logo} 
-                   alt="Logo" 
-                   className="w-[180px] lg:w-full max-w-xl object-contain drop-shadow-2xl opacity-90"
+                   alt="Livigno 555"
+                   className="mx-auto max-h-[22cqh] w-[min(50%,28rem)] object-contain drop-shadow-2xl opacity-90"
                  />
              </div>
 
              <button 
-                ref={buttonRef}
                 onClick={handleStartIntro}
                 disabled={isLoadingAssets}
-                className={`fixed bottom-[9vh] left-1/2 z-30 group -translate-x-1/2 px-8 lg:px-12 py-3 lg:py-4 bg-brand-primary/90 hover:bg-brand-primary backdrop-blur-xl border border-white/20 text-white text-xs lg:text-sm font-medium tracking-widest uppercase rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg hover:shadow-xl font-secondary shrink-0 
+                className={`pointer-events-auto absolute bottom-[9%] left-1/2 z-30 group -translate-x-1/2 px-8 lg:px-12 py-3 lg:py-4 bg-brand-primary/90 hover:bg-brand-primary backdrop-blur-xl border border-white/20 text-white text-xs lg:text-sm font-medium tracking-widest uppercase rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg hover:shadow-xl font-secondary shrink-0
                     opacity-100
                     ${isLoadingAssets ? 'cursor-wait opacity-80' : ''}
                 `}
@@ -185,13 +180,13 @@ const Homepage = () => {
               </button>
 
              {/* Presentation Text Container */}
-             <div className="absolute top-[55%] left-0 right-0 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none z-10 min-h-[160px] px-4">
+             <div className="absolute top-[55%] inset-x-6 z-10">
                  
                  {homepageData.slides.map((slide, index) => (
                     <p 
                         key={index}
                         ref={el => { textRefs.current[index] = el }} 
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full lg:w-fit max-w-3xl bg-black/45 backdrop-blur-md rounded-2xl p-5 lg:p-7 text-center text-base sm:text-lg lg:text-2xl font-light tracking-wide opacity-0 text-white drop-shadow-lg mx-auto"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl bg-black/45 backdrop-blur-md rounded-2xl p-[clamp(0.5rem,4cqh,1.75rem)] text-center text-[clamp(0.75rem,5cqh,1.5rem)] font-light tracking-wide opacity-0 text-white drop-shadow-lg mx-auto"
                     >
                         {slide.highlight ? (
                             <><span className="font-bold">{slide.highlight}</span> {slide.text.replace('{{highlight}}', '').trim()}</>

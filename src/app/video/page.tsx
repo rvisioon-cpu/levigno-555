@@ -13,7 +13,7 @@ export default function VideoPage() {
   useEffect(() => { let active = true; getActiveMedia('VIDEO_SIDEBAR').then(rows => { if (active && rows[0]) setVideo({ ...projectVideo, src: rows[0].url, title: rows[0].title }); }).catch(() => {}); return () => { active = false; }; }, []);
 
   return (
-    <main className="relative flex h-screen min-h-0 flex-col overflow-hidden bg-[#171717] text-white">
+    <main className="relative flex h-full min-h-0 flex-col overflow-hidden bg-[#171717] text-white">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
       <header className="absolute inset-x-0 top-0 z-40 flex items-center justify-between p-6 lg:p-12">
         <button
@@ -26,7 +26,7 @@ export default function VideoPage() {
         </button>
         <FullScreenToggle />
       </header>
-      <section className="flex min-h-0 w-full flex-1">
+      <section className="absolute inset-0">
         <video
           key={video.src}
           className="h-full min-h-0 w-full bg-black object-contain"

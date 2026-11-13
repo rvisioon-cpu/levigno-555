@@ -71,6 +71,31 @@ html, body {
   font-family: 'Inter', sans-serif;
 }
 
+.livigno-landscape {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  width: 100dvh;
+  height: 100vw;
+  transform: translate(-50%, -50%) rotate(90deg);
+  overflow: hidden;
+  background-color: black;
+  z-index: 1;
+}
+
+.premap-intro {
+  position: fixed;
+  inset: 0;
+}
+
+@media (orientation: portrait) and (pointer: coarse) {
+  .premap-intro {
+    inset: 50% auto auto 50%;
+    width: 100dvh;
+    height: 100vw;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
 /* Custom Scrollbar Utilities */
 .scrollbar-thin {
   scrollbar-width: thin;

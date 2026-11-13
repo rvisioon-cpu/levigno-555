@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${montserrat.variable} ${inter.variable} antialiased h-screen w-screen overflow-hidden bg-black text-white`}
+        className={`${montserrat.variable} ${inter.variable} antialiased h-dvh w-full overflow-hidden bg-black text-white`}
       >
         <ServiceWorkerRegistrar />
         <IdentityTheme />
