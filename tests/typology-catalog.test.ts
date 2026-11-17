@@ -49,11 +49,12 @@ test('every active updated view, gallery and transition points to prepared versi
   assert.equal(updatedTypologyAssets.filter(p => p.includes('/T12/transitions/')).length, 6);
   assert.equal(typologyAssetRoot('T8'), 'plants/details/T8');
 });
-test('duplex remains on both levels and new units have individual selectable pins', () => {
+test('duplex remains on both levels and upper units have independent selection polygons', () => {
   assert.equal(floorsData.find(f => f.id === '17')?.units.find(u => u.id === '1601')?.assetId, 'T14');
   for (const floor of [14, 15, 16]) {
     const units = floorsData.find(f => f.id === String(floor))!.units;
     assert.equal(units.length, 3);
+    for (const u of units) assert.ok(u.path?.endsWith(' Z'), `${u.id} must have a polygon`);
     assert.equal(new Set(units.map(u => `${u.x},${u.y}`)).size, 3);
   }
 });

@@ -6,19 +6,19 @@
 
 export const UNIT_COORDINATES = {
   /** 1601 piso 2 (Planta alta / Nivel 17) */
-  DUPLEX_1601_PISO_2: 'M 26.5,74 L 10.8,74.6 L 12.3,25.6 L 32.9,26 L 32.7,44 L 31.6,44 L 31.6,48.5 L 32.1,48.5 L 31.9,52.2 L 27.1,52.4 Z',
+  DUPLEX_1601_PISO_2: 'M 34,43.7 L 33.9,38.3 L 32.9,38.5 L 32.8,26.3 L 12.7,26.3 L 10.9,74.1 L 26.2,74.3 L 27.2,45.3 L 32.6,45.4 Z',
 
   /** 1601 piso 1 (Planta baja / Nivel 16) */
-  DUPLEX_1601_PISO_1: 'M 32.7,44.1 L 33,25.4 L 12.5,25.4 L 10.5,66.1 L 11.9,66.2 L 11.5,75.1 L 36.3,74.5 L 36.5,57.7 L 30.6,57.9 L 30.9,44.3 Z',
+  DUPLEX_1601_PISO_1: 'M 33,26.1 L 12.5,26.1 L 10.1,74.8 L 30.7,74.2 L 32.1,48.1 L 32.7,48.3 L 32.7,43.5 L 33.8,43.5 L 33.9,38.9 L 32.7,38.7 Z',
 
-  /** Unidades 1502 y 1602 */
-  UNITS_1502_1602: 'M 49.8,25.8 L 49.7,46.9 L 46.9,46.9 L 47.1,48.2 L 43.8,48.3 L 43.7,57.4 L 36.7,57.4 L 36.6,74.2 L 57.7,74.6 L 57.4,59.7 L 63.2,59.7 L 62.8,48.9 L 64.8,48.8 L 64.5,41.2 L 69.8,41.2 L 70,48.4 L 77.9,48.3 L 77.5,25.1 Z',
+  /** Unidad 1502 */
+  UNIT_1502: 'M 50.1,25.9 L 87.9,26.2 L 88.9,42.3 L 80.1,41.3 L 80.5,48.3 L 70,48.3 L 69.6,40.9 L 64.4,41 L 64.9,48.6 L 62.7,48.7 L 63.4,59.7 L 47.2,59.1 L 47,47.1 L 49.7,46.7 Z',
 
-  /** Unidades 301 al 1501 */
-  UNITS_301_TO_1501: 'M 34.9,38 L 33,41.6 L 32.3,40.9 L 31.6,40.9 L 31.5,48.4 L 32.1,48.2 L 32.1,52.4 L 30.8,52.6 L 30.7,60.6 L 36.5,60.5 L 36.4,74.2 L 11.8,74.6 L 11.9,66.5 L 10.4,66.2 L 11,53.4 L 11.4,43.1 L 11.4,25.3 L 33.2,25.5 L 33.1,33.5 L 33.6,35.8 Z',
+  /** Unidades 301 al 1301 */
+  UNITS_301_TO_1301: 'M 34.9,38 L 33,41.6 L 32.3,40.9 L 31.6,40.9 L 31.5,48.4 L 32.1,48.2 L 32.1,52.4 L 30.8,52.6 L 30.7,60.6 L 36.5,60.5 L 36.4,74.2 L 11.8,74.6 L 11.9,66.5 L 10.4,66.2 L 11,53.4 L 11.4,43.1 L 11.4,25.3 L 33.2,25.5 L 33.1,33.5 L 33.6,35.8 Z',
 
   /** Unidad 1402 */
-  UNIT_1402: 'M 36.6,74.4 L 36.6,57.5 L 43.6,57.3 L 43.6,48.2 L 46.8,48.4 L 46.9,46.9 L 49.7,47.1 L 49.6,25.5 L 87.9,25.1 L 89.2,48.4 L 70,48.4 L 69.7,41.1 L 64.6,41.1 L 64.8,48.8 L 62.9,49.1 L 63.3,59.5 L 57.3,59.9 L 57.7,74.8 Z',
+  UNIT_1402: 'M 50,25.8 L 87.9,26.3 L 89.2,48.7 L 80.4,49.2 L 76.5,48.5 L 73.2,49.1 L 73.1,48.8 L 70,48.8 L 69.7,41 L 64.5,41.1 L 64.9,49.1 L 62.8,48.9 L 63.1,59.7 L 47.3,59.6 L 47.1,53.1 L 47,47 L 49.5,46.6 Z',
 
   /** Unidad 1302 */
   UNIT_1302: 'M 49.8,46.9 L 49.6,25.3 L 88,25.5 L 89,48.1 L 83.9,48.3 L 83.9,56.5 L 76.2,56.7 L 75.9,48.5 L 70.1,48.6 L 69.7,40.9 L 53.8,41.1 L 53.6,46.5 Z',
@@ -40,6 +40,14 @@ export const UNIT_COORDINATES = {
 
   /** Unidad 203 */
   UNIT_203: 'M 43.5,48.1 L 43.6,57.3 L 36.6,57.5 L 36.5,74.1 L 65,74.8 L 64.6,48.6 L 62.9,48.6 L 62.6,41.1 L 54.5,41.4 L 54.7,52.9 L 47.1,53 L 46.9,48.1 Z',
+  UNIT_1602: 'M 50.1,26.2 L 81.7,26 L 81.9,42.9 L 78.2,42.6 L 78.2,48.5 L 69.7,48.8 L 69.5,41.4 L 64.7,41.4 L 54.5,41.1 L 54.4,45.3 L 53.8,45.4 L 53.9,53.3 L 54.4,53.3 L 54.4,59 L 49.8,59.2 Z',
+
+  UNIT_1603: 'M 47,47.7 L 43.9,47.9 L 43.9,57.7 L 32.9,57.7 L 32.9,61.1 L 31.1,61.1 L 30.9,74.4 L 57.7,74.4 L 57.4,59.9 L 63.3,59.9 L 62.9,48.9 L 64.9,49.2 L 64.5,41.1 L 54.5,41.3 L 54.8,59.6 L 49.6,60 L 49.3,53.5 L 46.9,53.5 Z',
+
+  UNITS_1401_1501: 'M 34.1,43.1 L 34,42.1 L 36.1,40.2 L 33.1,34.9 L 32.9,26 L 11.2,25.9 L 10.5,59.9 L 30.5,59.6 L 30.5,54.7 L 32,54.3 L 32,48.1 L 32.6,48 L 32.7,41.2 Z',
+
+  UNITS_1403_1503: 'M 47,47.9 L 43.6,48 L 43.7,57.5 L 32.5,57.7 L 32.3,60.6 L 12.2,60.2 L 11.4,74.8 L 57.8,75 L 57.4,59.9 L 47,60 Z',
+
 } as const;
 
 /** Estacionamientos de autos E1–E18, distribuidos entre piso 1 y sótanos. */
@@ -120,17 +128,22 @@ export function getUnitPath(floorId: string, unitId: string): string | undefined
     return undefined;
   }
 
+  if (unitId === '1401' || unitId === '1501') return UNIT_COORDINATES.UNITS_1401_1501;
+  if (unitId === '1403' || unitId === '1503') return UNIT_COORDINATES.UNITS_1403_1503;
+  if (unitId === '1602') return UNIT_COORDINATES.UNIT_1602;
+  if (unitId === '1603') return UNIT_COORDINATES.UNIT_1603;
+
   // Tipología 01 (Frente / izquierda)
   if (unitId === '201') {
     return UNIT_COORDINATES.UNIT_201;
   }
-  if (unitId.endsWith('01') && level >= 3 && level <= 15) {
-    return UNIT_COORDINATES.UNITS_301_TO_1501;
+  if (unitId.endsWith('01') && level >= 3 && level <= 13) {
+    return UNIT_COORDINATES.UNITS_301_TO_1301;
   }
 
   // Tipología 02 (Lateral / derecha)
-  if (unitId === '1602' || unitId === '1502') {
-    return UNIT_COORDINATES.UNITS_1502_1602;
+  if (unitId === '1502') {
+    return UNIT_COORDINATES.UNIT_1502;
   }
   if (unitId === '1402') {
     return UNIT_COORDINATES.UNIT_1402;
@@ -169,13 +182,6 @@ export function floorUnitGeometry(
   floorId: string,
   unitId: string
 ): { path?: string; x: number; y: number } | undefined {
-  // Revised upper floors need new polygons from the coordinate selector.
-  // Use pins inside each unit until those outlines are traced.
-  if (Number(floorId) >= 14 && Number(floorId) <= 16 && /^\d+(01|02|03)$/.test(unitId)) {
-    const suffix = unitId.slice(-2);
-    return suffix === '01' ? { x: 22, y: 45 }
-      : suffix === '02' ? { x: 65, y: 35 } : { x: 40, y: 68 };
-  }
   const path = getUnitPath(floorId, unitId);
   if (!path) return undefined;
 

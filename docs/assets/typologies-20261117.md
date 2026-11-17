@@ -36,7 +36,7 @@ Usar la cuenta de Cloudflare que contiene `levigno-assets`. Los activos locales 
 - Estos valores prevalecen sobre los datos anteriores del panel. Las tipologías no incluidas en este cuadro conservan sus datos.
 - T1 cubre 201–1301; T10 cubre 1401–1501; T11 corresponde a 1402; T12 a 1403–1503; T13 a 1502; T14 al dúplex 1601; T15 a 1602 y T16 a 1603.
 - Se conservan los archivos originales de T2, T3, T5, T6 y T8.
-- Los pisos 14–16 muestran pines dentro de cada unidad mientras se trazan sus nuevos polígonos con el selector de coordenadas.
+- Los pisos 14–17 usan los polígonos entregados por el usuario: 1401/1501 y 1403/1503 comparten sus respectivos contornos; 1402, 1502, 1602 y 1603 tienen contornos propios; el dúplex 1601 tiene un contorno independiente para cada nivel.
 
 ## Corrección de nombres de transiciones
 
