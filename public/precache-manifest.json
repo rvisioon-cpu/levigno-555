@@ -2,12 +2,12 @@
   "generatedAt": "2026-11-09T06:20:27.715Z",
   "r2Base": "",
   "totalAssets": 470,
-  "totalBytes": 1323606783,
+  "totalBytes": 1325948364,
   "tiers": [
     {
       "id": "critical",
       "label": "Recorrido principal",
-      "bytes": 224148802,
+      "bytes": 226490383,
       "assets": [
         [
           "building/exterior/0.1-0.mp4",
@@ -503,83 +503,83 @@
         ],
         [
           "plants/floor_1.jpg",
-          3083882
+          3293150
         ],
         [
           "plants/floor_10.jpg",
-          2474881
+          2694776
         ],
         [
           "plants/floor_11.jpg",
-          2478970
+          2712098
         ],
         [
           "plants/floor_12.jpg",
-          2477405
+          2721983
         ],
         [
           "plants/floor_13.jpg",
-          2473784
+          2719827
         ],
         [
           "plants/floor_14.jpg",
-          2411916
+          2748004
         ],
         [
           "plants/floor_15.jpg",
-          2379890
+          2748497
         ],
         [
           "plants/floor_16.jpg",
-          2366231
+          2710329
         ],
         [
           "plants/floor_17.jpg",
-          3666289
+          3122232
         ],
         [
           "plants/floor_2.jpg",
-          2744553
+          2700601
         ],
         [
           "plants/floor_3.jpg",
-          2526189
+          2754296
         ],
         [
           "plants/floor_4.jpg",
-          2506267
+          2762263
         ],
         [
           "plants/floor_5.jpg",
-          2494722
+          2734806
         ],
         [
           "plants/floor_6.jpg",
-          2477152
+          2703461
         ],
         [
           "plants/floor_7.jpg",
-          2535186
+          2691033
         ],
         [
           "plants/floor_8.jpg",
-          2476325
+          2697253
         ],
         [
           "plants/floor_9.jpg",
-          2473225
+          2687660
         ],
         [
           "plants/floor_s1.jpg",
-          3118909
+          2780741
         ],
         [
           "plants/floor_s2.jpg",
-          3348080
+          2968944
         ],
         [
           "plants/floor_s3.jpg",
-          3112446
+          3015929
         ],
         [
           "videos/portada.mp4",

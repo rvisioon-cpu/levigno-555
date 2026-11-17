@@ -7,7 +7,8 @@ export const getAssetUrl = (path: string): string => {
   const hashIndex = cleanPath.indexOf('#');
   const urlWithoutHash = hashIndex < 0 ? cleanPath : cleanPath.slice(0, hashIndex);
   const hash = hashIndex < 0 ? '' : cleanPath.slice(hashIndex);
-  const version = urlWithoutHash.startsWith('plants/') && !/(?:[?&])v=/.test(urlWithoutHash) ? `${urlWithoutHash.includes('?') ? '&' : '?'}v=20261030` : '';
+  const assetVersion = /^plants\/floor_(?:\d+|s[1-3])\.jpg(?:\?|$)/.test(urlWithoutHash) ? '20261117' : '20261030';
+  const version = urlWithoutHash.startsWith('plants/') && !/(?:[?&])v=/.test(urlWithoutHash) ? `${urlWithoutHash.includes('?') ? '&' : '?'}v=${assetVersion}` : '';
   return `${ASSET_BASE_URL}/${urlWithoutHash}${version}${hash}`;
 };
 
