@@ -1,3 +1,4 @@
+import { latestMedia } from './latest-media';
 import { updatedTypologyAssets } from './updated-typology-assets';
 
 /**
@@ -7,9 +8,10 @@ import { updatedTypologyAssets } from './updated-typology-assets';
  */
 export const assetManifest: string[] = [
     // Homepage
-    'homepage/portada.webp',
-    'videos/portada.mp4',
-    'videos/livigno-general.mp4',
+    latestMedia.introPoster,
+    latestMedia.introVideo,
+    latestMedia.mainVideo,
+    latestMedia.mainPoster,
     // Identity
     'identity/livigno-logo.png',
     'identity/livigno-logo-negative.png',
@@ -65,9 +67,7 @@ export const assetManifest: string[] = [
     // Gallery
     'gallery/exterior_1.jpg',
     'gallery/interior_lobby.jpg',
-    ...Array.from({ length: 8 }, (_, index) => `amenities/${index + 1}.webp`),
-    'amenities/P1.webp',
-    ...Array.from({ length: 20 }, (_, index) => `amenities/P${index + 4}.webp`),
+    ...latestMedia.amenities,
     // Map introduction and hito media
     'videos/premapa.mp4',
     'icons/PROYECTO/logo_proyecto.png',

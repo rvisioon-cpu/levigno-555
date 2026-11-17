@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-17T18:26:07.525Z",
+  "generatedAt": "2026-11-17T18:51:15.912Z",
   "r2Base": "",
-  "totalAssets": 403,
-  "totalBytes": 1007464852,
+  "totalAssets": 419,
+  "totalBytes": 1224671231,
   "tiers": [
     {
       "id": "critical",
       "label": "Recorrido principal",
-      "bytes": 193001753,
+      "bytes": 200395332,
       "assets": [
         [
           "building/exterior/0.1-0.mp4",
@@ -64,6 +64,10 @@
         [
           "building/exterior/3.1.loop.mp4",
           14866898
+        ],
+        [
+          "homepage/20261117/portada.webp",
+          257426
         ],
         [
           "identity/livigno-logo-negative.png",
@@ -462,16 +466,68 @@
           3015929
         ],
         [
-          "videos/portada.mp4",
-          18119027
+          "videos/20261117/portada.mp4",
+          25255180
         ]
       ]
     },
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 814463099,
+      "bytes": 1024275899,
       "assets": [
+        [
+          "amenities/20261117/1.webp",
+          355454
+        ],
+        [
+          "amenities/20261117/10.webp",
+          413158
+        ],
+        [
+          "amenities/20261117/11.webp",
+          488356
+        ],
+        [
+          "amenities/20261117/12.webp",
+          608548
+        ],
+        [
+          "amenities/20261117/13.webp",
+          314932
+        ],
+        [
+          "amenities/20261117/2.webp",
+          677026
+        ],
+        [
+          "amenities/20261117/3.webp",
+          386440
+        ],
+        [
+          "amenities/20261117/4.webp",
+          240178
+        ],
+        [
+          "amenities/20261117/5.webp",
+          504006
+        ],
+        [
+          "amenities/20261117/6.webp",
+          753762
+        ],
+        [
+          "amenities/20261117/7.webp",
+          347748
+        ],
+        [
+          "amenities/20261117/8.webp",
+          367594
+        ],
+        [
+          "amenities/20261117/9.webp",
+          912702
+        ],
         [
           "building/exterior/1.1-1.mp4",
           3406598
@@ -1625,20 +1681,38 @@
           2566601
         ],
         [
+          "videos/20261117/livigno-general-poster.webp",
+          66546
+        ],
+        [
+          "videos/20261117/livigno-general.mp4",
+          203376350
+        ],
+        [
           "videos/premapa.mp4",
           37345650
         ]
       ]
     }
   ],
-  "missing": [
-    "amenities/2.webp",
-    "homepage/portada.webp",
-    "videos/livigno-general.mp4"
-  ],
+  "missing": [],
   "publicAssets": [
+    "/amenities/20261117/1.webp",
+    "/amenities/20261117/10.webp",
+    "/amenities/20261117/11.webp",
+    "/amenities/20261117/12.webp",
+    "/amenities/20261117/13.webp",
+    "/amenities/20261117/2.webp",
+    "/amenities/20261117/3.webp",
+    "/amenities/20261117/4.webp",
+    "/amenities/20261117/5.webp",
+    "/amenities/20261117/6.webp",
+    "/amenities/20261117/7.webp",
+    "/amenities/20261117/8.webp",
+    "/amenities/20261117/9.webp",
     "/file.svg",
     "/globe.svg",
+    "/homepage/20261117/portada.webp",
     "/icons/AREAS_VERDES_Y_RECREACION/logo_parque.png",
     "/icons/AREAS_VERDES_Y_RECREACION/parque_1.png",
     "/icons/AREAS_VERDES_Y_RECREACION/parque_2.png",
@@ -1842,6 +1916,7 @@
     "/plants/floor_s2.jpg",
     "/plants/floor_s3.jpg",
     "/portada.png",
+    "/videos/20261117/livigno-general-poster.webp",
     "/window.svg"
   ]
 }

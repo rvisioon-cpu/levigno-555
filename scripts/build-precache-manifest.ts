@@ -1,3 +1,4 @@
+import { latestMedia } from '../src/data/latest-media';
 // ============================================================================
 // MANIFIESTO DE PRECARGA — LIVIGNO 555
 // Genera la lista de claves de media que el Service Worker y /preparar guardan
@@ -90,7 +91,7 @@ export type TierId = 'critical' | 'full';
 const CRITICAL_RULES: RegExp[] = [
   /^homepage\//,
   /^identity\//,
-  /^videos\/portada\.mp4$/,
+  /^videos\/(?:20261117\/)?portada\.mp4$/,
   /^building\/exterior\/0\./,
   /^building\/exterior\/[1-3]\.1\./,
   /^building\/exterior\/[1-3]\.1-[1-3]\.1/,
@@ -110,7 +111,7 @@ const EXTRA_KEYS: string[] = [
   'building/exterior/0.2-1.1.mp4',
   'building/exterior/0.2.loop.mp4',
   'building/exterior/0.2.jpg',
-  'videos/portada.mp4',
+  latestMedia.introVideo,
   'portada.png',
   'intro.jpg',
 ];

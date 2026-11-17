@@ -1,3 +1,6 @@
+import { latestMedia } from './latest-media';
+import { getAssetUrl } from '@/utils/assets';
+
 export interface GalleryImage {
   id: string;
   src: string;
@@ -28,8 +31,8 @@ export const galleries: GalleryCollection[] = [
     id: 'amenities',
     title: 'Amenities',
     description: 'Explore our world-class facilities.',
-    coverImage: 'https://placehold.co/600x400/1a1a1a/ffffff?text=Amenities+Cover',
-    folderPrefix: 'amenities/',
+    coverImage: getAssetUrl(latestMedia.amenities[0]),
+    folderPrefix: latestMedia.amenityPrefix,
     images: []
   },
   {

@@ -1,3 +1,4 @@
+import { latestMedia } from './latest-media';
 import { getAssetUrl } from '@/utils/assets';
 
 export interface HomepageData {
@@ -21,8 +22,8 @@ export const homepageData: HomepageData = {
     button: "Entrar"
   },
   intro: {
-    poster: getAssetUrl('homepage/portada.webp'),
-    video: getAssetUrl('videos/portada.mp4')
+    poster: getAssetUrl(latestMedia.introPoster),
+    video: getAssetUrl(latestMedia.introVideo)
   },
   slides: [
     {

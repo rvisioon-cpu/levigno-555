@@ -49,3 +49,7 @@ next-env.d.ts
 /public/plants/
 /public/building/
 .agents/
+# Versioned project media stored in R2
+/public/amenities/20261117/
+/public/homepage/20261117/
+/public/videos/20261117/
