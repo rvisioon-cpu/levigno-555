@@ -23,5 +23,5 @@ import type { Unit } from '@/data/floors';
 export function mergePublicUnit(unit: Unit, settings: PublicSettings): Unit {
   const detail = settings.units[unit.id];
   return { ...unit, status: publicUnitStatus(settings.states[unit.id]) ?? unit.status,
-    ...(detail ? { tourUrl: detail.tourUrl || undefined, bedrooms: hasUpdatedTypology(unit.assetId) ? unit.bedrooms : detail.bedrooms ?? unit.bedrooms, bathrooms: hasUpdatedTypology(unit.assetId) ? unit.bathrooms : detail.bathrooms ?? unit.bathrooms, dimensions: detail.dimensions ?? unit.dimensions } : {}) };
+    ...(detail ? { tourUrl: detail.tourUrl || unit.tourUrl, bedrooms: hasUpdatedTypology(unit.assetId) ? unit.bedrooms : detail.bedrooms ?? unit.bedrooms, bathrooms: hasUpdatedTypology(unit.assetId) ? unit.bathrooms : detail.bathrooms ?? unit.bathrooms, dimensions: detail.dimensions ?? unit.dimensions } : {}) };
 }

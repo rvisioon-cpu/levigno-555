@@ -46,4 +46,7 @@ export const unitTourUrls: Record<string, string> = {
   '1601': kuulaTour('7dX5K'),
   '1502': kuulaTour('7dXpt'),
   '1602': kuulaTour('7dX0x'),
+  '1403': kuulaTour('7dDpv'),
+  '1503': kuulaTour('7dD0m'),
+  '1603': kuulaTour('7dD36'),
 };
