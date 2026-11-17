@@ -183,7 +183,7 @@ export default function PrepararPage() {
         </div>
 
         <p className="mt-2 text-sm leading-relaxed text-white/70">
-          Descarga el showroom completo con todas las fotos, planos de plantas, tipologías (T1–T12)
+          Descarga el showroom completo con todas las fotos, planos de plantas, tipologías (hasta T16)
           y videos de fachada para realizar presentaciones fluidas <strong>sin conexión a internet</strong>.
           Realiza este proceso con buena conexión antes de la presentación.
         </p>

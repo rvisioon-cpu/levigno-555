@@ -5,6 +5,7 @@ import { ArrowLeft, Share2, X, MoreVertical, Menu, Ruler, Bed, Bath, PanelRightO
 import { floorsData, UnitStatusString } from '@/data/floors';
 import Sidebar from '@/components/layout/Sidebar';
 import RequestInfoModal from '@/components/modals/RequestInfoModal';
+import { typologyAssetRoot } from '@/data/typology-assets';
 import InlineGallery from '@/components/gallery/InlineGallery';
 import TourHeader from '@/components/UI/TourHeader';
 import { preloadImages, preloadVideo } from '@/utils/preload';
@@ -47,7 +48,7 @@ const UnitPage = () => {
   const [viewMode, setViewMode] = useState<'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour'>(() => unit?.hasFurnishedView ? 'furnished' : 'plans');
   
   // Duplex floor level support (Piso 1 / Piso 2)
-  const isDuplex = unit?.assetId === 'T12' || unit?.subtitle === 'Dúplex' || unitId === '1601';
+  const isDuplex = unit?.assetId === 'T14' || unit?.subtitle === 'Dúplex' || unitId === '1601';
   const [duplexFloor, setDuplexFloor] = useState<1 | 2>(() => floor?.id === '17' ? 2 : 1);
 
   useEffect(() => {
@@ -68,16 +69,16 @@ const UnitPage = () => {
   const getTransitionUrl = (assetId: string, type: string, floorNum?: 1 | 2) => {
     const activeFloor = floorNum ?? duplexFloor;
     if (isDuplex && activeFloor === 2) {
-        const floor2Path = `plants/details/${assetId}/transitions/${type}_2floor.mp4`;
+        const floor2Path = `${typologyAssetRoot(assetId)}/transitions/${type}_2floor.mp4`;
         if (assetManifest.includes(floor2Path)) {
             return getAssetUrl(floor2Path);
         }
     }
-    const floor1Path = `plants/details/${assetId}/transitions/${type}_1floor.mp4`;
+    const floor1Path = `${typologyAssetRoot(assetId)}/transitions/${type}_1floor.mp4`;
     if (isDuplex && activeFloor === 1 && assetManifest.includes(floor1Path)) {
         return getAssetUrl(floor1Path);
     }
-    const relativePath = `plants/details/${assetId}/transitions/${type}.mp4`;
+    const relativePath = `${typologyAssetRoot(assetId)}/transitions/${type}.mp4`;
     if (assetManifest.includes(relativePath)) {
         return getAssetUrl(relativePath);
     }
@@ -87,7 +88,7 @@ const UnitPage = () => {
   const getUnitGalleryImages = (assetId: string, title?: string) => {
     // 1. Try Manifest First
     const specificImages = assetManifest
-        .filter(path => path.includes(`plants/details/${assetId}/gallery/`));
+        .filter(path => path.includes(`${typologyAssetRoot(assetId)}/gallery/`));
     
     // Prioritize .webp images from manifest to avoid duplicate slides
     const webpImages = specificImages.filter(path => path.endsWith('.webp'));
@@ -97,9 +98,9 @@ const UnitPage = () => {
     if (finalImages.length === 0) {
         const dynamicImages = [];
         for (let i = 1; i <= 14; i++) {
-             dynamicImages.push(`plants/details/${assetId}/gallery/${i}.webp`);
-             dynamicImages.push(`plants/details/${assetId}/gallery/${i}.jpg`);
-             dynamicImages.push(`plants/details/${assetId}/gallery/${i}.png`);
+             dynamicImages.push(`${typologyAssetRoot(assetId)}/gallery/${i}.webp`);
+             dynamicImages.push(`${typologyAssetRoot(assetId)}/gallery/${i}.jpg`);
+             dynamicImages.push(`${typologyAssetRoot(assetId)}/gallery/${i}.png`);
         }
         
         return dynamicImages.map(path => ({
@@ -110,7 +111,7 @@ const UnitPage = () => {
         }));
     }
 
-    return finalImages.map(path => ({
+    return finalImages.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).map(path => ({
             id: path,
             src: getAssetUrl(path),
             alt: `Unit ${title || assetId} Gallery`, 
@@ -128,7 +129,7 @@ const UnitPage = () => {
 
       for (const key of candidateKeys) {
           for (const ext of extensions) {
-              const relativePath = `plants/details/${assetId}/${key}.${ext}`;
+              const relativePath = `${typologyAssetRoot(assetId)}/${key}.${ext}`;
               if (assetManifest.includes(relativePath)) {
                   return getAssetUrl(relativePath);
               }
@@ -473,7 +474,7 @@ const UnitPage = () => {
                     <ul className="flex items-center gap-8 sm:gap-12">
                         <li className="flex flex-col items-center gap-2 text-neutral-700">
                             <Ruler strokeWidth={1.5} className="text-brand-gold" size={24} />
-                            <span className="text-xs font-bold uppercase tracking-wider">{unit.dimensions} m²</span>
+                            <span className="text-xs font-bold uppercase tracking-wider">{unit.dimensions > 0 ? `${unit.dimensions} m²` : 'Área por confirmar'}</span>
                         </li>
                         <li className="flex flex-col items-center gap-2 text-neutral-700">
                             <Bed strokeWidth={1.5} className="text-brand-gold" size={24} />
@@ -521,7 +522,7 @@ const UnitPage = () => {
                     <ul className="space-y-6">
                         <li className="flex items-center gap-4 text-neutral-700">
                             <Ruler strokeWidth={1.5} className="text-brand-gold" size={22} />
-                            <span className="text-sm font-medium">Area total {unit.dimensions} m²</span>
+                            <span className="text-sm font-medium">{unit.dimensions > 0 ? `Área total ${unit.dimensions} m²` : 'Área por confirmar'}</span>
                         </li>
                         <li className="flex items-center gap-4 text-neutral-700">
                             <Bed strokeWidth={1.5} className="text-brand-gold" size={22} />

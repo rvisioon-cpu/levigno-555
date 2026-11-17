@@ -1,3 +1,5 @@
+import { updatedTypologyAssets } from './updated-typology-assets';
+
 /**
  * Asset Manifest
  * List all assets that need to be preloaded or are located in the remote storage.
@@ -29,7 +31,9 @@ export const assetManifest: string[] = [
     // Floors & Units
     ...Array.from({ length: 17 }, (_, index) => `plants/floor_${index + 1}.jpg`),
     ...[1, 2, 3].map((level) => `plants/floor_s${level}.jpg`),
-    ...Array.from({ length: 12 }, (_, index) => {
+    ...updatedTypologyAssets,
+    ...[2, 3, 5, 6, 8].flatMap((number) => {
+        const index = number - 1;
         const type = `T${index + 1}`;
         const galleryCounts = [10, 7, 7, 10, 6, 7, 7, 7, 7, 9, 7, 14];
         const transitions = [
@@ -55,21 +59,8 @@ export const assetManifest: string[] = [
             ]).flat(),
             ...transitions.map((transition) => `plants/details/${type}/transitions/${transition}.mp4`),
         ];
-        if (type === 'T12') {
-            assets.push(
-                'plants/details/T12/plans_2floor.webp',
-                'plants/details/T12/furnished_2floor.webp',
-                'plants/details/T12/unfurnished_2floor.webp',
-                'plants/details/T12/deliverable_2floor.webp',
-                'plants/details/T12/plans_2floor.jpg',
-                'plants/details/T12/furnished_2floor.jpg',
-                'plants/details/T12/deliverable_2floor.jpg',
-                ...transitions.map((transition) => `plants/details/T12/transitions/${transition}_2floor.mp4`),
-                ...transitions.map((transition) => `plants/details/T12/transitions/${transition}_1floor.mp4`),
-            );
-        }
         return assets;
-    }).flat(),
+    }),
     
     // Gallery
     'gallery/exterior_1.jpg',

@@ -42,18 +42,23 @@ export interface Floor {
 
 // Commercial unit schedule supplied for Levigno. All units are marked available as a temporary initial sales status.
 const unitTypes = [
-  { ids: ['201'], dimensions: 71.23, bedrooms: 3, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
+  { ids: ['201'], dimensions: 71.23, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
   { ids: ['202', '302', '402', '502', '602', '702', '802', '902', '1002'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T2', hasFurnishedView: true, hasGallery: true },
   { ids: ['203'], dimensions: 40.52, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T3', hasFurnishedView: true, hasGallery: true },
-  { ids: ['301', '401', '501', '601', '701', '801', '901', '1001', '1101', '1201', '1301', '1401', '1501'], dimensions: 72.22, bedrooms: 3, bathrooms: 2, subtitle: 'Flat', assetId: 'T4', hasFurnishedView: true, hasGallery: true },
+  { ids: ['301', '401', '501', '601', '701', '801', '901', '1001', '1101', '1201', '1301'], dimensions: 72.22, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
   { ids: ['303', '403', '503', '603', '703', '803', '903', '1003', '1103'], dimensions: 40.52, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T5', hasFurnishedView: true, hasGallery: true },
   { ids: ['1102'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T6', hasFurnishedView: true, hasGallery: true },
   { ids: ['1202'], dimensions: 56.69, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T7', hasFurnishedView: true, hasGallery: true },
   { ids: ['1203', '1303'], dimensions: 40, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T8', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1302'], dimensions: 53.34, bedrooms: 2, bathrooms: 1, subtitle: 'Flat', assetId: 'T9', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1402'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T10', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1502', '1602'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T11', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1601'], dimensions: 105.31, bedrooms: 4, bathrooms: 2.5, subtitle: 'Dúplex', assetId: 'T12', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1302'], dimensions: 53.34, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T9', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1401', '1501'], dimensions: 72.22, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T10', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1402'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T11', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1502'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T13', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1601'], dimensions: 105.31, bedrooms: 2, bathrooms: 2, subtitle: 'Dúplex', assetId: 'T14', hasFurnishedView: true, hasGallery: true },
+  // Zero means area not supplied yet; the UI hides it until confirmed.
+  { ids: ['1403', '1503'], dimensions: 0, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T12', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1602'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T15', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1603'], dimensions: 0, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T16', hasFurnishedView: true, hasGallery: true },
 ];
 
 const soldUnitIds = new Set(['1501', '1202', '1002', '801', '703', '401']);

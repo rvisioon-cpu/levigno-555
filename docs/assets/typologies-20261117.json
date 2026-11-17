@@ -1,0 +1,714 @@
+[
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/AMOBLADO_201.jpg",
+    "asset": "plants/details/20261117/T1/furnished.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/CAD_201.jpg",
+    "asset": "plants/details/20261117/T1/plans.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/ENTREGABLE_201.jpg",
+    "asset": "plants/details/20261117/T1/unfurnished.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/1.jpg",
+    "asset": "plants/details/20261117/T1/gallery/1.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/10.jpg",
+    "asset": "plants/details/20261117/T1/gallery/10.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/2.jpg",
+    "asset": "plants/details/20261117/T1/gallery/2.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/3.jpg",
+    "asset": "plants/details/20261117/T1/gallery/3.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/4.jpg",
+    "asset": "plants/details/20261117/T1/gallery/4.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/5.jpg",
+    "asset": "plants/details/20261117/T1/gallery/5.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/6.jpg",
+    "asset": "plants/details/20261117/T1/gallery/6.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/7.jpg",
+    "asset": "plants/details/20261117/T1/gallery/7.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/8.jpg",
+    "asset": "plants/details/20261117/T1/gallery/8.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/GALERÍA/9.jpg",
+    "asset": "plants/details/20261117/T1/gallery/9.webp"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/TRANSICIONES/T1 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T1/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/TRANSICIONES/T1 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T1/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/TRANSICIONES/T1 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T1/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/TRANSICIONES/T1 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T1/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/TRANSICIONES/T1 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T1/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T1 - FLAT 201-1301---------------------------/TRANSICIONES/T1 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T1/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/AMOBLADO_1202.jpg",
+    "asset": "plants/details/20261117/T7/furnished.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/CAD_1202.jpg",
+    "asset": "plants/details/20261117/T7/plans.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/ENTREGABLE_1202.jpg",
+    "asset": "plants/details/20261117/T7/unfurnished.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/1.jpg",
+    "asset": "plants/details/20261117/T7/gallery/1.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/2.jpg",
+    "asset": "plants/details/20261117/T7/gallery/2.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/3.jpg",
+    "asset": "plants/details/20261117/T7/gallery/3.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/4.jpg",
+    "asset": "plants/details/20261117/T7/gallery/4.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/5.jpg",
+    "asset": "plants/details/20261117/T7/gallery/5.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/6.jpg",
+    "asset": "plants/details/20261117/T7/gallery/6.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/GALERÍA/7.jpg",
+    "asset": "plants/details/20261117/T7/gallery/7.webp"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/TRANSICIONES/T6 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T7/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/TRANSICIONES/T6 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T7/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/TRANSICIONES/T6 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T7/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/TRANSICIONES/T6 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T7/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/TRANSICIONES/T6 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T7/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T7 - FLAT 1202 ----------------------/TRANSICIONES/T6 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T7/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/AMOBLADO_1302.jpg",
+    "asset": "plants/details/20261117/T9/furnished.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/CAD_1302.jpg",
+    "asset": "plants/details/20261117/T9/plans.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/ENTREGABLE_1302.jpg",
+    "asset": "plants/details/20261117/T9/unfurnished.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/1.jpg",
+    "asset": "plants/details/20261117/T9/gallery/1.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/2.jpg",
+    "asset": "plants/details/20261117/T9/gallery/2.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/3.jpg",
+    "asset": "plants/details/20261117/T9/gallery/3.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/4.jpg",
+    "asset": "plants/details/20261117/T9/gallery/4.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/5.jpg",
+    "asset": "plants/details/20261117/T9/gallery/5.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/6.jpg",
+    "asset": "plants/details/20261117/T9/gallery/6.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/GALERÍA/7.jpg",
+    "asset": "plants/details/20261117/T9/gallery/7.webp"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/TRANSICIONES/T7 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T9/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/TRANSICIONES/T7 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T9/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/TRANSICIONES/T7 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T9/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/TRANSICIONES/T7 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T9/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/TRANSICIONES/T7 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T9/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T9 - FLAT 1302------------------------------/TRANSICIONES/T7 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T9/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/AMOBLADO_1401.jpg",
+    "asset": "plants/details/20261117/T10/furnished.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/CAD_1401.jpg",
+    "asset": "plants/details/20261117/T10/plans.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/ENTREGABLE_1401.jpg",
+    "asset": "plants/details/20261117/T10/unfurnished.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/1.png",
+    "asset": "plants/details/20261117/T10/gallery/1.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/2.png",
+    "asset": "plants/details/20261117/T10/gallery/2.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/3.png",
+    "asset": "plants/details/20261117/T10/gallery/3.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/4.png",
+    "asset": "plants/details/20261117/T10/gallery/4.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/5.png",
+    "asset": "plants/details/20261117/T10/gallery/5.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/6.png",
+    "asset": "plants/details/20261117/T10/gallery/6.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/7.png",
+    "asset": "plants/details/20261117/T10/gallery/7.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/8.png",
+    "asset": "plants/details/20261117/T10/gallery/8.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/GALERIA/9.png",
+    "asset": "plants/details/20261117/T10/gallery/9.webp"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/TRANSICIONES/T2 - 01_A_a_E_1.mp4",
+    "asset": "plants/details/20261117/T10/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/TRANSICIONES/T2 - 02_CAD_a_A_1.mp4",
+    "asset": "plants/details/20261117/T10/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/TRANSICIONES/T2 - 03_CAD_a_E_1.mp4",
+    "asset": "plants/details/20261117/T10/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/TRANSICIONES/T2 - 04_E_a_A_1.mp4",
+    "asset": "plants/details/20261117/T10/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/TRANSICIONES/T2 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T10/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T10 - FLAT 1401-1501-----------------------/TRANSICIONES/T2 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T10/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/AMOBLADO_1402.jpg",
+    "asset": "plants/details/20261117/T11/furnished.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/CAD_1402.jpg",
+    "asset": "plants/details/20261117/T11/plans.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/ENTREGABLE_1402.jpg",
+    "asset": "plants/details/20261117/T11/unfurnished.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/1.png",
+    "asset": "plants/details/20261117/T11/gallery/1.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/2.png",
+    "asset": "plants/details/20261117/T11/gallery/2.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/3.png",
+    "asset": "plants/details/20261117/T11/gallery/3.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/4.png",
+    "asset": "plants/details/20261117/T11/gallery/4.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/5.png",
+    "asset": "plants/details/20261117/T11/gallery/5.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/6.png",
+    "asset": "plants/details/20261117/T11/gallery/6.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/7.png",
+    "asset": "plants/details/20261117/T11/gallery/7.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/8.png",
+    "asset": "plants/details/20261117/T11/gallery/8.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/GALERÍA/9.png",
+    "asset": "plants/details/20261117/T11/gallery/9.webp"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/TRANSICIONES/T3 - 01_A_a_E_1.mp4",
+    "asset": "plants/details/20261117/T11/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/TRANSICIONES/T3 - 02_CAD_a_A_1.mp4",
+    "asset": "plants/details/20261117/T11/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/TRANSICIONES/T3 - 03_CAD_a_E_1.mp4",
+    "asset": "plants/details/20261117/T11/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/TRANSICIONES/T3 - 04_E_a_A_1.mp4",
+    "asset": "plants/details/20261117/T11/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/TRANSICIONES/T3 - 05_A_a_CAD_1.mp4",
+    "asset": "plants/details/20261117/T11/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T11 - FLAT 1402------------------/TRANSICIONES/T3 - 06_E_a_CAD_1.mp4",
+    "asset": "plants/details/20261117/T11/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/AMOBLADO_1403.jpg",
+    "asset": "plants/details/20261117/T12/furnished.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/CAD_1403.jpg",
+    "asset": "plants/details/20261117/T12/plans.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/ENTREGABLE_1403.jpg",
+    "asset": "plants/details/20261117/T12/unfurnished.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/GALERIA/1.png",
+    "asset": "plants/details/20261117/T12/gallery/1.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/GALERIA/2.png",
+    "asset": "plants/details/20261117/T12/gallery/2.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/GALERIA/3.png",
+    "asset": "plants/details/20261117/T12/gallery/3.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/GALERIA/4.png",
+    "asset": "plants/details/20261117/T12/gallery/4.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/GALERIA/5.png",
+    "asset": "plants/details/20261117/T12/gallery/5.webp"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/TRANSICIONES/T12 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T12/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/TRANSICIONES/T12 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T12/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/TRANSICIONES/T12 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T12/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/TRANSICIONES/T12 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T12/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/TRANSICIONES/T12 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T12/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T12 - FLAT 1403-1503--------------/TRANSICIONES/T12 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T12/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/AMOBLADO_1502.jpg",
+    "asset": "plants/details/20261117/T13/furnished.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/CAD_1502.jpg",
+    "asset": "plants/details/20261117/T13/plans.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/ENTREGABLE_1502.jpg",
+    "asset": "plants/details/20261117/T13/unfurnished.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/1.png",
+    "asset": "plants/details/20261117/T13/gallery/1.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/2.png",
+    "asset": "plants/details/20261117/T13/gallery/2.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/3.png",
+    "asset": "plants/details/20261117/T13/gallery/3.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/4.png",
+    "asset": "plants/details/20261117/T13/gallery/4.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/5.png",
+    "asset": "plants/details/20261117/T13/gallery/5.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/6.png",
+    "asset": "plants/details/20261117/T13/gallery/6.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/GALERIA/7.png",
+    "asset": "plants/details/20261117/T13/gallery/7.webp"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/TRANSICIONES/T13 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T13/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/TRANSICIONES/T13 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T13/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/TRANSICIONES/T13 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T13/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/TRANSICIONES/T13 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T13/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/TRANSICIONES/T13 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T13/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T13 - FLAT 1502-------------/TRANSICIONES/T13 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T13/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/AMOBLADO_1601_1PISO.jpg",
+    "asset": "plants/details/20261117/T14/furnished.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/AMOBLADO_1601_2PISO.jpg",
+    "asset": "plants/details/20261117/T14/furnished_2floor.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/CAD_1601_1PISO.jpg",
+    "asset": "plants/details/20261117/T14/plans.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/CAD_1601_2PISO.jpg",
+    "asset": "plants/details/20261117/T14/plans_2floor.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/ENTREGABLE_1601_1PISO.jpg",
+    "asset": "plants/details/20261117/T14/unfurnished.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/ENTREGABLE_1601_2PISO.jpg",
+    "asset": "plants/details/20261117/T14/unfurnished_2floor.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/1.png",
+    "asset": "plants/details/20261117/T14/gallery/1.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/10.png",
+    "asset": "plants/details/20261117/T14/gallery/10.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/11.png",
+    "asset": "plants/details/20261117/T14/gallery/11.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/12.png",
+    "asset": "plants/details/20261117/T14/gallery/12.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/13.png",
+    "asset": "plants/details/20261117/T14/gallery/13.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/2.png",
+    "asset": "plants/details/20261117/T14/gallery/2.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/3.png",
+    "asset": "plants/details/20261117/T14/gallery/3.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/4.png",
+    "asset": "plants/details/20261117/T14/gallery/4.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/5.png",
+    "asset": "plants/details/20261117/T14/gallery/5.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/6.png",
+    "asset": "plants/details/20261117/T14/gallery/6.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/7.png",
+    "asset": "plants/details/20261117/T14/gallery/7.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/8.png",
+    "asset": "plants/details/20261117/T14/gallery/8.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/GALERIA/9.png",
+    "asset": "plants/details/20261117/T14/gallery/9.webp"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.1 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T14/transitions/furnished_to_unfurnished_1floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.1 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T14/transitions/furnished_to_plans_1floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.1 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T14/transitions/plans_to_unfurnished_1floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.1 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T14/transitions/unfurnished_to_furnished_1floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.1 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T14/transitions/plans_to_furnished_1floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.1 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T14/transitions/unfurnished_to_plans_1floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.2 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T14/transitions/furnished_to_unfurnished_2floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.2 - 02_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T14/transitions/plans_to_furnished_2floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.2 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T14/transitions/plans_to_unfurnished_2floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.2 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T14/transitions/unfurnished_to_furnished_2floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.2 - 05_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T14/transitions/furnished_to_plans_2floor.mp4"
+  },
+  {
+    "source": "T14 - DUPLEX 1601---------/TRANSICIONES/T14.2 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T14/transitions/unfurnished_to_plans_2floor.mp4"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/AMOBLADO_1602.jpg",
+    "asset": "plants/details/20261117/T15/furnished.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/CAD_1602.jpg",
+    "asset": "plants/details/20261117/T15/plans.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/ENTREGABLE_1602.jpg",
+    "asset": "plants/details/20261117/T15/unfurnished.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/GALERIA/1.png",
+    "asset": "plants/details/20261117/T15/gallery/1.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/GALERIA/2.png",
+    "asset": "plants/details/20261117/T15/gallery/2.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/GALERIA/3.png",
+    "asset": "plants/details/20261117/T15/gallery/3.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/GALERIA/4.png",
+    "asset": "plants/details/20261117/T15/gallery/4.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/GALERIA/5.png",
+    "asset": "plants/details/20261117/T15/gallery/5.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/GALERIA/6.png",
+    "asset": "plants/details/20261117/T15/gallery/6.webp"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/TRANSICIONES/T15 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T15/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/TRANSICIONES/T15 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T15/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/TRANSICIONES/T15 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T15/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/TRANSICIONES/T15 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T15/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/TRANSICIONES/T15 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T15/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T15 - FLAT 1602------------/TRANSICIONES/T15 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T15/transitions/unfurnished_to_plans.mp4"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/AMOBLADO_1603.jpg",
+    "asset": "plants/details/20261117/T16/furnished.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/CAD_1603.jpg",
+    "asset": "plants/details/20261117/T16/plans.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/ENTREGABLE_1603.jpg",
+    "asset": "plants/details/20261117/T16/unfurnished.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/GALERIA/1.png",
+    "asset": "plants/details/20261117/T16/gallery/1.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/GALERIA/2.png",
+    "asset": "plants/details/20261117/T16/gallery/2.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/GALERIA/3.png",
+    "asset": "plants/details/20261117/T16/gallery/3.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/GALERIA/4.png",
+    "asset": "plants/details/20261117/T16/gallery/4.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/GALERIA/5.png",
+    "asset": "plants/details/20261117/T16/gallery/5.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/GALERIA/6.png",
+    "asset": "plants/details/20261117/T16/gallery/6.webp"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/TRANSICIONES/T16 - 01_A_a_E.mp4",
+    "asset": "plants/details/20261117/T16/transitions/furnished_to_unfurnished.mp4"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/TRANSICIONES/T16 - 02_A_a_CAD.mp4",
+    "asset": "plants/details/20261117/T16/transitions/furnished_to_plans.mp4"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/TRANSICIONES/T16 - 03_CAD_a_E.mp4",
+    "asset": "plants/details/20261117/T16/transitions/plans_to_unfurnished.mp4"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/TRANSICIONES/T16 - 04_E_a_A.mp4",
+    "asset": "plants/details/20261117/T16/transitions/unfurnished_to_furnished.mp4"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/TRANSICIONES/T16 - 05_CAD_a_A.mp4",
+    "asset": "plants/details/20261117/T16/transitions/plans_to_furnished.mp4"
+  },
+  {
+    "source": "T16 - FLAT 1603---------------/TRANSICIONES/T16 - 06_E_a_CAD.mp4",
+    "asset": "plants/details/20261117/T16/transitions/unfurnished_to_plans.mp4"
+  }
+]

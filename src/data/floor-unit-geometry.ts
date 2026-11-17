@@ -180,7 +180,14 @@ const CENTER_CACHE = new Map<string, { x: number; y: number }>();
 export function floorUnitGeometry(
   floorId: string,
   unitId: string
-): { path: string; x: number; y: number } | undefined {
+): { path?: string; x: number; y: number } | undefined {
+  // Revised upper floors need new polygons from the coordinate selector.
+  // Use pins inside each unit until those outlines are traced.
+  if (Number(floorId) >= 14 && Number(floorId) <= 16 && /^\d+(01|02|03)$/.test(unitId)) {
+    const suffix = unitId.slice(-2);
+    return suffix === '01' ? { x: 22, y: 45 }
+      : suffix === '02' ? { x: 65, y: 35 } : { x: 40, y: 68 };
+  }
   const path = getUnitPath(floorId, unitId);
   if (!path) return undefined;
 

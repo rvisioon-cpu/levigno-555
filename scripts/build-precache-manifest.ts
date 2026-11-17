@@ -76,7 +76,7 @@ const collectKeys = (...roots: unknown[]): Set<string> => {
 //   - Portada y hero
 //   - Fachadas de día y sus loops / transiciones base
 //   - Planos de plantas (1-17, s1-s3)
-//   - Planos y vistas principales de tipologías (T1-T12)
+//   - Planos y vistas principales de tipologías (hasta T16)
 //   - Identidad y logos
 // FULL: Todo el material secundario o de exploración profunda:
 //   - Fachadas de noche
@@ -98,7 +98,8 @@ const CRITICAL_RULES: RegExp[] = [
   /^building\/exterior\/3\.1-1\.1\.mp4$/,
   /^plants\/floor_[0-9s]+\.jpg$/,
   /^plants\/details\/T\d+\/(plans|furnished|unfurnished|deliverable)\.(webp|jpg)$/,
-  /^plants\/details\/T12\/.*2floor\.(webp|jpg)$/,
+  /^plants\/details\/(?:20261117\/)?T14\/.*2floor\.(webp|jpg)$/,
+  /^plants\/details\/20261117\/T\d+\/(plans|furnished|unfurnished)\.(webp|jpg)$/,
 ];
 
 const tierOf = (key: string): TierId =>

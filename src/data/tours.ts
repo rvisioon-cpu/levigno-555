@@ -1,3 +1,4 @@
+import { typologyAssetRoot, hasUpdatedTypology } from './typology-assets';
 import { floorsData } from './floors';
 import { getAssetUrl } from '@/utils/assets';
 
@@ -35,7 +36,7 @@ const unitTours: Tour[] = floorsData.flatMap((floor) =>
       id: `unit-${unit.id}`,
       title: `Unidad ${unit.id}`,
       subtitle: `${unit.subtitle || 'Departamento'} · Recorrido 360°`,
-      thumbnail: getAssetUrl(`plants/details/${unit.assetId}/gallery/1.jpg`),
+      thumbnail: getAssetUrl(`${typologyAssetRoot(unit.assetId!)}/gallery/1.${hasUpdatedTypology(unit.assetId) ? 'webp' : 'jpg'}`),
       type: 'unit' as const,
       target: unit.tourUrl,
       floorName: floor.name,

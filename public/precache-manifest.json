@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-09T06:20:27.715Z",
+  "generatedAt": "2026-11-17T18:26:07.525Z",
   "r2Base": "",
-  "totalAssets": 470,
-  "totalBytes": 1325948364,
+  "totalAssets": 403,
+  "totalBytes": 1007464852,
   "tiers": [
     {
       "id": "critical",
       "label": "Recorrido principal",
-      "bytes": 226490383,
+      "bytes": 193001753,
       "assets": [
         [
           "building/exterior/0.1-0.mp4",
@@ -90,160 +90,136 @@
           107823
         ],
         [
-          "plants/details/T1/deliverable.jpg",
-          1349458
+          "plants/details/20261117/T1/furnished.webp",
+          274270
         ],
         [
-          "plants/details/T1/deliverable.webp",
-          218710
+          "plants/details/20261117/T1/plans.webp",
+          118910
         ],
         [
-          "plants/details/T1/furnished.jpg",
-          1695349
+          "plants/details/20261117/T1/unfurnished.webp",
+          241024
         ],
         [
-          "plants/details/T1/furnished.webp",
-          319586
+          "plants/details/20261117/T10/furnished.webp",
+          285420
         ],
         [
-          "plants/details/T1/plans.jpg",
-          448862
+          "plants/details/20261117/T10/plans.webp",
+          103848
         ],
         [
-          "plants/details/T1/plans.webp",
-          101654
+          "plants/details/20261117/T10/unfurnished.webp",
+          222184
         ],
         [
-          "plants/details/T1/unfurnished.jpg",
-          1349458
+          "plants/details/20261117/T11/furnished.webp",
+          293136
         ],
         [
-          "plants/details/T1/unfurnished.webp",
-          218710
+          "plants/details/20261117/T11/plans.webp",
+          123524
         ],
         [
-          "plants/details/T10/deliverable.jpg",
-          1096002
+          "plants/details/20261117/T11/unfurnished.webp",
+          232822
         ],
         [
-          "plants/details/T10/deliverable.webp",
-          173860
+          "plants/details/20261117/T12/furnished.webp",
+          310970
         ],
         [
-          "plants/details/T10/furnished.jpg",
-          1350760
+          "plants/details/20261117/T12/plans.webp",
+          84810
         ],
         [
-          "plants/details/T10/furnished.webp",
-          274684
+          "plants/details/20261117/T12/unfurnished.webp",
+          212936
         ],
         [
-          "plants/details/T10/plans.jpg",
-          465979
+          "plants/details/20261117/T13/furnished.webp",
+          447888
         ],
         [
-          "plants/details/T10/plans.webp",
-          104896
+          "plants/details/20261117/T13/plans.webp",
+          127144
         ],
         [
-          "plants/details/T10/unfurnished.jpg",
-          1096002
+          "plants/details/20261117/T13/unfurnished.webp",
+          318150
         ],
         [
-          "plants/details/T10/unfurnished.webp",
-          173860
+          "plants/details/20261117/T14/furnished.webp",
+          359706
         ],
         [
-          "plants/details/T11/deliverable.jpg",
-          941235
+          "plants/details/20261117/T14/furnished_2floor.webp",
+          492286
         ],
         [
-          "plants/details/T11/deliverable.webp",
-          145230
+          "plants/details/20261117/T14/plans.webp",
+          99956
         ],
         [
-          "plants/details/T11/furnished.jpg",
-          1097360
+          "plants/details/20261117/T14/plans_2floor.webp",
+          111552
         ],
         [
-          "plants/details/T11/furnished.webp",
-          212520
+          "plants/details/20261117/T14/unfurnished.webp",
+          284784
         ],
         [
-          "plants/details/T11/plans.jpg",
-          361687
+          "plants/details/20261117/T14/unfurnished_2floor.webp",
+          381320
         ],
         [
-          "plants/details/T11/plans.webp",
-          80134
+          "plants/details/20261117/T15/furnished.webp",
+          230440
         ],
         [
-          "plants/details/T11/unfurnished.jpg",
-          941235
+          "plants/details/20261117/T15/plans.webp",
+          95686
         ],
         [
-          "plants/details/T11/unfurnished.webp",
-          145230
+          "plants/details/20261117/T15/unfurnished.webp",
+          215296
         ],
         [
-          "plants/details/T12/deliverable.jpg",
-          1394154
+          "plants/details/20261117/T16/furnished.webp",
+          279974
         ],
         [
-          "plants/details/T12/deliverable.webp",
-          233072
+          "plants/details/20261117/T16/plans.webp",
+          84378
         ],
         [
-          "plants/details/T12/deliverable_2floor.jpg",
-          1480174
+          "plants/details/20261117/T16/unfurnished.webp",
+          205402
         ],
         [
-          "plants/details/T12/deliverable_2floor.webp",
-          287996
+          "plants/details/20261117/T7/furnished.webp",
+          321352
         ],
         [
-          "plants/details/T12/furnished.jpg",
-          1598599
+          "plants/details/20261117/T7/plans.webp",
+          110524
         ],
         [
-          "plants/details/T12/furnished.webp",
-          313218
+          "plants/details/20261117/T7/unfurnished.webp",
+          264200
         ],
         [
-          "plants/details/T12/furnished_2floor.jpg",
-          1615041
+          "plants/details/20261117/T9/furnished.webp",
+          300412
         ],
         [
-          "plants/details/T12/furnished_2floor.webp",
-          338192
+          "plants/details/20261117/T9/plans.webp",
+          103898
         ],
         [
-          "plants/details/T12/plans.jpg",
-          397451
-        ],
-        [
-          "plants/details/T12/plans.webp",
-          84572
-        ],
-        [
-          "plants/details/T12/plans_2floor.jpg",
-          432589
-        ],
-        [
-          "plants/details/T12/plans_2floor.webp",
-          90976
-        ],
-        [
-          "plants/details/T12/unfurnished.jpg",
-          1394154
-        ],
-        [
-          "plants/details/T12/unfurnished.webp",
-          233072
-        ],
-        [
-          "plants/details/T12/unfurnished_2floor.webp",
-          287996
+          "plants/details/20261117/T9/unfurnished.webp",
+          248784
         ],
         [
           "plants/details/T2/deliverable.jpg",
@@ -310,38 +286,6 @@
           210862
         ],
         [
-          "plants/details/T4/deliverable.jpg",
-          1349578
-        ],
-        [
-          "plants/details/T4/deliverable.webp",
-          218246
-        ],
-        [
-          "plants/details/T4/furnished.jpg",
-          1694988
-        ],
-        [
-          "plants/details/T4/furnished.webp",
-          319238
-        ],
-        [
-          "plants/details/T4/plans.jpg",
-          455741
-        ],
-        [
-          "plants/details/T4/plans.webp",
-          103336
-        ],
-        [
-          "plants/details/T4/unfurnished.jpg",
-          1349578
-        ],
-        [
-          "plants/details/T4/unfurnished.webp",
-          218246
-        ],
-        [
           "plants/details/T5/deliverable.jpg",
           1141383
         ],
@@ -406,38 +350,6 @@
           190032
         ],
         [
-          "plants/details/T7/deliverable.jpg",
-          1415297
-        ],
-        [
-          "plants/details/T7/deliverable.webp",
-          209324
-        ],
-        [
-          "plants/details/T7/furnished.jpg",
-          1487383
-        ],
-        [
-          "plants/details/T7/furnished.webp",
-          265944
-        ],
-        [
-          "plants/details/T7/plans.jpg",
-          462640
-        ],
-        [
-          "plants/details/T7/plans.webp",
-          101784
-        ],
-        [
-          "plants/details/T7/unfurnished.jpg",
-          1415297
-        ],
-        [
-          "plants/details/T7/unfurnished.webp",
-          209324
-        ],
-        [
           "plants/details/T8/deliverable.jpg",
           1133210
         ],
@@ -468,38 +380,6 @@
         [
           "plants/details/T8/unfurnished.webp",
           190352
-        ],
-        [
-          "plants/details/T9/deliverable.jpg",
-          1329744
-        ],
-        [
-          "plants/details/T9/deliverable.webp",
-          196612
-        ],
-        [
-          "plants/details/T9/furnished.jpg",
-          1422612
-        ],
-        [
-          "plants/details/T9/furnished.webp",
-          247892
-        ],
-        [
-          "plants/details/T9/plans.jpg",
-          437409
-        ],
-        [
-          "plants/details/T9/plans.webp",
-          95330
-        ],
-        [
-          "plants/details/T9/unfurnished.jpg",
-          1329744
-        ],
-        [
-          "plants/details/T9/unfurnished.webp",
-          196612
         ],
         [
           "plants/floor_1.jpg",
@@ -585,13 +465,12 @@
           "videos/portada.mp4",
           18119027
         ]
-      ],
-      "totalBytes": 224148802
+      ]
     },
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 1099457981,
+      "bytes": 814463099,
       "assets": [
         [
           "building/exterior/1.1-1.mp4",
@@ -770,468 +649,584 @@
           712406
         ],
         [
-          "plants/details/T1/gallery/1.jpg",
-          5628016
+          "plants/details/20261117/T1/gallery/1.webp",
+          1279098
         ],
         [
-          "plants/details/T1/gallery/1.webp",
-          1062142
+          "plants/details/20261117/T1/gallery/10.webp",
+          1039834
         ],
         [
-          "plants/details/T1/gallery/10.jpg",
-          5288539
+          "plants/details/20261117/T1/gallery/2.webp",
+          1109122
         ],
         [
-          "plants/details/T1/gallery/10.webp",
-          801068
+          "plants/details/20261117/T1/gallery/3.webp",
+          969972
         ],
         [
-          "plants/details/T1/gallery/2.jpg",
-          5263424
+          "plants/details/20261117/T1/gallery/4.webp",
+          1079330
         ],
         [
-          "plants/details/T1/gallery/2.webp",
-          878708
+          "plants/details/20261117/T1/gallery/5.webp",
+          1342666
         ],
         [
-          "plants/details/T1/gallery/3.jpg",
-          5224744
+          "plants/details/20261117/T1/gallery/6.webp",
+          1444722
         ],
         [
-          "plants/details/T1/gallery/3.webp",
-          727934
+          "plants/details/20261117/T1/gallery/7.webp",
+          1034382
         ],
         [
-          "plants/details/T1/gallery/4.jpg",
-          5591930
+          "plants/details/20261117/T1/gallery/8.webp",
+          1069682
         ],
         [
-          "plants/details/T1/gallery/4.webp",
-          857864
+          "plants/details/20261117/T1/gallery/9.webp",
+          832480
         ],
         [
-          "plants/details/T1/gallery/5.jpg",
-          5715890
+          "plants/details/20261117/T1/transitions/furnished_to_plans.mp4",
+          3159608
         ],
         [
-          "plants/details/T1/gallery/5.webp",
-          1080586
+          "plants/details/20261117/T1/transitions/furnished_to_unfurnished.mp4",
+          3344711
         ],
         [
-          "plants/details/T1/gallery/6.jpg",
-          5601576
+          "plants/details/20261117/T1/transitions/plans_to_furnished.mp4",
+          3135898
         ],
         [
-          "plants/details/T1/gallery/6.webp",
-          1199536
+          "plants/details/20261117/T1/transitions/plans_to_unfurnished.mp4",
+          3168508
         ],
         [
-          "plants/details/T1/gallery/7.jpg",
-          5057022
+          "plants/details/20261117/T1/transitions/unfurnished_to_furnished.mp4",
+          3608302
         ],
         [
-          "plants/details/T1/gallery/7.webp",
-          824080
+          "plants/details/20261117/T1/transitions/unfurnished_to_plans.mp4",
+          3189808
         ],
         [
-          "plants/details/T1/gallery/8.jpg",
-          5209651
+          "plants/details/20261117/T10/gallery/1.webp",
+          937852
         ],
         [
-          "plants/details/T1/gallery/8.webp",
-          844520
+          "plants/details/20261117/T10/gallery/2.webp",
+          707930
         ],
         [
-          "plants/details/T1/gallery/9.jpg",
-          4622991
+          "plants/details/20261117/T10/gallery/3.webp",
+          1210902
         ],
         [
-          "plants/details/T1/gallery/9.webp",
-          681162
+          "plants/details/20261117/T10/gallery/4.webp",
+          1249150
         ],
         [
-          "plants/details/T1/transitions/furnished_to_plans.mp4",
-          3670544
+          "plants/details/20261117/T10/gallery/5.webp",
+          1527020
         ],
         [
-          "plants/details/T1/transitions/furnished_to_unfurnished.mp4",
-          3872554
+          "plants/details/20261117/T10/gallery/6.webp",
+          1023426
         ],
         [
-          "plants/details/T1/transitions/plans_to_furnished.mp4",
-          3869383
+          "plants/details/20261117/T10/gallery/7.webp",
+          1598722
         ],
         [
-          "plants/details/T1/transitions/plans_to_unfurnished.mp4",
-          3436359
+          "plants/details/20261117/T10/gallery/8.webp",
+          783082
         ],
         [
-          "plants/details/T1/transitions/unfurnished_to_furnished.mp4",
-          4103652
+          "plants/details/20261117/T10/gallery/9.webp",
+          669414
         ],
         [
-          "plants/details/T1/transitions/unfurnished_to_plans.mp4",
-          3469898
+          "plants/details/20261117/T10/transitions/furnished_to_plans.mp4",
+          3134988
         ],
         [
-          "plants/details/T10/gallery/1.jpg",
-          5050270
+          "plants/details/20261117/T10/transitions/furnished_to_unfurnished.mp4",
+          3397881
         ],
         [
-          "plants/details/T10/gallery/1.webp",
-          706286
+          "plants/details/20261117/T10/transitions/plans_to_furnished.mp4",
+          3389211
         ],
         [
-          "plants/details/T10/gallery/2.jpg",
-          5971131
+          "plants/details/20261117/T10/transitions/plans_to_unfurnished.mp4",
+          3130091
         ],
         [
-          "plants/details/T10/gallery/2.webp",
-          1200476
+          "plants/details/20261117/T10/transitions/unfurnished_to_furnished.mp4",
+          3574520
         ],
         [
-          "plants/details/T10/gallery/3.jpg",
-          6505328
+          "plants/details/20261117/T10/transitions/unfurnished_to_plans.mp4",
+          3220837
         ],
         [
-          "plants/details/T10/gallery/3.webp",
-          1268086
+          "plants/details/20261117/T11/gallery/1.webp",
+          896438
         ],
         [
-          "plants/details/T10/gallery/4.jpg",
-          5926530
+          "plants/details/20261117/T11/gallery/2.webp",
+          986954
         ],
         [
-          "plants/details/T10/gallery/4.webp",
-          999756
+          "plants/details/20261117/T11/gallery/3.webp",
+          1303190
         ],
         [
-          "plants/details/T10/gallery/5.jpg",
-          5595138
+          "plants/details/20261117/T11/gallery/4.webp",
+          1086946
         ],
         [
-          "plants/details/T10/gallery/5.webp",
-          857590
+          "plants/details/20261117/T11/gallery/5.webp",
+          1266584
         ],
         [
-          "plants/details/T10/gallery/6.jpg",
-          5036419
+          "plants/details/20261117/T11/gallery/6.webp",
+          977142
         ],
         [
-          "plants/details/T10/gallery/6.webp",
-          848994
+          "plants/details/20261117/T11/gallery/7.webp",
+          990016
         ],
         [
-          "plants/details/T10/gallery/7.jpg",
-          4983438
+          "plants/details/20261117/T11/gallery/8.webp",
+          829676
         ],
         [
-          "plants/details/T10/gallery/7.webp",
-          758036
+          "plants/details/20261117/T11/gallery/9.webp",
+          682244
         ],
         [
-          "plants/details/T10/gallery/8.jpg",
-          3527843
+          "plants/details/20261117/T11/transitions/furnished_to_plans.mp4",
+          3476504
         ],
         [
-          "plants/details/T10/gallery/8.webp",
-          389912
+          "plants/details/20261117/T11/transitions/furnished_to_unfurnished.mp4",
+          3424400
         ],
         [
-          "plants/details/T10/gallery/9.jpg",
-          5125236
+          "plants/details/20261117/T11/transitions/plans_to_furnished.mp4",
+          3367951
         ],
         [
-          "plants/details/T10/gallery/9.webp",
-          789610
+          "plants/details/20261117/T11/transitions/plans_to_unfurnished.mp4",
+          3316777
         ],
         [
-          "plants/details/T10/transitions/furnished_to_plans.mp4",
-          3754732
+          "plants/details/20261117/T11/transitions/unfurnished_to_furnished.mp4",
+          3470975
         ],
         [
-          "plants/details/T10/transitions/furnished_to_unfurnished.mp4",
-          3505715
+          "plants/details/20261117/T11/transitions/unfurnished_to_plans.mp4",
+          3471364
         ],
         [
-          "plants/details/T10/transitions/plans_to_furnished.mp4",
-          3751314
+          "plants/details/20261117/T12/gallery/1.webp",
+          614660
         ],
         [
-          "plants/details/T10/transitions/plans_to_unfurnished.mp4",
-          2907381
+          "plants/details/20261117/T12/gallery/2.webp",
+          1149510
         ],
         [
-          "plants/details/T10/transitions/unfurnished_to_furnished.mp4",
-          3780402
+          "plants/details/20261117/T12/gallery/3.webp",
+          1005644
         ],
         [
-          "plants/details/T10/transitions/unfurnished_to_plans.mp4",
-          2957446
+          "plants/details/20261117/T12/gallery/4.webp",
+          951186
         ],
         [
-          "plants/details/T11/gallery/1.jpg",
-          5050270
+          "plants/details/20261117/T12/gallery/5.webp",
+          1552556
         ],
         [
-          "plants/details/T11/gallery/1.webp",
-          706286
+          "plants/details/20261117/T12/transitions/furnished_to_plans.mp4",
+          3146941
         ],
         [
-          "plants/details/T11/gallery/2.jpg",
-          5326335
+          "plants/details/20261117/T12/transitions/furnished_to_unfurnished.mp4",
+          3163361
         ],
         [
-          "plants/details/T11/gallery/2.webp",
-          901522
+          "plants/details/20261117/T12/transitions/plans_to_furnished.mp4",
+          3105846
         ],
         [
-          "plants/details/T11/gallery/3.jpg",
-          5595138
+          "plants/details/20261117/T12/transitions/plans_to_unfurnished.mp4",
+          3143455
         ],
         [
-          "plants/details/T11/gallery/3.webp",
-          857590
+          "plants/details/20261117/T12/transitions/unfurnished_to_furnished.mp4",
+          3109070
         ],
         [
-          "plants/details/T11/gallery/4.jpg",
-          5036419
+          "plants/details/20261117/T12/transitions/unfurnished_to_plans.mp4",
+          3180656
         ],
         [
-          "plants/details/T11/gallery/4.webp",
-          848994
+          "plants/details/20261117/T13/gallery/1.webp",
+          969712
         ],
         [
-          "plants/details/T11/gallery/5.jpg",
-          4983438
+          "plants/details/20261117/T13/gallery/2.webp",
+          901130
         ],
         [
-          "plants/details/T11/gallery/5.webp",
-          758036
+          "plants/details/20261117/T13/gallery/3.webp",
+          1116554
         ],
         [
-          "plants/details/T11/gallery/6.jpg",
-          4264553
+          "plants/details/20261117/T13/gallery/4.webp",
+          2071406
         ],
         [
-          "plants/details/T11/gallery/6.webp",
-          442308
+          "plants/details/20261117/T13/gallery/5.webp",
+          1135636
         ],
         [
-          "plants/details/T11/gallery/7.jpg",
-          5125236
+          "plants/details/20261117/T13/gallery/6.webp",
+          1156066
         ],
         [
-          "plants/details/T11/gallery/7.webp",
-          789610
+          "plants/details/20261117/T13/gallery/7.webp",
+          1002492
         ],
         [
-          "plants/details/T11/transitions/furnished_to_plans.mp4",
-          3434009
+          "plants/details/20261117/T13/transitions/furnished_to_plans.mp4",
+          3621559
         ],
         [
-          "plants/details/T11/transitions/furnished_to_unfurnished.mp4",
-          3506229
+          "plants/details/20261117/T13/transitions/furnished_to_unfurnished.mp4",
+          3298274
         ],
         [
-          "plants/details/T11/transitions/plans_to_furnished.mp4",
-          3357857
+          "plants/details/20261117/T13/transitions/plans_to_furnished.mp4",
+          3621849
         ],
         [
-          "plants/details/T11/transitions/plans_to_unfurnished.mp4",
-          2837805
+          "plants/details/20261117/T13/transitions/plans_to_unfurnished.mp4",
+          3395518
         ],
         [
-          "plants/details/T11/transitions/unfurnished_to_furnished.mp4",
-          3574668
+          "plants/details/20261117/T13/transitions/unfurnished_to_furnished.mp4",
+          3869280
         ],
         [
-          "plants/details/T11/transitions/unfurnished_to_plans.mp4",
-          2768405
+          "plants/details/20261117/T13/transitions/unfurnished_to_plans.mp4",
+          3451245
         ],
         [
-          "plants/details/T12/gallery/1.jpg",
-          5353924
+          "plants/details/20261117/T14/gallery/1.webp",
+          956018
         ],
         [
-          "plants/details/T12/gallery/1.webp",
-          817428
+          "plants/details/20261117/T14/gallery/10.webp",
+          553214
         ],
         [
-          "plants/details/T12/gallery/10.jpg",
-          5302079
+          "plants/details/20261117/T14/gallery/11.webp",
+          1187998
         ],
         [
-          "plants/details/T12/gallery/10.webp",
-          874404
+          "plants/details/20261117/T14/gallery/12.webp",
+          1096156
         ],
         [
-          "plants/details/T12/gallery/11.jpg",
-          5104051
+          "plants/details/20261117/T14/gallery/13.webp",
+          671434
         ],
         [
-          "plants/details/T12/gallery/11.webp",
-          859516
+          "plants/details/20261117/T14/gallery/2.webp",
+          965906
         ],
         [
-          "plants/details/T12/gallery/12.jpg",
-          6038241
+          "plants/details/20261117/T14/gallery/3.webp",
+          883520
         ],
         [
-          "plants/details/T12/gallery/12.webp",
-          1128552
+          "plants/details/20261117/T14/gallery/4.webp",
+          764946
         ],
         [
-          "plants/details/T12/gallery/13.jpg",
-          5707352
+          "plants/details/20261117/T14/gallery/5.webp",
+          1058054
         ],
         [
-          "plants/details/T12/gallery/13.webp",
-          1036758
+          "plants/details/20261117/T14/gallery/6.webp",
+          1119354
         ],
         [
-          "plants/details/T12/gallery/14.jpg",
-          4883805
+          "plants/details/20261117/T14/gallery/7.webp",
+          751642
         ],
         [
-          "plants/details/T12/gallery/14.webp",
-          729876
+          "plants/details/20261117/T14/gallery/8.webp",
+          706544
         ],
         [
-          "plants/details/T12/gallery/2.jpg",
-          5260727
+          "plants/details/20261117/T14/gallery/9.webp",
+          1064866
         ],
         [
-          "plants/details/T12/gallery/2.webp",
-          813464
+          "plants/details/20261117/T14/transitions/furnished_to_plans_1floor.mp4",
+          3272540
         ],
         [
-          "plants/details/T12/gallery/3.jpg",
-          4863218
+          "plants/details/20261117/T14/transitions/furnished_to_plans_2floor.mp4",
+          3256207
         ],
         [
-          "plants/details/T12/gallery/3.webp",
-          723288
+          "plants/details/20261117/T14/transitions/furnished_to_unfurnished_1floor.mp4",
+          3243254
         ],
         [
-          "plants/details/T12/gallery/4.jpg",
-          4760860
+          "plants/details/20261117/T14/transitions/furnished_to_unfurnished_2floor.mp4",
+          3247819
         ],
         [
-          "plants/details/T12/gallery/4.webp",
-          756020
+          "plants/details/20261117/T14/transitions/plans_to_furnished_1floor.mp4",
+          3278434
         ],
         [
-          "plants/details/T12/gallery/5.jpg",
-          4830510
+          "plants/details/20261117/T14/transitions/plans_to_furnished_2floor.mp4",
+          3244792
         ],
         [
-          "plants/details/T12/gallery/5.webp",
-          710180
+          "plants/details/20261117/T14/transitions/plans_to_unfurnished_1floor.mp4",
+          3240919
         ],
         [
-          "plants/details/T12/gallery/6.jpg",
-          5443122
+          "plants/details/20261117/T14/transitions/plans_to_unfurnished_2floor.mp4",
+          3263616
         ],
         [
-          "plants/details/T12/gallery/6.webp",
-          1010040
+          "plants/details/20261117/T14/transitions/unfurnished_to_furnished_1floor.mp4",
+          3244395
         ],
         [
-          "plants/details/T12/gallery/7.jpg",
-          6199371
+          "plants/details/20261117/T14/transitions/unfurnished_to_furnished_2floor.mp4",
+          3269987
         ],
         [
-          "plants/details/T12/gallery/7.webp",
-          1276966
+          "plants/details/20261117/T14/transitions/unfurnished_to_plans_1floor.mp4",
+          3318914
         ],
         [
-          "plants/details/T12/gallery/8.jpg",
-          4611074
+          "plants/details/20261117/T14/transitions/unfurnished_to_plans_2floor.mp4",
+          3256120
         ],
         [
-          "plants/details/T12/gallery/8.webp",
-          645134
+          "plants/details/20261117/T15/gallery/1.webp",
+          544464
         ],
         [
-          "plants/details/T12/gallery/9.jpg",
-          4852592
+          "plants/details/20261117/T15/gallery/2.webp",
+          774394
         ],
         [
-          "plants/details/T12/gallery/9.webp",
-          721532
+          "plants/details/20261117/T15/gallery/3.webp",
+          906072
         ],
         [
-          "plants/details/T12/transitions/furnished_to_plans.mp4",
-          3028110
+          "plants/details/20261117/T15/gallery/4.webp",
+          1101204
         ],
         [
-          "plants/details/T12/transitions/furnished_to_plans_1floor.mp4",
-          3028110
+          "plants/details/20261117/T15/gallery/5.webp",
+          1249708
         ],
         [
-          "plants/details/T12/transitions/furnished_to_plans_2floor.mp4",
-          3451826
+          "plants/details/20261117/T15/gallery/6.webp",
+          888500
         ],
         [
-          "plants/details/T12/transitions/furnished_to_unfurnished.mp4",
-          3621505
+          "plants/details/20261117/T15/transitions/furnished_to_plans.mp4",
+          3255486
         ],
         [
-          "plants/details/T12/transitions/furnished_to_unfurnished_1floor.mp4",
-          3621505
+          "plants/details/20261117/T15/transitions/furnished_to_unfurnished.mp4",
+          3254191
         ],
         [
-          "plants/details/T12/transitions/furnished_to_unfurnished_2floor.mp4",
-          3697353
+          "plants/details/20261117/T15/transitions/plans_to_furnished.mp4",
+          3241761
         ],
         [
-          "plants/details/T12/transitions/plans_to_furnished.mp4",
-          3511581
+          "plants/details/20261117/T15/transitions/plans_to_unfurnished.mp4",
+          3259773
         ],
         [
-          "plants/details/T12/transitions/plans_to_furnished_1floor.mp4",
-          3511581
+          "plants/details/20261117/T15/transitions/unfurnished_to_furnished.mp4",
+          3244216
         ],
         [
-          "plants/details/T12/transitions/plans_to_furnished_2floor.mp4",
-          3701946
+          "plants/details/20261117/T15/transitions/unfurnished_to_plans.mp4",
+          3265237
         ],
         [
-          "plants/details/T12/transitions/plans_to_unfurnished.mp4",
-          3274861
+          "plants/details/20261117/T16/gallery/1.webp",
+          613770
         ],
         [
-          "plants/details/T12/transitions/plans_to_unfurnished_1floor.mp4",
-          3274861
+          "plants/details/20261117/T16/gallery/2.webp",
+          883780
         ],
         [
-          "plants/details/T12/transitions/plans_to_unfurnished_2floor.mp4",
-          3537469
+          "plants/details/20261117/T16/gallery/3.webp",
+          1458376
         ],
         [
-          "plants/details/T12/transitions/unfurnished_to_furnished.mp4",
-          3764353
+          "plants/details/20261117/T16/gallery/4.webp",
+          824434
         ],
         [
-          "plants/details/T12/transitions/unfurnished_to_furnished_1floor.mp4",
-          3764353
+          "plants/details/20261117/T16/gallery/5.webp",
+          545512
         ],
         [
-          "plants/details/T12/transitions/unfurnished_to_furnished_2floor.mp4",
-          3868245
+          "plants/details/20261117/T16/gallery/6.webp",
+          842596
         ],
         [
-          "plants/details/T12/transitions/unfurnished_to_plans.mp4",
-          3281530
+          "plants/details/20261117/T16/transitions/furnished_to_plans.mp4",
+          3246809
         ],
         [
-          "plants/details/T12/transitions/unfurnished_to_plans_1floor.mp4",
-          3281530
+          "plants/details/20261117/T16/transitions/furnished_to_unfurnished.mp4",
+          3281019
         ],
         [
-          "plants/details/T12/transitions/unfurnished_to_plans_2floor.mp4",
-          3320601
+          "plants/details/20261117/T16/transitions/plans_to_furnished.mp4",
+          3229037
+        ],
+        [
+          "plants/details/20261117/T16/transitions/plans_to_unfurnished.mp4",
+          3230158
+        ],
+        [
+          "plants/details/20261117/T16/transitions/unfurnished_to_furnished.mp4",
+          3224580
+        ],
+        [
+          "plants/details/20261117/T16/transitions/unfurnished_to_plans.mp4",
+          3207636
+        ],
+        [
+          "plants/details/20261117/T7/gallery/1.webp",
+          1081632
+        ],
+        [
+          "plants/details/20261117/T7/gallery/2.webp",
+          527804
+        ],
+        [
+          "plants/details/20261117/T7/gallery/3.webp",
+          829180
+        ],
+        [
+          "plants/details/20261117/T7/gallery/4.webp",
+          1126992
+        ],
+        [
+          "plants/details/20261117/T7/gallery/5.webp",
+          1356080
+        ],
+        [
+          "plants/details/20261117/T7/gallery/6.webp",
+          734256
+        ],
+        [
+          "plants/details/20261117/T7/gallery/7.webp",
+          1201072
+        ],
+        [
+          "plants/details/20261117/T7/transitions/furnished_to_plans.mp4",
+          3256213
+        ],
+        [
+          "plants/details/20261117/T7/transitions/furnished_to_unfurnished.mp4",
+          3237533
+        ],
+        [
+          "plants/details/20261117/T7/transitions/plans_to_furnished.mp4",
+          3077497
+        ],
+        [
+          "plants/details/20261117/T7/transitions/plans_to_unfurnished.mp4",
+          3248337
+        ],
+        [
+          "plants/details/20261117/T7/transitions/unfurnished_to_furnished.mp4",
+          3220049
+        ],
+        [
+          "plants/details/20261117/T7/transitions/unfurnished_to_plans.mp4",
+          3235554
+        ],
+        [
+          "plants/details/20261117/T9/gallery/1.webp",
+          953926
+        ],
+        [
+          "plants/details/20261117/T9/gallery/2.webp",
+          905640
+        ],
+        [
+          "plants/details/20261117/T9/gallery/3.webp",
+          914474
+        ],
+        [
+          "plants/details/20261117/T9/gallery/4.webp",
+          1126992
+        ],
+        [
+          "plants/details/20261117/T9/gallery/5.webp",
+          1356080
+        ],
+        [
+          "plants/details/20261117/T9/gallery/6.webp",
+          737996
+        ],
+        [
+          "plants/details/20261117/T9/gallery/7.webp",
+          1058160
+        ],
+        [
+          "plants/details/20261117/T9/transitions/furnished_to_plans.mp4",
+          3240559
+        ],
+        [
+          "plants/details/20261117/T9/transitions/furnished_to_unfurnished.mp4",
+          3294043
+        ],
+        [
+          "plants/details/20261117/T9/transitions/plans_to_furnished.mp4",
+          3267290
+        ],
+        [
+          "plants/details/20261117/T9/transitions/plans_to_unfurnished.mp4",
+          3233057
+        ],
+        [
+          "plants/details/20261117/T9/transitions/unfurnished_to_furnished.mp4",
+          3226656
+        ],
+        [
+          "plants/details/20261117/T9/transitions/unfurnished_to_plans.mp4",
+          3242157
         ],
         [
           "plants/details/T2/gallery/1.jpg",
@@ -1394,110 +1389,6 @@
           3420871
         ],
         [
-          "plants/details/T4/gallery/1.jpg",
-          5628016
-        ],
-        [
-          "plants/details/T4/gallery/1.webp",
-          1062142
-        ],
-        [
-          "plants/details/T4/gallery/10.jpg",
-          5288539
-        ],
-        [
-          "plants/details/T4/gallery/10.webp",
-          801068
-        ],
-        [
-          "plants/details/T4/gallery/2.jpg",
-          5263424
-        ],
-        [
-          "plants/details/T4/gallery/2.webp",
-          878708
-        ],
-        [
-          "plants/details/T4/gallery/3.jpg",
-          5224744
-        ],
-        [
-          "plants/details/T4/gallery/3.webp",
-          727934
-        ],
-        [
-          "plants/details/T4/gallery/4.jpg",
-          5591930
-        ],
-        [
-          "plants/details/T4/gallery/4.webp",
-          857864
-        ],
-        [
-          "plants/details/T4/gallery/5.jpg",
-          5715890
-        ],
-        [
-          "plants/details/T4/gallery/5.webp",
-          1080586
-        ],
-        [
-          "plants/details/T4/gallery/6.jpg",
-          5601576
-        ],
-        [
-          "plants/details/T4/gallery/6.webp",
-          1199536
-        ],
-        [
-          "plants/details/T4/gallery/7.jpg",
-          5057022
-        ],
-        [
-          "plants/details/T4/gallery/7.webp",
-          824080
-        ],
-        [
-          "plants/details/T4/gallery/8.jpg",
-          5209651
-        ],
-        [
-          "plants/details/T4/gallery/8.webp",
-          844520
-        ],
-        [
-          "plants/details/T4/gallery/9.jpg",
-          4622991
-        ],
-        [
-          "plants/details/T4/gallery/9.webp",
-          681162
-        ],
-        [
-          "plants/details/T4/transitions/furnished_to_plans.mp4",
-          3670544
-        ],
-        [
-          "plants/details/T4/transitions/furnished_to_unfurnished.mp4",
-          3872554
-        ],
-        [
-          "plants/details/T4/transitions/plans_to_furnished.mp4",
-          3869383
-        ],
-        [
-          "plants/details/T4/transitions/plans_to_unfurnished.mp4",
-          3436359
-        ],
-        [
-          "plants/details/T4/transitions/unfurnished_to_furnished.mp4",
-          4103652
-        ],
-        [
-          "plants/details/T4/transitions/unfurnished_to_plans.mp4",
-          3469898
-        ],
-        [
           "plants/details/T5/gallery/1.jpg",
           5994344
         ],
@@ -1650,86 +1541,6 @@
           3473607
         ],
         [
-          "plants/details/T7/gallery/1.jpg",
-          5189361
-        ],
-        [
-          "plants/details/T7/gallery/1.webp",
-          873994
-        ],
-        [
-          "plants/details/T7/gallery/2.jpg",
-          5169737
-        ],
-        [
-          "plants/details/T7/gallery/2.webp",
-          772860
-        ],
-        [
-          "plants/details/T7/gallery/3.jpg",
-          5080446
-        ],
-        [
-          "plants/details/T7/gallery/3.webp",
-          766376
-        ],
-        [
-          "plants/details/T7/gallery/4.jpg",
-          5497054
-        ],
-        [
-          "plants/details/T7/gallery/4.webp",
-          1021272
-        ],
-        [
-          "plants/details/T7/gallery/5.jpg",
-          5497357
-        ],
-        [
-          "plants/details/T7/gallery/5.webp",
-          1059810
-        ],
-        [
-          "plants/details/T7/gallery/6.jpg",
-          4589396
-        ],
-        [
-          "plants/details/T7/gallery/6.webp",
-          631658
-        ],
-        [
-          "plants/details/T7/gallery/7.jpg",
-          5608035
-        ],
-        [
-          "plants/details/T7/gallery/7.webp",
-          1067074
-        ],
-        [
-          "plants/details/T7/transitions/furnished_to_plans.mp4",
-          3568562
-        ],
-        [
-          "plants/details/T7/transitions/furnished_to_unfurnished.mp4",
-          3939826
-        ],
-        [
-          "plants/details/T7/transitions/plans_to_furnished.mp4",
-          3664079
-        ],
-        [
-          "plants/details/T7/transitions/plans_to_unfurnished.mp4",
-          3326927
-        ],
-        [
-          "plants/details/T7/transitions/unfurnished_to_furnished.mp4",
-          3749080
-        ],
-        [
-          "plants/details/T7/transitions/unfurnished_to_plans.mp4",
-          3353438
-        ],
-        [
           "plants/details/T8/gallery/1.jpg",
           6197001
         ],
@@ -1810,86 +1621,6 @@
           2943185
         ],
         [
-          "plants/details/T9/gallery/1.jpg",
-          5387070
-        ],
-        [
-          "plants/details/T9/gallery/1.webp",
-          988456
-        ],
-        [
-          "plants/details/T9/gallery/2.jpg",
-          5169737
-        ],
-        [
-          "plants/details/T9/gallery/2.webp",
-          772860
-        ],
-        [
-          "plants/details/T9/gallery/3.jpg",
-          5080446
-        ],
-        [
-          "plants/details/T9/gallery/3.webp",
-          766376
-        ],
-        [
-          "plants/details/T9/gallery/4.jpg",
-          5497054
-        ],
-        [
-          "plants/details/T9/gallery/4.webp",
-          1021272
-        ],
-        [
-          "plants/details/T9/gallery/5.jpg",
-          5497357
-        ],
-        [
-          "plants/details/T9/gallery/5.webp",
-          1059810
-        ],
-        [
-          "plants/details/T9/gallery/6.jpg",
-          4634551
-        ],
-        [
-          "plants/details/T9/gallery/6.webp",
-          630054
-        ],
-        [
-          "plants/details/T9/gallery/7.jpg",
-          5140442
-        ],
-        [
-          "plants/details/T9/gallery/7.webp",
-          955040
-        ],
-        [
-          "plants/details/T9/transitions/furnished_to_plans.mp4",
-          3528160
-        ],
-        [
-          "plants/details/T9/transitions/furnished_to_unfurnished.mp4",
-          3721670
-        ],
-        [
-          "plants/details/T9/transitions/plans_to_furnished.mp4",
-          3607322
-        ],
-        [
-          "plants/details/T9/transitions/plans_to_unfurnished.mp4",
-          3404643
-        ],
-        [
-          "plants/details/T9/transitions/unfurnished_to_furnished.mp4",
-          3734866
-        ],
-        [
-          "plants/details/T9/transitions/unfurnished_to_plans.mp4",
-          3409134
-        ],
-        [
           "portada.png",
           2566601
         ],
@@ -1897,8 +1628,7 @@
           "videos/premapa.mp4",
           37345650
         ]
-      ],
-      "totalBytes": 1112112105
+      ]
     }
   ],
   "missing": [
@@ -1907,14 +1637,6 @@
     "videos/livigno-general.mp4"
   ],
   "publicAssets": [
-    "/building/exterior/0.2.jpg",
-    "/building/exterior/1.1.jpg",
-    "/building/exterior/1.2.jpg",
-    "/building/exterior/2.1.jpg",
-    "/building/exterior/2.2.jpg",
-    "/building/exterior/3.1.jpg",
-    "/building/exterior/3.2.jpg",
-    "/building/structure.png",
     "/file.svg",
     "/globe.svg",
     "/icons/AREAS_VERDES_Y_RECREACION/logo_parque.png",
@@ -1987,305 +1709,118 @@
     "/location/videos/hitos/parque-de-las-leyendas/poster-livigno.jpg",
     "/location/videos/hitos/plaza-san-miguel/poster-livigno.jpg",
     "/location/videos/hitos/pucp/poster-livigno.jpg",
-    "/plants/details/T1/deliverable.jpg",
-    "/plants/details/T1/deliverable.webp",
-    "/plants/details/T1/furnished.jpg",
-    "/plants/details/T1/furnished.webp",
-    "/plants/details/T1/gallery/1.jpg",
-    "/plants/details/T1/gallery/1.webp",
-    "/plants/details/T1/gallery/10.jpg",
-    "/plants/details/T1/gallery/10.webp",
-    "/plants/details/T1/gallery/2.jpg",
-    "/plants/details/T1/gallery/2.webp",
-    "/plants/details/T1/gallery/3.jpg",
-    "/plants/details/T1/gallery/3.webp",
-    "/plants/details/T1/gallery/4.jpg",
-    "/plants/details/T1/gallery/4.webp",
-    "/plants/details/T1/gallery/5.jpg",
-    "/plants/details/T1/gallery/5.webp",
-    "/plants/details/T1/gallery/6.jpg",
-    "/plants/details/T1/gallery/6.webp",
-    "/plants/details/T1/gallery/7.jpg",
-    "/plants/details/T1/gallery/7.webp",
-    "/plants/details/T1/gallery/8.jpg",
-    "/plants/details/T1/gallery/8.webp",
-    "/plants/details/T1/gallery/9.jpg",
-    "/plants/details/T1/gallery/9.webp",
-    "/plants/details/T1/plans.jpg",
-    "/plants/details/T1/plans.webp",
-    "/plants/details/T1/unfurnished.jpg",
-    "/plants/details/T1/unfurnished.webp",
-    "/plants/details/T10/deliverable.jpg",
-    "/plants/details/T10/deliverable.webp",
-    "/plants/details/T10/furnished.jpg",
-    "/plants/details/T10/furnished.webp",
-    "/plants/details/T10/gallery/1.jpg",
-    "/plants/details/T10/gallery/1.webp",
-    "/plants/details/T10/gallery/2.jpg",
-    "/plants/details/T10/gallery/2.webp",
-    "/plants/details/T10/gallery/3.jpg",
-    "/plants/details/T10/gallery/3.webp",
-    "/plants/details/T10/gallery/4.jpg",
-    "/plants/details/T10/gallery/4.webp",
-    "/plants/details/T10/gallery/5.jpg",
-    "/plants/details/T10/gallery/5.webp",
-    "/plants/details/T10/gallery/6.jpg",
-    "/plants/details/T10/gallery/6.webp",
-    "/plants/details/T10/gallery/7.jpg",
-    "/plants/details/T10/gallery/7.webp",
-    "/plants/details/T10/gallery/8.jpg",
-    "/plants/details/T10/gallery/8.webp",
-    "/plants/details/T10/gallery/9.jpg",
-    "/plants/details/T10/gallery/9.webp",
-    "/plants/details/T10/plans.jpg",
-    "/plants/details/T10/plans.webp",
-    "/plants/details/T10/unfurnished.jpg",
-    "/plants/details/T10/unfurnished.webp",
-    "/plants/details/T11/deliverable.jpg",
-    "/plants/details/T11/deliverable.webp",
-    "/plants/details/T11/furnished.jpg",
-    "/plants/details/T11/furnished.webp",
-    "/plants/details/T11/gallery/1.jpg",
-    "/plants/details/T11/gallery/1.webp",
-    "/plants/details/T11/gallery/2.jpg",
-    "/plants/details/T11/gallery/2.webp",
-    "/plants/details/T11/gallery/3.jpg",
-    "/plants/details/T11/gallery/3.webp",
-    "/plants/details/T11/gallery/4.jpg",
-    "/plants/details/T11/gallery/4.webp",
-    "/plants/details/T11/gallery/5.jpg",
-    "/plants/details/T11/gallery/5.webp",
-    "/plants/details/T11/gallery/6.jpg",
-    "/plants/details/T11/gallery/6.webp",
-    "/plants/details/T11/gallery/7.jpg",
-    "/plants/details/T11/gallery/7.webp",
-    "/plants/details/T11/plans.jpg",
-    "/plants/details/T11/plans.webp",
-    "/plants/details/T11/unfurnished.jpg",
-    "/plants/details/T11/unfurnished.webp",
-    "/plants/details/T12/deliverable.jpg",
-    "/plants/details/T12/deliverable.webp",
-    "/plants/details/T12/deliverable_2floor.jpg",
-    "/plants/details/T12/deliverable_2floor.webp",
-    "/plants/details/T12/furnished.jpg",
-    "/plants/details/T12/furnished.webp",
-    "/plants/details/T12/furnished_2floor.jpg",
-    "/plants/details/T12/furnished_2floor.webp",
-    "/plants/details/T12/gallery/1.jpg",
-    "/plants/details/T12/gallery/1.webp",
-    "/plants/details/T12/gallery/10.jpg",
-    "/plants/details/T12/gallery/10.webp",
-    "/plants/details/T12/gallery/11.jpg",
-    "/plants/details/T12/gallery/11.webp",
-    "/plants/details/T12/gallery/12.jpg",
-    "/plants/details/T12/gallery/12.webp",
-    "/plants/details/T12/gallery/13.jpg",
-    "/plants/details/T12/gallery/13.webp",
-    "/plants/details/T12/gallery/14.jpg",
-    "/plants/details/T12/gallery/14.webp",
-    "/plants/details/T12/gallery/2.jpg",
-    "/plants/details/T12/gallery/2.webp",
-    "/plants/details/T12/gallery/3.jpg",
-    "/plants/details/T12/gallery/3.webp",
-    "/plants/details/T12/gallery/4.jpg",
-    "/plants/details/T12/gallery/4.webp",
-    "/plants/details/T12/gallery/5.jpg",
-    "/plants/details/T12/gallery/5.webp",
-    "/plants/details/T12/gallery/6.jpg",
-    "/plants/details/T12/gallery/6.webp",
-    "/plants/details/T12/gallery/7.jpg",
-    "/plants/details/T12/gallery/7.webp",
-    "/plants/details/T12/gallery/8.jpg",
-    "/plants/details/T12/gallery/8.webp",
-    "/plants/details/T12/gallery/9.jpg",
-    "/plants/details/T12/gallery/9.webp",
-    "/plants/details/T12/plans.jpg",
-    "/plants/details/T12/plans.webp",
-    "/plants/details/T12/plans_2floor.jpg",
-    "/plants/details/T12/plans_2floor.webp",
-    "/plants/details/T12/unfurnished.jpg",
-    "/plants/details/T12/unfurnished.webp",
-    "/plants/details/T12/unfurnished_2floor.webp",
-    "/plants/details/T2/deliverable.jpg",
-    "/plants/details/T2/deliverable.webp",
-    "/plants/details/T2/furnished.jpg",
-    "/plants/details/T2/furnished.webp",
-    "/plants/details/T2/gallery/1.jpg",
-    "/plants/details/T2/gallery/1.webp",
-    "/plants/details/T2/gallery/2.jpg",
-    "/plants/details/T2/gallery/2.webp",
-    "/plants/details/T2/gallery/3.jpg",
-    "/plants/details/T2/gallery/3.webp",
-    "/plants/details/T2/gallery/4.jpg",
-    "/plants/details/T2/gallery/4.webp",
-    "/plants/details/T2/gallery/5.jpg",
-    "/plants/details/T2/gallery/5.webp",
-    "/plants/details/T2/gallery/6.jpg",
-    "/plants/details/T2/gallery/6.webp",
-    "/plants/details/T2/gallery/7.jpg",
-    "/plants/details/T2/gallery/7.webp",
-    "/plants/details/T2/plans.jpg",
-    "/plants/details/T2/plans.webp",
-    "/plants/details/T2/unfurnished.jpg",
-    "/plants/details/T2/unfurnished.webp",
-    "/plants/details/T3/deliverable.jpg",
-    "/plants/details/T3/deliverable.webp",
-    "/plants/details/T3/furnished.jpg",
-    "/plants/details/T3/furnished.webp",
-    "/plants/details/T3/gallery/1.jpg",
-    "/plants/details/T3/gallery/1.webp",
-    "/plants/details/T3/gallery/2.jpg",
-    "/plants/details/T3/gallery/2.webp",
-    "/plants/details/T3/gallery/3.jpg",
-    "/plants/details/T3/gallery/3.webp",
-    "/plants/details/T3/gallery/4.jpg",
-    "/plants/details/T3/gallery/4.webp",
-    "/plants/details/T3/gallery/5.jpg",
-    "/plants/details/T3/gallery/5.webp",
-    "/plants/details/T3/gallery/6.jpg",
-    "/plants/details/T3/gallery/6.webp",
-    "/plants/details/T3/gallery/7.jpg",
-    "/plants/details/T3/gallery/7.webp",
-    "/plants/details/T3/plans.jpg",
-    "/plants/details/T3/plans.webp",
-    "/plants/details/T3/unfurnished.jpg",
-    "/plants/details/T3/unfurnished.webp",
-    "/plants/details/T4/deliverable.jpg",
-    "/plants/details/T4/deliverable.webp",
-    "/plants/details/T4/furnished.jpg",
-    "/plants/details/T4/furnished.webp",
-    "/plants/details/T4/gallery/1.jpg",
-    "/plants/details/T4/gallery/1.webp",
-    "/plants/details/T4/gallery/10.jpg",
-    "/plants/details/T4/gallery/10.webp",
-    "/plants/details/T4/gallery/2.jpg",
-    "/plants/details/T4/gallery/2.webp",
-    "/plants/details/T4/gallery/3.jpg",
-    "/plants/details/T4/gallery/3.webp",
-    "/plants/details/T4/gallery/4.jpg",
-    "/plants/details/T4/gallery/4.webp",
-    "/plants/details/T4/gallery/5.jpg",
-    "/plants/details/T4/gallery/5.webp",
-    "/plants/details/T4/gallery/6.jpg",
-    "/plants/details/T4/gallery/6.webp",
-    "/plants/details/T4/gallery/7.jpg",
-    "/plants/details/T4/gallery/7.webp",
-    "/plants/details/T4/gallery/8.jpg",
-    "/plants/details/T4/gallery/8.webp",
-    "/plants/details/T4/gallery/9.jpg",
-    "/plants/details/T4/gallery/9.webp",
-    "/plants/details/T4/plans.jpg",
-    "/plants/details/T4/plans.webp",
-    "/plants/details/T4/unfurnished.jpg",
-    "/plants/details/T4/unfurnished.webp",
-    "/plants/details/T5/deliverable.jpg",
-    "/plants/details/T5/deliverable.webp",
-    "/plants/details/T5/furnished.jpg",
-    "/plants/details/T5/furnished.webp",
-    "/plants/details/T5/gallery/1.jpg",
-    "/plants/details/T5/gallery/1.webp",
-    "/plants/details/T5/gallery/2.jpg",
-    "/plants/details/T5/gallery/2.webp",
-    "/plants/details/T5/gallery/3.jpg",
-    "/plants/details/T5/gallery/3.webp",
-    "/plants/details/T5/gallery/4.jpg",
-    "/plants/details/T5/gallery/4.webp",
-    "/plants/details/T5/gallery/5.jpg",
-    "/plants/details/T5/gallery/5.webp",
-    "/plants/details/T5/gallery/6.jpg",
-    "/plants/details/T5/gallery/6.webp",
-    "/plants/details/T5/plans.jpg",
-    "/plants/details/T5/plans.webp",
-    "/plants/details/T5/unfurnished.jpg",
-    "/plants/details/T5/unfurnished.webp",
-    "/plants/details/T6/deliverable.jpg",
-    "/plants/details/T6/deliverable.webp",
-    "/plants/details/T6/furnished.jpg",
-    "/plants/details/T6/furnished.webp",
-    "/plants/details/T6/gallery/1.jpg",
-    "/plants/details/T6/gallery/1.webp",
-    "/plants/details/T6/gallery/2.jpg",
-    "/plants/details/T6/gallery/2.webp",
-    "/plants/details/T6/gallery/3.jpg",
-    "/plants/details/T6/gallery/3.webp",
-    "/plants/details/T6/gallery/4.jpg",
-    "/plants/details/T6/gallery/4.webp",
-    "/plants/details/T6/gallery/5.jpg",
-    "/plants/details/T6/gallery/5.webp",
-    "/plants/details/T6/gallery/6.jpg",
-    "/plants/details/T6/gallery/6.webp",
-    "/plants/details/T6/gallery/7.jpg",
-    "/plants/details/T6/gallery/7.webp",
-    "/plants/details/T6/plans.jpg",
-    "/plants/details/T6/plans.webp",
-    "/plants/details/T6/unfurnished.jpg",
-    "/plants/details/T6/unfurnished.webp",
-    "/plants/details/T7/deliverable.jpg",
-    "/plants/details/T7/deliverable.webp",
-    "/plants/details/T7/furnished.jpg",
-    "/plants/details/T7/furnished.webp",
-    "/plants/details/T7/gallery/1.jpg",
-    "/plants/details/T7/gallery/1.webp",
-    "/plants/details/T7/gallery/2.jpg",
-    "/plants/details/T7/gallery/2.webp",
-    "/plants/details/T7/gallery/3.jpg",
-    "/plants/details/T7/gallery/3.webp",
-    "/plants/details/T7/gallery/4.jpg",
-    "/plants/details/T7/gallery/4.webp",
-    "/plants/details/T7/gallery/5.jpg",
-    "/plants/details/T7/gallery/5.webp",
-    "/plants/details/T7/gallery/6.jpg",
-    "/plants/details/T7/gallery/6.webp",
-    "/plants/details/T7/gallery/7.jpg",
-    "/plants/details/T7/gallery/7.webp",
-    "/plants/details/T7/plans.jpg",
-    "/plants/details/T7/plans.webp",
-    "/plants/details/T7/unfurnished.jpg",
-    "/plants/details/T7/unfurnished.webp",
-    "/plants/details/T8/deliverable.jpg",
-    "/plants/details/T8/deliverable.webp",
-    "/plants/details/T8/furnished.jpg",
-    "/plants/details/T8/furnished.webp",
-    "/plants/details/T8/gallery/1.jpg",
-    "/plants/details/T8/gallery/1.webp",
-    "/plants/details/T8/gallery/2.jpg",
-    "/plants/details/T8/gallery/2.webp",
-    "/plants/details/T8/gallery/3.jpg",
-    "/plants/details/T8/gallery/3.webp",
-    "/plants/details/T8/gallery/4.jpg",
-    "/plants/details/T8/gallery/4.webp",
-    "/plants/details/T8/gallery/5.jpg",
-    "/plants/details/T8/gallery/5.webp",
-    "/plants/details/T8/gallery/6.jpg",
-    "/plants/details/T8/gallery/6.webp",
-    "/plants/details/T8/gallery/7.jpg",
-    "/plants/details/T8/gallery/7.webp",
-    "/plants/details/T8/plans.jpg",
-    "/plants/details/T8/plans.webp",
-    "/plants/details/T8/unfurnished.jpg",
-    "/plants/details/T8/unfurnished.webp",
-    "/plants/details/T9/deliverable.jpg",
-    "/plants/details/T9/deliverable.webp",
-    "/plants/details/T9/furnished.jpg",
-    "/plants/details/T9/furnished.webp",
-    "/plants/details/T9/gallery/1.jpg",
-    "/plants/details/T9/gallery/1.webp",
-    "/plants/details/T9/gallery/2.jpg",
-    "/plants/details/T9/gallery/2.webp",
-    "/plants/details/T9/gallery/3.jpg",
-    "/plants/details/T9/gallery/3.webp",
-    "/plants/details/T9/gallery/4.jpg",
-    "/plants/details/T9/gallery/4.webp",
-    "/plants/details/T9/gallery/5.jpg",
-    "/plants/details/T9/gallery/5.webp",
-    "/plants/details/T9/gallery/6.jpg",
-    "/plants/details/T9/gallery/6.webp",
-    "/plants/details/T9/gallery/7.jpg",
-    "/plants/details/T9/gallery/7.webp",
-    "/plants/details/T9/plans.jpg",
-    "/plants/details/T9/plans.webp",
-    "/plants/details/T9/unfurnished.jpg",
-    "/plants/details/T9/unfurnished.webp",
+    "/plants/details/20261117/T1/furnished.webp",
+    "/plants/details/20261117/T1/gallery/1.webp",
+    "/plants/details/20261117/T1/gallery/10.webp",
+    "/plants/details/20261117/T1/gallery/2.webp",
+    "/plants/details/20261117/T1/gallery/3.webp",
+    "/plants/details/20261117/T1/gallery/4.webp",
+    "/plants/details/20261117/T1/gallery/5.webp",
+    "/plants/details/20261117/T1/gallery/6.webp",
+    "/plants/details/20261117/T1/gallery/7.webp",
+    "/plants/details/20261117/T1/gallery/8.webp",
+    "/plants/details/20261117/T1/gallery/9.webp",
+    "/plants/details/20261117/T1/plans.webp",
+    "/plants/details/20261117/T1/unfurnished.webp",
+    "/plants/details/20261117/T10/furnished.webp",
+    "/plants/details/20261117/T10/gallery/1.webp",
+    "/plants/details/20261117/T10/gallery/2.webp",
+    "/plants/details/20261117/T10/gallery/3.webp",
+    "/plants/details/20261117/T10/gallery/4.webp",
+    "/plants/details/20261117/T10/gallery/5.webp",
+    "/plants/details/20261117/T10/gallery/6.webp",
+    "/plants/details/20261117/T10/gallery/7.webp",
+    "/plants/details/20261117/T10/gallery/8.webp",
+    "/plants/details/20261117/T10/gallery/9.webp",
+    "/plants/details/20261117/T10/plans.webp",
+    "/plants/details/20261117/T10/unfurnished.webp",
+    "/plants/details/20261117/T11/furnished.webp",
+    "/plants/details/20261117/T11/gallery/1.webp",
+    "/plants/details/20261117/T11/gallery/2.webp",
+    "/plants/details/20261117/T11/gallery/3.webp",
+    "/plants/details/20261117/T11/gallery/4.webp",
+    "/plants/details/20261117/T11/gallery/5.webp",
+    "/plants/details/20261117/T11/gallery/6.webp",
+    "/plants/details/20261117/T11/gallery/7.webp",
+    "/plants/details/20261117/T11/gallery/8.webp",
+    "/plants/details/20261117/T11/gallery/9.webp",
+    "/plants/details/20261117/T11/plans.webp",
+    "/plants/details/20261117/T11/unfurnished.webp",
+    "/plants/details/20261117/T12/furnished.webp",
+    "/plants/details/20261117/T12/gallery/1.webp",
+    "/plants/details/20261117/T12/gallery/2.webp",
+    "/plants/details/20261117/T12/gallery/3.webp",
+    "/plants/details/20261117/T12/gallery/4.webp",
+    "/plants/details/20261117/T12/gallery/5.webp",
+    "/plants/details/20261117/T12/plans.webp",
+    "/plants/details/20261117/T12/unfurnished.webp",
+    "/plants/details/20261117/T13/furnished.webp",
+    "/plants/details/20261117/T13/gallery/1.webp",
+    "/plants/details/20261117/T13/gallery/2.webp",
+    "/plants/details/20261117/T13/gallery/3.webp",
+    "/plants/details/20261117/T13/gallery/4.webp",
+    "/plants/details/20261117/T13/gallery/5.webp",
+    "/plants/details/20261117/T13/gallery/6.webp",
+    "/plants/details/20261117/T13/gallery/7.webp",
+    "/plants/details/20261117/T13/plans.webp",
+    "/plants/details/20261117/T13/unfurnished.webp",
+    "/plants/details/20261117/T14/furnished.webp",
+    "/plants/details/20261117/T14/furnished_2floor.webp",
+    "/plants/details/20261117/T14/gallery/1.webp",
+    "/plants/details/20261117/T14/gallery/10.webp",
+    "/plants/details/20261117/T14/gallery/11.webp",
+    "/plants/details/20261117/T14/gallery/12.webp",
+    "/plants/details/20261117/T14/gallery/13.webp",
+    "/plants/details/20261117/T14/gallery/2.webp",
+    "/plants/details/20261117/T14/gallery/3.webp",
+    "/plants/details/20261117/T14/gallery/4.webp",
+    "/plants/details/20261117/T14/gallery/5.webp",
+    "/plants/details/20261117/T14/gallery/6.webp",
+    "/plants/details/20261117/T14/gallery/7.webp",
+    "/plants/details/20261117/T14/gallery/8.webp",
+    "/plants/details/20261117/T14/gallery/9.webp",
+    "/plants/details/20261117/T14/plans.webp",
+    "/plants/details/20261117/T14/plans_2floor.webp",
+    "/plants/details/20261117/T14/unfurnished.webp",
+    "/plants/details/20261117/T14/unfurnished_2floor.webp",
+    "/plants/details/20261117/T15/furnished.webp",
+    "/plants/details/20261117/T15/gallery/1.webp",
+    "/plants/details/20261117/T15/gallery/2.webp",
+    "/plants/details/20261117/T15/gallery/3.webp",
+    "/plants/details/20261117/T15/gallery/4.webp",
+    "/plants/details/20261117/T15/gallery/5.webp",
+    "/plants/details/20261117/T15/gallery/6.webp",
+    "/plants/details/20261117/T15/plans.webp",
+    "/plants/details/20261117/T15/unfurnished.webp",
+    "/plants/details/20261117/T16/furnished.webp",
+    "/plants/details/20261117/T16/gallery/1.webp",
+    "/plants/details/20261117/T16/gallery/2.webp",
+    "/plants/details/20261117/T16/gallery/3.webp",
+    "/plants/details/20261117/T16/gallery/4.webp",
+    "/plants/details/20261117/T16/gallery/5.webp",
+    "/plants/details/20261117/T16/gallery/6.webp",
+    "/plants/details/20261117/T16/plans.webp",
+    "/plants/details/20261117/T16/unfurnished.webp",
+    "/plants/details/20261117/T7/furnished.webp",
+    "/plants/details/20261117/T7/gallery/1.webp",
+    "/plants/details/20261117/T7/gallery/2.webp",
+    "/plants/details/20261117/T7/gallery/3.webp",
+    "/plants/details/20261117/T7/gallery/4.webp",
+    "/plants/details/20261117/T7/gallery/5.webp",
+    "/plants/details/20261117/T7/gallery/6.webp",
+    "/plants/details/20261117/T7/gallery/7.webp",
+    "/plants/details/20261117/T7/plans.webp",
+    "/plants/details/20261117/T7/unfurnished.webp",
+    "/plants/details/20261117/T9/furnished.webp",
+    "/plants/details/20261117/T9/gallery/1.webp",
+    "/plants/details/20261117/T9/gallery/2.webp",
+    "/plants/details/20261117/T9/gallery/3.webp",
+    "/plants/details/20261117/T9/gallery/4.webp",
+    "/plants/details/20261117/T9/gallery/5.webp",
+    "/plants/details/20261117/T9/gallery/6.webp",
+    "/plants/details/20261117/T9/gallery/7.webp",
+    "/plants/details/20261117/T9/plans.webp",
+    "/plants/details/20261117/T9/unfurnished.webp",
     "/plants/floor_1.jpg",
     "/plants/floor_10.jpg",
     "/plants/floor_11.jpg",
