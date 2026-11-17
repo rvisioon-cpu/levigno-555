@@ -425,7 +425,7 @@ const FloorPage = () => {
 
       {/* Herramienta de selección de coordenadas */}
       {devMode && (
-        <div className="fixed bottom-6 left-6 md:left-24 z-50 animate-fade-in">
+        <div className="fixed bottom-6 right-6 md:right-24 z-50 animate-fade-in">
           <PathBuilder
             generatedPath={generatePathString()}
             points={currentPathPoints}
