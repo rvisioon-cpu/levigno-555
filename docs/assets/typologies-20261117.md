@@ -32,8 +32,8 @@ Usar la cuenta de Cloudflare que contiene `levigno-assets`. Los activos locales 
 
 - La segunda aparición de «FLAT 203» corresponde a T8 / 1203–1303.
 - T13 / 1502 también se actualiza con el ZIP entregado.
-- Las tipologías actualizadas usan temporalmente 2 habitaciones y 2 baños.
-- Se conservan las áreas anteriores por unidad. Las nuevas unidades 1403, 1503 y 1603 quedan con área por confirmar.
+- Las tipologías actualizadas usan temporalmente 2 habitaciones y 2 baños, salvo T1 (201–1301) y T7 (1202), confirmadas con 3 dormitorios y 2 baños.
+- T1 (201–1301) tiene 73.52 m² y T7 (1202) tiene 54.18 m²; estos valores confirmados prevalecen sobre los datos antiguos del panel. Para las demás unidades se conservan las áreas anteriores. Las nuevas unidades 1403, 1503 y 1603 quedan con área por confirmar.
 - T1 cubre 201–1301; T10 cubre 1401–1501; T11 corresponde a 1402; T12 a 1403–1503; T13 a 1502; T14 al dúplex 1601; T15 a 1602 y T16 a 1603.
 - Se conservan los archivos originales de T2, T3, T5, T6 y T8.
 - Los pisos 14–16 muestran pines dentro de cada unidad mientras se trazan sus nuevos polígonos con el selector de coordenadas.

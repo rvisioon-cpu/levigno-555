@@ -40,15 +40,18 @@ export interface Floor {
   units: Unit[];
 }
 
+// Confirmed areas take precedence over older CMS measurements.
+export const confirmedTypologyAreas: Record<string, number> = { T1: 73.52, T7: 54.18 };
+
 // Commercial unit schedule supplied for Levigno. All units are marked available as a temporary initial sales status.
 const unitTypes = [
-  { ids: ['201'], dimensions: 71.23, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
+  { ids: ['201'], dimensions: confirmedTypologyAreas.T1, bedrooms: 3, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
   { ids: ['202', '302', '402', '502', '602', '702', '802', '902', '1002'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T2', hasFurnishedView: true, hasGallery: true },
   { ids: ['203'], dimensions: 40.52, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T3', hasFurnishedView: true, hasGallery: true },
-  { ids: ['301', '401', '501', '601', '701', '801', '901', '1001', '1101', '1201', '1301'], dimensions: 72.22, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
+  { ids: ['301', '401', '501', '601', '701', '801', '901', '1001', '1101', '1201', '1301'], dimensions: confirmedTypologyAreas.T1, bedrooms: 3, bathrooms: 2, subtitle: 'Flat', assetId: 'T1', hasFurnishedView: true, hasGallery: true },
   { ids: ['303', '403', '503', '603', '703', '803', '903', '1003', '1103'], dimensions: 40.52, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T5', hasFurnishedView: true, hasGallery: true },
   { ids: ['1102'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T6', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1202'], dimensions: 56.69, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T7', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1202'], dimensions: confirmedTypologyAreas.T7, bedrooms: 3, bathrooms: 2, subtitle: 'Flat', assetId: 'T7', hasFurnishedView: true, hasGallery: true },
   { ids: ['1203', '1303'], dimensions: 40, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T8', hasFurnishedView: true, hasGallery: true },
   { ids: ['1302'], dimensions: 53.34, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T9', hasFurnishedView: true, hasGallery: true },
   { ids: ['1401', '1501'], dimensions: 72.22, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T10', hasFurnishedView: true, hasGallery: true },
