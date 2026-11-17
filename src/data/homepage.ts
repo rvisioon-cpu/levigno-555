@@ -31,7 +31,7 @@ export const homepageData: HomepageData = {
       highlight: "Livigno 555"
     },
     {
-      text: "Una propuesta residencial de escala cuidada, con 42 unidades distribuidas en una torre de 17 niveles."
+      text: "Una propuesta residencial de escala cuidada, con 45 departamentos distribuidos en una torre de 17 niveles."
     },
     {
       text: "Departamentos desde 40 m² hasta 127 m², con opciones de hasta 4 dormitorios para diferentes necesidades de vivienda."

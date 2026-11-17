@@ -4,6 +4,7 @@ import { join, relative, sep } from 'node:path';
 const root = '.open-next/assets';
 const r2BackedLargeAssets = new Set([
   'videos/premapa.mp4',
+  'videos/20261117/livigno-general.mp4',
   'location/videos/hitos/plaza-san-miguel/full.mp4',
 ]);
 const maxAssetSize = 25 * 1024 * 1024;
