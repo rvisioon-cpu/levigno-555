@@ -254,15 +254,24 @@ describe('Tier 3: Cross-Feature Combinations', () => {
       }
     });
 
-    it('3.3.4: All 21 parking units (E1..E14, M1..M7) are properly distributed across Floor 1 and basements', async () => {
+    it('3.3.4: All 18 parking units (E1..E18) are properly distributed across Floor 1 and basements', async () => {
       const floorsModule = await import('../../src/data/floors.js');
       const parkingUnits = floorsModule.floorsData.flatMap(f => f.units).filter(u => u.type === 'parking');
-      assert.strictEqual(parkingUnits.length, 21, 'Must have exactly 21 parking spaces');
+      assert.strictEqual(parkingUnits.length, 18, 'Must have exactly 18 parking spaces');
 
       const carParkings = parkingUnits.filter(u => u.id.startsWith('E'));
       const motoParkings = parkingUnits.filter(u => u.id.startsWith('M'));
-      assert.strictEqual(carParkings.length, 14, 'Must have 14 car parking spaces (E1..E14)');
-      assert.strictEqual(motoParkings.length, 7, 'Must have 7 quad bike spaces (M1..M7)');
+      assert.strictEqual(carParkings.length, 18, 'Must have 18 car parking spaces (E1..E18)');
+      assert.strictEqual(motoParkings.length, 0, 'Quad bike spaces must be removed');
+      const distribution = { '1': ['E1'], s1: ['E2', 'E3', 'E4', 'E5', 'E6', 'E7'], s2: ['E8', 'E9', 'E10', 'E11', 'E12', 'E13'], s3: ['E14', 'E15', 'E16', 'E17', 'E18'] };
+      for (const [floorId, ids] of Object.entries(distribution)) {
+        const floorParking = parkingUnits.filter(u => u.floorId === floorId);
+        assert.deepEqual(floorParking.map(u => u.id), ids);
+        for (const unit of floorParking) {
+          assert.ok(unit.path?.startsWith('M '), `${unit.id} must have a selection polygon`);
+          assert.ok(Number.isFinite(unit.x) && Number.isFinite(unit.y));
+        }
+      }
     });
 
   });
