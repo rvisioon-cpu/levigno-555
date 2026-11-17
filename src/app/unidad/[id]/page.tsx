@@ -475,6 +475,7 @@ const UnitPage = () => {
                         <li className="flex flex-col items-center gap-2 text-neutral-700">
                             <Ruler strokeWidth={1.5} className="text-brand-gold" size={24} />
                             <span className="text-xs font-bold uppercase tracking-wider">{unit.dimensions > 0 ? `${unit.dimensions} m²` : 'Área por confirmar'}</span>
+                            {unit.areaBreakdown && <span className="text-[10px] text-neutral-500">({unit.areaBreakdown} m²)</span>}
                         </li>
                         <li className="flex flex-col items-center gap-2 text-neutral-700">
                             <Bed strokeWidth={1.5} className="text-brand-gold" size={24} />
@@ -522,7 +523,7 @@ const UnitPage = () => {
                     <ul className="space-y-6">
                         <li className="flex items-center gap-4 text-neutral-700">
                             <Ruler strokeWidth={1.5} className="text-brand-gold" size={22} />
-                            <span className="text-sm font-medium">{unit.dimensions > 0 ? `Área total ${unit.dimensions} m²` : 'Área por confirmar'}</span>
+                            <span className="text-sm font-medium">{unit.dimensions > 0 ? `Área total ${unit.dimensions} m²` : 'Área por confirmar'}{unit.areaBreakdown && ` (${unit.areaBreakdown} m²)`}</span>
                         </li>
                         <li className="flex items-center gap-4 text-neutral-700">
                             <Bed strokeWidth={1.5} className="text-brand-gold" size={22} />

@@ -17,6 +17,7 @@ export interface Unit {
   floorId: string;
   price?: number;
   dimensions: number;
+  areaBreakdown?: string;
   bedrooms?: number;
   bathrooms?: number;
   status: UnitStatus;
@@ -41,7 +42,18 @@ export interface Floor {
 }
 
 // Confirmed areas take precedence over older CMS measurements.
-export const confirmedTypologyAreas: Record<string, number> = { T1: 73.52, T7: 54.18 };
+export const confirmedTypologyAreas: Record<string, number> = {
+  T1: 73.52,
+  T7: 54.18,
+  T9: 53.61,
+  T10: 50.24,
+  T11: 63.50,
+  T12: 44.28,
+  T13: 56.77,
+  T14: 101.38,
+  T15: 39.80,
+  T16: 40.22,
+};
 
 // Commercial unit schedule supplied for Levigno. All units are marked available as a temporary initial sales status.
 const unitTypes = [
@@ -53,15 +65,14 @@ const unitTypes = [
   { ids: ['1102'], dimensions: 61.8, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T6', hasFurnishedView: true, hasGallery: true },
   { ids: ['1202'], dimensions: confirmedTypologyAreas.T7, bedrooms: 3, bathrooms: 2, subtitle: 'Flat', assetId: 'T7', hasFurnishedView: true, hasGallery: true },
   { ids: ['1203', '1303'], dimensions: 40, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T8', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1302'], dimensions: 53.34, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T9', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1401', '1501'], dimensions: 72.22, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T10', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1402'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T11', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1502'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T13', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1601'], dimensions: 105.31, bedrooms: 2, bathrooms: 2, subtitle: 'Dúplex', assetId: 'T14', hasFurnishedView: true, hasGallery: true },
-  // Zero means area not supplied yet; the UI hides it until confirmed.
-  { ids: ['1403', '1503'], dimensions: 0, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T12', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1602'], dimensions: 76.71, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T15', hasFurnishedView: true, hasGallery: true },
-  { ids: ['1603'], dimensions: 0, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T16', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1302'], dimensions: confirmedTypologyAreas.T9, bedrooms: 2, bathrooms: 1, subtitle: 'Flat', assetId: 'T9', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1401', '1501'], dimensions: confirmedTypologyAreas.T10, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T10', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1402'], dimensions: confirmedTypologyAreas.T11, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T11', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1502'], dimensions: confirmedTypologyAreas.T13, bedrooms: 2, bathrooms: 2, subtitle: 'Flat', assetId: 'T13', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1601'], dimensions: confirmedTypologyAreas.T14, bedrooms: 4, bathrooms: 2.5, subtitle: 'Dúplex', assetId: 'T14', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1403', '1503'], dimensions: confirmedTypologyAreas.T12, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T12', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1602'], dimensions: confirmedTypologyAreas.T15, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T15', hasFurnishedView: true, hasGallery: true },
+  { ids: ['1603'], dimensions: confirmedTypologyAreas.T16, bedrooms: 1, bathrooms: 1, subtitle: 'Flat', assetId: 'T16', hasFurnishedView: true, hasGallery: true },
 ];
 
 const soldUnitIds = new Set(['1501', '1202', '1002', '801', '703', '401']);
@@ -70,6 +81,7 @@ export const apartmentUnits: Unit[] = unitTypes.flatMap((type) => type.ids.map((
   id,
   floorId: String(Number(id.slice(0, -2))),
   dimensions: type.dimensions,
+  areaBreakdown: type.assetId === 'T14' ? '66.20 + 35.18' : undefined,
   bedrooms: type.bedrooms,
   bathrooms: type.bathrooms,
   status: soldUnitIds.has(id) ? ('sold' as const) : ('available' as const),
