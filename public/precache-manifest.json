@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-17T18:51:15.912Z",
+  "generatedAt": "2026-11-17T19:21:47.766Z",
   "r2Base": "",
   "totalAssets": 419,
-  "totalBytes": 1224671231,
+  "totalBytes": 1221363948,
   "tiers": [
     {
       "id": "critical",
       "label": "Recorrido principal",
-      "bytes": 200395332,
+      "bytes": 219038203,
       "assets": [
         [
           "building/exterior/0.1-0.mp4",
@@ -52,6 +52,30 @@
         [
           "building/exterior/2.1.loop.mp4",
           15156479
+        ],
+        [
+          "building/exterior/20261117/1.1-up.mp4",
+          3309580
+        ],
+        [
+          "building/exterior/20261117/1.2-up.mp4",
+          3143454
+        ],
+        [
+          "building/exterior/20261117/2.1-up.mp4",
+          2738308
+        ],
+        [
+          "building/exterior/20261117/2.2-up.mp4",
+          2624204
+        ],
+        [
+          "building/exterior/20261117/3.1-up.mp4",
+          3458706
+        ],
+        [
+          "building/exterior/20261117/3.2-up.mp4",
+          3368619
         ],
         [
           "building/exterior/3.1-1.1.mp4",
@@ -474,7 +498,7 @@
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 1024275899,
+      "bytes": 1002325745,
       "assets": [
         [
           "amenities/20261117/1.webp",
@@ -533,10 +557,6 @@
           3406598
         ],
         [
-          "building/exterior/1.1-up.mp4",
-          4187950
-        ],
-        [
           "building/exterior/1.2-1.1.mp4",
           3909582
         ],
@@ -547,10 +567,6 @@
         [
           "building/exterior/1.2-3.2.mp4",
           3951551
-        ],
-        [
-          "building/exterior/1.2-up.mp4",
-          3104565
         ],
         [
           "building/exterior/1.2.jpg",
@@ -565,20 +581,12 @@
           3454595
         ],
         [
-          "building/exterior/2.1-up.mp4",
-          4091304
-        ],
-        [
           "building/exterior/2.2-1.2.mp4",
           3883202
         ],
         [
           "building/exterior/2.2-2.1.mp4",
           4050291
-        ],
-        [
-          "building/exterior/2.2-up.mp4",
-          2983045
         ],
         [
           "building/exterior/2.2.jpg",
@@ -593,20 +601,12 @@
           3543142
         ],
         [
-          "building/exterior/3.1-up.mp4",
-          4515866
-        ],
-        [
           "building/exterior/3.2-1.2.mp4",
           3614765
         ],
         [
           "building/exterior/3.2-3.1.mp4",
           4085987
-        ],
-        [
-          "building/exterior/3.2-up.mp4",
-          3067424
         ],
         [
           "building/exterior/3.2.jpg",

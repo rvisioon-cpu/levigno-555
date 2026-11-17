@@ -1,3 +1,5 @@
+import { getAssetUrl } from '@/utils/assets';
+
 const exterior = (file: string) => `/building/exterior/${file}.mp4`;
 
 interface AssetSet {
@@ -24,7 +26,7 @@ function face(id: 1 | 2 | 3, name: string): BuildingFace {
   const assets = (time: 1 | 2): AssetSet => ({
     background: `/building/exterior/${id}.${time}.jpg`,
     backgroundVideo: exterior(`${id}.${time}.loop`),
-    introVideo: exterior(`${id}.${time}-up`),
+    introVideo: getAssetUrl(`building/exterior/20261117/${id}.${time}-up.mp4`),
     transitions: {
       toLeft: exterior(id === 1 ? `1.${time}-2.${time}` : `${id}.${time}-1.${time}`),
       toRight: exterior(id === 1 ? (time === 1 ? '1.1-3' : '1.2-3.2') : `${id}.${time}-1.${time}`),

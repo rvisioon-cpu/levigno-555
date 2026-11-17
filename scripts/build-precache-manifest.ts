@@ -89,6 +89,7 @@ const collectKeys = (...roots: unknown[]): Set<string> => {
 export type TierId = 'critical' | 'full';
 
 const CRITICAL_RULES: RegExp[] = [
+  /^building\/exterior\/20261117\/[1-3]\.[12]-up\.mp4$/,
   /^homepage\//,
   /^identity\//,
   /^videos\/(?:20261117\/)?portada\.mp4$/,

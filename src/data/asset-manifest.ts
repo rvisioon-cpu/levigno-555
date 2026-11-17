@@ -20,6 +20,9 @@ export const assetManifest: string[] = [
     'identity/santa-cruz-kayen-color.png',
     'identity/santa-cruz-kayen-black.png',
     
+    // Building to floor 17: all three faces, day and night.
+    ...[1, 2, 3].flatMap(face => [1, 2].map(time => `building/exterior/20261117/${face}.${time}-up.mp4`)),
+
     // Building Exterior
     'building/exterior/0.2.loop.mp4',
     'building/exterior/0.2.jpg',
