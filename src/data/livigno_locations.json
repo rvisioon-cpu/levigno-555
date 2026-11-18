@@ -22,7 +22,8 @@
       "properties": {
         "name": "IPCNA",
         "icon": "logo_icpna",
-        "type": "educación"
+        "type": "educación",
+        "image_path": "icons/EDUCACION/logo_icpna.png"
       },
       "geometry": {
         "coordinates": [
@@ -55,7 +56,8 @@
       "properties": {
         "name": "Rodizio",
         "icon": "logo_rodizio",
-        "type": "restaurantes"
+        "type": "restaurantes",
+        "image_path": "icons/RESTAURANTES/logo_rodizio.png"
       },
       "geometry": {
         "coordinates": [
@@ -88,7 +90,8 @@
       "properties": {
         "name": "Chicharrones KIO",
         "icon": "logo_kio",
-        "type": "restaurantes"
+        "type": "restaurantes",
+        "image_path": "icons/RESTAURANTES/logo_kio.png"
       },
       "geometry": {
         "coordinates": [
@@ -104,7 +107,8 @@
       "properties": {
         "name": "Metro",
         "icon": "logo_metro",
-        "type": "comercio"
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/logo_metro.png"
       },
       "geometry": {
         "coordinates": [
@@ -120,7 +124,8 @@
       "properties": {
         "name": "Maria Almenara",
         "icon": "logo_mariaalmenara",
-        "type": "restaurantes"
+        "type": "restaurantes",
+        "image_path": "icons/RESTAURANTES/logo_mariaalmenara.png"
       },
       "geometry": {
         "coordinates": [
@@ -185,7 +190,8 @@
       "properties": {
         "name": "Clínica San Gabriel",
         "icon": "logo_sangabriel",
-        "type": "salud y bienestar"
+        "type": "salud y bienestar",
+        "image_path": "icons/SALUD_Y_BIENESTAR/hospital.png"
       },
       "geometry": {
         "coordinates": [
@@ -201,7 +207,8 @@
       "properties": {
         "name": "Rústica",
         "icon": "logo_rustica",
-        "type": "restaurantes"
+        "type": "restaurantes",
+        "image_path": "icons/RESTAURANTES/logo_rustica.png"
       },
       "geometry": {
         "coordinates": [
@@ -217,7 +224,8 @@
       "properties": {
         "name": "Cinemark",
         "icon": "logo_cinemark",
-        "type": "lifestyle"
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/logo_cinemark.png"
       },
       "geometry": {
         "coordinates": [
@@ -267,7 +275,8 @@
       "properties": {
         "name": "MASS",
         "type": "comercio",
-        "icon": "logo_mass"
+        "icon": "logo_mass",
+        "image_path": "icons/COMERCIO/mass_1.png"
       },
       "geometry": {
         "coordinates": [
@@ -300,7 +309,8 @@
       "properties": {
         "name": "Plaza Vea",
         "icon": "logo_plazavea",
-        "type": "comercio"
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/plaza_vea.png"
       },
       "geometry": {
         "coordinates": [
@@ -350,7 +360,8 @@
       "properties": {
         "name": "Instituto CERTUS",
         "icon": "logo_certus",
-        "type": "educación"
+        "type": "educación",
+        "image_path": "icons/EDUCACION/logo_certus.png"
       },
       "geometry": {
         "coordinates": [
@@ -451,7 +462,8 @@
       "properties": {
         "name": "Marina City Center",
         "icon": "logo_marinacitycenter",
-        "type": "comercio"
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/logo_marinacitycenter.png"
       },
       "geometry": {
         "coordinates": [
@@ -467,7 +479,8 @@
       "properties": {
         "name": "ESSALUD",
         "icon": "logo_essalud",
-        "type": "salud y bienestar"
+        "type": "salud y bienestar",
+        "image_path": "icons/SALUD_Y_BIENESTAR/hospital.png"
       },
       "geometry": {
         "coordinates": [
@@ -483,7 +496,8 @@
       "properties": {
         "name": "Estadio Adolfo Magallanes",
         "icon": "logo_complejo",
-        "type": "lifestyle"
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/estadio.png"
       },
       "geometry": {
         "coordinates": [
@@ -499,7 +513,8 @@
       "properties": {
         "name": "Hiraoka",
         "icon": "logo_hiraoka",
-        "type": "comercio"
+        "type": "comercio",
+        "image_path": "icons/COMERCIO/logo_hiraoka.png"
       },
       "geometry": {
         "coordinates": [
@@ -566,7 +581,8 @@
       "properties": {
         "name": "Complejo Deportivo Municipal Arena San Miguel",
         "icon": "logo_complejo",
-        "type": "lifestyle"
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/estadio.png"
       },
       "geometry": {
         "coordinates": [
@@ -616,7 +632,8 @@
       "properties": {
         "name": "Friday's",
         "icon": "logo_fridays",
-        "type": "restaurantes"
+        "type": "restaurantes",
+        "image_path": "icons/RESTAURANTES/logo_fridays.png"
       },
       "geometry": {
         "coordinates": [
@@ -632,7 +649,8 @@
       "properties": {
         "name": "Coney Park",
         "icon": "logo_coneypark",
-        "type": "lifestyle"
+        "type": "lifestyle",
+        "image_path": "icons/LIFESTYLE/logo_coneypark.png"
       },
       "geometry": {
         "coordinates": [
@@ -664,7 +682,8 @@
       "type": "Feature",
       "properties": {
         "name": "Parque Medalla Milagrosa",
-        "type": "áreas verdes y recreación"
+        "type": "áreas verdes y recreación",
+        "image_path": "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png"
       },
       "geometry": {
         "coordinates": [
@@ -697,7 +716,8 @@
       "properties": {
         "name": "Colegio Pamer La Libertad",
         "type": "educación",
-        "icon": "logo_pamer"
+        "icon": "logo_pamer",
+        "image_path": "icons/EDUCACION/colegio_1.png"
       },
       "geometry": {
         "coordinates": [
@@ -713,7 +733,8 @@
       "properties": {
         "name": "Banco de la Nación",
         "icon": "logo_bancodelanacion",
-        "type": "finanzas"
+        "type": "finanzas",
+        "image_path": "icons/FINANZAS/logo_bancodelanacion.png"
       },
       "geometry": {
         "coordinates": [
@@ -729,7 +750,8 @@
       "properties": {
         "name": "Británico",
         "icon": "logo_británico",
-        "type": "educación"
+        "type": "educación",
+        "image_path": "icons/EDUCACION/logo_britanico.png"
       },
       "geometry": {
         "coordinates": [
@@ -745,7 +767,8 @@
       "properties": {
         "name": "Pardos Chicken",
         "icon": "logo_pardoschicken",
-        "type": "restaurantes"
+        "type": "restaurantes",
+        "image_path": "icons/RESTAURANTES/logo_pardoschicken.png"
       },
       "geometry": {
         "coordinates": [
@@ -761,7 +784,8 @@
       "properties": {
         "name": "Innova School",
         "icon": "logo_innova",
-        "type": "educación"
+        "type": "educación",
+        "image_path": "icons/EDUCACION/colegio_2.png"
       },
       "geometry": {
         "coordinates": [
