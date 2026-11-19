@@ -1,4 +1,4 @@
-import { latestMedia } from './latest-media';
+import { amenityPhotos } from './latest-media';
 import { getAssetUrl } from '@/utils/assets';
 
 export interface GalleryImage {
@@ -31,11 +31,12 @@ export const galleries: GalleryCollection[] = [
     id: 'amenities',
     title: 'Amenidades',
     description: 'Áreas comunes de Livigno 555.',
-    coverImage: getAssetUrl(latestMedia.amenities[0]),
-    images: latestMedia.amenities.map((path, index) => ({
+    coverImage: getAssetUrl(amenityPhotos[0].path),
+    images: amenityPhotos.map(({ path, title }) => ({
       id: path,
       src: getAssetUrl(path),
-      alt: `Amenidades de Livigno 555, foto ${index + 1}`,
+      alt: title,
+      title,
     }))
   },
   {
