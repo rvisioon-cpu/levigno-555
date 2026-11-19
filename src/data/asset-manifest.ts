@@ -1,4 +1,5 @@
 import { latestMedia } from './latest-media';
+import { buildingExteriorAssetKeys } from './building-media';
 import { updatedTypologyAssets } from './updated-typology-assets';
 import { replacementGalleryAssets, replacementPlanAssets } from './typology-assets';
 
@@ -21,12 +22,8 @@ export const assetManifest: string[] = [
     'identity/santa-cruz-kayen-color.png',
     'identity/santa-cruz-kayen-black.png',
     
-    // Building to floor 17: all three faces, day and night.
-    ...[1, 2, 3].flatMap(face => [1, 2].map(time => `building/exterior/20261117/${face}.${time}-up.mp4`)),
-
-    // Building Exterior
-    'building/exterior/0.2.loop.mp4',
-    'building/exterior/0.2.jpg',
+    // Building images, opening and camera transitions
+    ...buildingExteriorAssetKeys,
     'building/photos/face_0_daylight.png',
     'building/photos/face_0_night.png',
     'building/videos/face_0_daylight.mp4',

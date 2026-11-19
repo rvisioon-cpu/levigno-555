@@ -82,7 +82,7 @@ const ShowroomContent = () => {
                  });
              }
         } else {
-             // Default & 'intro' flow: plays 0.1-0.mp4 from sky to aerial, then lands on AERIAL_LOOP
+             // Default and intro flow: play the opening shot before the aerial loop.
              preloadVideo(buildingAerialLoop).catch(() => {});
              useStore.setState({ 
                  viewState: 'TRANSITION_VIDEO', 

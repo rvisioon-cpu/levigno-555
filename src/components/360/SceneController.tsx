@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/store/useStore';
 import gsap from 'gsap';
-import { buildingOpening, buildingAerialLoop } from '@/data/buildingData';
+import { buildingOpening, buildingOpeningPoster, buildingAerialLoop, buildingAerialPoster } from '@/data/buildingData';
 import { floorsData } from '@/data/floors';
 import { preloadImages } from '@/utils/preload';
 
@@ -151,7 +151,7 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
         {viewState === 'AERIAL_LOOP' || currentRoom === 'Aerial' ? (
            <div className="relative w-full h-full bg-black">
               <img 
-                src="/building/exterior/0.2.jpg" 
+                src={buildingAerialPoster}
                 alt="" 
                 className="w-full h-full object-cover"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -221,6 +221,7 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
       {/* LAYER 2: Transition Video (Invisible initially) */}
       <video 
         ref={videoRef}
+        poster={transitionUrl === buildingOpening[0] ? buildingOpeningPoster : undefined}
         className="absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
         muted 
         playsInline

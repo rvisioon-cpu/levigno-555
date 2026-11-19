@@ -1,4 +1,3 @@
-import { latestMedia } from '../src/data/latest-media';
 // ============================================================================
 // MANIFIESTO DE PRECARGA — LIVIGNO 555
 // Genera la lista de claves de media que el Service Worker y /preparar guardan
@@ -89,15 +88,8 @@ const collectKeys = (...roots: unknown[]): Set<string> => {
 export type TierId = 'critical' | 'full';
 
 const CRITICAL_RULES: RegExp[] = [
-  /^building\/exterior\/20261117\/[1-3]\.[12]-up\.mp4$/,
-  /^homepage\//,
-  /^identity\//,
-  /^videos\/(?:20261117\/)?portada\.mp4$/,
-  /^building\/exterior\/0\./,
-  /^building\/exterior\/[1-3]\.1\./,
-  /^building\/exterior\/[1-3]\.1-[1-3]\.1/,
-  /^building\/exterior\/1\.1-3\.mp4$/,
-  /^building\/exterior\/3\.1-1\.1\.mp4$/,
+  /^building\/exterior\/20261119\/(?:0\.|[1-3]\.1(?:\.|-[1-3]\.1)|[1-3]\.[12]-up\.mp4$)/,
+  /^videos\/20261119\/portada\.mp4$/,
   /^plants\/floor_[0-9s]+\.jpg$/,
   /^plants\/details\/T\d+\/(plans|furnished|unfurnished|deliverable)\.(webp|jpg)$/,
   /^plants\/details\/(?:20261117\/)?T14\/.*2floor\.(webp|jpg)$/,
@@ -108,11 +100,6 @@ const tierOf = (key: string): TierId =>
   CRITICAL_RULES.some((rule) => rule.test(key)) ? 'critical' : 'full';
 
 const EXTRA_KEYS: string[] = [
-  'building/exterior/0.1-0.mp4',
-  'building/exterior/0.2-1.1.mp4',
-  'building/exterior/0.2.loop.mp4',
-  'building/exterior/0.2.jpg',
-  latestMedia.introVideo,
   'portada.png',
   'intro.jpg',
 ];
