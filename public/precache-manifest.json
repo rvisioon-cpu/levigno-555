@@ -1,8 +1,8 @@
 {
   "generatedAt": "2026-11-18T16:06:08.974Z",
   "r2Base": "",
-  "totalAssets": 473,
-  "totalBytes": 1344258635,
+  "totalAssets": 509,
+  "totalBytes": 1376997323,
   "tiers": [
     {
       "id": "critical",
@@ -498,7 +498,7 @@
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 1125220432,
+      "bytes": 1157959120,
       "assets": [
         [
           "amenities/20261117/1.webp",
@@ -1289,6 +1289,26 @@
           251460
         ],
         [
+          "plants/details/20261119/T17/gallery/1.webp",
+          1034082
+        ],
+        [
+          "plants/details/20261119/T17/gallery/2.webp",
+          616084
+        ],
+        [
+          "plants/details/20261119/T17/gallery/3.webp",
+          774644
+        ],
+        [
+          "plants/details/20261119/T17/gallery/4.webp",
+          781616
+        ],
+        [
+          "plants/details/20261119/T17/gallery/5.webp",
+          783564
+        ],
+        [
           "plants/details/20261119/T17/plans.webp",
           75908
         ],
@@ -1323,6 +1343,34 @@
         [
           "plants/details/20261119/T2/furnished.webp",
           362354
+        ],
+        [
+          "plants/details/20261119/T2/gallery/1.webp",
+          716636
+        ],
+        [
+          "plants/details/20261119/T2/gallery/2.webp",
+          960554
+        ],
+        [
+          "plants/details/20261119/T2/gallery/3.webp",
+          812938
+        ],
+        [
+          "plants/details/20261119/T2/gallery/4.webp",
+          730544
+        ],
+        [
+          "plants/details/20261119/T2/gallery/5.webp",
+          918308
+        ],
+        [
+          "plants/details/20261119/T2/gallery/6.webp",
+          1199704
+        ],
+        [
+          "plants/details/20261119/T2/gallery/7.webp",
+          935544
         ],
         [
           "plants/details/20261119/T2/plans.webp",
@@ -1361,6 +1409,30 @@
           365656
         ],
         [
+          "plants/details/20261119/T3/gallery/1.webp",
+          501514
+        ],
+        [
+          "plants/details/20261119/T3/gallery/2.webp",
+          616084
+        ],
+        [
+          "plants/details/20261119/T3/gallery/3.webp",
+          1223054
+        ],
+        [
+          "plants/details/20261119/T3/gallery/4.webp",
+          1203378
+        ],
+        [
+          "plants/details/20261119/T3/gallery/5.webp",
+          994364
+        ],
+        [
+          "plants/details/20261119/T3/gallery/6.webp",
+          915930
+        ],
+        [
           "plants/details/20261119/T3/plans.webp",
           94606
         ],
@@ -1395,6 +1467,30 @@
         [
           "plants/details/20261119/T5/furnished.webp",
           320014
+        ],
+        [
+          "plants/details/20261119/T5/gallery/1.webp",
+          1031440
+        ],
+        [
+          "plants/details/20261119/T5/gallery/2.webp",
+          915930
+        ],
+        [
+          "plants/details/20261119/T5/gallery/3.webp",
+          994364
+        ],
+        [
+          "plants/details/20261119/T5/gallery/4.webp",
+          1223054
+        ],
+        [
+          "plants/details/20261119/T5/gallery/5.webp",
+          616084
+        ],
+        [
+          "plants/details/20261119/T5/gallery/6.webp",
+          501514
         ],
         [
           "plants/details/20261119/T5/plans.webp",
@@ -1433,6 +1529,34 @@
           358608
         ],
         [
+          "plants/details/20261119/T6/gallery/1.webp",
+          1264130
+        ],
+        [
+          "plants/details/20261119/T6/gallery/2.webp",
+          1007398
+        ],
+        [
+          "plants/details/20261119/T6/gallery/3.webp",
+          964224
+        ],
+        [
+          "plants/details/20261119/T6/gallery/4.webp",
+          1299062
+        ],
+        [
+          "plants/details/20261119/T6/gallery/5.webp",
+          1326288
+        ],
+        [
+          "plants/details/20261119/T6/gallery/6.webp",
+          804990
+        ],
+        [
+          "plants/details/20261119/T6/gallery/7.webp",
+          991206
+        ],
+        [
           "plants/details/20261119/T6/plans.webp",
           107604
         ],
@@ -1467,6 +1591,26 @@
         [
           "plants/details/20261119/T8/furnished.webp",
           282724
+        ],
+        [
+          "plants/details/20261119/T8/gallery/1.webp",
+          1124554
+        ],
+        [
+          "plants/details/20261119/T8/gallery/2.webp",
+          616084
+        ],
+        [
+          "plants/details/20261119/T8/gallery/3.webp",
+          774644
+        ],
+        [
+          "plants/details/20261119/T8/gallery/4.webp",
+          781616
+        ],
+        [
+          "plants/details/20261119/T8/gallery/5.webp",
+          783564
         ],
         [
           "plants/details/20261119/T8/plans.webp",

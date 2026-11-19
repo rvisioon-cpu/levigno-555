@@ -12,8 +12,21 @@ const replacementPlanRoot = 'plants/details/20261119';
 export const typologyPlanAssetRoot = (assetId: string) =>
   replacementPlanTypes.has(assetId) ? `${replacementPlanRoot}/${assetId}` : typologyAssetRoot(assetId);
 
+const replacementGalleryCounts: Readonly<Record<string, number | undefined>> = {
+  T2: 7, T3: 6, T5: 6, T6: 7, T8: 5, T17: 5,
+};
+
 export const typologyGalleryAssetRoot = (assetId: string) =>
-  typologyAssetRoot(assetId === 'T17' ? 'T8' : assetId);
+  replacementGalleryCounts[assetId] ? typologyPlanAssetRoot(assetId) : typologyAssetRoot(assetId);
+
+export const typologyGalleryThumbnail = (assetId: string) => {
+  const extension = replacementGalleryCounts[assetId] || hasUpdatedTypology(assetId) ? 'webp' : 'jpg';
+  return `${typologyGalleryAssetRoot(assetId)}/gallery/1.${extension}`;
+};
+
+export const replacementGalleryAssets = Object.entries(replacementGalleryCounts).flatMap(([type, count]) =>
+  Array.from({ length: count ?? 0 }, (_, index) => `${typologyGalleryAssetRoot(type)}/gallery/${index + 1}.webp`),
+);
 
 export const replacementPlanAssets = [...replacementPlanTypes].flatMap(type => {
   const root = typologyPlanAssetRoot(type);
