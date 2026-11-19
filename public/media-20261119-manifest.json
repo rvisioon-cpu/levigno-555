@@ -1,0 +1,216 @@
+{
+  "version": "20261119",
+  "totalFiles": 35,
+  "assets": [
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/0.1.png",
+      "key": "building/exterior/20261119/photos/0.1.webp",
+      "size": 564510,
+      "sha256": "be06571cbec194f2a3c60cc12c9014e4cf3728a6736cbf9bbabf95ee04ae67da"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/0.2.png",
+      "key": "building/exterior/20261119/photos/0.2.webp",
+      "size": 2941534,
+      "sha256": "d28fb68a8a6df4f3dc3a18415f5a8cdf5bf761e47d9c7dddb23a9f120c7d7a99"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/1.1.png",
+      "key": "building/exterior/20261119/photos/1.1.webp",
+      "size": 3044364,
+      "sha256": "ad49c351ee329271f7ad9d410e6567cc4056e6d5d90339fa6249ad21a70ba93b"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/1.2.png",
+      "key": "building/exterior/20261119/photos/1.2.webp",
+      "size": 1867158,
+      "sha256": "dca891c9b11ef014ce81f7db92a783b7b02c4819d738cf3ae5b776a6c9fd5c8e"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/2.1.png",
+      "key": "building/exterior/20261119/photos/2.1.webp",
+      "size": 3245314,
+      "sha256": "0d49e55e594ad70ebd12b4cae18c34a6aac7cc302906552aea17ad971678c630"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/2.2.png",
+      "key": "building/exterior/20261119/photos/2.2.webp",
+      "size": 2260602,
+      "sha256": "31286c490b6f07b5a4c3a7db8b2be45f2419e3c80fb202b5b06db82c73553e3c"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/3.1.png",
+      "key": "building/exterior/20261119/photos/3.1.webp",
+      "size": 3074378,
+      "sha256": "15b9fc4275fc2d6f42cae98e5544be1f7d354b870ce44a8e799e7e1af8fc3876"
+    },
+    {
+      "source": "FINALES/LIVIGNO EXTERIORES NUEVO/3.2.png",
+      "key": "building/exterior/20261119/photos/3.2.webp",
+      "size": 2505986,
+      "sha256": "0416cedbb49da1c3729d845838ac89c8bb7c75d77457c614f20faa01e4cae08f"
+    },
+    {
+      "source": "PORTADA.mp4",
+      "key": "videos/20261119/portada.mp4",
+      "size": 25113628,
+      "sha256": "2a093b346c06b373ccfaa630fb85edb480f930db2556eada1e3de50c52e66f6e"
+    },
+    {
+      "source": "VIDEO LIVIGNO.mp4",
+      "key": "videos/20261119/livigno-general.mp4",
+      "size": 203264793,
+      "sha256": "d6b080a97123dcf17dcefd4ec8298473c0b707b8ea3bf7ea5e5bd827b98ea07a"
+    },
+    {
+      "source": "FINALES/LOOP GENERAL.mp4",
+      "key": "building/exterior/20261119/aerial-loop.mp4",
+      "size": 21531305,
+      "sha256": "bc2d6fca7e95cb7cf9b2bad59b108ce85a391244884e959ced2f1c8b2037f2bf"
+    },
+    {
+      "source": "FINALES/0.1 A 0.2.mp4",
+      "key": "building/exterior/20261119/0.1-0.2.mp4",
+      "size": 3536303,
+      "sha256": "4689fc88edade269bafd884de82e27e750bdcd1880fd3e0511160cc2f7335e7f"
+    },
+    {
+      "source": "FINALES/0.2 a 1.1.mp4",
+      "key": "building/exterior/20261119/0.2-1.1.mp4",
+      "size": 3857278,
+      "sha256": "0e360ab996f7c98fc58694a3663014cc0e6df7f9dcd3fc9f9840c287047111bd"
+    },
+    {
+      "source": "FINALES/A PLANTA/1.1. A UP.mp4",
+      "key": "building/exterior/20261119/1.1-up.mp4",
+      "size": 5809202,
+      "sha256": "103772c1b6924cabcc830aec37194939eeefe0405d1a1ea5a2de4d9c496aabd9"
+    },
+    {
+      "source": "FINALES/A PLANTA/1.2. A UP.mp4",
+      "key": "building/exterior/20261119/1.2-up.mp4",
+      "size": 4446542,
+      "sha256": "491d53a3647fa9290a200f4d2b95b4bbcb477ba23eb72e55bd030396bf12942b"
+    },
+    {
+      "source": "FINALES/A PLANTA/2.1. A UP.mp4",
+      "key": "building/exterior/20261119/2.1-up.mp4",
+      "size": 5243473,
+      "sha256": "5128cc7681a490050a206c0deda93e1d268ee97c92ff73d5360cf73901332522"
+    },
+    {
+      "source": "FINALES/A PLANTA/2.2. A UP.mp4",
+      "key": "building/exterior/20261119/2.2-up.mp4",
+      "size": 4125900,
+      "sha256": "aac153832d6e553ae99b794289ea1bc02781e0ed1b02b326a5b2464b334c22eb"
+    },
+    {
+      "source": "FINALES/A PLANTA/3.1. A UP.mp4",
+      "key": "building/exterior/20261119/3.1-up.mp4",
+      "size": 5952772,
+      "sha256": "849b6c430b98bebb75097e853777c1ef71f97b131d57e20ee64239dae9a91f09"
+    },
+    {
+      "source": "FINALES/A PLANTA/3.2. A UP.mp4",
+      "key": "building/exterior/20261119/3.2-up.mp4",
+      "size": 4741880,
+      "sha256": "44643284c73bf2a3906e1d6ee7cb9d0ee0884401e5b2cdddca80915d6329038a"
+    },
+    {
+      "source": "FINALES/D\u00cdA A NOCHE/1.1 A 1.2.mp4",
+      "key": "building/exterior/20261119/1.1-1.2.mp4",
+      "size": 5319033,
+      "sha256": "88e9bd79a2cb1ff14fb6c833b1c5c82bb8fa9b07088b3a9b9df8f107176178b9"
+    },
+    {
+      "source": "FINALES/D\u00cdA A NOCHE/1.2 A 1.1.mp4",
+      "key": "building/exterior/20261119/1.2-1.1.mp4",
+      "size": 4642297,
+      "sha256": "07cf42506ef1fc263efcc4371bde1f33edb94ef7fc41e440df421f2568705e68"
+    },
+    {
+      "source": "FINALES/D\u00cdA A NOCHE/2.1 A 2.2.mp4",
+      "key": "building/exterior/20261119/2.1-2.2.mp4",
+      "size": 5597588,
+      "sha256": "721c013077c166c3cd55ce06f55a72923d80d889e68964c4d832c5c3799a4b4f"
+    },
+    {
+      "source": "FINALES/D\u00cdA A NOCHE/2.2 A 2.1.mp4",
+      "key": "building/exterior/20261119/2.2-2.1.mp4",
+      "size": 5011216,
+      "sha256": "b01f501a7ef9eda5332942f3e96bb3cc64a39c8c48adfe9044b4dcfda11aca05"
+    },
+    {
+      "source": "FINALES/D\u00cdA A NOCHE/3.1 A 3.2.mp4",
+      "key": "building/exterior/20261119/3.1-3.2.mp4",
+      "size": 5682301,
+      "sha256": "b017fbb1730c46eaba2990567a012b032fc7c790d7e5edef3f9b1f94bdbd76ec"
+    },
+    {
+      "source": "FINALES/D\u00cdA A NOCHE/3.2 A 3.1.mp4",
+      "key": "building/exterior/20261119/3.2-3.1.mp4",
+      "size": 5132377,
+      "sha256": "22c51e64d1bd92e376dcf3ace7a8d153c75e162ad572559344cbe4b631dccb09"
+    },
+    {
+      "source": "FINALES/LATERALES/1.1 A 2.1.mp4",
+      "key": "building/exterior/20261119/1.1-2.1.mp4",
+      "size": 6044041,
+      "sha256": "9119f5d4c47ab0ca9aaa07946d27d07c242b39fb33b788029eeb16a4b1582186"
+    },
+    {
+      "source": "FINALES/LATERALES/1.1 A 3.1.mp4",
+      "key": "building/exterior/20261119/1.1-3.1.mp4",
+      "size": 6681789,
+      "sha256": "48dda1fc3b6e448f4ae3ecae9c217881415b8020a34b4cbd25438196e713f0ba"
+    },
+    {
+      "source": "FINALES/LATERALES/1.2 A 2.1.mp4",
+      "key": "building/exterior/20261119/1.2-2.2.mp4",
+      "size": 4148333,
+      "sha256": "bea4fb68c24a191f224e50934d21229d4a92b696f92bf31ecf34b946b1b534c6"
+    },
+    {
+      "source": "FINALES/LATERALES/1.2 A 3.2.mp4",
+      "key": "building/exterior/20261119/1.2-3.2.mp4",
+      "size": 4137436,
+      "sha256": "a4f72ffd44a9e8b23995158121d24a1520685d841571c5b57e4a1dfe2c436614"
+    },
+    {
+      "source": "FINALES/LATERALES/2.1 A 1.1.mp4",
+      "key": "building/exterior/20261119/2.1-1.1.mp4",
+      "size": 6672494,
+      "sha256": "4931ab64a960039c987163dbfa05766111857b4046442dcaed4bc85214705212"
+    },
+    {
+      "source": "FINALES/LATERALES/2.2 A 1.2.mp4",
+      "key": "building/exterior/20261119/2.2-1.2.mp4",
+      "size": 4489280,
+      "sha256": "93c1279ea3518b9d062960f57d7aa80887f82d8211e0adaddff5ec42be978ee2"
+    },
+    {
+      "source": "FINALES/LATERALES/3.1 A 1.1.mp4",
+      "key": "building/exterior/20261119/3.1-1.1.mp4",
+      "size": 6396488,
+      "sha256": "561a644e489157cc3f40c0390b1a254bac10080f3093119b87beefb2af15bbca"
+    },
+    {
+      "source": "FINALES/LATERALES/3.2 A 1.2.mp4",
+      "key": "building/exterior/20261119/3.2-1.2.mp4",
+      "size": 4430051,
+      "sha256": "cbd19dd70f1f8a3d4d6aa86eb41a3c3d6257a477cbd33e964351fe1a47eeda49"
+    },
+    {
+      "source": "PORTADA.mp4",
+      "key": "homepage/20261119/portada.webp",
+      "size": 559704,
+      "sha256": "6be1cfeef91195d5d9d8bebd221d62494a1ccde3bb3fbc638f9a9137ec7bbc4d"
+    },
+    {
+      "source": "VIDEO LIVIGNO.mp4",
+      "key": "videos/20261119/livigno-general-poster.webp",
+      "size": 93608,
+      "sha256": "7532e341717a41fb12cacbf907006c223d9cfe60a65709d5d5ccd8920d5cdf22"
+    }
+  ]
+}

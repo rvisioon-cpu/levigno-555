@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/store/useStore';
 import gsap from 'gsap';
-import { buildingOpening, buildingAerialLoop } from '@/data/buildingData';
+import { buildingOpening, buildingAerialLoop, buildingAerialPoster } from '@/data/buildingData';
 import { floorsData } from '@/data/floors';
 import { preloadImages } from '@/utils/preload';
 
@@ -147,11 +147,11 @@ export default function SceneController({ isHighlighted }: SceneControllerProps)
       {/* LAYER 1: 360 Panorama (Static background for now) */}
       {/* LAYER 1: 360 Panorama (Static background for now) */}
       <div ref={panoRef} className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-        {/* If we are in Aerial loop mode, play the 0.2 aerial loop video */}
+        {/* Keep the supplied aerial image visible until the loop is ready. */}
         {viewState === 'AERIAL_LOOP' || currentRoom === 'Aerial' ? (
            <div className="relative w-full h-full bg-black">
               <img 
-                src="/building/exterior/0.2.jpg" 
+                src={buildingAerialPoster}
                 alt="" 
                 className="w-full h-full object-cover"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
