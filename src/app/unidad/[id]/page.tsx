@@ -6,7 +6,7 @@ import { floorsData, UnitStatusString } from '@/data/floors';
 import Sidebar from '@/components/layout/Sidebar';
 import RequestInfoModal from '@/components/modals/RequestInfoModal';
 import { typologyGalleryAssetRoot, typologyPlanAssetRoot } from '@/data/typology-assets';
-import InlineGallery from '@/components/gallery/InlineGallery';
+import LivignoGallery from '@/components/gallery/LivignoGallery';
 import TourHeader from '@/components/UI/TourHeader';
 import { preloadImages, preloadVideo } from '@/utils/preload';
 import FullScreenToggle from '@/components/UI/FullScreenToggle';
@@ -41,11 +41,12 @@ const UnitPage = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   
   // Default to hidden on mobile/tablet (LG/XL breakpoint)
   const [showDetails, setShowDetails] = useState(() => (typeof window !== 'undefined' ? window.innerWidth >= 1280 : true));
   
-  const [viewMode, setViewMode] = useState<'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour'>(() => unit?.hasFurnishedView ? 'furnished' : 'plans');
+  const [viewMode, setViewMode] = useState<'furnished' | 'unfurnished' | 'plans' | 'tour'>(() => unit?.hasFurnishedView ? 'furnished' : 'plans');
   
   // Duplex floor level support (Piso 1 / Piso 2)
   const isDuplex = unit?.assetId === 'T14' || unit?.subtitle === 'Dúplex' || unitId === '1601';
@@ -106,16 +107,14 @@ const UnitPage = () => {
         return dynamicImages.map(path => ({
             id: path,
             src: getAssetUrl(path),
-            alt: `Gallery Image`,
-            title: `Gallery Image`
+            alt: `Galería de la unidad ${title || assetId}`
         }));
     }
 
     return finalImages.sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).map(path => ({
             id: path,
             src: getAssetUrl(path),
-            alt: `Unit ${title || assetId} Gallery`, 
-            title: `Unit ${title || assetId}`
+            alt: `Galería de la unidad ${title || assetId}`
     }));
   };
 
@@ -154,18 +153,11 @@ const UnitPage = () => {
   };
 
   // --- TRANSITION HANDLERS ---
-  const handleViewChange = (newMode: 'furnished' | 'unfurnished' | 'plans' | 'gallery' | 'tour') => {
+  const handleViewChange = (newMode: 'furnished' | 'unfurnished' | 'plans' | 'tour') => {
       if (!unitId || !unit || newMode === viewMode) return;
       if (newMode === 'furnished' && !unit.hasFurnishedView) newMode = 'plans';
 
-      // Overlay toggling (Gallery / Tour)
-      if (['gallery', 'tour'].includes(newMode)) {
-          setViewMode(newMode as any);
-          return;
-      }
-      
-      // If currently content overlay (gallery/tour), just switch
-      if (['gallery', 'tour'].includes(viewMode)) {
+      if (newMode === 'tour' || viewMode === 'tour') {
           setViewMode(newMode);
           return;
       }
@@ -247,14 +239,6 @@ const UnitPage = () => {
 
   // Determine Main Content to display (Underneath video)
   const renderContent = () => {
-      if (viewMode === 'gallery') {
-          return (
-             <div className="w-full h-full bg-black">
-                 <InlineGallery images={unitGalleryImages} />
-             </div>
-          );
-      }
-
       if (viewMode === 'tour' && unit?.tourUrl) {
            return (
                <div className="w-full h-full bg-black">
@@ -326,7 +310,7 @@ const UnitPage = () => {
               rightTarget: 'unfurnished' as const,
           };
       }
-      return { showLeft: false, showRight: false }; // Gallery or other
+      return { showLeft: false, showRight: false }; // Tour
   };
 
   const getNavLabel = (target?: 'furnished' | 'unfurnished' | 'plans') => {
@@ -338,6 +322,18 @@ const UnitPage = () => {
   };
 
   const navState = getNavState();
+
+  if (isGalleryOpen) {
+    return (
+      <LivignoGallery
+        title={`Unidad ${unit.id}`}
+        context={['Galería', unit.subtitle, `Piso ${floor.name}`].filter(Boolean).join(' · ')}
+        area={unit.dimensions}
+        images={unitGalleryImages}
+        onClose={() => setIsGalleryOpen(false)}
+      />
+    );
+  }
 
   return (
     <div className="h-full bg-gray-50 font-sans flex flex-col md:flex-row overflow-hidden text-neutral-800">
@@ -589,13 +585,13 @@ const UnitPage = () => {
                      
                      {/* Gallery */}
                      {unit.hasGallery && <button 
-                        onClick={() => handleViewChange(viewMode === 'gallery' ? 'furnished' : 'gallery')}
-                        className={`px-5 py-3 rounded-full transition-all shadow-lg backdrop-blur-md border border-white/20 flex items-center gap-2
-                            ${viewMode === 'gallery' ? 'bg-brand-primary text-white' : 'bg-brand-primary/80 text-white hover:bg-brand-primary'}`}
-                        title={viewMode === 'gallery' ? 'Cerrar' : 'Galería'}
+                        onClick={() => setIsGalleryOpen(true)}
+                        className="px-5 py-3 rounded-full transition-all shadow-lg backdrop-blur-md border border-white/20 flex items-center gap-2 bg-brand-primary/80 text-white hover:bg-brand-primary"
+                        title="Galería"
+                        aria-label="Abrir galería"
                      >
                          <ImageIcon size={20} />
-                         <span className="hidden xl:inline font-medium text-sm tracking-wide">{viewMode === 'gallery' ? 'Cerrar' : 'Galería'}</span>
+                         <span className="hidden xl:inline font-medium text-sm tracking-wide">Galería</span>
                      </button>}
 
                      {/* Recorrido */}
@@ -669,14 +665,12 @@ const UnitPage = () => {
                      {unit.hasGallery && <button 
                         onClick={() => {
                             setIsMobileMenuOpen(false);
-                            handleViewChange(viewMode === 'gallery' ? 'furnished' : 'gallery');
+                            setIsGalleryOpen(true);
                         }}
                         className="flex items-center gap-4 text-white hover:text-brand-primary transition-colors group text-right"
                      >
-                         <span className="text-xl font-light uppercase tracking-widest">{viewMode === 'gallery' ? 'Cerrar Galería' : 'Galería'}</span>
-                         <div className={`p-4 rounded-full transition-colors border border-white/10 group-hover:bg-brand-primary
-                                ${viewMode === 'gallery' ? 'bg-brand-primary' : 'bg-neutral-800'}
-                            `}>
+                         <span className="text-xl font-light uppercase tracking-widest">Galería</span>
+                         <div className="p-4 rounded-full transition-colors border border-white/10 bg-neutral-800 group-hover:bg-brand-primary">
                              <ImageIcon size={24} />
                          </div>
                      </button>}
@@ -724,7 +718,7 @@ const UnitPage = () => {
                 )}
 
                 {/* Navigation Arrows (Only if NOT in gallery or tour) */}
-                {viewMode !== 'gallery' && viewMode !== 'tour' && !isPlayingTransition && !isLoadingNav && (
+                {viewMode !== 'tour' && !isPlayingTransition && !isLoadingNav && (
                     <>
                         {navState.showLeft && navState.leftTarget && (
                            <button 

@@ -29,11 +29,14 @@ export const galleries: GalleryCollection[] = [
   },
   {
     id: 'amenities',
-    title: 'Amenities',
-    description: 'Explore our world-class facilities.',
+    title: 'Amenidades',
+    description: 'Áreas comunes de Livigno 555.',
     coverImage: getAssetUrl(latestMedia.amenities[0]),
-    folderPrefix: latestMedia.amenityPrefix,
-    images: []
+    images: latestMedia.amenities.map((path, index) => ({
+      id: path,
+      src: getAssetUrl(path),
+      alt: `Amenidades de Livigno 555, foto ${index + 1}`,
+    }))
   },
   {
     id: 'floor-1',

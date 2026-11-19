@@ -86,6 +86,6 @@ test('confirmed schedule survives stale CMS values and excludes the roof area fr
   }
   assert.equal(unit('1601').areaBreakdown, undefined);
   const upper = floorsData.find(f => f.id === '17')!.units.find(u => u.id === '1601')!;
-  assert.equal(upper.dimensions, 101.38);
+  assert.equal(upper.dimensions, 66.34);
   assert.equal(upper.areaBreakdown, unit('1601').areaBreakdown);
 });

@@ -74,6 +74,7 @@ export const assetManifest: string[] = [
     'gallery/exterior_1.jpg',
     'gallery/interior_lobby.jpg',
     ...latestMedia.amenities,
+    'amenities/20261117/2.webp', // Recorridos thumbnail
     // Map introduction and hito media
     'videos/premapa.mp4',
     'icons/PROYECTO/logo_proyecto.png',
