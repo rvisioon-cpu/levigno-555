@@ -31,7 +31,8 @@ export default function GalleryPage() {
     <LivignoGallery
       key={gallery.id}
       title={gallery.title}
-      context="Galería"
+      context={gallery.id === amenities.id ? "Amenidades" : "Galería"}
+      showPhotoTitle={gallery.id === amenities.id}
       images={gallery.images}
       onClose={() => router.push('/')}
       controls={visibleGalleries.length > 1 && (

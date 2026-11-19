@@ -2,7 +2,7 @@
   "generatedAt": "2026-11-19T21:04:01.542Z",
   "r2Base": "",
   "totalAssets": 509,
-  "totalBytes": 1375027793,
+  "totalBytes": 1374985195,
   "tiers": [
     {
       "id": "critical",
@@ -498,7 +498,7 @@
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 1155989590,
+      "bytes": 1155946992,
       "assets": [
         [
           "amenities/20261117/2.webp",
@@ -545,8 +545,8 @@
           214394
         ],
         [
-          "amenities/20261119/8.webp",
-          170610
+          "amenities/20261119/coworking.webp",
+          128012
         ],
         [
           "amenities/20261119/9.webp",
@@ -2068,7 +2068,7 @@
     "/amenities/20261119/5.webp",
     "/amenities/20261119/6.webp",
     "/amenities/20261119/7.webp",
-    "/amenities/20261119/8.webp",
+    "/amenities/20261119/coworking.webp",
     "/amenities/20261119/9.webp",
     "/file.svg",
     "/globe.svg",

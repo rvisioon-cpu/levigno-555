@@ -10,12 +10,13 @@ interface LivignoGalleryProps {
   title: string;
   context?: string;
   area?: number;
+  showPhotoTitle?: boolean;
   images: GalleryImage[];
   controls?: ReactNode;
   onClose: () => void;
 }
 
-export default function LivignoGallery({ title, context, area, images, controls, onClose }: LivignoGalleryProps) {
+export default function LivignoGallery({ title, context, area, showPhotoTitle, images, controls, onClose }: LivignoGalleryProps) {
   const [selectedId, setSelectedId] = useState<string>();
   const [failedSources, setFailedSources] = useState<ReadonlySet<string>>(() => new Set());
   const closeButton = useRef<HTMLButtonElement>(null);
@@ -65,11 +66,9 @@ export default function LivignoGallery({ title, context, area, images, controls,
     >
       {photo && <img src={photo.src} alt="" aria-hidden="true" className={styles.ambient} />}
       <header className={styles.header}>
-        <img className={styles.logo} src="/identity/livigno-logo-negative.png" alt="Livigno 555" />
-        <div className={styles.heading}>
-          {context && <p>{context}</p>}
-          <h1>{title}</h1>
-        </div>
+        <img className={styles.logo} src="/identity/livigno-logo-tight.png" alt="Livigno 555" />
+        {context && <p className={styles.context}>{context}</p>}
+        <h1 className={styles.heading}>{(showPhotoTitle && photo?.title) || title}</h1>
         <div className={styles.controls}>
           {!!area && area > 0 && <span className={styles.area}><Ruler size={17} aria-hidden="true" />{area.toFixed(2)} m²</span>}
           {controls}
@@ -125,6 +124,7 @@ export default function LivignoGallery({ title, context, area, images, controls,
                   ref={selected ? selectedThumbnail : undefined}
                   type="button"
                   aria-label={`Ver foto ${position + 1}`}
+                  title={showPhotoTitle ? image.title : undefined}
                   aria-current={selected ? 'true' : undefined}
                   onClick={() => setSelectedId(image.id)}
                 >
