@@ -1,4 +1,3 @@
-import { latestMedia } from './latest-media';
 import { typologyGalleryThumbnail } from './typology-assets';
 import { floorsData } from './floors';
 import { getAssetUrl } from '@/utils/assets';
@@ -21,7 +20,7 @@ const buildingTours: Tour[] = [
     id: 'building-main',
     title: 'Edificio Principal',
     subtitle: 'Showroom Virtual',
-    thumbnail: getAssetUrl(latestMedia.amenities[1]),
+    thumbnail: getAssetUrl('amenities/20261117/2.webp'),
     type: 'building',
     target: buildingTarget
   }
