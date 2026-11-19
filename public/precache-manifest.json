@@ -1,97 +1,89 @@
 {
-  "generatedAt": "2026-11-19T21:04:01.542Z",
+  "generatedAt": "2026-11-19T22:15:39.224Z",
   "r2Base": "",
-  "totalAssets": 509,
-  "totalBytes": 1374985195,
+  "totalAssets": 504,
+  "totalBytes": 1341273398,
   "tiers": [
     {
       "id": "critical",
       "label": "Recorrido principal",
-      "bytes": 219038203,
+      "bytes": 213347237,
       "assets": [
         [
-          "building/exterior/0.1-0.mp4",
-          3982362
+          "building/exterior/20261119/0.1-0.2.mp4",
+          3536303
         ],
         [
-          "building/exterior/0.2-1.1.mp4",
-          4025188
+          "building/exterior/20261119/0.2-1.1.mp4",
+          3857278
         ],
         [
-          "building/exterior/0.2.jpg",
-          521934
+          "building/exterior/20261119/1.1-2.1.mp4",
+          6044041
         ],
         [
-          "building/exterior/0.2.loop.mp4",
-          13719040
+          "building/exterior/20261119/1.1-3.1.mp4",
+          6681789
         ],
         [
-          "building/exterior/1.1-2.1.mp4",
-          3903204
+          "building/exterior/20261119/1.1-up.mp4",
+          5809202
         ],
         [
-          "building/exterior/1.1-3.mp4",
-          4251458
+          "building/exterior/20261119/1.2-up.mp4",
+          4446542
         ],
         [
-          "building/exterior/1.1.jpg",
-          545524
+          "building/exterior/20261119/2.1-1.1.mp4",
+          6672494
         ],
         [
-          "building/exterior/1.1.loop.mp4",
-          14959353
+          "building/exterior/20261119/2.1-up.mp4",
+          5243473
         ],
         [
-          "building/exterior/2.1-1.1.mp4",
-          4112715
+          "building/exterior/20261119/2.2-up.mp4",
+          4125900
         ],
         [
-          "building/exterior/2.1.jpg",
-          568715
+          "building/exterior/20261119/3.1-1.1.mp4",
+          6396488
         ],
         [
-          "building/exterior/2.1.loop.mp4",
-          15156479
+          "building/exterior/20261119/3.1-up.mp4",
+          5952772
         ],
         [
-          "building/exterior/20261117/1.1-up.mp4",
-          3309580
+          "building/exterior/20261119/3.2-up.mp4",
+          4741880
         ],
         [
-          "building/exterior/20261117/1.2-up.mp4",
-          3143454
+          "building/exterior/20261119/aerial-loop.mp4",
+          21531305
         ],
         [
-          "building/exterior/20261117/2.1-up.mp4",
-          2738308
+          "building/exterior/20261119/photos/0.1.webp",
+          564510
         ],
         [
-          "building/exterior/20261117/2.2-up.mp4",
-          2624204
+          "building/exterior/20261119/photos/0.2.webp",
+          2941534
         ],
         [
-          "building/exterior/20261117/3.1-up.mp4",
-          3458706
+          "building/exterior/20261119/photos/1.1.webp",
+          3044364
         ],
         [
-          "building/exterior/20261117/3.2-up.mp4",
-          3368619
+          "building/exterior/20261119/photos/2.1.webp",
+          3245314
         ],
         [
-          "building/exterior/3.1-1.1.mp4",
-          3859132
+          "building/exterior/20261119/photos/3.1.webp",
+          3074378
         ],
         [
-          "building/exterior/3.1.jpg",
-          646386
-        ],
-        [
-          "building/exterior/3.1.loop.mp4",
-          14866898
-        ],
-        [
-          "homepage/20261117/portada.webp",
-          257426
+          "homepage/20261119/portada.webp",
+          559704
         ],
         [
           "identity/livigno-logo-negative.png",
@@ -490,15 +482,15 @@
           3015929
         ],
         [
-          "videos/20261117/portada.mp4",
-          25255180
+          "videos/20261119/portada.mp4",
+          25113628
         ]
       ]
     },
     {
       "id": "full",
       "label": "Material completo",
-      "bytes": 1155946992,
+      "bytes": 1127926161,
       "assets": [
         [
           "amenities/20261117/2.webp",
@@ -545,76 +537,64 @@
           214394
         ],
         [
-          "amenities/20261119/coworking.webp",
-          128012
-        ],
-        [
           "amenities/20261119/9.webp",
           482728
         ],
         [
-          "building/exterior/1.1-1.mp4",
-          3406598
+          "amenities/20261119/coworking.webp",
+          128012
         ],
         [
-          "building/exterior/1.2-1.1.mp4",
-          3909582
+          "building/exterior/20261119/1.1-1.2.mp4",
+          5319033
         ],
         [
-          "building/exterior/1.2-2.2.mp4",
-          3603383
+          "building/exterior/20261119/1.2-1.1.mp4",
+          4642297
         ],
         [
-          "building/exterior/1.2-3.2.mp4",
-          3951551
+          "building/exterior/20261119/1.2-2.2.mp4",
+          4148333
         ],
         [
-          "building/exterior/1.2.jpg",
-          419786
+          "building/exterior/20261119/1.2-3.2.mp4",
+          4137436
         ],
         [
-          "building/exterior/1.2.loop.mp4",
-          14464138
+          "building/exterior/20261119/2.1-2.2.mp4",
+          5597588
         ],
         [
-          "building/exterior/2.1-2.2.mp4",
-          3454595
+          "building/exterior/20261119/2.2-1.2.mp4",
+          4489280
         ],
         [
-          "building/exterior/2.2-1.2.mp4",
-          3883202
+          "building/exterior/20261119/2.2-2.1.mp4",
+          5011216
         ],
         [
-          "building/exterior/2.2-2.1.mp4",
-          4050291
+          "building/exterior/20261119/3.1-3.2.mp4",
+          5682301
         ],
         [
-          "building/exterior/2.2.jpg",
-          441967
+          "building/exterior/20261119/3.2-1.2.mp4",
+          4430051
         ],
         [
-          "building/exterior/2.2.loop.mp4",
-          14590149
+          "building/exterior/20261119/3.2-3.1.mp4",
+          5132377
         ],
         [
-          "building/exterior/3.1-3.2.mp4",
-          3543142
+          "building/exterior/20261119/photos/1.2.webp",
+          1867158
         ],
         [
-          "building/exterior/3.2-1.2.mp4",
-          3614765
+          "building/exterior/20261119/photos/2.2.webp",
+          2260602
         ],
         [
-          "building/exterior/3.2-3.1.mp4",
-          4085987
-        ],
-        [
-          "building/exterior/3.2.jpg",
-          478943
-        ],
-        [
-          "building/exterior/3.2.loop.mp4",
-          15261915
+          "building/exterior/20261119/photos/3.2.webp",
+          2505986
         ],
         [
           "icons/AREAS_VERDES_Y_RECREACION/logo_parque.png",
@@ -2041,12 +2021,12 @@
           2566601
         ],
         [
-          "videos/20261117/livigno-general-poster.webp",
-          66546
+          "videos/20261119/livigno-general-poster.webp",
+          93608
         ],
         [
-          "videos/20261117/livigno-general.mp4",
-          203376350
+          "videos/20261119/livigno-general.mp4",
+          203264793
         ],
         [
           "videos/premapa.mp4",
@@ -2057,22 +2037,17 @@
   ],
   "missing": [],
   "publicAssets": [
-    "/amenities/20261117/2.webp",
-    "/amenities/20261119/1.webp",
-    "/amenities/20261119/10.webp",
-    "/amenities/20261119/11.webp",
-    "/amenities/20261119/12.webp",
-    "/amenities/20261119/13.webp",
-    "/amenities/20261119/2.webp",
-    "/amenities/20261119/3.webp",
-    "/amenities/20261119/5.webp",
-    "/amenities/20261119/6.webp",
-    "/amenities/20261119/7.webp",
-    "/amenities/20261119/coworking.webp",
-    "/amenities/20261119/9.webp",
+    "/building/exterior/20261119/photos/0.1.webp",
+    "/building/exterior/20261119/photos/0.2.webp",
+    "/building/exterior/20261119/photos/1.1.webp",
+    "/building/exterior/20261119/photos/1.2.webp",
+    "/building/exterior/20261119/photos/2.1.webp",
+    "/building/exterior/20261119/photos/2.2.webp",
+    "/building/exterior/20261119/photos/3.1.webp",
+    "/building/exterior/20261119/photos/3.2.webp",
     "/file.svg",
     "/globe.svg",
-    "/homepage/20261117/portada.webp",
+    "/homepage/20261119/portada.webp",
     "/icons/AREAS_VERDES_Y_RECREACION/logo_parque.png",
     "/icons/AREAS_VERDES_Y_RECREACION/parque_1.png",
     "/icons/AREAS_VERDES_Y_RECREACION/parque_2.png",
@@ -2158,140 +2133,7 @@
     "/location/videos/hitos/parque-de-las-leyendas/poster-livigno.jpg",
     "/location/videos/hitos/plaza-san-miguel/poster-livigno.jpg",
     "/location/videos/hitos/pucp/poster-livigno.jpg",
-    "/plants/details/20261117/T1/furnished.webp",
-    "/plants/details/20261117/T1/gallery/1.webp",
-    "/plants/details/20261117/T1/gallery/10.webp",
-    "/plants/details/20261117/T1/gallery/2.webp",
-    "/plants/details/20261117/T1/gallery/3.webp",
-    "/plants/details/20261117/T1/gallery/4.webp",
-    "/plants/details/20261117/T1/gallery/5.webp",
-    "/plants/details/20261117/T1/gallery/6.webp",
-    "/plants/details/20261117/T1/gallery/7.webp",
-    "/plants/details/20261117/T1/gallery/8.webp",
-    "/plants/details/20261117/T1/gallery/9.webp",
-    "/plants/details/20261117/T1/plans.webp",
-    "/plants/details/20261117/T1/unfurnished.webp",
-    "/plants/details/20261117/T10/furnished.webp",
-    "/plants/details/20261117/T10/gallery/1.webp",
-    "/plants/details/20261117/T10/gallery/2.webp",
-    "/plants/details/20261117/T10/gallery/3.webp",
-    "/plants/details/20261117/T10/gallery/4.webp",
-    "/plants/details/20261117/T10/gallery/5.webp",
-    "/plants/details/20261117/T10/gallery/6.webp",
-    "/plants/details/20261117/T10/gallery/7.webp",
-    "/plants/details/20261117/T10/gallery/8.webp",
-    "/plants/details/20261117/T10/gallery/9.webp",
-    "/plants/details/20261117/T10/plans.webp",
-    "/plants/details/20261117/T10/unfurnished.webp",
-    "/plants/details/20261117/T11/furnished.webp",
-    "/plants/details/20261117/T11/gallery/1.webp",
-    "/plants/details/20261117/T11/gallery/2.webp",
-    "/plants/details/20261117/T11/gallery/3.webp",
-    "/plants/details/20261117/T11/gallery/4.webp",
-    "/plants/details/20261117/T11/gallery/5.webp",
-    "/plants/details/20261117/T11/gallery/6.webp",
-    "/plants/details/20261117/T11/gallery/7.webp",
-    "/plants/details/20261117/T11/gallery/8.webp",
-    "/plants/details/20261117/T11/gallery/9.webp",
-    "/plants/details/20261117/T11/plans.webp",
-    "/plants/details/20261117/T11/unfurnished.webp",
-    "/plants/details/20261117/T12/furnished.webp",
-    "/plants/details/20261117/T12/gallery/1.webp",
-    "/plants/details/20261117/T12/gallery/2.webp",
-    "/plants/details/20261117/T12/gallery/3.webp",
-    "/plants/details/20261117/T12/gallery/4.webp",
-    "/plants/details/20261117/T12/gallery/5.webp",
-    "/plants/details/20261117/T12/plans.webp",
-    "/plants/details/20261117/T12/unfurnished.webp",
-    "/plants/details/20261117/T13/furnished.webp",
-    "/plants/details/20261117/T13/gallery/1.webp",
-    "/plants/details/20261117/T13/gallery/2.webp",
-    "/plants/details/20261117/T13/gallery/3.webp",
-    "/plants/details/20261117/T13/gallery/4.webp",
-    "/plants/details/20261117/T13/gallery/5.webp",
-    "/plants/details/20261117/T13/gallery/6.webp",
-    "/plants/details/20261117/T13/gallery/7.webp",
-    "/plants/details/20261117/T13/plans.webp",
-    "/plants/details/20261117/T13/unfurnished.webp",
-    "/plants/details/20261117/T14/furnished.webp",
-    "/plants/details/20261117/T14/furnished_2floor.webp",
-    "/plants/details/20261117/T14/gallery/1.webp",
-    "/plants/details/20261117/T14/gallery/10.webp",
-    "/plants/details/20261117/T14/gallery/11.webp",
-    "/plants/details/20261117/T14/gallery/12.webp",
-    "/plants/details/20261117/T14/gallery/13.webp",
-    "/plants/details/20261117/T14/gallery/2.webp",
-    "/plants/details/20261117/T14/gallery/3.webp",
-    "/plants/details/20261117/T14/gallery/4.webp",
-    "/plants/details/20261117/T14/gallery/5.webp",
-    "/plants/details/20261117/T14/gallery/6.webp",
-    "/plants/details/20261117/T14/gallery/7.webp",
-    "/plants/details/20261117/T14/gallery/8.webp",
-    "/plants/details/20261117/T14/gallery/9.webp",
-    "/plants/details/20261117/T14/plans.webp",
-    "/plants/details/20261117/T14/plans_2floor.webp",
-    "/plants/details/20261117/T14/unfurnished.webp",
-    "/plants/details/20261117/T14/unfurnished_2floor.webp",
-    "/plants/details/20261117/T15/furnished.webp",
-    "/plants/details/20261117/T15/gallery/1.webp",
-    "/plants/details/20261117/T15/gallery/2.webp",
-    "/plants/details/20261117/T15/gallery/3.webp",
-    "/plants/details/20261117/T15/gallery/4.webp",
-    "/plants/details/20261117/T15/gallery/5.webp",
-    "/plants/details/20261117/T15/gallery/6.webp",
-    "/plants/details/20261117/T15/plans.webp",
-    "/plants/details/20261117/T15/unfurnished.webp",
-    "/plants/details/20261117/T16/furnished.webp",
-    "/plants/details/20261117/T16/gallery/1.webp",
-    "/plants/details/20261117/T16/gallery/2.webp",
-    "/plants/details/20261117/T16/gallery/3.webp",
-    "/plants/details/20261117/T16/gallery/4.webp",
-    "/plants/details/20261117/T16/gallery/5.webp",
-    "/plants/details/20261117/T16/gallery/6.webp",
-    "/plants/details/20261117/T16/plans.webp",
-    "/plants/details/20261117/T16/unfurnished.webp",
-    "/plants/details/20261117/T7/furnished.webp",
-    "/plants/details/20261117/T7/gallery/1.webp",
-    "/plants/details/20261117/T7/gallery/2.webp",
-    "/plants/details/20261117/T7/gallery/3.webp",
-    "/plants/details/20261117/T7/gallery/4.webp",
-    "/plants/details/20261117/T7/gallery/5.webp",
-    "/plants/details/20261117/T7/gallery/6.webp",
-    "/plants/details/20261117/T7/gallery/7.webp",
-    "/plants/details/20261117/T7/plans.webp",
-    "/plants/details/20261117/T7/unfurnished.webp",
-    "/plants/details/20261117/T9/furnished.webp",
-    "/plants/details/20261117/T9/gallery/1.webp",
-    "/plants/details/20261117/T9/gallery/2.webp",
-    "/plants/details/20261117/T9/gallery/3.webp",
-    "/plants/details/20261117/T9/gallery/4.webp",
-    "/plants/details/20261117/T9/gallery/5.webp",
-    "/plants/details/20261117/T9/gallery/6.webp",
-    "/plants/details/20261117/T9/gallery/7.webp",
-    "/plants/details/20261117/T9/plans.webp",
-    "/plants/details/20261117/T9/unfurnished.webp",
-    "/plants/floor_1.jpg",
-    "/plants/floor_10.jpg",
-    "/plants/floor_11.jpg",
-    "/plants/floor_12.jpg",
-    "/plants/floor_13.jpg",
-    "/plants/floor_14.jpg",
-    "/plants/floor_15.jpg",
-    "/plants/floor_16.jpg",
-    "/plants/floor_17.jpg",
-    "/plants/floor_2.jpg",
-    "/plants/floor_3.jpg",
-    "/plants/floor_4.jpg",
-    "/plants/floor_5.jpg",
-    "/plants/floor_6.jpg",
-    "/plants/floor_7.jpg",
-    "/plants/floor_8.jpg",
-    "/plants/floor_9.jpg",
-    "/plants/floor_s1.jpg",
-    "/plants/floor_s2.jpg",
-    "/plants/floor_s3.jpg",
-    "/portada.png",
-    "/videos/20261117/livigno-general-poster.webp",
+    "/videos/20261119/livigno-general-poster.webp",
     "/window.svg"
   ]
 }

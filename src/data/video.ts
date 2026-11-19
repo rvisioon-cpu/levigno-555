@@ -5,4 +5,5 @@ export const projectVideo = {
   title: 'Conoce Livigno 555',
   src: getAssetUrl(latestMedia.mainVideo),
   poster: getAssetUrl(latestMedia.mainPoster),
+  loop: true,
 };

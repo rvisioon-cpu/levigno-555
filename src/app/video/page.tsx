@@ -31,8 +31,11 @@ export default function VideoPage() {
           key={video.src}
           className="h-full min-h-0 w-full bg-black object-contain"
           controls
+          autoPlay
+          muted
+          loop={video.loop}
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={video.poster}
           aria-label={video.title}
         >
