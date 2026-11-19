@@ -85,10 +85,9 @@ export const occupiedUnitAreas: Readonly<Record<string, number | undefined>> = {
   '1501': 50.52,
   '1502': 63.24,
   '1503': 44.29,
+  '1601': 66.34,
   '1602': 44.16,
-  // Metrajes vigentes mientras se confirma la identificación de la azotea.
-  '1601': 101.38,
-  '1603': 40.22,
+  '1603': 40.16,
 };
 
 // Commercial unit schedule supplied for Levigno. All units are marked available as a temporary initial sales status.
@@ -118,7 +117,6 @@ export const apartmentUnits: Unit[] = unitTypes.flatMap((type) => type.ids.map((
   id,
   floorId: String(Number(id.slice(0, -2))),
   dimensions: occupiedUnitAreas[id] ?? 0,
-  areaBreakdown: type.assetId === 'T14' ? '66.20 + 35.18' : undefined,
   bedrooms: type.bedrooms,
   bathrooms: type.bathrooms,
   status: soldUnitIds.has(id) ? ('sold' as const) : ('available' as const),

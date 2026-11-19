@@ -18,7 +18,7 @@ test('confirmed distribution keeps existing units and adds the three new flats',
   assert.equal(unit('301').dimensions, 73.54);
   assert.equal(unit('1403').dimensions, 44.29);
   assert.equal(unit('1503').dimensions, 44.29);
-  assert.equal(unit('1603').dimensions, 40.22);
+  assert.equal(unit('1603').dimensions, 40.16);
   assert.equal(unit('1501').status, 'sold');
 });
 test('updated types keep confirmed bedrooms and bathrooms, including CMS merging', () => {
@@ -73,18 +73,18 @@ test('confirmed T1 and T7 areas override old CMS measurements for every affected
   assert.equal(unit('1401').dimensions, 50.52);
 });
 
-test('complete confirmed schedule survives stale CMS values and preserves duplex breakdown', () => {
+test('confirmed schedule survives stale CMS values and excludes the roof area from the duplex', () => {
   const schedule: Record<string, [number, number, number]> = {
     '1302': [54.82, 2, 1], '1401': [50.52, 2, 2], '1501': [50.52, 2, 2],
     '1402': [67.74, 2, 2], '1403': [44.29, 1, 1], '1503': [44.29, 1, 1],
-    '1502': [63.24, 2, 2], '1601': [101.38, 4, 2.5], '1602': [44.16, 1, 1], '1603': [40.22, 1, 1],
+    '1502': [63.24, 2, 2], '1601': [66.34, 4, 2.5], '1602': [44.16, 1, 1], '1603': [40.16, 1, 1],
   };
   for (const [id, expected] of Object.entries(schedule)) {
     const original = unit(id);
     const merged = mergePublicUnit(original, { states: {}, features: {}, units: { [id]: { tourUrl: null, bedrooms: 2, bathrooms: 2, dimensions: 76.71 } } });
     for (const u of [original, merged]) assert.deepEqual([u.dimensions, u.bedrooms, u.bathrooms], expected);
   }
-  assert.equal(unit('1601').areaBreakdown, '66.20 + 35.18');
+  assert.equal(unit('1601').areaBreakdown, undefined);
   const upper = floorsData.find(f => f.id === '17')!.units.find(u => u.id === '1601')!;
   assert.equal(upper.dimensions, 101.38);
   assert.equal(upper.areaBreakdown, unit('1601').areaBreakdown);
