@@ -50,7 +50,7 @@ const UnitCard = ({
                 {unit.subtitle !== 'Terraza' && typeof unit.dimensions === 'number' && unit.dimensions > 0 && (
                 <div className="flex items-center gap-1.5">
                     <Ruler size={14} strokeWidth={1.5} />
-                    <span className="text-xs font-medium">{unit.dimensions} m²</span>
+                    <span className="text-xs font-medium">{unit.dimensions.toFixed(2)} m²</span>
                 </div>
                 )}
                 

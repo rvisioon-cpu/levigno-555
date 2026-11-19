@@ -1159,11 +1159,12 @@ export default function UnitsDashboard({
               <div className="grid grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-bold text-xs">Área Construida (m²)</span>
+                    <span className="label-text font-bold text-xs">{unitForm.type === 'APARTMENT' ? 'Área ocupada (m²)' : 'Área (m²)'}</span>
                   </label>
                   <input
                     type="number"
                     min={0}
+                    step="0.01"
                     value={unitForm.areaSqm}
                     onChange={(e) => setUnitForm({ ...unitForm, areaSqm: Number(e.target.value) })}
                     className="input input-bordered w-full"
@@ -1373,7 +1374,7 @@ export default function UnitsDashboard({
                 </span>
               </div>
               <div className="bg-base-200/50 p-3 rounded-lg border text-center flex flex-col justify-center items-center">
-                <span className="text-[10px] text-gray-400 block uppercase">Área Total</span>
+                <span className="text-[10px] text-gray-400 block uppercase">{selectedUnit.type === 'APARTMENT' ? 'Área ocupada' : 'Área'}</span>
                 <span className="font-bold text-gray-800 text-sm flex items-center gap-1 mt-0.5">
                   <Maximize className="w-4 h-4 text-gray-500" /> {selectedUnit.areaSqm || 0} m²
                 </span>

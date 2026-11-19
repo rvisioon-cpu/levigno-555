@@ -14,10 +14,10 @@ test('confirmed distribution keeps existing units and adds the three new flats',
   for (let floor = 2; floor <= 13; floor++) assert.equal(unit(`${floor}01`).assetId, 'T1');
   const expected = { '1203': 'T8', '1303': 'T17', '1401': 'T10', '1501': 'T10', '1402': 'T11', '1403': 'T12', '1503': 'T12', '1502': 'T13', '1601': 'T14', '1602': 'T15', '1603': 'T16' };
   for (const [id, type] of Object.entries(expected)) assert.equal(unit(id).assetId, type);
-  assert.equal(unit('201').dimensions, 73.52);
-  assert.equal(unit('301').dimensions, 73.52);
-  assert.equal(unit('1403').dimensions, 44.28);
-  assert.equal(unit('1503').dimensions, 44.28);
+  assert.equal(unit('201').dimensions, 73.54);
+  assert.equal(unit('301').dimensions, 73.54);
+  assert.equal(unit('1403').dimensions, 44.29);
+  assert.equal(unit('1503').dimensions, 44.29);
   assert.equal(unit('1603').dimensions, 40.22);
   assert.equal(unit('1501').status, 'sold');
 });
@@ -61,21 +61,23 @@ test('duplex remains on both levels and upper units have independent selection p
 
 test('confirmed T1 and T7 areas override old CMS measurements for every affected unit', () => {
   for (const u of apartmentUnits.filter(u => ['T1', 'T7'].includes(u.assetId!))) {
-    const expectedArea = u.assetId === 'T1' ? 73.52 : 54.18;
+    const expectedArea = ['201', '301', '401'].includes(u.id) ? 73.54
+      : ['501', '601'].includes(u.id) ? 72.83
+      : u.assetId === 'T1' ? 72.07 : 57.30;
     assert.equal(u.dimensions, expectedArea);
     const merged = mergePublicUnit(u, { states: {}, features: {}, units: { [u.id]: { tourUrl: null, bedrooms: 2, bathrooms: 2, dimensions: 56.69 } } });
     assert.equal(merged.dimensions, expectedArea);
     assert.equal(merged.bedrooms, 3);
     assert.equal(merged.bathrooms, 2);
   }
-  assert.equal(unit('1401').dimensions, 50.24);
+  assert.equal(unit('1401').dimensions, 50.52);
 });
 
 test('complete confirmed schedule survives stale CMS values and preserves duplex breakdown', () => {
   const schedule: Record<string, [number, number, number]> = {
-    '1302': [53.61, 2, 1], '1401': [50.24, 2, 2], '1501': [50.24, 2, 2],
-    '1402': [63.50, 2, 2], '1403': [44.28, 1, 1], '1503': [44.28, 1, 1],
-    '1502': [56.77, 2, 2], '1601': [101.38, 4, 2.5], '1602': [39.80, 1, 1], '1603': [40.22, 1, 1],
+    '1302': [54.82, 2, 1], '1401': [50.52, 2, 2], '1501': [50.52, 2, 2],
+    '1402': [67.74, 2, 2], '1403': [44.29, 1, 1], '1503': [44.29, 1, 1],
+    '1502': [63.24, 2, 2], '1601': [101.38, 4, 2.5], '1602': [44.16, 1, 1], '1603': [40.22, 1, 1],
   };
   for (const [id, expected] of Object.entries(schedule)) {
     const original = unit(id);

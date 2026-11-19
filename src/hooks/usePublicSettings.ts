@@ -19,9 +19,9 @@ export function publicUnitStatus(state?: string): 'sold' | 'reserved' | 'availab
 }
 
 import { hasUpdatedTypology } from '@/data/typology-assets';
-import { confirmedTypologyAreas, type Unit } from '@/data/floors';
+import { occupiedUnitAreas, type Unit } from '@/data/floors';
 export function mergePublicUnit(unit: Unit, settings: PublicSettings): Unit {
   const detail = settings.units[unit.id];
   return { ...unit, status: publicUnitStatus(settings.states[unit.id]) ?? unit.status,
-    ...(detail ? { tourUrl: detail.tourUrl || unit.tourUrl, bedrooms: hasUpdatedTypology(unit.assetId) ? unit.bedrooms : detail.bedrooms ?? unit.bedrooms, bathrooms: hasUpdatedTypology(unit.assetId) ? unit.bathrooms : detail.bathrooms ?? unit.bathrooms, dimensions: confirmedTypologyAreas[unit.assetId ?? ''] ?? detail.dimensions ?? unit.dimensions } : {}) };
+    ...(detail ? { tourUrl: detail.tourUrl || unit.tourUrl, bedrooms: hasUpdatedTypology(unit.assetId) ? unit.bedrooms : detail.bedrooms ?? unit.bedrooms, bathrooms: hasUpdatedTypology(unit.assetId) ? unit.bathrooms : detail.bathrooms ?? unit.bathrooms, dimensions: occupiedUnitAreas[unit.id] ?? detail.dimensions ?? unit.dimensions } : {}) };
 }
