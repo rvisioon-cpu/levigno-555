@@ -5,7 +5,7 @@ import { ArrowLeft, Share2, X, MoreVertical, Menu, Ruler, Bed, Bath, PanelRightO
 import { floorsData, UnitStatusString } from '@/data/floors';
 import Sidebar from '@/components/layout/Sidebar';
 import RequestInfoModal from '@/components/modals/RequestInfoModal';
-import { typologyAssetRoot } from '@/data/typology-assets';
+import { typologyGalleryAssetRoot, typologyPlanAssetRoot } from '@/data/typology-assets';
 import InlineGallery from '@/components/gallery/InlineGallery';
 import TourHeader from '@/components/UI/TourHeader';
 import { preloadImages, preloadVideo } from '@/utils/preload';
@@ -69,16 +69,16 @@ const UnitPage = () => {
   const getTransitionUrl = (assetId: string, type: string, floorNum?: 1 | 2) => {
     const activeFloor = floorNum ?? duplexFloor;
     if (isDuplex && activeFloor === 2) {
-        const floor2Path = `${typologyAssetRoot(assetId)}/transitions/${type}_2floor.mp4`;
+        const floor2Path = `${typologyPlanAssetRoot(assetId)}/transitions/${type}_2floor.mp4`;
         if (assetManifest.includes(floor2Path)) {
             return getAssetUrl(floor2Path);
         }
     }
-    const floor1Path = `${typologyAssetRoot(assetId)}/transitions/${type}_1floor.mp4`;
+    const floor1Path = `${typologyPlanAssetRoot(assetId)}/transitions/${type}_1floor.mp4`;
     if (isDuplex && activeFloor === 1 && assetManifest.includes(floor1Path)) {
         return getAssetUrl(floor1Path);
     }
-    const relativePath = `${typologyAssetRoot(assetId)}/transitions/${type}.mp4`;
+    const relativePath = `${typologyPlanAssetRoot(assetId)}/transitions/${type}.mp4`;
     if (assetManifest.includes(relativePath)) {
         return getAssetUrl(relativePath);
     }
@@ -88,7 +88,7 @@ const UnitPage = () => {
   const getUnitGalleryImages = (assetId: string, title?: string) => {
     // 1. Try Manifest First
     const specificImages = assetManifest
-        .filter(path => path.includes(`${typologyAssetRoot(assetId)}/gallery/`));
+        .filter(path => path.includes(`${typologyGalleryAssetRoot(assetId)}/gallery/`));
     
     // Prioritize .webp images from manifest to avoid duplicate slides
     const webpImages = specificImages.filter(path => path.endsWith('.webp'));
@@ -98,9 +98,9 @@ const UnitPage = () => {
     if (finalImages.length === 0) {
         const dynamicImages = [];
         for (let i = 1; i <= 14; i++) {
-             dynamicImages.push(`${typologyAssetRoot(assetId)}/gallery/${i}.webp`);
-             dynamicImages.push(`${typologyAssetRoot(assetId)}/gallery/${i}.jpg`);
-             dynamicImages.push(`${typologyAssetRoot(assetId)}/gallery/${i}.png`);
+             dynamicImages.push(`${typologyGalleryAssetRoot(assetId)}/gallery/${i}.webp`);
+             dynamicImages.push(`${typologyGalleryAssetRoot(assetId)}/gallery/${i}.jpg`);
+             dynamicImages.push(`${typologyGalleryAssetRoot(assetId)}/gallery/${i}.png`);
         }
         
         return dynamicImages.map(path => ({
@@ -129,7 +129,7 @@ const UnitPage = () => {
 
       for (const key of candidateKeys) {
           for (const ext of extensions) {
-              const relativePath = `${typologyAssetRoot(assetId)}/${key}.${ext}`;
+              const relativePath = `${typologyPlanAssetRoot(assetId)}/${key}.${ext}`;
               if (assetManifest.includes(relativePath)) {
                   return getAssetUrl(relativePath);
               }

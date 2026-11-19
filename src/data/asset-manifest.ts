@@ -1,5 +1,6 @@
 import { latestMedia } from './latest-media';
 import { updatedTypologyAssets } from './updated-typology-assets';
+import { replacementPlanAssets } from './typology-assets';
 
 /**
  * Asset Manifest
@@ -37,6 +38,7 @@ export const assetManifest: string[] = [
     ...Array.from({ length: 17 }, (_, index) => `plants/floor_${index + 1}.jpg`),
     ...[1, 2, 3].map((level) => `plants/floor_s${level}.jpg`),
     ...updatedTypologyAssets,
+    ...replacementPlanAssets,
     ...[2, 3, 5, 6, 8].flatMap((number) => {
         const index = number - 1;
         const type = `T${index + 1}`;
