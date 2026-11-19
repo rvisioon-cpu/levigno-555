@@ -8,8 +8,8 @@ export const amenityPhotos = [
   { path: 'amenities/20261119/coworking.webp', title: 'Coworking' },
   { path: 'amenities/20261119/9.webp', title: 'Juegos infantiles' },
   { path: 'amenities/20261119/10.webp', title: 'Spa de mascotas' },
-  { path: 'amenities/20261119/11.webp', title: 'Sala de estar' },
-  { path: 'amenities/20261119/12.webp', title: 'Comedor social' },
+  { path: 'amenities/20261119/11.webp', title: 'SUM' },
+  { path: 'amenities/20261119/12.webp', title: 'Zona de parrillas' },
   { path: 'amenities/20261119/13.webp', title: 'Bike Zone' },
 ];
 
