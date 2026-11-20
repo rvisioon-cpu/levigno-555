@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-19T22:15:39.224Z",
+  "generatedAt": "2026-11-20T14:07:00.846Z",
   "r2Base": "",
   "totalAssets": 504,
-  "totalBytes": 1341273398,
+  "totalBytes": 1341513405,
   "tiers": [
     {
       "id": "critical",
       "label": "Recorrido principal",
-      "bytes": 213347237,
+      "bytes": 213587244,
       "assets": [
         [
           "building/exterior/20261119/0.1-0.2.mp4",
@@ -58,10 +58,6 @@
           4741880
         ],
         [
-          "building/exterior/20261119/aerial-loop.mp4",
-          21531305
-        ],
-        [
           "building/exterior/20261119/photos/0.1.webp",
           564510
         ],
@@ -80,6 +76,10 @@
         [
           "building/exterior/20261119/photos/3.1.webp",
           3074378
+        ],
+        [
+          "building/exterior/20261120/aerial-loop.mp4",
+          21771312
         ],
         [
           "homepage/20261119/portada.webp",
