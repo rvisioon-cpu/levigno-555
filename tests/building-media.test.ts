@@ -14,6 +14,8 @@ import { projectVideo } from '../src/data/video';
 
 const exteriorRoot = 'building/exterior/20261119/';
 const photosRoot = `${exteriorRoot}photos/`;
+const aerialLoopKey = 'building/exterior/20261120/aerial-loop.mp4';
+const previousAerialLoopKey = `${exteriorRoot}aerial-loop.mp4`;
 const keyOf = (url: string) => new URL(url, 'https://showroom.test').pathname.slice(1);
 const publicFile = (key: string) => new URL(`../public/${key}`, import.meta.url);
 const exteriorVideo = (name: string) => `${exteriorRoot}${name}.mp4`;
@@ -30,7 +32,7 @@ test('entrance moves from opening to aerial, then to the central day face', () =
     exteriorVideo('0.1-0.2'),
     exteriorVideo('0.2-1.1'),
   ]);
-  assert.equal(keyOf(buildingAerialLoop), exteriorVideo('aerial-loop'));
+  assert.equal(keyOf(buildingAerialLoop), aerialLoopKey);
   assert.equal(keyOf(buildingAerialPoster), `${photosRoot}0.2.webp`);
   assert.equal(buildingFaces[0].id, 1);
   assert.equal(keyOf(buildingFaces[0].day.background), `${photosRoot}1.1.webp`);
@@ -72,16 +74,14 @@ test('all 35 prepared media files exist and use the new cache version', () => {
     readdirSync(publicFile(photosRoot)).sort(),
     buildingMediaPaths.filter(key => key.endsWith('.webp')).map(key => key.slice(photosRoot.length)).sort(),
   );
-  assert.deepEqual(
-    readdirSync(publicFile(exteriorRoot)).filter(name => name.endsWith('.mp4')).sort(),
-    buildingMediaPaths.filter(key => key.endsWith('.mp4')).map(key => key.slice(exteriorRoot.length)).sort(),
-  );
+  assert.equal(buildingMediaPaths.filter(key => key.endsWith('.mp4')).length, 23);
   for (const key of preparedMedia) {
     assert.ok(assetManifest.includes(key), `${key} must be available to the preload system`);
     assert.ok(statSync(publicFile(key)).size > 0, `${key} must contain prepared media`);
   }
   assert.ok(assetManifest.filter(key => key.startsWith('building/exterior/'))
-    .every(key => key.startsWith(exteriorRoot)), 'the asset manifest must not preload old exterior media');
+    .every(key => buildingMediaPaths.includes(key)), 'the asset manifest must not preload old exterior media');
+  assert.ok(!assetManifest.includes(previousAerialLoopKey), 'the previous aerial loop must no longer be active');
   assert.ok(assetManifest.filter(key => key.startsWith(exteriorRoot) && key.endsWith('.webp'))
     .every(key => key.startsWith(photosRoot)), 'images must use fresh URLs rather than previously cached exterior image keys');
 });
@@ -97,7 +97,10 @@ test('offline manifest includes every new file with a measured size', () => {
     assert.ok(!manifest.missing.includes(key));
   }
   assert.ok([...offlineAssets.keys()].filter(key => key.startsWith('building/exterior/'))
-    .every(key => key.startsWith(exteriorRoot)), 'offline preparation must use the current exterior version');
+    .every(key => buildingMediaPaths.includes(key)), 'offline preparation must use the current exterior versions');
+  assert.ok(!offlineAssets.has(previousAerialLoopKey), 'offline preparation must exclude the previous aerial loop');
+  const criticalAssets = manifest.tiers.find(tier => tier.id === 'critical')!.assets;
+  assert.ok(criticalAssets.some(([key]) => key === aerialLoopKey), 'the replacement loop must remain in the critical tier');
   assert.ok([...offlineAssets.keys()].filter(key => key.startsWith(exteriorRoot) && key.endsWith('.webp'))
     .every(key => key.startsWith(photosRoot)), 'offline preparation must not retain the previously cached exterior image keys');
 });

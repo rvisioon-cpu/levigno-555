@@ -1,5 +1,5 @@
 import { getAssetUrl } from '@/utils/assets';
-import { buildingMediaPrefix, buildingPhotosPrefix } from './latest-media';
+import { buildingAerialLoopPath, buildingMediaPrefix, buildingPhotosPrefix } from './latest-media';
 
 const exterior = (file: string) => getAssetUrl(`${buildingMediaPrefix}${file}.mp4`);
 const exteriorImage = (view: string) => getAssetUrl(`${buildingPhotosPrefix}${view}.webp`);
@@ -22,7 +22,7 @@ export interface BuildingFace {
 }
 
 export const buildingOpening = [exterior('0.1-0.2'), exterior('0.2-1.1')];
-export const buildingAerialLoop = exterior('aerial-loop');
+export const buildingAerialLoop = getAssetUrl(buildingAerialLoopPath);
 export const buildingAerialPoster = exteriorImage('0.2');
 
 function face(id: 1 | 2 | 3, name: string): BuildingFace {

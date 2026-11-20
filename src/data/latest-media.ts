@@ -15,13 +15,15 @@ export const amenityPhotos = [
 
 export const buildingMediaPrefix = 'building/exterior/20261119/';
 export const buildingPhotosPrefix = `${buildingMediaPrefix}photos/`;
+export const buildingAerialLoopPath = 'building/exterior/20261120/aerial-loop.mp4';
 
 // Keep raw asset paths here so the manifest does not import the URL resolver.
 export const buildingMediaPaths = [
+  buildingAerialLoopPath,
   ...['0.1', '0.2', '1.1', '1.2', '2.1', '2.2', '3.1', '3.2']
     .map(view => `${buildingPhotosPrefix}${view}.webp`),
   ...[
-    'aerial-loop', '0.1-0.2', '0.2-1.1',
+    '0.1-0.2', '0.2-1.1',
     '1.1-up', '1.2-up', '2.1-up', '2.2-up', '3.1-up', '3.2-up',
     '1.1-1.2', '1.2-1.1', '2.1-2.2', '2.2-2.1', '3.1-3.2', '3.2-3.1',
     '1.1-2.1', '1.1-3.1', '1.2-2.2', '1.2-3.2',
