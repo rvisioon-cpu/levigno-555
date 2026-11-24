@@ -8,6 +8,9 @@ import { getLocations } from '@/app/actions/locations';
 import { getAssetUrl } from '@/utils/assets';
 import { landmarks, type Landmark } from '@/data/landmarks';
 
+type PlaceResult = { id: string; center: [number, number]; text: string; place_name: string };
+const normalize = (text: string) => text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+const placeKey = (place: PlaceResult) => place.center.map(value => value.toFixed(5)).join(',');
 const DirectionsPage = () => {
   const [showPremap, setShowPremap] = useState(true);
   const [activeLandmarkSlug, setActiveLandmarkSlug] = useState<string | null>(null);
@@ -51,7 +54,10 @@ const DirectionsPage = () => {
   const [searchMode, setSearchMode] = useState<'explore' | 'directions'>('explore');
   const [originLocation, setOriginLocation] = useState<[number, number] | null>(null);
   const [destination, setDestination] = useState<[number, number] | null>(null);
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<PlaceResult[]>([]);
+  const [searching, setSearching] = useState(false);
+  const [choosingPoint, setChoosingPoint] = useState(false);
+  const [routeUnavailable, setRouteUnavailable] = useState(false);
 
   const [transportMode, setTransportMode] = useState<'driving' | 'walking' | 'cycling'>('driving');
   const [routeStats, setRouteStats] = useState<{ driving: {duration:number}; walking: {duration:number}; cycling: {duration:number} } | null>(null);
@@ -72,27 +78,63 @@ const DirectionsPage = () => {
   });
 
   useEffect(() => {
-    const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
-    if (searchMode === 'directions' && filter.length > 2) {
-        const timer = setTimeout(async () => {
-            try {
-                if (!MAPBOX_TOKEN) return;
-                const response = await fetch(
-                    `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(filter)}.json?access_token=${MAPBOX_TOKEN}&country=pe&limit=5&proximity=-77.10136,-12.075601`
-                );
-                const data = await response.json() as { features?: any[] };
-                setSearchResults(data.features || []);
-            } catch (error) {
-                console.error("Error searching places:", error);
-            }
-        }, 500);
-        return () => clearTimeout(timer);
-    } else if (searchMode === 'directions') {
-        setSearchResults([]);
+    const query = filter.trim();
+    if (searchMode !== 'directions' || query.length < 3) {
+      setSearching(false);
+      setSearchResults([]);
+      return;
     }
-  }, [filter, searchMode]);
+    const terms = normalize(query).split(/[\s,]+/).filter(Boolean);
+    const knownPlaces: PlaceResult[] = publicLocations.filter(place => {
+      const name = normalize(place.properties.nombre);
+      return terms.every(term => name.includes(term));
+    }).slice(0, 5).map(place => ({
+      id: `showroom:${place.id}`,
+      center: place.geometry.coordinates,
+      text: place.properties.nombre,
+      place_name: place.properties.categoria ?? "Lugar registrado en Livigno",
+    }));
+    setSearchResults(knownPlaces);
+    const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+    if (!token) { setSearching(false); return; }
+    const controller = new AbortController();
+    const params = new URLSearchParams({
+      access_token: token, q: query, format: 'v5', country: 'pe', limit: '8',
+      proximity: '-77.10136,-12.075601', language: 'es',
+    });
+    setSearching(true);
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`https://api.mapbox.com/search/geocode/v6/forward?${params}`, {
+          signal: controller.signal,
+        });
+        if (!response.ok) return;
+        const data = await response.json() as { features?: PlaceResult[] };
+        if (!controller.signal.aborted) {
+          const unique = new Map<string, PlaceResult>();
+          for (const place of [...knownPlaces, ...(data.features || [])]) {
+            const key = placeKey(place);
+            if (!unique.has(key)) unique.set(key, place);
+          }
+          setSearchResults([...unique.values()]);
+        }
+      } catch { /* The known locations and map picker remain available. */ }
+      finally { if (!controller.signal.aborted) setSearching(false); }
+    }, 450);
+    return () => { clearTimeout(timer); controller.abort(); };
+  }, [filter, publicLocations, searchMode]);
+
+  function selectMapOrigin(coords: [number, number]) {
+    setChoosingPoint(false);
+    setOriginLocation(coords);
+    setDestination(null);
+    setSelectedName('Punto en el mapa');
+    setActiveLandmarkSlug(null);
+    setFilter('');
+  }
 
   const handleLocationSelect = (coords: [number, number], name?: string, fromList = false) => {
+    setChoosingPoint(false);
     if (name) setSelectedName(name);
     
     if (searchMode === 'explore') {
@@ -156,6 +198,12 @@ const DirectionsPage = () => {
         )}
 
         <div inert={showPremap} className="absolute inset-0">
+        {choosingPoint && !isPanelOpen && (
+          <button type="button" onClick={() => { setChoosingPoint(false); setIsPanelOpen(true); }}
+            className="absolute left-1/2 top-4 z-40 -translate-x-1/2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-gray-900 shadow">
+            Toca tu punto de partida · Cancelar
+          </button>
+        )}
         <div className="absolute inset-0 z-0">
              <MapComponent 
                 destination={destination}
@@ -166,6 +214,8 @@ const DirectionsPage = () => {
                 }}
                 transportMode={transportMode}
                 onRouteCalculated={handleRouteCalculated}
+                onRouteUnavailable={setRouteUnavailable}
+                onMapPointSelect={choosingPoint ? selectMapOrigin : undefined}
                 landmarks={landmarks}
                 activeLandmarkSlug={activeLandmarkSlug}
                 onLandmarkActiveChange={(slug, active) => setActiveLandmarkSlug(active ? slug : null)}
@@ -355,7 +405,7 @@ const DirectionsPage = () => {
                         {/* Mode Tabs */}
                         <div className="flex bg-gray-100 rounded-lg p-1 shrink-0 self-start md:self-center">
                             <button
-                                onClick={() => { setSearchMode('explore'); setFilter(''); setIsPanelOpen(true); }}
+                                onClick={() => { setSearchMode('explore'); setChoosingPoint(false); setFilter(''); setIsPanelOpen(true); }}
                                 className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${searchMode === 'explore' ? 'bg-white text-brand-orange shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                             >
                                 Explorar
@@ -381,13 +431,27 @@ const DirectionsPage = () => {
                                     setFilter(e.target.value);
                                     if (!isPanelOpen) setIsPanelOpen(true);
                                 }}
-                                className="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                                className="w-full bg-gray-50 text-gray-900 placeholder:text-gray-500 border border-gray-200 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:border-brand-orange transition-colors"
                             />
                         </div>
                     </div>
                 </div>
              </div>
 
+             {searchMode === 'directions' && (
+               <div className="flex items-center gap-3 bg-white px-4 py-2 text-sm text-gray-800">
+                 <button type="button" aria-pressed={choosingPoint}
+                   onClick={() => {
+                     setChoosingPoint(!choosingPoint);
+                     if (!choosingPoint && window.innerWidth < 768) setIsPanelOpen(false);
+                   }}
+                   className="rounded-lg border border-gray-300 px-3 py-2 font-medium text-gray-900">
+                   {choosingPoint ? 'Cancelar selección' : 'Elegir punto en el mapa'}
+                 </button>
+                 {choosingPoint && <span role="status">Toca tu punto de partida.</span>}
+                 {routeUnavailable && !choosingPoint && <span role="status">Sin ruta para este modo. Prueba cerca de una vía.</span>}
+               </div>
+             )}
              {/* Content (Scrollable) */}
              <div className="flex-1 flex flex-col overflow-hidden bg-white md:rounded-b-2xl">
                 {searchMode === 'explore' && (
@@ -453,7 +517,7 @@ const DirectionsPage = () => {
                     ) : (
                         // Search Results for Directions
                         searchResults.length > 0 ? (
-                            searchResults.map((feature: any) => (
+                            searchResults.map((feature) => (
                                 <div 
                                     key={feature.id} 
                                     onClick={() => handleLocationSelect(feature.center, feature.text, true)}
@@ -470,11 +534,11 @@ const DirectionsPage = () => {
                             ))
                         ) : filter.length > 2 ? (
                             <div className="text-center py-10 text-gray-400 text-sm">
-                                Buscando...
+                                {searching ? 'Buscando…' : 'Sin resultados. Prueba con calle y distrito, o elige un punto en el mapa.'}
                             </div>
                         ) : (
                              <div className="text-center py-10 text-gray-400 text-sm">
-                                Ingresa una dirección para ver la ruta
+                                Ingresa una calle y distrito o elige un punto del mapa
                             </div>
                         )
                     )}

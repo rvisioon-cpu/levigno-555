@@ -29,6 +29,8 @@ interface MapProps {
     destination?: [number, number] | null; // [lng, lat]
     origin?: [number, number] | null; // [lng, lat]
     padding?: { top: number; bottom: number; left: number; right: number };
+    onMapPointSelect?: (coordinates: [number, number]) => void;
+    onRouteUnavailable?: (unavailable: boolean) => void;
     onMarkerClick?: (coordinates: [number, number], name?: string) => void;
     transportMode?: 'driving' | 'walking' | 'cycling';
     onRouteCalculated?: (stats: { driving: RouteStats; walking: RouteStats; cycling: RouteStats } | null) => void;
@@ -40,7 +42,7 @@ interface MapProps {
     onLandmarkOpen?: (slug: string) => void;
 }
 
-export default function MapComponent({ destination, origin, padding, onMarkerClick, transportMode = 'driving', onRouteCalculated, locations, landmarks = defaultLandmarks, activeLandmarkSlug, onLandmarkActiveChange, onLandmarkSelect, onLandmarkOpen }: MapProps) {
+export default function MapComponent({ destination, origin, padding, onMarkerClick, onMapPointSelect, onRouteUnavailable, transportMode = 'driving', onRouteCalculated, locations, landmarks = defaultLandmarks, activeLandmarkSlug, onLandmarkActiveChange, onLandmarkSelect, onLandmarkOpen }: MapProps) {
   const mapRef = useRef<any>(null);
   const [routeGeoJSON, setRouteGeoJSON] = useState<any>(null);
   const [routeStats, setRouteStats] = useState<RouteStats | null>(null);
@@ -50,20 +52,25 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
 
   // Fetch Route when destination changes
   useEffect(() => {
+    const controller = new AbortController();
+    setRouteGeoJSON(null);
+    setRouteStats(null);
+    onRouteUnavailable?.(false);
+    onRouteCalculated?.(null);
     const fetchRoute = async () => {
         try {
-            if (!MAPBOX_TOKEN) return;
+            if (!MAPBOX_TOKEN) { onRouteUnavailable?.(Boolean(origin || destination)); return; }
 
             // Determine start and end points
             let start: [number, number];
             let end: [number, number];
 
             if (destination && !origin) {
-                // Explore Mode: From Santa Fe TO Destination
+                // Explore from Livigno to the selected destination.
                 start = [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude];
                 end = destination;
             } else if (origin) {
-                // Search Mode: From Origin TO Santa Fe
+                // Route from the chosen starting point to Livigno.
                 start = origin;
                 end = [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude];
             } else {
@@ -76,16 +83,21 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
 
             // Fetch estimates for all modes
             const modes = ['driving', 'walking', 'cycling'] as const;
-            const requests = modes.map(mode => 
-                fetch(`https://api.mapbox.com/directions/v5/mapbox/${mode}/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${MAPBOX_TOKEN}`)
-                .then(res => res.json() as Promise<{ routes?: Array<{ duration: number; distance: number; geometry: { coordinates: number[][] } }> }>)
-            );
-
-            const results = await Promise.all(requests);
+            type DirectionsResult = { routes?: Array<{ duration: number; distance: number; geometry: { coordinates: number[][] } }> };
+            const requests = modes.map(async (mode): Promise<DirectionsResult> => {
+                const response = await fetch(
+                    `https://api.mapbox.com/directions/v5/mapbox/${mode}/${start[0]},${start[1]};${end[0]},${end[1]}?overview=full&geometries=geojson&access_token=${MAPBOX_TOKEN}`,
+                    {signal: controller.signal}
+                );
+                return response.ok ? response.json() as Promise<DirectionsResult> : {};
+            });
+            const results = await Promise.allSettled(requests);
+            if (controller.signal.aborted) return;
             const stats: any = {};
             let currentModeData: any = null;
 
-            results.forEach((json, index) => {
+            results.forEach((result, index) => {
+                const json: DirectionsResult = result.status === 'fulfilled' ? result.value : {};
                 const mode = modes[index];
                 if (json.routes && json.routes.length > 0) {
                     const data = json.routes[0];
@@ -101,6 +113,7 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
                 }
             });
 
+            onRouteUnavailable?.(!currentModeData);
             // Pass all stats to parent
             if (onRouteCalculated) {
                 onRouteCalculated(stats);
@@ -145,12 +158,13 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
             }
 
         } catch (error) {
-            console.error("Error fetching directions:", error);
+            if (!controller.signal.aborted) onRouteUnavailable?.(true);
         }
     };
 
     fetchRoute();
-  }, [destination, origin, padding, transportMode]);
+    return () => controller.abort();
+  }, [destination, origin, padding, transportMode, onRouteCalculated, onRouteUnavailable]);
 
   const markers = useMemo(() => {
     const landmarkNames = new Set(landmarks.map((landmark) => landmark.poiName.toLowerCase().trim()));
@@ -260,7 +274,9 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
         scrollZoom={true}
         dragPan={true}
         dragRotate={true}
-        doubleClickZoom={true}
+        doubleClickZoom={!onMapPointSelect}
+        cursor={onMapPointSelect ? 'crosshair' : undefined}
+        onClick={onMapPointSelect ? ({ lngLat }) => onMapPointSelect([lngLat.lng, lngLat.lat]) : undefined}
       >
         <NavigationControl position="top-right" />
         <FullscreenControl position="top-right" />
@@ -324,10 +340,10 @@ export default function MapComponent({ destination, origin, padding, onMarkerCli
         </Marker>
 
         {/* Route Info Popup */}
-        {destination && routeStats && (
+        {(origin || destination) && routeStats && (
             <Popup
-                longitude={destination[0]}
-                latitude={destination[1]}
+                longitude={(origin || destination)![0]}
+                latitude={(origin || destination)![1]}
                 anchor="bottom"
                 offset={50} // Move it up above the pin
                 closeButton={false}
